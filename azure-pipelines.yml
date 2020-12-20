@@ -4,19 +4,20 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
 
 trigger:
-- main
+- master
+- develop
 
 variables:
 
   # Azure Resource Manager connection created during pipeline creation
   azureSubscription: '5952704c-cdbf-45a1-b54d-6917ba5a4ef3'
-  
+
   # Web app name
   webAppName: 'app-mrs'
 
   # Environment name
   environmentName: 'app-mrs'
-  
+
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
 
@@ -28,12 +29,18 @@ stages:
     displayName: Maven Package and Publish Artifacts
     pool:
       vmImage: $(vmImageName)
-    
+
     steps:
     - task: Maven@3
-      displayName: 'Maven Package'
       inputs:
-        mavenPomFile: 'pom.xml'
+         mavenPomFile: 'pom.xml'
+         mavenOptions: '-Xmx3072m'
+         javaHomeOption: 'JDKVersion'
+         jdkVersionOption: '1.11'
+         jdkArchitectureOption: 'x64'
+         publishJUnitResults: false
+         testResultsFiles: '**/TEST-*.xml'
+         goals: 'package'
 
     - task: CopyFiles@2
       displayName: 'Copy Files to artifact staging directory'
@@ -53,7 +60,7 @@ stages:
   - deployment: DeployLinuxWebApp
     displayName: Deploy Linux Web App
     environment: $(environmentName)
-    pool: 
+    pool:
       vmImage: $(vmImageName)
     strategy:
       runOnce:
