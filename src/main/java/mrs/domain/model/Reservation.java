@@ -8,7 +8,7 @@ import java.time.LocalTime;
 public class Reservation implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer reservatinId;
+    private Long reservationId;
 
     private LocalTime startTime;
 

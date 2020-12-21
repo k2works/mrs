@@ -9,7 +9,7 @@ CREATE TABLE meeting_room (
                               PRIMARY KEY (room_id)
 );
 CREATE TABLE reservable_room (
-                                 reserved_date DATE NOT NULL,
+                                 reserved_date TIMESTAMP NOT NULL,
                                  room_id       INT4 NOT NULL,
                                  PRIMARY KEY (reserved_date, room_id),
                                  FOREIGN KEY (room_id) REFERENCES meeting_room
@@ -26,9 +26,9 @@ CREATE TABLE reservation (
                              reservation_id BIGINT NOT NULL AUTO_INCREMENT,
                              end_time       TIME NOT NULL,
                              start_time     TIME NOT NULL,
-                             reserved_date  DATE NOT NULL,
+                             reserved_date  TIMESTAMP NOT NULL,
                              room_id        INT4 NOT NULL,
-                             user_id        VARBINARY(255) NOT NULL,
+                             user_id        VARCHAR (255) NOT NULL,
                              PRIMARY KEY (reservation_id),
                              FOREIGN KEY (reserved_date, room_id) REFERENCES reservable_room,
                              FOREIGN KEY (user_id) REFERENCES usr
