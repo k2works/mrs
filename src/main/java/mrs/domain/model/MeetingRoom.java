@@ -13,4 +13,12 @@ public class MeetingRoom implements Serializable {
     private Integer roomId;
 
     private String roomName;
+
+    public Integer roomId() {
+        return roomId;
+    }
+
+    public String roomName() {
+        return roomName;
+    }
 }

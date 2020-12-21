@@ -19,4 +19,8 @@ public class ReservableRoom implements Serializable {
 
     public ReservableRoom() {
     }
+
+    public MeetingRoom meetingRoom() {
+        return meetingRoom;
+    }
 }
