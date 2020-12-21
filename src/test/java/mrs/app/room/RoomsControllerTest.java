@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
@@ -29,7 +28,6 @@ public class RoomsControllerTest {
     }
 
     @Test
-    @Sql("/data.sql")
     void listRooms() throws Exception {
         mockMvc.perform(get("/rooms"))
                 .andExpect(status().isOk());
