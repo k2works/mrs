@@ -24,3 +24,5 @@ INSERT INTO usr (user_id, first_name, last_name, password, role_name) VALUES ('a
 INSERT INTO usr (user_id, first_name, last_name, password, role_name) VALUES ('bbbb', 'Bbb', 'Bbb', '$2a$10$oxSJ1.keBwxmsMLkcT9lPeAIxfNTPNQxpeywMrF7A3kVszwUTqfTK', 'USER');
 INSERT INTO usr (user_id, first_name, last_name, password, role_name) VALUES ('cccc', 'Ccc', 'Ccc', '$2a$10$oxSJ1.keBwxmsMLkcT9lPeAIxfNTPNQxpeywMrF7A3kVszwUTqfTK', 'ADMIN');
 
+-- 予約
+INSERT INTO reservation (end_time, start_time, reserved_date, room_id, user_id) VALUES ('9:00', '10:00', CURRENT_DATE , 1, 'taro-yamada');
