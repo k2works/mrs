@@ -10,11 +10,11 @@ import java.io.Serializable;
 public class MeetingRoom implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long roomId;
+    private Integer roomId;
 
     private String roomName;
 
-    public Long roomId() {
+    public Integer roomId() {
         return roomId;
     }
 

@@ -4,7 +4,7 @@ DROP TABLE IF EXISTS reservation CASCADE;
 DROP TABLE IF EXISTS usr CASCADE;
 
 CREATE TABLE meeting_room (
-                              room_id BIGINT NOT NULL AUTO_INCREMENT,
+                              room_id INT4 NOT NULL AUTO_INCREMENT,
                               room_name VARCHAR(255) NOT NULL,
                               PRIMARY KEY (room_id)
 );
@@ -23,7 +23,7 @@ CREATE TABLE usr (
                      PRIMARY KEY (user_id)
 );
 CREATE TABLE reservation (
-                             reservation_id BIGINT NOT NULL AUTO_INCREMENT,
+                             reservation_id INT4 NOT NULL AUTO_INCREMENT,
                              end_time       TIME NOT NULL,
                              start_time     TIME NOT NULL,
                              reserved_date  TIMESTAMP NOT NULL,
