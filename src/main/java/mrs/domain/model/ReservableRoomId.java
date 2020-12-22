@@ -39,10 +39,26 @@ public class ReservableRoomId implements Serializable {
         } else if (!reservedDate.equals(other.reservedDate)) {
             return false;
         }
-        if(roomId == null) {
+        if (roomId == null) {
             if (other.roomId != null) return false;
         } else if (!roomId.equals(other.roomId))
             return false;
         return false;
+    }
+
+    public Integer getRoomId() {
+        return roomId;
+    }
+
+    public void setRoomId(Integer roomId) {
+        this.roomId = roomId;
+    }
+
+    public LocalDate getReservedDate() {
+        return reservedDate;
+    }
+
+    public void setReservedDate(LocalDate reservedDate) {
+        this.reservedDate = reservedDate;
     }
 }
