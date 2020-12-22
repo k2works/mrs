@@ -29,6 +29,6 @@ public class ReservationRepositoryTest {
         List<Reservation> reservations = reservationRepository.findAll();
 
         assertNotNull(reservations);
-        assertEquals(0, reservations.size());
+        assertEquals(1, reservations.size());
     }
 }
