@@ -19,7 +19,7 @@ public class ReservationService {
     ReservableRoomRepository reservableRoomRepository;
 
     public Reservation reserve(Reservation reservation) {
-        ReservableRoomId reservableRoomId = reservation.reservableRoom().reservableRoomId();
+        ReservableRoomId reservableRoomId = reservation.getReservableRoom().getReservableRoomId();
         // 悲観ロック
         ReservableRoom reservable = reservableRoomRepository.findOneForUpdateByReservableRoomId(reservableRoomId);
         if(reservable == null) {

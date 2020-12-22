@@ -23,12 +23,8 @@ public class Reservation implements Serializable {
     @JoinColumn(name = "user_id")
     private User user;
 
-    public ReservableRoom reservableRoom() {
-        return reservableRoom;
-    }
-
     public boolean overlap(Reservation target) {
-        if (!Objects.equals(reservableRoom.reservableRoomId(), target.reservableRoom.reservableRoomId())) {
+        if (!Objects.equals(reservableRoom.getReservableRoomId(), target.reservableRoom.getReservableRoomId())) {
             return false;
         }
         if (startTime.equals(target.startTime) && endTime.equals(target.endTime)) {

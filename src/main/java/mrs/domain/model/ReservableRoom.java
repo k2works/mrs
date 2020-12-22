@@ -39,8 +39,4 @@ public class ReservableRoom implements Serializable {
     public void setMeetingRoom(MeetingRoom meetingRoom) {
         this.meetingRoom = meetingRoom;
     }
-
-    public ReservableRoomId reservableRoomId() {
-        return reservableRoomId;
-    }
 }
