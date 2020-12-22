@@ -17,4 +17,12 @@ public class User implements Serializable {
 
     @Enumerated(EnumType.STRING)
     private RoleName roleName;
+
+    public RoleName roleName() {
+        return roleName;
+    }
+
+    public String userId() {
+        return userId;
+    }
 }
