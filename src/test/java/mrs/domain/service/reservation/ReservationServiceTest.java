@@ -9,6 +9,7 @@ import mrs.domain.repository.room.ReservableRoomRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.jdbc.Sql;
 
 import java.time.LocalDate;
@@ -18,6 +19,7 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 @SpringBootTest(classes = MrsApplication.class)
+@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 public class ReservationServiceTest {
     @Autowired
     ReservationService reservationService;
@@ -31,7 +33,6 @@ public class ReservationServiceTest {
     UserRepository userRepository;
 
     @Test
-    @Sql("/schema.sql")
     @Sql("/data.sql")
     public void 会議室を予約する() {
         Integer roomId = 1;
@@ -50,7 +51,6 @@ public class ReservationServiceTest {
     }
 
     @Test
-    @Sql("/schema.sql")
     public void 該当する予約された会議室が存在しなければ例外メッセージを表示する() {
         Integer roomId = 1;
         LocalDate date = LocalDate.now();
@@ -66,7 +66,6 @@ public class ReservationServiceTest {
     }
 
     @Test
-    @Sql("/schema.sql")
     public void 予約時刻が重複しなければ登録できる() {
         userRepository.save(dummyUser());
         MeetingRoom room = new MeetingRoom();
@@ -98,7 +97,6 @@ public class ReservationServiceTest {
     }
 
     @Test
-    @Sql("/schema.sql")
     public void 予約時刻が重複すれば登録できない_パターン1() {
         userRepository.save(dummyUser());
         MeetingRoom room = new MeetingRoom();
@@ -131,7 +129,6 @@ public class ReservationServiceTest {
     }
 
     @Test
-    @Sql("/schema.sql")
     public void 予約時刻が重複すれば登録できない_パターン2() {
         userRepository.save(dummyUser());
         MeetingRoom room = new MeetingRoom();
@@ -164,7 +161,6 @@ public class ReservationServiceTest {
     }
 
     @Test
-    @Sql("/schema.sql")
     public void 予約を取り消す() {
         userRepository.save(dummyUser());
         MeetingRoom room = new MeetingRoom();
