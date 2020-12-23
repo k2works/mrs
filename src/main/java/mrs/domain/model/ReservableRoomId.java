@@ -43,7 +43,7 @@ public class ReservableRoomId implements Serializable {
             if (other.roomId != null) return false;
         } else if (!roomId.equals(other.roomId))
             return false;
-        return false;
+        return true;
     }
 
     public Integer getRoomId() {
