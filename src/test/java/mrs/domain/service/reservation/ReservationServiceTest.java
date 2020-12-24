@@ -1,6 +1,7 @@
 package mrs.domain.service.reservation;
 
 import mrs.MrsApplication;
+import mrs.WebSecurityConfig;
 import mrs.domain.model.*;
 import mrs.domain.repository.reservation.ReservationRepository;
 import mrs.domain.repository.room.MeetingRoomRepository;
@@ -9,7 +10,9 @@ import mrs.domain.repository.user.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.jdbc.Sql;
 
 import java.time.LocalDate;
@@ -19,6 +22,7 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 @SpringBootTest(classes = MrsApplication.class)
+@ContextConfiguration(classes = WebSecurityConfig.class)
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 public class ReservationServiceTest {
     @Autowired
@@ -102,6 +106,7 @@ public class ReservationServiceTest {
     }
 
     @Test
+    @WithMockUser(username = "test", roles = {"ADMIN"})
     public void 予約を取り消す() {
         ユーザーを登録する();
         MeetingRoom room = 会議室を作る();
