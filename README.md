@@ -1,20 +1,21 @@
 [![Azure WebApp](https://img.shields.io/badge/Azure_WebApp-app--mrs-blue)](http://app-mrs.azurewebsites.net/)
 [![Build Status](https://dev.azure.com/k2works/Mrs/_apis/build/status/CI-Mrs?branchName=master)](https://dev.azure.com/k2works/Mrs/_build/latest?definitionId=9&branchName=master)
 [![Build Status](https://dev.azure.com/k2works/Mrs/_apis/build/status/CI-Mrs?branchName=develop)](https://dev.azure.com/k2works/Mrs/_build/latest?definitionId=9&branchName=develop)
-![Java CI with Maven](https://github.com/k2works/mrs/workflows/Java%20CI%20with%20Maven/badge.svg)
+[![Java CI with Maven](https://github.com/k2works/mrs/workflows/Java%20CI%20with%20Maven/badge.svg)](https://github.com/k2works/mrs)
 
 # Mrs (Meeting room reservation system)
 
 ## 概要
-Spring徹底入門 Spring FrameworkによるJavaアプリケーション開発 チュートリアル
+
+Spring 徹底入門 Spring Framework による Java アプリケーション開発 チュートリアル
 
 ### 目的
 
 ### 前提
 
-| ソフトウェア   | バージョン | 備考 |
-| :------------- | :--------- | :--- |
-| java         | 11     |      |
+| ソフトウェア | バージョン | 備考 |
+| :----------- | :--------- | :--- |
+| java         | 11         |      |
 
 ## 構成
 
@@ -43,4 +44,4 @@ Spring徹底入門 Spring FrameworkによるJavaアプリケーション開発 �
 
 ## 参照
 
-- [Spring徹底入門 Spring FrameworkによるJavaアプリケーション開発](https://www.amazon.co.jp/dp/B01IEWNLBU/ref=dp-kindle-redirect?_encoding=UTF8&btkr=1)
+- [Spring 徹底入門 Spring Framework による Java アプリケーション開発](https://www.amazon.co.jp/dp/B01IEWNLBU/ref=dp-kindle-redirect?_encoding=UTF8&btkr=1)
