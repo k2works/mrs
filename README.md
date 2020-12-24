@@ -1,3 +1,4 @@
+[![Azure WebApp](https://img.shields.io/badge/Azure_WebApp-app--mrs-blue)](http://app-mrs.azurewebsites.net/)
 [![Build Status](https://dev.azure.com/k2works/Mrs/_apis/build/status/CI-Mrs?branchName=master)](https://dev.azure.com/k2works/Mrs/_build/latest?definitionId=9&branchName=master)
 [![Build Status](https://dev.azure.com/k2works/Mrs/_apis/build/status/CI-Mrs?branchName=develop)](https://dev.azure.com/k2works/Mrs/_build/latest?definitionId=9&branchName=develop)
 
