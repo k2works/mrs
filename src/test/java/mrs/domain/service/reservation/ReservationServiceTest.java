@@ -120,7 +120,7 @@ public class ReservationServiceTest {
     }
 
     private void キャンセルする(Reservation reservation) {
-        reservationService.cancel(reservation.getReservationId(), reservation.getUser());
+        reservationService.cancel(reservation);
     }
 
     private MeetingRoom 会議室を作る() {

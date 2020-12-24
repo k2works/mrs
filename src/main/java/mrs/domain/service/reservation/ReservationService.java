@@ -1,14 +1,17 @@
 package mrs.domain.service.reservation;
 
-import mrs.domain.model.*;
+import mrs.domain.model.ReservableRoom;
+import mrs.domain.model.ReservableRoomId;
+import mrs.domain.model.Reservation;
 import mrs.domain.repository.reservation.ReservationRepository;
 import mrs.domain.repository.room.ReservableRoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.method.P;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Objects;
 
 @Service
 @Transactional
@@ -35,12 +38,13 @@ public class ReservationService {
         return reservation;
     }
 
-    public void cancel(Integer reservationId, User requestUser) {
-        Reservation reservation = reservationRepository.getOne(reservationId);
-        if (RoleName.ADMIN != requestUser.roleName() && !Objects.equals(reservation.user().userId(), requestUser.userId())) {
-            throw new IllegalStateException("要求されたキャンセルは許可できません。");
-        }
+    @PreAuthorize("hasRole('ADMIN') or #reservation.user.userId == principal.user.userId")
+    public void cancel(@P("reservation") Reservation reservation) {
         reservationRepository.delete(reservation);
+    }
+
+    public Reservation findOne(Integer reservationId) {
+        return reservationRepository.getOne(reservationId);
     }
 
     public List<Reservation> findReservations(ReservableRoomId reservableRoomId) {
