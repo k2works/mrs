@@ -4,72 +4,71 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
 
 trigger:
-- master
-- develop
+  - master
+  - develop
 
 variables:
-
   # Azure Resource Manager connection created during pipeline creation
-  azureSubscription: '5952704c-cdbf-45a1-b54d-6917ba5a4ef3'
+  azureSubscription: "5952704c-cdbf-45a1-b54d-6917ba5a4ef3"
 
   # Web app name
-  webAppName: 'app-mrs'
+  webAppName: "app-mrs"
 
   # Environment name
-  environmentName: 'app-mrs'
+  environmentName: "app-mrs"
 
   # Agent VM image name
-  vmImageName: 'ubuntu-latest'
+  vmImageName: "ubuntu-latest"
 
 stages:
-- stage: Build
-  displayName: Build stage
-  jobs:
-  - job: MavenPackageAndPublishArtifacts
-    displayName: Maven Package and Publish Artifacts
-    pool:
-      vmImage: $(vmImageName)
+  - stage: Build
+    displayName: Build stage
+    jobs:
+      - job: MavenPackageAndPublishArtifacts
+        displayName: Maven Package and Publish Artifacts
+        pool:
+          vmImage: $(vmImageName)
 
-    steps:
-    - task: Maven@3
-      inputs:
-         mavenPomFile: 'pom.xml'
-         mavenOptions: '-Xmx3072m'
-         javaHomeOption: 'JDKVersion'
-         jdkVersionOption: '1.11'
-         jdkArchitectureOption: 'x64'
-         publishJUnitResults: false
-         testResultsFiles: '**/TEST-*.xml'
-         goals: 'package'
-
-    - task: CopyFiles@2
-      displayName: 'Copy Files to artifact staging directory'
-      inputs:
-        SourceFolder: '$(System.DefaultWorkingDirectory)'
-        Contents: '**/target/*.?(war|jar)'
-        TargetFolder: $(Build.ArtifactStagingDirectory)
-
-    - upload: $(Build.ArtifactStagingDirectory)
-      artifact: drop
-
-- stage: Deploy
-  displayName: Deploy stage
-  dependsOn: Build
-  condition: succeeded()
-  jobs:
-  - deployment: DeployLinuxWebApp
-    displayName: Deploy Linux Web App
-    environment: $(environmentName)
-    pool:
-      vmImage: $(vmImageName)
-    strategy:
-      runOnce:
-        deploy:
-          steps:
-          - task: AzureWebApp@1
-            displayName: 'Azure Web App Deploy: app-mrs'
+        steps:
+          - task: Maven@3
             inputs:
-              azureSubscription: $(azureSubscription)
-              appType: webAppLinux
-              appName: $(webAppName)
-              package: '$(Pipeline.Workspace)/drop/**/target/*.?(war|jar)'
+              mavenPomFile: "pom.xml"
+              mavenOptions: "-Xmx3072m"
+              javaHomeOption: "JDKVersion"
+              jdkVersionOption: "1.11"
+              jdkArchitectureOption: "x64"
+              publishJUnitResults: true
+              testResultsFiles: "**/TEST-*.xml"
+              goals: "package"
+
+          - task: CopyFiles@2
+            displayName: "Copy Files to artifact staging directory"
+            inputs:
+              SourceFolder: "$(System.DefaultWorkingDirectory)"
+              Contents: "**/target/*.?(war|jar)"
+              TargetFolder: $(Build.ArtifactStagingDirectory)
+
+          - upload: $(Build.ArtifactStagingDirectory)
+            artifact: drop
+
+  - stage: Deploy
+    displayName: Deploy stage
+    dependsOn: Build
+    condition: succeeded()
+    jobs:
+      - deployment: DeployLinuxWebApp
+        displayName: Deploy Linux Web App
+        environment: $(environmentName)
+        pool:
+          vmImage: $(vmImageName)
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - task: AzureWebApp@1
+                  displayName: "Azure Web App Deploy: app-mrs"
+                  inputs:
+                    azureSubscription: $(azureSubscription)
+                    appType: webAppLinux
+                    appName: $(webAppName)
+                    package: "$(Pipeline.Workspace)/drop/**/target/*.?(war|jar)"
