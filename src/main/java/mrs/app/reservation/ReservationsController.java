@@ -6,7 +6,6 @@ import mrs.domain.service.reservation.ReservationService;
 import mrs.domain.service.reservation.UnavailableReservationException;
 import mrs.domain.service.room.RoomService;
 import mrs.domain.service.user.ReservationUserDetails;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -25,10 +24,13 @@ import java.util.stream.Stream;
 @Controller
 @RequestMapping("reservations/{date}/{roomId}")
 public class ReservationsController {
-    @Autowired
-    RoomService roomService;
-    @Autowired
-    ReservationService reservationService;
+    private final RoomService roomService;
+    private final ReservationService reservationService;
+
+    public ReservationsController(RoomService roomService, ReservationService reservationService) {
+        this.roomService = roomService;
+        this.reservationService = reservationService;
+    }
 
     @ModelAttribute
     ReservationForm setUpForm() {
@@ -39,7 +41,7 @@ public class ReservationsController {
         return form;
     }
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     String reserveForm(@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @PathVariable("date") LocalDate date, @PathVariable("roomId") Integer roomId, Model model) {
         ReservableRoomId reservableRoomId = new ReservableRoomId(roomId, date);
         List<Reservation> reservations = reservationService.findReservations(reservableRoomId);
@@ -65,7 +67,7 @@ public class ReservationsController {
         return user;
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @PostMapping
     String reserve(@Validated ReservationForm form, BindingResult bindingResult,
                    @AuthenticationPrincipal ReservationUserDetails userDetails,
                    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @PathVariable("date") LocalDate date,
@@ -92,7 +94,7 @@ public class ReservationsController {
         return "redirect:/reservations/{date}/{roomId}";
     }
 
-    @RequestMapping(method = RequestMethod.POST, params = "cancel")
+    @PostMapping(params = "cancel")
     String cancel(@AuthenticationPrincipal ReservationUserDetails userDetails,
                   @RequestParam("reservationId") Integer reservationId,
                   @PathVariable("roomId") Integer roomId,

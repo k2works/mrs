@@ -5,7 +5,6 @@ import mrs.domain.model.ReservableRoomId;
 import mrs.domain.model.Reservation;
 import mrs.domain.repository.reservation.ReservationRepository;
 import mrs.domain.repository.room.ReservableRoomRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.method.P;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
@@ -16,16 +15,19 @@ import java.util.List;
 @Service
 @Transactional
 public class ReservationService {
-    @Autowired
-    ReservationRepository reservationRepository;
-    @Autowired
-    ReservableRoomRepository reservableRoomRepository;
+    private final ReservationRepository reservationRepository;
+    private final ReservableRoomRepository reservableRoomRepository;
+
+    public ReservationService(ReservationRepository reservationRepository, ReservableRoomRepository reservableRoomRepository) {
+        this.reservationRepository = reservationRepository;
+        this.reservableRoomRepository = reservableRoomRepository;
+    }
 
     public Reservation reserve(Reservation reservation) {
         ReservableRoomId reservableRoomId = reservation.getReservableRoom().getReservableRoomId();
         // 悲観ロック
         ReservableRoom reservable = reservableRoomRepository.findOneForUpdateByReservableRoomId(reservableRoomId);
-        if(reservable == null) {
+        if (reservable == null) {
             throw new UnavailableReservationException("入力の日付・部屋の組み合わせは予約できません。");
         }
         // 重複チェック
