@@ -1,4 +1,4 @@
-package mrs.app.reservation;
+package mrs.presentation.reservation;
 
 import mrs.domain.service.reservation.ReservationService;
 import mrs.domain.service.room.RoomService;

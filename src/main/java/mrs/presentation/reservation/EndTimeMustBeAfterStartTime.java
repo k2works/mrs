@@ -1,4 +1,4 @@
-package mrs.app.reservation;
+package mrs.presentation.reservation;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -10,11 +10,11 @@ import static java.lang.annotation.ElementType.*;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @Documented
-@Constraint(validatedBy = { ThirtyMinutesUnitValidator.class})
-@Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER })
+@Constraint(validatedBy = { EndTimeMustBeAfterStartTimeValidator.class})
+@Target( { TYPE, ANNOTATION_TYPE })
 @Retention(RUNTIME)
-public @interface ThirtyMinutesUnit {
-    String message() default "(mrs.app.reservation.ThirtyMinutesUnit.message)";
+public @interface EndTimeMustBeAfterStartTime {
+    String message() default "{mrs.presentation.reservation.EndTimeMustBeAfterStartTime.message}";
 
     Class<?>[]groups() default {};
 
@@ -24,6 +24,6 @@ public @interface ThirtyMinutesUnit {
     @Retention(RUNTIME)
     @Documented
     public @interface List {
-        ThirtyMinutesUnit[]value();
+        EndTimeMustBeAfterStartTime[]value();
     }
 }

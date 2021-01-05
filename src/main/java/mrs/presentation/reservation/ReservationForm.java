@@ -1,4 +1,4 @@
-package mrs.app.reservation;
+package mrs.presentation.reservation;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
