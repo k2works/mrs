@@ -2,8 +2,8 @@ package mrs.application.service.room;
 
 import mrs.application.repository.MeetingRoomRepository;
 import mrs.application.repository.ReservableRoomRepository;
-import mrs.domain.model.MeetingRoom;
-import mrs.domain.model.ReservableRoom;
+import mrs.domain.model.reservation.ReservableRoom;
+import mrs.domain.model.room.MeetingRoom;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;

@@ -1,6 +1,6 @@
 package mrs.application.service.user;
 
-import mrs.domain.model.User;
+import mrs.domain.model.user.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;

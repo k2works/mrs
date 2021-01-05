@@ -1,4 +1,4 @@
-package mrs.domain.model;
+package mrs.domain.model.reservation;
 
 import javax.persistence.Embeddable;
 import java.io.Serializable;

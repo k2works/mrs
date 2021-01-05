@@ -1,8 +1,8 @@
 package mrs.application.repository;
 
 import mrs.MrsApplication;
-import mrs.domain.model.ReservableRoomId;
-import mrs.domain.model.Reservation;
+import mrs.domain.model.reservation.ReservableRoomId;
+import mrs.domain.model.reservation.Reservation;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

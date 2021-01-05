@@ -1,7 +1,7 @@
 package mrs.application.service.user;
 
 import mrs.application.repository.UserRepository;
-import mrs.domain.model.User;
+import mrs.domain.model.user.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

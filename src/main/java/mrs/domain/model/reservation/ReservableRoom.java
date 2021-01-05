@@ -1,4 +1,6 @@
-package mrs.domain.model;
+package mrs.domain.model.reservation;
+
+import mrs.domain.model.room.MeetingRoom;
 
 import javax.persistence.*;
 import java.io.Serializable;

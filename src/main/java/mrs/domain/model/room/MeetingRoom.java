@@ -1,4 +1,4 @@
-package mrs.domain.model;
+package mrs.domain.model.room;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
