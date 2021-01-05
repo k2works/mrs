@@ -5,9 +5,9 @@ import mrs.domain.service.room.RoomService;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -21,7 +21,7 @@ public class RoomsController {
         this.roomService = roomService;
     }
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     String listRooms(Model model) {
         LocalDate today = LocalDate.now();
         List<ReservableRoom> rooms = roomService.findReservableRooms(today);
@@ -30,7 +30,7 @@ public class RoomsController {
         return "room/listRooms";
     }
 
-    @RequestMapping(path = "{date}", method = RequestMethod.GET)
+    @GetMapping("{date}")
     String listRooms(
             @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @PathVariable("date") LocalDate date, Model model
     ) {
