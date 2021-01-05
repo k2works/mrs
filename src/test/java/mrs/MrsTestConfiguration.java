@@ -1,8 +1,8 @@
 package mrs;
 
+import mrs.application.service.user.ReservationUserDetails;
 import mrs.domain.model.RoleName;
 import mrs.domain.model.User;
-import mrs.domain.service.user.ReservationUserDetails;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;

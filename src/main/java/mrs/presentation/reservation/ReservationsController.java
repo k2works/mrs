@@ -1,11 +1,11 @@
 package mrs.presentation.reservation;
 
+import mrs.application.service.reservation.AlreadyReservedException;
+import mrs.application.service.reservation.ReservationService;
+import mrs.application.service.reservation.UnavailableReservationException;
+import mrs.application.service.room.RoomService;
+import mrs.application.service.user.ReservationUserDetails;
 import mrs.domain.model.*;
-import mrs.domain.service.reservation.AlreadyReservedException;
-import mrs.domain.service.reservation.ReservationService;
-import mrs.domain.service.reservation.UnavailableReservationException;
-import mrs.domain.service.room.RoomService;
-import mrs.domain.service.user.ReservationUserDetails;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
