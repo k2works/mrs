@@ -19,6 +19,17 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <repositories>
+        <repository>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>bintray-jignite-maven</id>
+            <name>bintray-jignite</name>
+            <url>https://dl.bintray.com/jignite/maven</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -84,6 +95,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>irof</groupId>
+            <artifactId>jig-erd</artifactId>
+            <version>[0.0.5,)</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
