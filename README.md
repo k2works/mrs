@@ -39,6 +39,8 @@ Spring 徹底入門 Spring Framework による Java アプリケーション開�
 
 ### 開発
 
+- [ドキュメント](./docs/dev.md)
+
 **[⬆ back to top](#構成)**
 
 ### 運用
@@ -48,3 +50,5 @@ Spring 徹底入門 Spring Framework による Java アプリケーション開�
 ## 参照
 
 - [Spring 徹底入門 Spring Framework による Java アプリケーション開発](https://www.amazon.co.jp/dp/B01IEWNLBU/ref=dp-kindle-redirect?_encoding=UTF8&btkr=1)
+- [JIG](https://github.com/dddjava/jig)  
+- [JIG-ERD](https://github.com/irof/jig-erd)
