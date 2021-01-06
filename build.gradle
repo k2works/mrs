@@ -64,3 +64,23 @@ jig {
 
 [compileJava, processResources]*.shouldRunAfter(clean)
 jigReports.dependsOn(clean, classes)
+
+task cleanImage(type: Delete) {
+    delete "./docs/img"
+}
+
+task syncJigImage(type: Sync) {
+    from "./build/jig"
+    into "./docs/img/jig"
+    include "**/*.svg"
+}
+
+task syncErdImage(type: Sync) {
+    from "./build/erd"
+    into "./docs/img/erd"
+    include "**/*.png"
+}
+
+task syncImage(type: GradleBuild, dependsOn: ['syncJigImage', 'syncErdImage'])
+
+task publishDocs (type: GradleBuild, dependsOn: ['clean', 'build', 'cleanImage', 'jigReports', 'syncJigImage', 'syncErdImage'])
