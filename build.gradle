@@ -6,6 +6,7 @@ plugins {
     id 'java'
     id 'maven-publish'
     id 'org.dddjava.jig-gradle-plugin' version '2020.11.2.1'
+    id 'com.cosminpolifronie.gradle.plantuml' version '1.6.0'
 }
 
 sourceCompatibility = '11'
@@ -65,6 +66,10 @@ jig {
 [compileJava, processResources]*.shouldRunAfter(clean)
 jigReports.dependsOn(clean, classes)
 
+plantUml {
+    render input: "docs/diagrams/*.puml", output: "docs/img/diagrams", format: 'png', withMetadata: false
+}
+
 task cleanImage(type: Delete) {
     delete "./docs/img"
 }
@@ -83,4 +88,5 @@ task syncErdImage(type: Sync) {
 
 task syncImage(type: GradleBuild, dependsOn: ['syncJigImage', 'syncErdImage'])
 
-task publishDocs (type: GradleBuild, dependsOn: ['clean', 'build', 'cleanImage', 'jigReports', 'syncJigImage', 'syncErdImage'])
+task publishDocs (type: GradleBuild, dependsOn: ['clean', 'build', 'cleanImage', 'jigReports', 'syncJigImage', 'syncErdImage', 'plantUml'])
+
