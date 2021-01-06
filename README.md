@@ -39,6 +39,14 @@ Spring 徹底入門 Spring Framework による Java アプリケーション開�
 
 ### 開発
 
+#### アプリケーションアーキテクチャ
+
+![](./docs/img/jig/architecture.svg)
+
+#### ドメインオブジェクトのモデル
+
+![](./docs/img/jig/business-rule-relation.svg)
+
 - [ドキュメント](./docs/Development.md)
 
 **[⬆ back to top](#構成)**
