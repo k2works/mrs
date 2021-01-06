@@ -1,0 +1,46 @@
+@startuml
+HTTP -- port_80
+HTTPS -- port_443
+
+cloud "Azure" {
+ folder "AppService" {
+
+
+        package "Development Environment" {
+          [SpringBoot] as app_dev
+          port_80 -- app_dev
+          port_443 -- app_dev
+        }
+
+ }
+}
+
+cloud "Amazon Web Service" {
+ folder "Elastic Load Balancing" {
+  [Application Load Balancer] as elb
+ }
+
+ folder "Elastic Beanstalk" {
+   port_80 -- elb
+   port_443 -- elb
+
+        package "Production Environment" {
+          [SpringBoot] as app_prod
+          [Nginx] as proxy_prod
+          proxy_prod --> app_prod
+          elb - proxy_prod
+        }
+
+ }
+}
+
+
+cloud "GitHub"{
+  [Git] as repository_1
+}
+
+cloud "Azure DevOps"{
+  [Git] as repository_2
+  repository_2 --> app_dev
+}
+@enduml
