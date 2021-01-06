@@ -1,4 +1,4 @@
 /**
- * ドメイン層のModelを配置するパッケージ
+ * ビジネスルールを表現する複合型
  */
 package mrs.domain.model;

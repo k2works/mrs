@@ -1,6 +1,6 @@
 package mrs;
 
-import mrs.domain.service.user.ReservationUserDetailsService;
+import mrs.application.service.user.ReservationUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;

@@ -1,0 +1,101 @@
+<svg width="436px" height="278px"
+ viewBox="0.00 0.00 436.00 278.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1.0 1.0) rotate(0) translate(4 274)">
+<title>ビジネスルール関連図</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-274 432,-274 432,4 -4,4"/>
+<text text-anchor="middle" x="214" y="-7.8" font-family="Times,serif" font-size="14.00">ビジネスルール関連図</text>
+<g id="clust1" class="cluster">
+<title>cluster_mrs.domain.model.reservation</title>
+<polygon fill="lemonchiffon" stroke="#eedd82" stroke-width="2" points="8,-31 8,-262 160,-262 160,-31 8,-31"/>
+<text text-anchor="middle" x="84" y="-246.8" font-family="Times,serif" font-size="14.00">reservation</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_mrs.domain.model.room</title>
+<polygon fill="lemonchiffon" stroke="#eedd82" stroke-width="2" points="168,-31 168,-108 280,-108 280,-31 168,-31"/>
+<text text-anchor="middle" x="224" y="-92.8" font-family="Times,serif" font-size="14.00">room</text>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster_mrs.domain.model.user</title>
+<polygon fill="lemonchiffon" stroke="#eedd82" stroke-width="2" points="288,-31 288,-185 420,-185 420,-31 288,-31"/>
+<text text-anchor="middle" x="354" y="-169.8" font-family="Times,serif" font-size="14.00">user</text>
+</g>
+<!-- mrs.domain.model.reservation.ReservableRoom -->
+<g id="node1" class="node">
+<title>mrs.domain.model.reservation.ReservableRoom</title>
+<polygon fill="#eedd82" stroke="black" points="152,-154 36,-154 36,-116 152,-116 152,-154"/>
+<text text-anchor="middle" x="94" y="-138.8" font-family="Times,serif" font-size="14.00">予約可能会議室</text>
+<text text-anchor="middle" x="94" y="-123.8" font-family="Times,serif" font-size="14.00">ReservableRoom</text>
+</g>
+<!-- mrs.domain.model.reservation.ReservableRoomId -->
+<g id="node2" class="node">
+<title>mrs.domain.model.reservation.ReservableRoomId</title>
+<polygon fill="#eedd82" stroke="black" points="149.5,-77 18.5,-77 18.5,-39 149.5,-39 149.5,-77"/>
+<text text-anchor="middle" x="84" y="-61.8" font-family="Times,serif" font-size="14.00">予約可能会議室ID</text>
+<text text-anchor="middle" x="84" y="-46.8" font-family="Times,serif" font-size="14.00">ReservableRoomId</text>
+</g>
+<!-- mrs.domain.model.reservation.ReservableRoom&#45;&gt;mrs.domain.model.reservation.ReservableRoomId -->
+<g id="edge1" class="edge">
+<title>mrs.domain.model.reservation.ReservableRoom&#45;&gt;mrs.domain.model.reservation.ReservableRoomId</title>
+<path fill="none" stroke="black" d="M91.58,-115.84C90.43,-107.25 89.04,-96.79 87.76,-87.19"/>
+<polygon fill="black" stroke="black" points="91.22,-86.7 86.43,-77.25 84.29,-87.62 91.22,-86.7"/>
+</g>
+<!-- mrs.domain.model.room.MeetingRoom -->
+<g id="node4" class="node">
+<title>mrs.domain.model.room.MeetingRoom</title>
+<polygon fill="#eedd82" stroke="black" points="272,-77 176,-77 176,-39 272,-39 272,-77"/>
+<text text-anchor="middle" x="224" y="-61.8" font-family="Times,serif" font-size="14.00">会議室</text>
+<text text-anchor="middle" x="224" y="-46.8" font-family="Times,serif" font-size="14.00">MeetingRoom</text>
+</g>
+<!-- mrs.domain.model.reservation.ReservableRoom&#45;&gt;mrs.domain.model.room.MeetingRoom -->
+<g id="edge2" class="edge">
+<title>mrs.domain.model.reservation.ReservableRoom&#45;&gt;mrs.domain.model.room.MeetingRoom</title>
+<path fill="none" stroke="black" d="M148.32,-115.87C153.73,-113.46 159.05,-110.84 164,-108 175.79,-101.25 187.61,-92.2 197.61,-83.71"/>
+<polygon fill="black" stroke="black" points="199.97,-86.3 205.2,-77.08 195.37,-81.02 199.97,-86.3"/>
+</g>
+<!-- mrs.domain.model.reservation.Reservation -->
+<g id="node3" class="node">
+<title>mrs.domain.model.reservation.Reservation</title>
+<polygon fill="#eedd82" stroke="black" points="134.5,-231 53.5,-231 53.5,-193 134.5,-193 134.5,-231"/>
+<text text-anchor="middle" x="94" y="-215.8" font-family="Times,serif" font-size="14.00">予約</text>
+<text text-anchor="middle" x="94" y="-200.8" font-family="Times,serif" font-size="14.00">Reservation</text>
+</g>
+<!-- mrs.domain.model.reservation.Reservation&#45;&gt;mrs.domain.model.reservation.ReservableRoom -->
+<g id="edge3" class="edge">
+<title>mrs.domain.model.reservation.Reservation&#45;&gt;mrs.domain.model.reservation.ReservableRoom</title>
+<path fill="none" stroke="black" d="M94,-192.84C94,-184.34 94,-174.01 94,-164.5"/>
+<polygon fill="black" stroke="black" points="97.5,-164.25 94,-154.25 90.5,-164.25 97.5,-164.25"/>
+</g>
+<!-- mrs.domain.model.reservation.Reservation&#45;&gt;mrs.domain.model.reservation.ReservableRoomId -->
+<g id="edge4" class="edge">
+<title>mrs.domain.model.reservation.Reservation&#45;&gt;mrs.domain.model.reservation.ReservableRoomId</title>
+<path fill="none" stroke="black" d="M53.32,-203.81C43.06,-199.96 33.2,-194.06 27,-185 9.68,-159.7 15.26,-144.33 27,-116 32.07,-103.76 41.19,-92.77 50.67,-83.79"/>
+<polygon fill="black" stroke="black" points="53.12,-86.29 58.27,-77.03 48.47,-81.06 53.12,-86.29"/>
+</g>
+<!-- mrs.domain.model.user.User -->
+<g id="node6" class="node">
+<title>mrs.domain.model.user.User</title>
+<polygon fill="#eedd82" stroke="black" points="380,-154 306,-154 306,-116 380,-116 380,-154"/>
+<text text-anchor="middle" x="343" y="-138.8" font-family="Times,serif" font-size="14.00">ユーザー</text>
+<text text-anchor="middle" x="343" y="-123.8" font-family="Times,serif" font-size="14.00">User</text>
+</g>
+<!-- mrs.domain.model.reservation.Reservation&#45;&gt;mrs.domain.model.user.User -->
+<g id="edge5" class="edge">
+<title>mrs.domain.model.reservation.Reservation&#45;&gt;mrs.domain.model.user.User</title>
+<path fill="none" stroke="black" d="M134.56,-198.78C178.73,-185.48 249.27,-164.23 295.86,-150.2"/>
+<polygon fill="black" stroke="black" points="297.15,-153.47 305.71,-147.23 295.13,-146.76 297.15,-153.47"/>
+</g>
+<!-- mrs.domain.model.user.RoleName -->
+<g id="node5" class="node">
+<title>mrs.domain.model.user.RoleName</title>
+<polygon fill="#eedd82" stroke="black" points="412,-77 296,-77 296,-39 412,-39 412,-77"/>
+<text text-anchor="middle" x="354" y="-61.8" font-family="Times,serif" font-size="14.00">ユーザーの役割</text>
+<text text-anchor="middle" x="354" y="-46.8" font-family="Times,serif" font-size="14.00">RoleName</text>
+</g>
+<!-- mrs.domain.model.user.User&#45;&gt;mrs.domain.model.user.RoleName -->
+<g id="edge6" class="edge">
+<title>mrs.domain.model.user.User&#45;&gt;mrs.domain.model.user.RoleName</title>
+<path fill="none" stroke="black" d="M345.66,-115.84C346.92,-107.25 348.46,-96.79 349.87,-87.19"/>
+<polygon fill="black" stroke="black" points="353.34,-87.65 351.32,-77.25 346.41,-86.63 353.34,-87.65"/>
+</g>
+</g>
+</svg>

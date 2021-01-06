@@ -31,6 +31,12 @@ Spring 徹底入門 Spring Framework による Java アプリケーション開�
 
 ### 構築
 
+#### システム構成
+
+![](./docs/img/diagrams/SystemArchitecture.png)
+
+- [ドキュメント](./docs/Build.md)
+
 **[⬆ back to top](#構成)**
 
 ### 配置
@@ -38,6 +44,16 @@ Spring 徹底入門 Spring Framework による Java アプリケーション開�
 **[⬆ back to top](#構成)**
 
 ### 開発
+
+#### アプリケーションアーキテクチャ
+
+![](./docs/img/jig/architecture.svg)
+
+#### ドメインオブジェクトのモデル
+
+![](./docs/img/jig/business-rule-relation.svg)
+
+- [ドキュメント](./docs/Development.md)
 
 **[⬆ back to top](#構成)**
 
@@ -48,3 +64,5 @@ Spring 徹底入門 Spring Framework による Java アプリケーション開�
 ## 参照
 
 - [Spring 徹底入門 Spring Framework による Java アプリケーション開発](https://www.amazon.co.jp/dp/B01IEWNLBU/ref=dp-kindle-redirect?_encoding=UTF8&btkr=1)
+- [JIG](https://github.com/dddjava/jig)  
+- [JIG-ERD](https://github.com/irof/jig-erd)
