@@ -1,0 +1,18 @@
+<svg width="87px" height="100px"
+ viewBox="0.00 0.00 87.00 100.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1.0 1.0) rotate(0) translate(4 73)">
+<title>区分図</title>
+<polygon fill="white" stroke="transparent" points="-4,27 -4,-73 83,-73 83,27 -4,27"/>
+<text text-anchor="middle" x="39.5" y="15.2" font-family="Times,serif" font-size="14.00">区分図</text>
+<!-- mrs.domain.model.user.RoleName -->
+<g id="node1" class="node">
+<title>mrs.domain.model.user.RoleName</title>
+<polygon fill="lemonchiffon" stroke="black" points="78.74,-69.14 -0.26,-69.14 -0.26,-0.14 78.74,-0.14 78.74,-69.14"/>
+<text text-anchor="start" x="10.24" y="-51.44" font-family="Times,serif" font-size="14.00">RoleName</text>
+<polygon fill="none" stroke="black" points="8.24,-24.64 8.24,-45.64 71.24,-45.64 71.24,-24.64 8.24,-24.64"/>
+<text text-anchor="start" x="16.24" y="-31.44" font-family="Times,serif" font-size="14.00">ADMIN</text>
+<polygon fill="none" stroke="black" points="8.24,-3.64 8.24,-24.64 71.24,-24.64 71.24,-3.64 8.24,-3.64"/>
+<text text-anchor="start" x="22.24" y="-10.44" font-family="Times,serif" font-size="14.00">USER</text>
+</g>
+</g>
+</svg>

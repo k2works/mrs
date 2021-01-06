@@ -1,0 +1,95 @@
+<svg width="390px" height="272px"
+ viewBox="0.00 0.00 390.00 272.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1.0 1.0) rotate(0) translate(4 268)">
+<title>ビジネスルール関連図</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-268 386,-268 386,4 -4,4"/>
+<text text-anchor="middle" x="191" y="-7.8" font-family="Times,serif" font-size="14.00">ビジネスルール関連図</text>
+<g id="clust1" class="cluster">
+<title>cluster_mrs.domain.model.reservation</title>
+<polygon fill="lemonchiffon" stroke="#eedd82" stroke-width="2" points="8,-31 8,-256 154,-256 154,-31 8,-31"/>
+<text text-anchor="middle" x="81" y="-240.8" font-family="Times,serif" font-size="14.00">reservation</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_mrs.domain.model.room</title>
+<polygon fill="lemonchiffon" stroke="#eedd82" stroke-width="2" points="162,-31 162,-106 274,-106 274,-31 162,-31"/>
+<text text-anchor="middle" x="218" y="-90.8" font-family="Times,serif" font-size="14.00">room</text>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster_mrs.domain.model.user</title>
+<polygon fill="lemonchiffon" stroke="#eedd82" stroke-width="2" points="282,-31 282,-181 374,-181 374,-31 282,-31"/>
+<text text-anchor="middle" x="328" y="-165.8" font-family="Times,serif" font-size="14.00">user</text>
+</g>
+<!-- mrs.domain.model.reservation.ReservableRoom -->
+<g id="node1" class="node">
+<title>mrs.domain.model.reservation.ReservableRoom</title>
+<polygon fill="#eedd82" stroke="black" points="146,-150 36,-150 36,-114 146,-114 146,-150"/>
+<text text-anchor="middle" x="91" y="-128.3" font-family="Times,serif" font-size="14.00">ReservableRoom</text>
+</g>
+<!-- mrs.domain.model.reservation.ReservableRoomId -->
+<g id="node2" class="node">
+<title>mrs.domain.model.reservation.ReservableRoomId</title>
+<polygon fill="#eedd82" stroke="black" points="142,-75 20,-75 20,-39 142,-39 142,-75"/>
+<text text-anchor="middle" x="81" y="-53.3" font-family="Times,serif" font-size="14.00">ReservableRoomId</text>
+</g>
+<!-- mrs.domain.model.reservation.ReservableRoom&#45;&gt;mrs.domain.model.reservation.ReservableRoomId -->
+<g id="edge1" class="edge">
+<title>mrs.domain.model.reservation.ReservableRoom&#45;&gt;mrs.domain.model.reservation.ReservableRoomId</title>
+<path fill="none" stroke="black" d="M88.63,-113.7C87.47,-105.25 86.05,-94.87 84.75,-85.37"/>
+<polygon fill="black" stroke="black" points="88.18,-84.61 83.35,-75.18 81.24,-85.56 88.18,-84.61"/>
+</g>
+<!-- mrs.domain.model.room.MeetingRoom -->
+<g id="node4" class="node">
+<title>mrs.domain.model.room.MeetingRoom</title>
+<polygon fill="#eedd82" stroke="black" points="266,-75 170,-75 170,-39 266,-39 266,-75"/>
+<text text-anchor="middle" x="218" y="-53.3" font-family="Times,serif" font-size="14.00">MeetingRoom</text>
+</g>
+<!-- mrs.domain.model.reservation.ReservableRoom&#45;&gt;mrs.domain.model.room.MeetingRoom -->
+<g id="edge2" class="edge">
+<title>mrs.domain.model.reservation.ReservableRoom&#45;&gt;mrs.domain.model.room.MeetingRoom</title>
+<path fill="none" stroke="black" d="M141.91,-113.97C147.45,-111.54 152.92,-108.88 158,-106 169.9,-99.25 181.9,-90.2 192.01,-81.78"/>
+<polygon fill="black" stroke="black" points="194.35,-84.38 199.67,-75.22 189.79,-79.07 194.35,-84.38"/>
+</g>
+<!-- mrs.domain.model.reservation.Reservation -->
+<g id="node3" class="node">
+<title>mrs.domain.model.reservation.Reservation</title>
+<polygon fill="#eedd82" stroke="black" points="131.5,-225 50.5,-225 50.5,-189 131.5,-189 131.5,-225"/>
+<text text-anchor="middle" x="91" y="-203.3" font-family="Times,serif" font-size="14.00">Reservation</text>
+</g>
+<!-- mrs.domain.model.reservation.Reservation&#45;&gt;mrs.domain.model.reservation.ReservableRoom -->
+<g id="edge3" class="edge">
+<title>mrs.domain.model.reservation.Reservation&#45;&gt;mrs.domain.model.reservation.ReservableRoom</title>
+<path fill="none" stroke="black" d="M91,-188.7C91,-180.25 91,-169.87 91,-160.37"/>
+<polygon fill="black" stroke="black" points="94.5,-160.18 91,-150.18 87.5,-160.18 94.5,-160.18"/>
+</g>
+<!-- mrs.domain.model.reservation.Reservation&#45;&gt;mrs.domain.model.reservation.ReservableRoomId -->
+<g id="edge4" class="edge">
+<title>mrs.domain.model.reservation.Reservation&#45;&gt;mrs.domain.model.reservation.ReservableRoomId</title>
+<path fill="none" stroke="black" d="M50.47,-198.38C41.27,-194.68 32.58,-189.18 27,-181 10.21,-156.41 15.86,-141.61 27,-114 31.86,-101.96 40.68,-91.07 49.8,-82.17"/>
+<polygon fill="black" stroke="black" points="52.44,-84.5 57.45,-75.17 47.71,-79.33 52.44,-84.5"/>
+</g>
+<!-- mrs.domain.model.user.User -->
+<g id="node6" class="node">
+<title>mrs.domain.model.user.User</title>
+<polygon fill="#eedd82" stroke="black" points="349,-150 295,-150 295,-114 349,-114 349,-150"/>
+<text text-anchor="middle" x="322" y="-128.3" font-family="Times,serif" font-size="14.00">User</text>
+</g>
+<!-- mrs.domain.model.reservation.Reservation&#45;&gt;mrs.domain.model.user.User -->
+<g id="edge5" class="edge">
+<title>mrs.domain.model.reservation.Reservation&#45;&gt;mrs.domain.model.user.User</title>
+<path fill="none" stroke="black" d="M131.5,-193.2C174.99,-179.46 243.46,-157.82 285.38,-144.57"/>
+<polygon fill="black" stroke="black" points="286.44,-147.91 294.92,-141.56 284.33,-141.23 286.44,-147.91"/>
+</g>
+<!-- mrs.domain.model.user.RoleName -->
+<g id="node5" class="node">
+<title>mrs.domain.model.user.RoleName</title>
+<polygon fill="#eedd82" stroke="black" points="365.5,-75 290.5,-75 290.5,-39 365.5,-39 365.5,-75"/>
+<text text-anchor="middle" x="328" y="-53.3" font-family="Times,serif" font-size="14.00">RoleName</text>
+</g>
+<!-- mrs.domain.model.user.User&#45;&gt;mrs.domain.model.user.RoleName -->
+<g id="edge6" class="edge">
+<title>mrs.domain.model.user.User&#45;&gt;mrs.domain.model.user.RoleName</title>
+<path fill="none" stroke="black" d="M323.42,-113.7C324.12,-105.25 324.97,-94.87 325.75,-85.37"/>
+<polygon fill="black" stroke="black" points="329.26,-85.43 326.59,-75.18 322.28,-84.86 329.26,-85.43"/>
+</g>
+</g>
+</svg>
