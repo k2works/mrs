@@ -39,7 +39,7 @@ Spring 徹底入門 Spring Framework による Java アプリケーション開�
 
 ### 開発
 
-- [ドキュメント](./docs/dev.md)
+- [ドキュメント](./docs/Development.md)
 
 **[⬆ back to top](#構成)**
 
