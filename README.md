@@ -31,7 +31,11 @@ Spring 徹底入門 Spring Framework による Java アプリケーション開�
 
 ### 構築
 
+#### システム構成
+
 ![](./docs/img/diagrams/SystemArchitecture.png)
+
+- [ドキュメント](./docs/Build.md)
 
 **[⬆ back to top](#構成)**
 
