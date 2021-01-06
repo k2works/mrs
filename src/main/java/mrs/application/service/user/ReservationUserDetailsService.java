@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+/**
+ * 予約ユーザーサービス
+ */
 @Service
 public class ReservationUserDetailsService implements UserDetailsService {
     private final UserRepository userRepository;

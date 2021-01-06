@@ -9,6 +9,9 @@ import javax.persistence.LockModeType;
 import java.time.LocalDate;
 import java.util.List;
 
+/**
+ * 予約可能会議室レポジトリ
+ */
 public interface ReservableRoomRepository extends JpaRepository<ReservableRoom, ReservableRoomId> {
     @Lock(LockModeType.PESSIMISTIC_WRITE)
     ReservableRoom findOneForUpdateByReservableRoomId(ReservableRoomId reservableRoomId);

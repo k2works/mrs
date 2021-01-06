@@ -6,6 +6,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.io.Serializable;
 
+/**
+ * 会議室
+ */
 @Entity
 public class MeetingRoom implements Serializable {
     @Id

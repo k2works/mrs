@@ -10,6 +10,9 @@ import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.List;
 
+/**
+ * 会議室サービス
+ */
 @Service
 @Transactional
 public class RoomService {

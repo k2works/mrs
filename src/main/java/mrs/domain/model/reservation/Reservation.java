@@ -7,6 +7,9 @@ import java.io.Serializable;
 import java.time.LocalTime;
 import java.util.Objects;
 
+/**
+ * 予約
+ */
 @Entity
 public class Reservation implements Serializable {
     @Id
