@@ -24,7 +24,8 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
+
 
 @SpringBootTest(classes = MrsApplication.class)
 @ContextConfiguration(classes = WebSecurityConfig.class)
