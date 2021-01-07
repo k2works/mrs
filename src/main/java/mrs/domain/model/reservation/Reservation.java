@@ -38,6 +38,14 @@ public class Reservation implements Serializable {
         this.user = user;
     }
 
+    public Reservation(ReservationId reservationId, ReservedTime reservedTime, ReservableRoom room, User user) {
+        this.reservationId = reservationId.value;
+        this.startTime = reservedTime.start;
+        this.endTime = reservedTime.end;
+        this.reservableRoom = room;
+        this.user = user;
+    }
+
     public boolean overlap(Reservation target) {
         if (!Objects.equals(reservableRoom.reservableRoomId(), target.reservableRoom.reservableRoomId())) {
             return false;

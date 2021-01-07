@@ -59,12 +59,14 @@
                 </a>
             </g>
         </g>
-        <!-- mrs.application.service.reservation.ReservationService.findOne(java.lang.Integer) -->
+        <!-- mrs.application.service.reservation.ReservationService.findOne(mrs.domain.model.reservation.ReservationId) -->
         <g id="node2" class="node">
-            <title>mrs.application.service.reservation.ReservationService.findOne(java.lang.Integer)</title>
+            <title>
+                mrs.application.service.reservation.ReservationService.findOne(mrs.domain.model.reservation.ReservationId)
+            </title>
             <g id="a_node2">
                 <a xlink:href="https://github.com/system-sekkei/library/tree/master/src/main/java/mrs/application/service/reservation/ReservationService.java"
-                   xlink:title="ReservationService.findOne(Integer)">
+                   xlink:title="ReservationService.findOne(ReservationId)">
                     <ellipse fill="greenyellow" stroke="black" cx="379.74" cy="-477" rx="94.48" ry="18"/>
                     <text text-anchor="middle" x="379.74" y="-473.3" font-family="Times,serif" font-size="14.00">
                         会議室の予約を探す
@@ -142,8 +144,37 @@
                 </a>
             </g>
         </g>
-        <!-- mrs.presentation.reservation.ReservationsController.reserveForm(java.time.LocalDate, java.lang.Integer, org.springframework.ui.Model) -->
+        <!-- mrs.presentation.reservation.ReservationsController.cancel(mrs.application.service.user.ReservationUserDetails, java.lang.Integer, java.lang.Integer, java.time.LocalDate, org.springframework.ui.Model) -->
         <g id="node8" class="node">
+            <title>
+                mrs.presentation.reservation.ReservationsController.cancel(mrs.application.service.user.ReservationUserDetails,
+                java.lang.Integer, java.lang.Integer, java.time.LocalDate, org.springframework.ui.Model)
+            </title>
+            <polygon fill="lightgray" stroke="black" points="128,-441 74,-441 74,-405 128,-405 128,-441"/>
+            <text text-anchor="middle" x="101" y="-419.3" font-family="Times,serif" font-size="14.00">cancel</text>
+        </g>
+        <!-- mrs.presentation.reservation.ReservationsController.cancel(mrs.application.service.user.ReservationUserDetails, java.lang.Integer, java.lang.Integer, java.time.LocalDate, org.springframework.ui.Model)&#45;&gt;mrs.application.service.reservation.ReservationService.cancel(mrs.domain.model.reservation.Reservation) -->
+        <g id="edge1" class="edge">
+            <title>
+                mrs.presentation.reservation.ReservationsController.cancel(mrs.application.service.user.ReservationUserDetails,
+                java.lang.Integer, java.lang.Integer, java.time.LocalDate, org.springframework.ui.Model)&#45;&gt;mrs.application.service.reservation.ReservationService.cancel(mrs.domain.model.reservation.Reservation)
+            </title>
+            <path fill="none" stroke="black" stroke-dasharray="5,2"
+                  d="M128.03,-423C152.28,-423 190.53,-423 229.9,-423"/>
+            <polygon fill="black" stroke="black" points="229.93,-426.5 239.93,-423 229.93,-419.5 229.93,-426.5"/>
+        </g>
+        <!-- mrs.presentation.reservation.ReservationsController.cancel(mrs.application.service.user.ReservationUserDetails, java.lang.Integer, java.lang.Integer, java.time.LocalDate, org.springframework.ui.Model)&#45;&gt;mrs.application.service.reservation.ReservationService.findOne(mrs.domain.model.reservation.ReservationId) -->
+        <g id="edge2" class="edge">
+            <title>
+                mrs.presentation.reservation.ReservationsController.cancel(mrs.application.service.user.ReservationUserDetails,
+                java.lang.Integer, java.lang.Integer, java.time.LocalDate, org.springframework.ui.Model)&#45;&gt;mrs.application.service.reservation.ReservationService.findOne(mrs.domain.model.reservation.ReservationId)
+            </title>
+            <path fill="none" stroke="black" stroke-dasharray="5,2"
+                  d="M128.11,-429.14C152.76,-434.84 190.8,-443.43 224,-450 247.88,-454.72 273.91,-459.43 297.7,-463.57"/>
+            <polygon fill="black" stroke="black" points="297.29,-467.05 307.74,-465.3 298.48,-460.15 297.29,-467.05"/>
+        </g>
+        <!-- mrs.presentation.reservation.ReservationsController.reserveForm(java.time.LocalDate, java.lang.Integer, org.springframework.ui.Model) -->
+        <g id="node9" class="node">
             <title>mrs.presentation.reservation.ReservationsController.reserveForm(java.time.LocalDate,
                 java.lang.Integer, org.springframework.ui.Model)
             </title>
@@ -169,7 +200,7 @@
             <polygon fill="black" stroke="black" points="331.77,-239.96 339.74,-232.98 329.16,-233.46 331.77,-239.96"/>
         </g>
         <!-- mrs.presentation.reservation.ReservationsController.reserve(mrs.presentation.reservation.ReservationForm, org.springframework.validation.BindingResult, mrs.application.service.user.ReservationUserDetails, java.time.LocalDate, java.lang.Integer, org.springframework.ui.Model) -->
-        <g id="node9" class="node">
+        <g id="node10" class="node">
             <title>
                 mrs.presentation.reservation.ReservationsController.reserve(mrs.presentation.reservation.ReservationForm,
                 org.springframework.validation.BindingResult, mrs.application.service.user.ReservationUserDetails,
@@ -189,58 +220,29 @@
                   d="M129.04,-369C164.82,-369 229.78,-369 284.46,-369"/>
             <polygon fill="black" stroke="black" points="284.55,-372.5 294.55,-369 284.55,-365.5 284.55,-372.5"/>
         </g>
-        <!-- mrs.presentation.reservation.ReservationsController.cancel(mrs.application.service.user.ReservationUserDetails, java.lang.Integer, java.lang.Integer, java.time.LocalDate, org.springframework.ui.Model) -->
-        <g id="node10" class="node">
-            <title>
-                mrs.presentation.reservation.ReservationsController.cancel(mrs.application.service.user.ReservationUserDetails,
-                java.lang.Integer, java.lang.Integer, java.time.LocalDate, org.springframework.ui.Model)
-            </title>
-            <polygon fill="lightgray" stroke="black" points="128,-441 74,-441 74,-405 128,-405 128,-441"/>
-            <text text-anchor="middle" x="101" y="-419.3" font-family="Times,serif" font-size="14.00">cancel</text>
-        </g>
-        <!-- mrs.presentation.reservation.ReservationsController.cancel(mrs.application.service.user.ReservationUserDetails, java.lang.Integer, java.lang.Integer, java.time.LocalDate, org.springframework.ui.Model)&#45;&gt;mrs.application.service.reservation.ReservationService.cancel(mrs.domain.model.reservation.Reservation) -->
-        <g id="edge1" class="edge">
-            <title>
-                mrs.presentation.reservation.ReservationsController.cancel(mrs.application.service.user.ReservationUserDetails,
-                java.lang.Integer, java.lang.Integer, java.time.LocalDate, org.springframework.ui.Model)&#45;&gt;mrs.application.service.reservation.ReservationService.cancel(mrs.domain.model.reservation.Reservation)
-            </title>
-            <path fill="none" stroke="black" stroke-dasharray="5,2"
-                  d="M128.03,-423C152.28,-423 190.53,-423 229.9,-423"/>
-            <polygon fill="black" stroke="black" points="229.93,-426.5 239.93,-423 229.93,-419.5 229.93,-426.5"/>
-        </g>
-        <!-- mrs.presentation.reservation.ReservationsController.cancel(mrs.application.service.user.ReservationUserDetails, java.lang.Integer, java.lang.Integer, java.time.LocalDate, org.springframework.ui.Model)&#45;&gt;mrs.application.service.reservation.ReservationService.findOne(java.lang.Integer) -->
-        <g id="edge2" class="edge">
-            <title>
-                mrs.presentation.reservation.ReservationsController.cancel(mrs.application.service.user.ReservationUserDetails,
-                java.lang.Integer, java.lang.Integer, java.time.LocalDate, org.springframework.ui.Model)&#45;&gt;mrs.application.service.reservation.ReservationService.findOne(java.lang.Integer)
-            </title>
-            <path fill="none" stroke="black" stroke-dasharray="5,2"
-                  d="M128.11,-429.14C152.76,-434.84 190.8,-443.43 224,-450 247.88,-454.72 273.91,-459.43 297.7,-463.57"/>
-            <polygon fill="black" stroke="black" points="297.29,-467.05 307.74,-465.3 298.48,-460.15 297.29,-467.05"/>
-        </g>
-        <!-- mrs.presentation.room.RoomsController.listRooms(java.time.LocalDate, org.springframework.ui.Model) -->
+        <!-- mrs.presentation.room.RoomsController.listRooms(org.springframework.ui.Model) -->
         <g id="node11" class="node">
-            <title>mrs.presentation.room.RoomsController.listRooms(java.time.LocalDate, org.springframework.ui.Model)
-            </title>
+            <title>mrs.presentation.room.RoomsController.listRooms(org.springframework.ui.Model)</title>
             <polygon fill="lightgray" stroke="black" points="137,-196 65,-196 65,-160 137,-160 137,-196"/>
             <text text-anchor="middle" x="101" y="-174.3" font-family="Times,serif" font-size="14.00">listRooms</text>
-        </g>
-        <!-- mrs.presentation.room.RoomsController.listRooms(java.time.LocalDate, org.springframework.ui.Model)&#45;&gt;mrs.application.service.room.RoomService.findReservableRooms(java.time.LocalDate) -->
-        <g id="edge6" class="edge">
-            <title>mrs.presentation.room.RoomsController.listRooms(java.time.LocalDate, org.springframework.ui.Model)&#45;&gt;mrs.application.service.room.RoomService.findReservableRooms(java.time.LocalDate)</title>
-            <path fill="none" stroke="black" stroke-dasharray="5,2"
-                  d="M137.05,-176.1C166.94,-174.48 211.77,-172.05 254.73,-169.72"/>
-            <polygon fill="black" stroke="black" points="254.93,-173.22 264.73,-169.18 254.55,-166.23 254.93,-173.22"/>
-        </g>
-        <!-- mrs.presentation.room.RoomsController.listRooms(org.springframework.ui.Model) -->
-        <g id="node12" class="node">
-            <title>mrs.presentation.room.RoomsController.listRooms(org.springframework.ui.Model)</title>
-            <polygon fill="lightgray" stroke="black" points="137,-250 65,-250 65,-214 137,-214 137,-250"/>
-            <text text-anchor="middle" x="101" y="-228.3" font-family="Times,serif" font-size="14.00">listRooms</text>
         </g>
         <!-- mrs.presentation.room.RoomsController.listRooms(org.springframework.ui.Model)&#45;&gt;mrs.application.service.room.RoomService.findReservableRooms(java.time.LocalDate) -->
         <g id="edge7" class="edge">
             <title>mrs.presentation.room.RoomsController.listRooms(org.springframework.ui.Model)&#45;&gt;mrs.application.service.room.RoomService.findReservableRooms(java.time.LocalDate)</title>
+            <path fill="none" stroke="black" stroke-dasharray="5,2"
+                  d="M137.05,-176.1C166.94,-174.48 211.77,-172.05 254.73,-169.72"/>
+            <polygon fill="black" stroke="black" points="254.93,-173.22 264.73,-169.18 254.55,-166.23 254.93,-173.22"/>
+        </g>
+        <!-- mrs.presentation.room.RoomsController.listRooms(java.time.LocalDate, org.springframework.ui.Model) -->
+        <g id="node12" class="node">
+            <title>mrs.presentation.room.RoomsController.listRooms(java.time.LocalDate, org.springframework.ui.Model)
+            </title>
+            <polygon fill="lightgray" stroke="black" points="137,-250 65,-250 65,-214 137,-214 137,-250"/>
+            <text text-anchor="middle" x="101" y="-228.3" font-family="Times,serif" font-size="14.00">listRooms</text>
+        </g>
+        <!-- mrs.presentation.room.RoomsController.listRooms(java.time.LocalDate, org.springframework.ui.Model)&#45;&gt;mrs.application.service.room.RoomService.findReservableRooms(java.time.LocalDate) -->
+        <g id="edge6" class="edge">
+            <title>mrs.presentation.room.RoomsController.listRooms(java.time.LocalDate, org.springframework.ui.Model)&#45;&gt;mrs.application.service.room.RoomService.findReservableRooms(java.time.LocalDate)</title>
             <path fill="none" stroke="black" stroke-dasharray="5,2"
                   d="M137.25,-225.51C156.87,-221.16 181.41,-214.47 202,-205 212.75,-200.06 213.03,-194.45 224,-190 238.75,-184.01 254.82,-179.35 270.85,-175.72"/>
             <polygon fill="black" stroke="black" points="271.75,-179.11 280.8,-173.6 270.29,-172.26 271.75,-179.11"/>
