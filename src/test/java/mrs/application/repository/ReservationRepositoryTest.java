@@ -42,7 +42,7 @@ public class ReservationRepositoryTest {
         Reservation value = reservation.get();
 
         Assertions.assertNotNull(value);
-        Assertions.assertEquals("太郎", value.user().firstName());
+        Assertions.assertEquals("山田 太郎", value.user().name().toString());
     }
 
     @Test

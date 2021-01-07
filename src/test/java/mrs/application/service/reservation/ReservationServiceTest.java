@@ -10,8 +10,7 @@ import mrs.domain.model.reservation.ReservableRoom;
 import mrs.domain.model.reservation.ReservableRoomId;
 import mrs.domain.model.reservation.Reservation;
 import mrs.domain.model.room.MeetingRoom;
-import mrs.domain.model.user.RoleName;
-import mrs.domain.model.user.User;
+import mrs.domain.model.user.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -74,10 +73,9 @@ public class ReservationServiceTest {
 
     private User ユーザーを作る() {
         User user = new User(
-                "tar-yamada",
-                "$2a$10$oxSJ1.keBwxmsMLkcT9lPeAIxfNTPNQxpeywMrF7A3kVszwUTqfTK",
-                "太郎",
-                "山田",
+                new UserId("tar-yamada"),
+                new Password("$2a$10$oxSJ1.keBwxmsMLkcT9lPeAIxfNTPNQxpeywMrF7A3kVszwUTqfTK"),
+                new Name("山田", "太郎"),
                 RoleName.ADMIN
         );
         return user;

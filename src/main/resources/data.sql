@@ -25,7 +25,7 @@ VALUES (CURRENT_DATE - 1, 7);
 
 -- ダミーユーザー(password = demo)
 INSERT INTO usr (user_id, first_name, last_name, password, role_name)
-VALUES ('taro-yamada', '太郎', '山田', '$2y$10$aYjdzuGAep5SXGVBxxGrMOnh1b1mL62sJLx5Sj.r4dM4BTICiemCG', 'USER');
+VALUES ('taro-yamada', '山田', '太郎', '$2y$10$aYjdzuGAep5SXGVBxxGrMOnh1b1mL62sJLx5Sj.r4dM4BTICiemCG', 'USER');
 -- 認証確認用のテストユーザー(password = demo)
 INSERT INTO usr (user_id, first_name, last_name, password, role_name)
 VALUES ('aaaa', 'Aaa', 'Aaa', '$2y$10$aYjdzuGAep5SXGVBxxGrMOnh1b1mL62sJLx5Sj.r4dM4BTICiemCG', 'USER');
