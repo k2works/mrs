@@ -26,6 +26,9 @@ public class ReservationService {
         this.reservableRoomRepository = reservableRoomRepository;
     }
 
+    /**
+     * 会議室を予約する
+     */
     public Reservation reserve(Reservation reservation) {
         ReservableRoomId reservableRoomId = reservation.getReservableRoom().getReservableRoomId();
         // 悲観ロック
@@ -43,15 +46,24 @@ public class ReservationService {
         return reservation;
     }
 
+    /**
+     * 会議室の予約をキャンセルする
+     */
     @PreAuthorize("hasRole('ADMIN') or #reservation.user.userId == principal.user.userId")
     public void cancel(@P("reservation") Reservation reservation) {
         reservationRepository.delete(reservation);
     }
 
+    /**
+     * 会議室の予約を探す
+     */
     public Reservation findOne(Integer reservationId) {
         return reservationRepository.getOne(reservationId);
     }
 
+    /**
+     * 予約可能会議室を探す
+     */
     public List<Reservation> findReservations(ReservableRoomId reservableRoomId) {
         return reservationRepository.findByReservableRoom_ReservableRoomIdOrderByStartTimeAsc(reservableRoomId);
     }

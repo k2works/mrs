@@ -25,6 +25,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+/**
+ * 会議室予約画面
+ */
 @Controller
 @RequestMapping("reservations/{date}/{roomId}")
 public class ReservationsController {
@@ -52,8 +55,8 @@ public class ReservationsController {
 
         List<LocalTime> timeList =
                 Stream.iterate(LocalTime.of(0, 0), t -> t.plusMinutes(30))
-                .limit(24 * 2)
-                .collect(Collectors.toList());
+                        .limit(24 * 2)
+                        .collect(Collectors.toList());
 
         model.addAttribute("room", roomService.findMeetingRoom(roomId));
         model.addAttribute("reservations", reservations);
@@ -71,6 +74,9 @@ public class ReservationsController {
         return user;
     }
 
+    /**
+     * 予約
+     */
     @PostMapping
     String reserve(@Validated ReservationForm form, BindingResult bindingResult,
                    @AuthenticationPrincipal ReservationUserDetails userDetails,
@@ -90,14 +96,16 @@ public class ReservationsController {
 
         try {
             reservationService.reserve(reservation);
-        }
-        catch (UnavailableReservationException | AlreadyReservedException e) {
+        } catch (UnavailableReservationException | AlreadyReservedException e) {
             model.addAttribute("error", e.getMessage());
             return reserveForm(date, roomId, model);
         }
         return "redirect:/reservations/{date}/{roomId}";
     }
 
+    /**
+     * 取消
+     */
     @PostMapping(params = "cancel")
     String cancel(@AuthenticationPrincipal ReservationUserDetails userDetails,
                   @RequestParam("reservationId") Integer reservationId,

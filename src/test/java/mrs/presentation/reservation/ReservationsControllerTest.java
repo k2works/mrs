@@ -18,7 +18,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
-@DisplayName("予約コントローラ")
+@DisplayName("予約画面")
 public class ReservationsControllerTest {
     MockMvc mockMvc;
 

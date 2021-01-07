@@ -24,10 +24,16 @@ public class RoomService {
         this.reservableRoomRepository = reservableRoomRepository;
     }
 
+    /**
+     * 会議室を検索する
+     */
     public MeetingRoom findMeetingRoom(Integer roomId) {
         return meetingRoomRepository.getOne(roomId);
     }
 
+    /**
+     * 予約可能会議室を検索する
+     */
     public List<ReservableRoom> findReservableRooms(LocalDate date) {
         return reservableRoomRepository.findByReservableRoomId_ReservedDateOrderByReservableRoomId_RoomIdAsc(date);
     }

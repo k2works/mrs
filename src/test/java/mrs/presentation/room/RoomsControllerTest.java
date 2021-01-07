@@ -14,7 +14,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
-@DisplayName("会議室コントローラ")
+@DisplayName("会議室一覧画面")
 public class RoomsControllerTest {
     MockMvc mockMvc;
 

@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.time.LocalDate;
 import java.util.List;
 
+/**
+ * 会議室一覧画面
+ */
 @Controller
 @RequestMapping("rooms")
 public class RoomsController {
