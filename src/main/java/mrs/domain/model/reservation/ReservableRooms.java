@@ -3,7 +3,7 @@ package mrs.domain.model.reservation;
 import java.util.List;
 
 /**
- * 予約可能会議室コレクション
+ * 予約可能会議室集合
  */
 public class ReservableRooms {
     List<ReservableRoom> value;
