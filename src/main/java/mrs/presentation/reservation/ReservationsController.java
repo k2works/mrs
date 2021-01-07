@@ -8,8 +8,6 @@ import mrs.application.service.user.ReservationUserDetails;
 import mrs.domain.model.reservation.ReservableRoom;
 import mrs.domain.model.reservation.ReservableRoomId;
 import mrs.domain.model.reservation.Reservation;
-import mrs.domain.model.user.RoleName;
-import mrs.domain.model.user.User;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -63,15 +61,6 @@ public class ReservationsController {
         model.addAttribute("timeList", timeList);
         // model.addAttribute("user", dummyUser());
         return "reservation/reserveForm";
-    }
-
-    private User dummyUser() {
-        User user = new User();
-        user.setUserId("taro-yamada");
-        user.setFirstName("太郎");
-        user.setLastName("山田");
-        user.setRoleName(RoleName.USER);
-        return user;
     }
 
     /**

@@ -17,13 +17,14 @@ public class MrsTestConfiguration {
     public UserDetailsService userDetailsService() {
         return new UserDetailsService() {
             @Override
-            public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-                User user = new User();
-                user.setUserId(s);
-                user.setFirstName("太郎");
-                user.setLastName("山田");
-                user.setRoleName(RoleName.ADMIN);
-                user.setPassword("password");
+            public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
+                User user = new User(
+                        userId,
+                        "password",
+                        "太郎",
+                        "山田",
+                        RoleName.ADMIN
+                );
                 return new ReservationUserDetails(user);
             }
         };

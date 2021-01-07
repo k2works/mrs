@@ -21,32 +21,23 @@ public class User implements Serializable {
     @Enumerated(EnumType.STRING)
     private RoleName roleName;
 
+    public User() {
+    }
+
+    public User(String userId, String password, String firstName, String lastName, RoleName roleName) {
+        this.userId = userId;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.roleName = roleName;
+    }
+
     public RoleName roleName() {
         return roleName;
     }
 
     public String userId() {
         return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public void setRoleName(RoleName roleName) {
-        this.roleName = roleName;
     }
 
     public String getUserId() {

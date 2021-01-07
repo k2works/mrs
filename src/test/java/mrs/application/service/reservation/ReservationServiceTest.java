@@ -22,6 +22,7 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.jdbc.Sql;
 
+import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
@@ -72,12 +73,13 @@ public class ReservationServiceTest {
     }
 
     private User ユーザーを作る() {
-        User user = new User();
-        user.setUserId("taro-yamada");
-        user.setFirstName("太郎");
-        user.setLastName("山田");
-        user.setRoleName(RoleName.USER);
-        user.setPassword("$2a$10$oxSJ1.keBwxmsMLkcT9lPeAIxfNTPNQxpeywMrF7A3kVszwUTqfTK");
+        User user = new User(
+                "tar-yamada",
+                "$2a$10$oxSJ1.keBwxmsMLkcT9lPeAIxfNTPNQxpeywMrF7A3kVszwUTqfTK",
+                "太郎",
+                "山田",
+                RoleName.ADMIN
+        );
         return user;
     }
 
@@ -101,6 +103,7 @@ public class ReservationServiceTest {
 
         @Test
         @Sql("/data.sql")
+        @Transactional
         public void 会議室を予約する() {
             MeetingRoom room = new MeetingRoom(1, "会議室");
             ReservableRoom reservableRoom = 予約が可能な会議室を作る(room);
