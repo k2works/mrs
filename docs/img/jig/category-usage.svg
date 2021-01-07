@@ -1,19 +1,19 @@
-<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="788px"
-     height="229px" viewBox="0.00 0.00 788.48 229.00" xmlns="http://www.w3.org/2000/svg">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="747px"
+     height="229px" viewBox="0.00 0.00 747.48 229.00" xmlns="http://www.w3.org/2000/svg">
     <g id="graph0" class="graph" transform="scale(1.0 1.0) rotate(0) translate(4 225)">
         <title>区分使用図</title>
-        <polygon fill="white" stroke="transparent" points="-4,4 -4,-225 784.48,-225 784.48,4 -4,4"/>
-        <text text-anchor="middle" x="390.24" y="-7.8" font-family="Times,serif" font-size="14.00">区分使用図</text>
+        <polygon fill="white" stroke="transparent" points="-4,4 -4,-225 743.48,-225 743.48,4 -4,4"/>
+        <text text-anchor="middle" x="369.74" y="-7.8" font-family="Times,serif" font-size="14.00">区分使用図</text>
         <!-- mrs.domain.model.user.RoleName -->
         <g id="node1" class="node">
             <title>mrs.domain.model.user.RoleName</title>
             <polygon fill="#eedd82" stroke="black"
-                     points="780.48,-141 668.48,-141 664.48,-137 664.48,-103 776.48,-103 780.48,-107 780.48,-141"/>
-            <polyline fill="none" stroke="black" points="776.48,-137 664.48,-137 "/>
-            <polyline fill="none" stroke="black" points="776.48,-137 776.48,-103 "/>
-            <polyline fill="none" stroke="black" points="776.48,-137 780.48,-141 "/>
-            <text text-anchor="middle" x="722.48" y="-125.8" font-family="Times,serif" font-size="14.00">ユーザーの役割</text>
-            <text text-anchor="middle" x="722.48" y="-110.8" font-family="Times,serif" font-size="14.00">RoleName</text>
+                     points="739.48,-141 668.48,-141 664.48,-137 664.48,-103 735.48,-103 739.48,-107 739.48,-141"/>
+            <polyline fill="none" stroke="black" points="735.48,-137 664.48,-137 "/>
+            <polyline fill="none" stroke="black" points="735.48,-137 735.48,-103 "/>
+            <polyline fill="none" stroke="black" points="735.48,-137 739.48,-141 "/>
+            <text text-anchor="middle" x="701.98" y="-125.8" font-family="Times,serif" font-size="14.00">役割</text>
+            <text text-anchor="middle" x="701.98" y="-110.8" font-family="Times,serif" font-size="14.00">RoleName</text>
         </g>
         <!-- mrs.application.service.reservation.ReservationService.reserve(mrs.domain.model.reservation.Reservation) -->
         <g id="node2" class="node">
@@ -146,8 +146,8 @@
         <!-- mrs.domain.model.user.User&#45;&gt;mrs.domain.model.user.RoleName -->
         <g id="edge1" class="edge">
             <title>mrs.domain.model.user.User&#45;&gt;mrs.domain.model.user.RoleName</title>
-            <path fill="none" stroke="black" d="M628.75,-122C636.68,-122 645.32,-122 654.02,-122"/>
-            <polygon fill="black" stroke="black" points="654.24,-125.5 664.24,-122 654.24,-118.5 654.24,-125.5"/>
+            <path fill="none" stroke="black" d="M628.6,-122C636.76,-122 645.52,-122 654.05,-122"/>
+            <polygon fill="black" stroke="black" points="654.26,-125.5 664.26,-122 654.26,-118.5 654.26,-125.5"/>
         </g>
     </g>
 </svg>
