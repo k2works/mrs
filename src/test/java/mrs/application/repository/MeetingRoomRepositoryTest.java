@@ -1,7 +1,6 @@
 package mrs.application.repository;
 
 import mrs.MrsApplication;
-import mrs.domain.model.reservation.ReservableRoom;
 import mrs.domain.model.room.MeetingRoom;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -10,8 +9,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
 
 import java.time.LocalDate;
-import java.util.List;
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
