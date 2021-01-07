@@ -41,6 +41,7 @@ public class RoomsControllerTest {
     void 会議室一覧を表示する() throws Exception {
         List<ReservableRoom> result = new ArrayList<>(Collections.singleton(new ReservableRoom()));
         when(mockRoomService.findReservableRooms(any())).thenReturn(new ReservableRooms(result));
+
         mockMvc.perform(get("/rooms"))
                 .andExpect(status().isOk());
     }

@@ -2,10 +2,7 @@ package mrs.application.service.reservation;
 
 import mrs.application.repository.ReservableRoomRepository;
 import mrs.application.repository.ReservationRepository;
-import mrs.domain.model.reservation.ReservableRoom;
-import mrs.domain.model.reservation.ReservableRoomId;
-import mrs.domain.model.reservation.Reservation;
-import mrs.domain.model.reservation.ReservationId;
+import mrs.domain.model.reservation.*;
 import org.springframework.security.access.method.P;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
@@ -63,9 +60,10 @@ public class ReservationService {
     }
 
     /**
-     * 予約可能会議室を探す
+     * 予約を探す
      */
-    public List<Reservation> findReservations(ReservableRoomId reservableRoomId) {
-        return reservationRepository.findByReservableRoom_ReservableRoomIdOrderByStartTimeAsc(reservableRoomId);
+    public Reservations findReservations(ReservableRoomId reservableRoomId) {
+        List<Reservation> result = reservationRepository.findByReservableRoom_ReservableRoomIdOrderByStartTimeAsc(reservableRoomId);
+        return new Reservations(result);
     }
 }

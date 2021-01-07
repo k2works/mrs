@@ -48,7 +48,7 @@ public class ReservationsController {
     @GetMapping
     String reserveForm(@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @PathVariable("date") LocalDate date, @PathVariable("roomId") Integer roomId, Model model) {
         ReservableRoomId reservableRoomId = new ReservableRoomId(new RoomId(roomId), new ReservedDate(date));
-        List<Reservation> reservations = reservationService.findReservations(reservableRoomId);
+        Reservations reservations = reservationService.findReservations(reservableRoomId);
 
         List<LocalTime> timeList =
                 Stream.iterate(LocalTime.of(0, 0), t -> t.plusMinutes(30))
@@ -56,7 +56,7 @@ public class ReservationsController {
                         .collect(Collectors.toList());
 
         model.addAttribute("room", roomService.findMeetingRoom(new RoomId(roomId)));
-        model.addAttribute("reservations", reservations);
+        model.addAttribute("reservations", reservations.value());
         model.addAttribute("timeList", timeList);
         // model.addAttribute("user", dummyUser());
         return "reservation/reserveForm";
