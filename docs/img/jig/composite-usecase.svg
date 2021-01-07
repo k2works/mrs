@@ -52,12 +52,13 @@
                 </a>
             </g>
         </g>
-<!-- mrs.domain.model.reservation.Reservation&#45;&gt;mrs.application.service.reservation.ReservationService.findOne(java.lang.Integer) -->
-<g id="edge3" class="edge">
-<title>mrs.domain.model.reservation.Reservation&#45;&gt;mrs.application.service.reservation.ReservationService.findOne(java.lang.Integer)</title>
-    <path fill="none" stroke="black" stroke-width="2" d="M260.46,-209.83C262.17,-239.27 265.53,-297.11 267.23,-326.54"/>
-</g>
-<!-- mrs.application.service.reservation.ReservationService.reserve(mrs.domain.model.reservation.Reservation) -->
+        <!-- mrs.domain.model.reservation.Reservation&#45;&gt;mrs.application.service.reservation.ReservationService.findOne(java.lang.Integer) -->
+        <g id="edge3" class="edge">
+            <title>mrs.domain.model.reservation.Reservation&#45;&gt;mrs.application.service.reservation.ReservationService.findOne(java.lang.Integer)</title>
+            <path fill="none" stroke="black" stroke-width="2"
+                  d="M260.46,-209.83C262.17,-239.27 265.53,-297.11 267.23,-326.54"/>
+        </g>
+        <!-- mrs.application.service.reservation.ReservationService.reserve(mrs.domain.model.reservation.Reservation) -->
         <g id="node9" class="node">
             <title>
                 mrs.application.service.reservation.ReservationService.reserve(mrs.domain.model.reservation.Reservation)
@@ -72,12 +73,13 @@
                 </a>
             </g>
         </g>
-<!-- mrs.domain.model.reservation.Reservation&#45;&gt;mrs.application.service.reservation.ReservationService.reserve(mrs.domain.model.reservation.Reservation) -->
-<g id="edge9" class="edge">
-<title>mrs.domain.model.reservation.Reservation&#45;&gt;mrs.application.service.reservation.ReservationService.reserve(mrs.domain.model.reservation.Reservation)</title>
-    <path fill="none" stroke="black" stroke-width="2" d="M286.59,-176.03C311.62,-161.63 348.65,-140.33 374.4,-125.51"/>
-</g>
-<!-- mrs.presentation.reservation.ReservationsController -->
+        <!-- mrs.domain.model.reservation.Reservation&#45;&gt;mrs.application.service.reservation.ReservationService.reserve(mrs.domain.model.reservation.Reservation) -->
+        <g id="edge9" class="edge">
+            <title>mrs.domain.model.reservation.Reservation&#45;&gt;mrs.application.service.reservation.ReservationService.reserve(mrs.domain.model.reservation.Reservation)</title>
+            <path fill="none" stroke="black" stroke-width="2"
+                  d="M286.59,-176.03C311.62,-161.63 348.65,-140.33 374.4,-125.51"/>
+        </g>
+        <!-- mrs.presentation.reservation.ReservationsController -->
         <g id="node3" class="node">
             <title>mrs.presentation.reservation.ReservationsController</title>
             <g id="a_node3">
@@ -200,12 +202,13 @@
                 </a>
             </g>
         </g>
-<!-- java.util.List&#45;&gt;mrs.application.service.reservation.ReservationService.findReservations(mrs.domain.model.reservation.ReservableRoomId) -->
-<g id="edge6" class="edge">
-<title>java.util.List&#45;&gt;mrs.application.service.reservation.ReservationService.findReservations(mrs.domain.model.reservation.ReservableRoomId)</title>
-    <path fill="none" stroke="black" stroke-width="2" d="M822.94,-54.27C800.94,-55.63 768.5,-57.65 736.99,-59.61"/>
-</g>
-<!-- mrs.application.service.room.RoomService.findReservableRooms(java.time.LocalDate) -->
+        <!-- java.util.List&#45;&gt;mrs.application.service.reservation.ReservationService.findReservations(mrs.domain.model.reservation.ReservableRoomId) -->
+        <g id="edge6" class="edge">
+            <title>java.util.List&#45;&gt;mrs.application.service.reservation.ReservationService.findReservations(mrs.domain.model.reservation.ReservableRoomId)</title>
+            <path fill="none" stroke="black" stroke-width="2"
+                  d="M822.94,-54.27C800.94,-55.63 768.5,-57.65 736.99,-59.61"/>
+        </g>
+        <!-- mrs.application.service.room.RoomService.findReservableRooms(java.time.LocalDate) -->
         <g id="node13" class="node">
             <title>mrs.application.service.room.RoomService.findReservableRooms(java.time.LocalDate)</title>
             <g id="a_node13">
@@ -273,12 +276,13 @@
                 </a>
             </g>
         </g>
-<!-- mrs.domain.model.room.MeetingRoom&#45;&gt;mrs.application.service.room.RoomService.findMeetingRoom(java.lang.Integer) -->
-<g id="edge13" class="edge">
-<title>mrs.domain.model.room.MeetingRoom&#45;&gt;mrs.application.service.room.RoomService.findMeetingRoom(java.lang.Integer)</title>
-    <path fill="none" stroke="black" stroke-width="2" d="M481.44,-551.42C469.2,-518.89 443.63,-450.87 431.43,-418.43"/>
-</g>
-<!-- java.time.LocalDate -->
+        <!-- mrs.domain.model.room.MeetingRoom&#45;&gt;mrs.application.service.room.RoomService.findMeetingRoom(java.lang.Integer) -->
+        <g id="edge13" class="edge">
+            <title>mrs.domain.model.room.MeetingRoom&#45;&gt;mrs.application.service.room.RoomService.findMeetingRoom(java.lang.Integer)</title>
+            <path fill="none" stroke="black" stroke-width="2"
+                  d="M481.44,-551.42C469.2,-518.89 443.63,-450.87 431.43,-418.43"/>
+        </g>
+        <!-- java.time.LocalDate -->
         <g id="node14" class="node">
             <title>java.time.LocalDate</title>
             <g id="a_node14">
@@ -330,7 +334,7 @@
                 </a>
             </g>
         </g>
-<!-- java.lang.String -->
+        <!-- java.lang.String -->
         <g id="node18" class="node">
             <title>java.lang.String</title>
             <g id="a_node18">
@@ -380,10 +384,11 @@
                 </a>
             </g>
         </g>
-<!-- org.springframework.security.core.userdetails.UserDetails&#45;&gt;mrs.application.service.user.ReservationUserDetailsService.loadUserByUsername(java.lang.String) -->
-<g id="edge19" class="edge">
-<title>org.springframework.security.core.userdetails.UserDetails&#45;&gt;mrs.application.service.user.ReservationUserDetailsService.loadUserByUsername(java.lang.String)</title>
-    <path fill="none" stroke="black" stroke-width="2" d="M901.08,-333.56C884.64,-334.78 864.8,-336.24 844.81,-337.71"/>
-</g>
-</g>
+        <!-- org.springframework.security.core.userdetails.UserDetails&#45;&gt;mrs.application.service.user.ReservationUserDetailsService.loadUserByUsername(java.lang.String) -->
+        <g id="edge19" class="edge">
+            <title>org.springframework.security.core.userdetails.UserDetails&#45;&gt;mrs.application.service.user.ReservationUserDetailsService.loadUserByUsername(java.lang.String)</title>
+            <path fill="none" stroke="black" stroke-width="2"
+                  d="M901.08,-333.56C884.64,-334.78 864.8,-336.24 844.81,-337.71"/>
+        </g>
+    </g>
 </svg>
