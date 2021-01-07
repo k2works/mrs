@@ -26,7 +26,7 @@ public class MeetingRoomRepositoryTest {
         MeetingRoom room = meetingRoomRepository.findById(1).get();
 
         assertNotNull(room);
-        assertEquals(1, room.getRoomId());
-        assertEquals("新木場", room.getRoomName());
+        assertEquals(1, room.roomId());
+        assertEquals("新木場", room.roomName());
     }
 }

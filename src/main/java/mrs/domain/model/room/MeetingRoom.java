@@ -32,13 +32,4 @@ public class MeetingRoom implements Serializable {
     public String roomName() {
         return roomName;
     }
-
-    public Integer getRoomId() {
-        return roomId;
-    }
-
-    public String getRoomName() {
-        return roomName;
-    }
-
 }
