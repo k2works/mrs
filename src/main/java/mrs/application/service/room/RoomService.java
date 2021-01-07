@@ -3,6 +3,7 @@ package mrs.application.service.room;
 import mrs.application.repository.MeetingRoomRepository;
 import mrs.application.repository.ReservableRoomRepository;
 import mrs.domain.model.reservation.ReservableRoom;
+import mrs.domain.model.reservation.ReservableRooms;
 import mrs.domain.model.reservation.ReservedDate;
 import mrs.domain.model.room.MeetingRoom;
 import mrs.domain.model.room.RoomId;
@@ -35,7 +36,8 @@ public class RoomService {
     /**
      * 予約可能会議室を検索する
      */
-    public List<ReservableRoom> findReservableRooms(ReservedDate date) {
-        return reservableRoomRepository.findByReservableRoomId_ReservedDateOrderByReservableRoomId_RoomIdAsc(date.value());
+    public ReservableRooms findReservableRooms(ReservedDate date) {
+        List<ReservableRoom> result = reservableRoomRepository.findByReservableRoomId_ReservedDateOrderByReservableRoomId_RoomIdAsc(date.value());
+        return new ReservableRooms(result);
     }
 }

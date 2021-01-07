@@ -1,6 +1,8 @@
 package mrs.presentation.room;
 
 import mrs.application.service.room.RoomService;
+import mrs.domain.model.reservation.ReservableRoom;
+import mrs.domain.model.reservation.ReservableRooms;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -10,6 +12,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -31,6 +39,8 @@ public class RoomsControllerTest {
 
     @Test
     void 会議室一覧を表示する() throws Exception {
+        List<ReservableRoom> result = new ArrayList<>(Collections.singleton(new ReservableRoom()));
+        when(mockRoomService.findReservableRooms(any())).thenReturn(new ReservableRooms(result));
         mockMvc.perform(get("/rooms"))
                 .andExpect(status().isOk());
     }

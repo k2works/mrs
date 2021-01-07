@@ -1,7 +1,7 @@
 package mrs.presentation.room;
 
 import mrs.application.service.room.RoomService;
-import mrs.domain.model.reservation.ReservableRoom;
+import mrs.domain.model.reservation.ReservableRooms;
 import mrs.domain.model.reservation.ReservedDate;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.time.LocalDate;
-import java.util.List;
 
 /**
  * 会議室一覧画面
@@ -28,9 +27,9 @@ public class RoomsController {
     @GetMapping
     String listRooms(Model model) {
         ReservedDate date = new ReservedDate(LocalDate.now());
-        List<ReservableRoom> rooms = roomService.findReservableRooms(date);
+        ReservableRooms rooms = roomService.findReservableRooms(date);
         model.addAttribute("date", date.value());
-        model.addAttribute("rooms", rooms);
+        model.addAttribute("rooms", rooms.value());
         return "room/listRooms";
     }
 
@@ -38,8 +37,8 @@ public class RoomsController {
     String listRooms(
             @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @PathVariable("date") LocalDate date, Model model
     ) {
-        List<ReservableRoom> rooms = roomService.findReservableRooms(new ReservedDate(date));
-        model.addAttribute("rooms", rooms);
+        ReservableRooms rooms = roomService.findReservableRooms(new ReservedDate(date));
+        model.addAttribute("rooms", rooms.value());
         return "room/listRooms";
     }
 }

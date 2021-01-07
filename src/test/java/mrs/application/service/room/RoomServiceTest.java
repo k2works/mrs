@@ -1,7 +1,7 @@
 package mrs.application.service.room;
 
 import mrs.MrsApplication;
-import mrs.domain.model.reservation.ReservableRoom;
+import mrs.domain.model.reservation.ReservableRooms;
 import mrs.domain.model.reservation.ReservedDate;
 import mrs.domain.model.room.MeetingRoom;
 import mrs.domain.model.room.RoomId;
@@ -14,7 +14,6 @@ import org.springframework.test.context.jdbc.Sql;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -44,9 +43,9 @@ public class RoomServiceTest {
         @Sql("/data.sql")
         public void 予約可能会議室一覧を取得する() {
             ReservedDate date = new ReservedDate(LocalDate.now());
-            List<ReservableRoom> rooms = roomService.findReservableRooms(date);
+            ReservableRooms rooms = roomService.findReservableRooms(date);
 
-            assertEquals(2, rooms.size());
+            assertEquals(2, rooms.value().size());
         }
     }
 }
