@@ -32,20 +32,12 @@ public class User implements Serializable {
         this.roleName = roleName;
     }
 
-    public String userId() {
-        return userId;
+    public UserId userId() {
+        return new UserId(userId);
     }
 
-    public String password() {
-        return password;
-    }
-
-    public String firstName() {
-        return firstName;
-    }
-
-    public String lastName() {
-        return lastName;
+    public Password password() {
+        return new Password(password);
     }
 
     public RoleName roleName() {

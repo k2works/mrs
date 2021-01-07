@@ -28,12 +28,12 @@ public class ReservationUserDetails implements UserDetails {
 
     @Override
     public String getPassword() {
-        return this.user.password();
+        return this.user.password().value();
     }
 
     @Override
     public String getUsername() {
-        return this.user.userId();
+        return this.user.userId().value();
     }
 
     @Override

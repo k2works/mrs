@@ -104,6 +104,7 @@ public class ReservationsController {
                   Model model) {
         try {
             Reservation reservation = reservationService.findOne(reservationId);
+            System.out.println(reservation);
             reservationService.cancel(reservation);
         } catch (AccessDeniedException e) {
             model.addAttribute("error", e.getMessage());
