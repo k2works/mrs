@@ -56,8 +56,7 @@ public class ReservationServiceTest {
     }
 
     private MeetingRoom 会議室を作る(MeetingRoomRepository repository) {
-        MeetingRoom room = new MeetingRoom();
-        room.setRoomName("会議室A");
+        MeetingRoom room = new MeetingRoom(1, "会議室");
         repository.save(room);
         return room;
     }
@@ -103,7 +102,7 @@ public class ReservationServiceTest {
         @Test
         @Sql("/data.sql")
         public void 会議室を予約する() {
-            MeetingRoom room = new MeetingRoom();
+            MeetingRoom room = new MeetingRoom(1, "会議室");
             ReservableRoom reservableRoom = 予約が可能な会議室を作る(room);
             mrs.domain.model.reservation.Reservation reservation = 予約を作る(reservableRoom, LocalTime.of(9, 0), LocalTime.of(10, 0));
             予約する(reservationService, reservation);
@@ -114,7 +113,7 @@ public class ReservationServiceTest {
 
         @Test
         public void 該当する予約された会議室が存在しなければ例外メッセージを表示する() {
-            MeetingRoom room = new MeetingRoom();
+            MeetingRoom room = new MeetingRoom(1, "会議室");
             ReservableRoom reservableRoom = 予約が可能な会議室を作る(room);
             Reservation reservation = 予約を作る(reservableRoom);
 
