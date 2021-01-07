@@ -88,11 +88,12 @@ public class ReservationsController {
 
         ReservableRoom reservableRoom = new ReservableRoom(
                 new ReservableRoomId(roomId, date));
-        Reservation reservation = new Reservation();
-        reservation.setStartTime(form.getStartTime());
-        reservation.setEndTime(form.getEndTime());
-        reservation.setReservableRoom(reservableRoom);
-        reservation.setUser(userDetails.getUser());
+        Reservation reservation = new Reservation(
+                form.getStartTime(),
+                form.getEndTime(),
+                reservableRoom,
+                userDetails.getUser()
+        );
 
         try {
             reservationService.reserve(reservation);

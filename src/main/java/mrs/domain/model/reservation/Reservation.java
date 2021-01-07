@@ -21,12 +21,22 @@ public class Reservation implements Serializable {
     private LocalTime endTime;
 
     @ManyToOne
-    @JoinColumns({ @JoinColumn(name = "reserved_date"), @JoinColumn(name = "room_id")})
+    @JoinColumns({@JoinColumn(name = "reserved_date"), @JoinColumn(name = "room_id")})
     private ReservableRoom reservableRoom;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+    public Reservation() {
+    }
+
+    public Reservation(LocalTime start, LocalTime end, ReservableRoom room, User user) {
+        this.startTime = start;
+        this.endTime = end;
+        this.reservableRoom = room;
+        this.user = user;
+    }
 
     public boolean overlap(Reservation target) {
         if (!Objects.equals(reservableRoom.reservableRoomId(), target.reservableRoom.reservableRoomId())) {
@@ -46,24 +56,12 @@ public class Reservation implements Serializable {
         return reservationId;
     }
 
-    public void setReservationId(Integer reservationId) {
-        this.reservationId = reservationId;
-    }
-
     public LocalTime getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(LocalTime startTime) {
-        this.startTime = startTime;
-    }
-
     public LocalTime getEndTime() {
         return endTime;
-    }
-
-    public void setEndTime(LocalTime endTime) {
-        this.endTime = endTime;
     }
 
     public ReservableRoom getReservableRoom() {

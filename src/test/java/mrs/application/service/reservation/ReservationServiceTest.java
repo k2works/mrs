@@ -69,11 +69,7 @@ public class ReservationServiceTest {
     }
 
     private Reservation 予約を作る(ReservableRoom reservableRoom, LocalTime start, LocalTime end) {
-        Reservation reservation = new Reservation();
-        reservation.setStartTime(start);
-        reservation.setEndTime(end);
-        reservation.setReservableRoom(reservableRoom);
-        reservation.setUser(ユーザーを作る());
+        Reservation reservation = new Reservation(start, end, reservableRoom, ユーザーを作る());
         return reservation;
     }
 
