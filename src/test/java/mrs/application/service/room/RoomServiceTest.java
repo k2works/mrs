@@ -2,6 +2,7 @@ package mrs.application.service.room;
 
 import mrs.MrsApplication;
 import mrs.domain.model.reservation.ReservableRoom;
+import mrs.domain.model.reservation.ReservedDate;
 import mrs.domain.model.room.MeetingRoom;
 import mrs.domain.model.room.RoomId;
 import org.junit.jupiter.api.DisplayName;
@@ -42,7 +43,7 @@ public class RoomServiceTest {
         @Sql("/schema.sql")
         @Sql("/data.sql")
         public void 予約可能会議室一覧を取得する() {
-            LocalDate date = LocalDate.now();
+            ReservedDate date = new ReservedDate(LocalDate.now());
             List<ReservableRoom> rooms = roomService.findReservableRooms(date);
 
             assertEquals(2, rooms.size());

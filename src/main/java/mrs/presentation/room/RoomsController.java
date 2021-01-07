@@ -2,6 +2,7 @@ package mrs.presentation.room;
 
 import mrs.application.service.room.RoomService;
 import mrs.domain.model.reservation.ReservableRoom;
+import mrs.domain.model.reservation.ReservedDate;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,9 +27,9 @@ public class RoomsController {
 
     @GetMapping
     String listRooms(Model model) {
-        LocalDate today = LocalDate.now();
-        List<ReservableRoom> rooms = roomService.findReservableRooms(today);
-        model.addAttribute("date", today);
+        ReservedDate date = new ReservedDate(LocalDate.now());
+        List<ReservableRoom> rooms = roomService.findReservableRooms(date);
+        model.addAttribute("date", date.value());
         model.addAttribute("rooms", rooms);
         return "room/listRooms";
     }
@@ -37,7 +38,7 @@ public class RoomsController {
     String listRooms(
             @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @PathVariable("date") LocalDate date, Model model
     ) {
-        List<ReservableRoom> rooms = roomService.findReservableRooms(date);
+        List<ReservableRoom> rooms = roomService.findReservableRooms(new ReservedDate(date));
         model.addAttribute("rooms", rooms);
         return "room/listRooms";
     }

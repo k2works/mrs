@@ -3,12 +3,12 @@ package mrs.application.service.room;
 import mrs.application.repository.MeetingRoomRepository;
 import mrs.application.repository.ReservableRoomRepository;
 import mrs.domain.model.reservation.ReservableRoom;
+import mrs.domain.model.reservation.ReservedDate;
 import mrs.domain.model.room.MeetingRoom;
 import mrs.domain.model.room.RoomId;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -35,7 +35,7 @@ public class RoomService {
     /**
      * 予約可能会議室を検索する
      */
-    public List<ReservableRoom> findReservableRooms(LocalDate date) {
-        return reservableRoomRepository.findByReservableRoomId_ReservedDateOrderByReservableRoomId_RoomIdAsc(date);
+    public List<ReservableRoom> findReservableRooms(ReservedDate date) {
+        return reservableRoomRepository.findByReservableRoomId_ReservedDateOrderByReservableRoomId_RoomIdAsc(date.value());
     }
 }
