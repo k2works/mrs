@@ -3,6 +3,8 @@ package mrs.application.repository;
 import mrs.MrsApplication;
 import mrs.domain.model.reservation.ReservableRoomId;
 import mrs.domain.model.reservation.Reservation;
+import mrs.domain.model.reservation.ReservedDate;
+import mrs.domain.model.room.RoomId;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -29,7 +31,7 @@ public class ReservationRepositoryTest {
     @Test
     public void 予約一覧を取得する() {
         LocalDate date = LocalDate.now();
-        ReservableRoomId reservableRoomId = new ReservableRoomId(1, date);
+        ReservableRoomId reservableRoomId = new ReservableRoomId(new RoomId(1), new ReservedDate(date));
         List<Reservation> reservations = reservationRepository.findAll();
 
         assertNotNull(reservations);

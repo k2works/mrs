@@ -1,5 +1,7 @@
 package mrs.domain.model.reservation;
 
+import mrs.domain.model.room.RoomId;
+
 import javax.persistence.Embeddable;
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -17,10 +19,9 @@ public class ReservableRoomId implements Serializable {
     public ReservableRoomId() {
     }
 
-    public ReservableRoomId(Integer roomId, LocalDate reservedDate) {
-        //TODO 値オブジェクトに置き換える
-        this.roomId = roomId;
-        this.reservedDate = reservedDate;
+    public ReservableRoomId(RoomId roomId, ReservedDate reservedDate) {
+        this.roomId = roomId.value();
+        this.reservedDate = reservedDate.value;
     }
 
     @Override

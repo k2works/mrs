@@ -26,7 +26,6 @@ public class ReservableRoom implements Serializable {
     }
 
     public ReservableRoom(ReservableRoomId reservableRoomId, MeetingRoom meetingRoom) {
-        // TODO 値オブジェクトに置き換える
         this.reservableRoomId = reservableRoomId;
         this.meetingRoom = meetingRoom;
     }

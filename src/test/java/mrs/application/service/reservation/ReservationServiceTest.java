@@ -6,9 +6,7 @@ import mrs.application.repository.MeetingRoomRepository;
 import mrs.application.repository.ReservableRoomRepository;
 import mrs.application.repository.ReservationRepository;
 import mrs.application.repository.UserRepository;
-import mrs.domain.model.reservation.ReservableRoom;
-import mrs.domain.model.reservation.ReservableRoomId;
-import mrs.domain.model.reservation.Reservation;
+import mrs.domain.model.reservation.*;
 import mrs.domain.model.room.MeetingRoom;
 import mrs.domain.model.room.RoomId;
 import mrs.domain.model.room.RoomName;
@@ -37,8 +35,8 @@ import static org.junit.jupiter.api.Assertions.*;
 @DisplayName("予約サービス")
 public class ReservationServiceTest {
     private ReservableRoom 予約が可能な会議室を作る(MeetingRoom room) {
-        Integer roomId = 1;
-        LocalDate date = LocalDate.now();
+        RoomId roomId = new RoomId(1);
+        ReservedDate date = new ReservedDate(LocalDate.now());
         return new ReservableRoom(
                 new ReservableRoomId(roomId, date),
                 room
@@ -64,12 +62,15 @@ public class ReservationServiceTest {
     }
 
     private Reservation 予約を作る(ReservableRoom reservableRoom) {
-        Reservation reservation = new Reservation(null, null, reservableRoom, null);
+        ReservedTime reservedTime = new ReservedTime(null, null);
+        Reservation reservation = new Reservation(reservedTime, reservableRoom, null);
         return reservation;
     }
 
     private Reservation 予約を作る(ReservableRoom reservableRoom, LocalTime start, LocalTime end) {
-        Reservation reservation = new Reservation(start, end, reservableRoom, ユーザーを作る());
+        ReservedTime reservedTime = new ReservedTime(start, end);
+        User user = ユーザーを作る();
+        Reservation reservation = new Reservation(reservedTime, reservableRoom, user);
         return reservation;
     }
 

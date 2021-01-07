@@ -5,9 +5,8 @@ import mrs.application.service.reservation.ReservationService;
 import mrs.application.service.reservation.UnavailableReservationException;
 import mrs.application.service.room.RoomService;
 import mrs.application.service.user.ReservationUserDetails;
-import mrs.domain.model.reservation.ReservableRoom;
-import mrs.domain.model.reservation.ReservableRoomId;
-import mrs.domain.model.reservation.Reservation;
+import mrs.domain.model.reservation.*;
+import mrs.domain.model.room.RoomId;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -48,7 +47,7 @@ public class ReservationsController {
 
     @GetMapping
     String reserveForm(@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @PathVariable("date") LocalDate date, @PathVariable("roomId") Integer roomId, Model model) {
-        ReservableRoomId reservableRoomId = new ReservableRoomId(roomId, date);
+        ReservableRoomId reservableRoomId = new ReservableRoomId(new RoomId(roomId), new ReservedDate(date));
         List<Reservation> reservations = reservationService.findReservations(reservableRoomId);
 
         List<LocalTime> timeList =
@@ -76,10 +75,10 @@ public class ReservationsController {
         }
 
         ReservableRoom reservableRoom = new ReservableRoom(
-                new ReservableRoomId(roomId, date));
+                new ReservableRoomId(new RoomId(roomId), new ReservedDate(date)));
+        ReservedTime reservedTime = new ReservedTime(form.getStartTime(), form.getEndTime());
         Reservation reservation = new Reservation(
-                form.getStartTime(),
-                form.getEndTime(),
+                reservedTime,
                 reservableRoom,
                 userDetails.getUser()
         );
