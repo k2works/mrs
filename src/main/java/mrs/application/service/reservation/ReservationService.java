@@ -5,6 +5,7 @@ import mrs.application.repository.ReservationRepository;
 import mrs.domain.model.reservation.ReservableRoom;
 import mrs.domain.model.reservation.ReservableRoomId;
 import mrs.domain.model.reservation.Reservation;
+import mrs.domain.model.reservation.ReservationId;
 import org.springframework.security.access.method.P;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
@@ -57,8 +58,8 @@ public class ReservationService {
     /**
      * 会議室の予約を探す
      */
-    public Reservation findOne(Integer reservationId) {
-        return reservationRepository.getOne(reservationId);
+    public Reservation findOne(ReservationId reservationId) {
+        return reservationRepository.getOne(reservationId.value());
     }
 
     /**

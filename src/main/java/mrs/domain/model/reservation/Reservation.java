@@ -60,6 +60,10 @@ public class Reservation implements Serializable {
         return endTime;
     }
 
+    public ReservedTime reservedTime() {
+        return new ReservedTime(startTime, endTime);
+    }
+
     public ReservableRoom reservableRoom() {
         return reservableRoom;
     }

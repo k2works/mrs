@@ -102,7 +102,7 @@ public class ReservationsController {
                   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @PathVariable("date") LocalDate date,
                   Model model) {
         try {
-            Reservation reservation = reservationService.findOne(reservationId);
+            Reservation reservation = reservationService.findOne(new ReservationId(reservationId));
             System.out.println(reservation);
             reservationService.cancel(reservation);
         } catch (AccessDeniedException e) {
