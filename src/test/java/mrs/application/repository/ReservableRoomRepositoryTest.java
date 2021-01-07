@@ -2,6 +2,7 @@ package mrs.application.repository;
 
 import mrs.MrsApplication;
 import mrs.domain.model.reservation.ReservableRoom;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,6 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 
 @SpringBootTest(classes = MrsApplication.class)
+@DisplayName("予約可能会議室レポジトリ")
 public class ReservableRoomRepositoryTest {
 
     @Autowired

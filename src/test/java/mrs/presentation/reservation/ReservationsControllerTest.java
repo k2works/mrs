@@ -3,6 +3,7 @@ package mrs.presentation.reservation;
 import mrs.application.service.reservation.ReservationService;
 import mrs.application.service.room.RoomService;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -17,6 +18,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
+@DisplayName("予約コントローラ")
 public class ReservationsControllerTest {
     MockMvc mockMvc;
 

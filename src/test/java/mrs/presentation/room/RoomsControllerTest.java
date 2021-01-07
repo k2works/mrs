@@ -2,6 +2,7 @@ package mrs.presentation.room;
 
 import mrs.application.service.room.RoomService;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -13,6 +14,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
+@DisplayName("会議室コントローラ")
 public class RoomsControllerTest {
     MockMvc mockMvc;
 
