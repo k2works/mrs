@@ -34,7 +34,7 @@ public class ReservableRoom implements Serializable {
         return meetingRoom;
     }
 
-    public ReservableRoomId getReservableRoomId() {
+    public ReservableRoomId reservableRoomId() {
         return reservableRoomId;
     }
 

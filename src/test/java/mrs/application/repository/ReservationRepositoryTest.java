@@ -51,7 +51,7 @@ public class ReservationRepositoryTest {
         Reservation value = reservation.get();
 
         Assertions.assertNotNull(value);
-        Assertions.assertEquals(1, value.getReservableRoom().getReservableRoomId().getRoomId());
-        Assertions.assertEquals(LocalDate.now(), value.getReservableRoom().getReservableRoomId().getReservedDate());
+        Assertions.assertEquals(1, value.getReservableRoom().reservableRoomId().getRoomId());
+        Assertions.assertEquals(LocalDate.now(), value.getReservableRoom().reservableRoomId().getReservedDate());
     }
 }

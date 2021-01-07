@@ -30,7 +30,7 @@ public class ReservationService {
      * 会議室を予約する
      */
     public Reservation reserve(Reservation reservation) {
-        ReservableRoomId reservableRoomId = reservation.getReservableRoom().getReservableRoomId();
+        ReservableRoomId reservableRoomId = reservation.getReservableRoom().reservableRoomId();
         // 悲観ロック
         ReservableRoom reservable = reservableRoomRepository.findOneForUpdateByReservableRoomId(reservableRoomId);
         if (reservable == null) {
