@@ -33,7 +33,7 @@ public class RoomServiceTest {
         public void 会議室一覧を取得する() {
             MeetingRoom rooms = roomService.findMeetingRoom(1);
 
-            assertEquals(1, rooms.roomId());
+            assertEquals(1, rooms.roomId().value());
         }
 
         @Test

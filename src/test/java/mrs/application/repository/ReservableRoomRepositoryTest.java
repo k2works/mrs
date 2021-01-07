@@ -31,6 +31,6 @@ public class ReservableRoomRepositoryTest {
         List<ReservableRoom> rooms = reservableRoomRepository.findByReservableRoomId_ReservedDateOrderByReservableRoomId_RoomIdAsc(date);
         assertNotNull(rooms);
         assertEquals(2, rooms.size());
-        assertEquals(java.util.Optional.ofNullable(rooms.get(1).meetingRoom().roomName()), Optional.of("有楽町"));
+        assertEquals(java.util.Optional.ofNullable(rooms.get(1).meetingRoom().roomName().value()), Optional.of("有楽町"));
     }
 }

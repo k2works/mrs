@@ -20,17 +20,16 @@ public class MeetingRoom implements Serializable {
     public MeetingRoom() {
     }
 
-    public MeetingRoom(Integer roomId, String roomName) {
-        //TODO 値オブジェクトに置き換える
-        this.roomId = roomId;
-        this.roomName = roomName;
+    public MeetingRoom(RoomId roomId, RoomName roomName) {
+        this.roomId = roomId.value;
+        this.roomName = roomName.value;
     }
 
-    public Integer roomId() {
-        return roomId;
+    public RoomId roomId() {
+        return new RoomId(roomId);
     }
 
-    public String roomName() {
-        return roomName;
+    public RoomName roomName() {
+        return new RoomName(roomName);
     }
 }

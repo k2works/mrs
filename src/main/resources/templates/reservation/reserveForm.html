@@ -15,7 +15,7 @@
 
 <form th:object="${reservationForm}"
       th:action="@{'/reservations/' + ${date} + '/' + ${roomId}}" method="post">
-    会議室: <span th:text="${room.roomName}">豊洲</span>
+    会議室: <span th:text="${room.roomName.value}">豊洲</span>
     <br/>
     予約者名: <span th:text="${user.name.lastName + ' ' + user.name.firstName}">山田 太郎</span>
     <br/>

@@ -10,6 +10,8 @@ import mrs.domain.model.reservation.ReservableRoom;
 import mrs.domain.model.reservation.ReservableRoomId;
 import mrs.domain.model.reservation.Reservation;
 import mrs.domain.model.room.MeetingRoom;
+import mrs.domain.model.room.RoomId;
+import mrs.domain.model.room.RoomName;
 import mrs.domain.model.user.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -56,7 +58,7 @@ public class ReservationServiceTest {
     }
 
     private MeetingRoom 会議室を作る(MeetingRoomRepository repository) {
-        MeetingRoom room = new MeetingRoom(1, "会議室");
+        MeetingRoom room = new MeetingRoom(new RoomId(1), new RoomName("会議室"));
         repository.save(room);
         return room;
     }
@@ -103,7 +105,7 @@ public class ReservationServiceTest {
         @Sql("/data.sql")
         @Transactional
         public void 会議室を予約する() {
-            MeetingRoom room = new MeetingRoom(1, "会議室");
+            MeetingRoom room = new MeetingRoom(new RoomId(1), new RoomName("会議室"));
             ReservableRoom reservableRoom = 予約が可能な会議室を作る(room);
             mrs.domain.model.reservation.Reservation reservation = 予約を作る(reservableRoom, LocalTime.of(9, 0), LocalTime.of(10, 0));
             予約する(reservationService, reservation);
@@ -114,7 +116,7 @@ public class ReservationServiceTest {
 
         @Test
         public void 該当する予約された会議室が存在しなければ例外メッセージを表示する() {
-            MeetingRoom room = new MeetingRoom(1, "会議室");
+            MeetingRoom room = new MeetingRoom(new RoomId(1), new RoomName("会議室"));
             ReservableRoom reservableRoom = 予約が可能な会議室を作る(room);
             Reservation reservation = 予約を作る(reservableRoom);
 
