@@ -32,6 +32,7 @@ public class Reservation implements Serializable {
     }
 
     public Reservation(LocalTime start, LocalTime end, ReservableRoom room, User user) {
+        //TODO 値オブジェクトに置き換える
         this.startTime = start;
         this.endTime = end;
         this.reservableRoom = room;

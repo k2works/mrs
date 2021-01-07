@@ -18,6 +18,7 @@ public class ReservableRoomId implements Serializable {
     }
 
     public ReservableRoomId(Integer roomId, LocalDate reservedDate) {
+        //TODO 値オブジェクトに置き換える
         this.roomId = roomId;
         this.reservedDate = reservedDate;
     }

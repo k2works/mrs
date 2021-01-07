@@ -25,9 +25,9 @@ public class User implements Serializable {
     }
 
     public User(String userId, String password, String firstName, String lastName, RoleName roleName) {
+        //TODO 値オブジェクトに置き換える
         this.userId = userId;
         this.password = password;
-        //TODO 値オブジェクトに置き換える
         this.firstName = firstName;
         this.lastName = lastName;
         this.roleName = roleName;

@@ -21,6 +21,7 @@ public class MeetingRoom implements Serializable {
     }
 
     public MeetingRoom(Integer roomId, String roomName) {
+        //TODO 値オブジェクトに置き換える
         this.roomId = roomId;
         this.roomName = roomName;
     }
