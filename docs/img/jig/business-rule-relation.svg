@@ -1,9 +1,9 @@
-<svg width="436px" height="286px"
-     viewBox="0.00 0.00 436.00 286.00" xmlns="http://www.w3.org/2000/svg">
+<svg width="718px" height="286px"
+     viewBox="0.00 0.00 718.00 286.00" xmlns="http://www.w3.org/2000/svg">
     <g id="graph0" class="graph" transform="scale(1.0 1.0) rotate(0) translate(4 282)">
         <title>ビジネスルール関連図</title>
-        <polygon fill="white" stroke="transparent" points="-4,4 -4,-282 432,-282 432,4 -4,4"/>
-        <text text-anchor="middle" x="214" y="-7.8" font-family="Times,serif" font-size="14.00">ビジネスルール関連図</text>
+        <polygon fill="white" stroke="transparent" points="-4,4 -4,-282 714,-282 714,4 -4,4"/>
+        <text text-anchor="middle" x="355" y="-7.8" font-family="Times,serif" font-size="14.00">ビジネスルール関連図</text>
         <g id="clust1" class="cluster">
             <title>cluster_mrs.domain.model.reservation</title>
             <polygon fill="lemonchiffon" stroke="#eedd82" stroke-width="2"
@@ -19,14 +19,14 @@
         <g id="clust3" class="cluster">
             <title>cluster_mrs.domain.model.user</title>
             <polygon fill="lemonchiffon" stroke="#eedd82" stroke-width="2"
-                     points="288,-31 288,-185 420,-185 420,-31 288,-31"/>
-            <text text-anchor="middle" x="354" y="-169.8" font-family="Times,serif" font-size="14.00">user</text>
+                     points="288,-31 288,-185 702,-185 702,-31 288,-31"/>
+            <text text-anchor="middle" x="495" y="-169.8" font-family="Times,serif" font-size="14.00">user</text>
         </g>
         <g id="clust4" class="cluster">
             <title>cluster_mrs.domain.type.date</title>
             <polygon fill="lemonchiffon" stroke="#eedd82" stroke-width="2"
-                     points="208,-193 208,-270 380,-270 380,-193 208,-193"/>
-            <text text-anchor="middle" x="294" y="-254.8" font-family="Times,serif" font-size="14.00">date</text>
+                     points="349,-193 349,-270 521,-270 521,-193 349,-193"/>
+            <text text-anchor="middle" x="435" y="-254.8" font-family="Times,serif" font-size="14.00">date</text>
         </g>
         <!-- mrs.domain.model.reservation.ReservableRoom -->
         <g id="node1" class="node">
@@ -38,16 +38,18 @@
         </g>
         <!-- mrs.domain.model.reservation.ReservableRoomId -->
         <g id="node2" class="node">
-<title>mrs.domain.model.reservation.ReservableRoomId</title>
-<polygon fill="#eedd82" stroke="black" points="149.5,-77 18.5,-77 18.5,-39 149.5,-39 149.5,-77"/>
-<text text-anchor="middle" x="84" y="-61.8" font-family="Times,serif" font-size="14.00">予約可能会議室ID</text>
-<text text-anchor="middle" x="84" y="-46.8" font-family="Times,serif" font-size="14.00">ReservableRoomId</text>
-</g>
-<!-- mrs.domain.model.reservation.ReservableRoom&#45;&gt;mrs.domain.model.reservation.ReservableRoomId -->
-<g id="edge1" class="edge">
-<title>mrs.domain.model.reservation.ReservableRoom&#45;&gt;mrs.domain.model.reservation.ReservableRoomId</title>
-<path fill="none" stroke="black" d="M91.58,-115.84C90.43,-107.25 89.04,-96.79 87.76,-87.19"/>
-<polygon fill="black" stroke="black" points="91.22,-86.7 86.43,-77.25 84.29,-87.62 91.22,-86.7"/>
+            <title>mrs.domain.model.reservation.ReservableRoomId</title>
+            <polygon fill="#eedd82" stroke="black" points="149.5,-77 18.5,-77 18.5,-39 149.5,-39 149.5,-77"/>
+            <text text-anchor="middle" x="84" y="-61.8" font-family="Times,serif" font-size="14.00">予約可能会議室ID</text>
+            <text text-anchor="middle" x="84" y="-46.8" font-family="Times,serif" font-size="14.00">ReservableRoomId
+            </text>
+        </g>
+        <!-- mrs.domain.model.reservation.ReservableRoom&#45;&gt;mrs.domain.model.reservation.ReservableRoomId -->
+        <g id="edge1" class="edge">
+            <title>mrs.domain.model.reservation.ReservableRoom&#45;&gt;mrs.domain.model.reservation.ReservableRoomId
+            </title>
+            <path fill="none" stroke="black" d="M91.58,-115.84C90.43,-107.25 89.04,-96.79 87.76,-87.19"/>
+            <polygon fill="black" stroke="black" points="91.22,-86.7 86.43,-77.25 84.29,-87.62 91.22,-86.7"/>
 </g>
 <!-- mrs.domain.model.room.MeetingRoom -->
 <g id="node4" class="node">
@@ -80,47 +82,89 @@
 <title>mrs.domain.model.reservation.Reservation&#45;&gt;mrs.domain.model.reservation.ReservableRoomId</title>
     <path fill="none" stroke="black"
           d="M53.42,-207.1C43.02,-202.02 33.07,-194.89 27,-185 10.96,-158.87 15.26,-144.33 27,-116 32.07,-103.76 41.19,-92.77 50.67,-83.79"/>
-<polygon fill="black" stroke="black" points="53.12,-86.29 58.27,-77.03 48.47,-81.06 53.12,-86.29"/>
+    <polygon fill="black" stroke="black" points="53.12,-86.29 58.27,-77.03 48.47,-81.06 53.12,-86.29"/>
 </g>
-<!-- mrs.domain.model.user.User -->
-<g id="node6" class="node">
-<title>mrs.domain.model.user.User</title>
-<polygon fill="#eedd82" stroke="black" points="380,-154 306,-154 306,-116 380,-116 380,-154"/>
-<text text-anchor="middle" x="343" y="-138.8" font-family="Times,serif" font-size="14.00">ユーザー</text>
-<text text-anchor="middle" x="343" y="-123.8" font-family="Times,serif" font-size="14.00">User</text>
-</g>
-<!-- mrs.domain.model.reservation.Reservation&#45;&gt;mrs.domain.model.user.User -->
+        <!-- mrs.domain.model.user.User -->
+        <g id="node8" class="node">
+            <title>mrs.domain.model.user.User</title>
+            <polygon fill="#eedd82" stroke="black" points="448,-154 374,-154 374,-116 448,-116 448,-154"/>
+            <text text-anchor="middle" x="411" y="-138.8" font-family="Times,serif" font-size="14.00">ユーザー</text>
+            <text text-anchor="middle" x="411" y="-123.8" font-family="Times,serif" font-size="14.00">User</text>
+        </g>
+        <!-- mrs.domain.model.reservation.Reservation&#45;&gt;mrs.domain.model.user.User -->
         <g id="edge5" class="edge">
             <title>mrs.domain.model.reservation.Reservation&#45;&gt;mrs.domain.model.user.User</title>
-            <path fill="none" stroke="black" d="M134.56,-205.48C178.82,-190.73 249.56,-167.15 296.16,-151.61"/>
-            <polygon fill="black" stroke="black" points="297.33,-154.91 305.71,-148.43 295.12,-148.27 297.33,-154.91"/>
+            <path fill="none" stroke="black" d="M134.79,-208.32C193.56,-192.93 301.78,-164.6 363.88,-148.34"/>
+            <polygon fill="black" stroke="black" points="365.02,-151.66 373.81,-145.74 363.25,-144.88 365.02,-151.66"/>
         </g>
-<!-- mrs.domain.model.user.RoleName -->
-<g id="node5" class="node">
-    <title>mrs.domain.model.user.RoleName</title>
-    <polygon fill="#eedd82" stroke="black" points="412,-77 296,-77 296,-39 412,-39 412,-77"/>
-    <text text-anchor="middle" x="354" y="-61.8" font-family="Times,serif" font-size="14.00">ユーザーの役割</text>
-    <text text-anchor="middle" x="354" y="-46.8" font-family="Times,serif" font-size="14.00">RoleName</text>
-</g>
-        <!-- mrs.domain.model.user.User&#45;&gt;mrs.domain.model.user.RoleName -->
+        <!-- mrs.domain.model.user.Name -->
+        <g id="node5" class="node">
+            <title>mrs.domain.model.user.Name</title>
+            <polygon fill="#eedd82" stroke="black" points="350,-77 296,-77 296,-39 350,-39 350,-77"/>
+            <text text-anchor="middle" x="323" y="-61.8" font-family="Times,serif" font-size="14.00">氏名</text>
+            <text text-anchor="middle" x="323" y="-46.8" font-family="Times,serif" font-size="14.00">Name</text>
+        </g>
+        <!-- mrs.domain.model.user.Password -->
+        <g id="node6" class="node">
+            <title>mrs.domain.model.user.Password</title>
+            <polygon fill="#eedd82" stroke="black" points="454,-77 368,-77 368,-39 454,-39 454,-77"/>
+            <text text-anchor="middle" x="411" y="-61.8" font-family="Times,serif" font-size="14.00">パスワード</text>
+            <text text-anchor="middle" x="411" y="-46.8" font-family="Times,serif" font-size="14.00">Password</text>
+        </g>
+        <!-- mrs.domain.model.user.RoleName -->
+        <g id="node7" class="node">
+            <title>mrs.domain.model.user.RoleName</title>
+            <polygon fill="#eedd82" stroke="black" points="588,-77 472,-77 472,-39 588,-39 588,-77"/>
+            <text text-anchor="middle" x="530" y="-61.8" font-family="Times,serif" font-size="14.00">ユーザーの役割</text>
+            <text text-anchor="middle" x="530" y="-46.8" font-family="Times,serif" font-size="14.00">RoleName</text>
+        </g>
+        <!-- mrs.domain.model.user.User&#45;&gt;mrs.domain.model.user.Name -->
         <g id="edge6" class="edge">
+            <title>mrs.domain.model.user.User&#45;&gt;mrs.domain.model.user.Name</title>
+            <path fill="none" stroke="black"
+                  d="M373.83,-118.17C368.59,-115.17 363.48,-111.77 359,-108 351.61,-101.77 344.9,-93.73 339.33,-85.97"/>
+            <polygon fill="black" stroke="black" points="342.06,-83.76 333.55,-77.44 336.27,-87.68 342.06,-83.76"/>
+        </g>
+        <!-- mrs.domain.model.user.User&#45;&gt;mrs.domain.model.user.Password -->
+        <g id="edge7" class="edge">
+            <title>mrs.domain.model.user.User&#45;&gt;mrs.domain.model.user.Password</title>
+            <path fill="none" stroke="black" d="M411,-115.84C411,-107.34 411,-97.01 411,-87.5"/>
+            <polygon fill="black" stroke="black" points="414.5,-87.25 411,-77.25 407.5,-87.25 414.5,-87.25"/>
+        </g>
+        <!-- mrs.domain.model.user.User&#45;&gt;mrs.domain.model.user.RoleName -->
+        <g id="edge8" class="edge">
             <title>mrs.domain.model.user.User&#45;&gt;mrs.domain.model.user.RoleName</title>
-            <path fill="none" stroke="black" d="M345.66,-115.84C346.92,-107.25 348.46,-96.79 349.87,-87.19"/>
-            <polygon fill="black" stroke="black" points="353.34,-87.65 351.32,-77.25 346.41,-86.63 353.34,-87.65"/>
+            <path fill="none" stroke="black"
+                  d="M448.06,-116.43C453.16,-113.74 458.26,-110.89 463,-108 475.16,-100.59 487.91,-91.6 498.99,-83.35"/>
+            <polygon fill="black" stroke="black" points="501.23,-86.05 507.1,-77.23 497.01,-80.46 501.23,-86.05"/>
+        </g>
+        <!-- mrs.domain.model.user.UserId -->
+        <g id="node9" class="node">
+            <title>mrs.domain.model.user.UserId</title>
+            <polygon fill="#eedd82" stroke="black" points="694,-77 606,-77 606,-39 694,-39 694,-77"/>
+            <text text-anchor="middle" x="650" y="-61.8" font-family="Times,serif" font-size="14.00">ユーザーID</text>
+            <text text-anchor="middle" x="650" y="-46.8" font-family="Times,serif" font-size="14.00">UserId</text>
+        </g>
+        <!-- mrs.domain.model.user.User&#45;&gt;mrs.domain.model.user.UserId -->
+        <g id="edge9" class="edge">
+            <title>mrs.domain.model.user.User&#45;&gt;mrs.domain.model.user.UserId</title>
+            <path fill="none" stroke="black"
+                  d="M448.14,-131.45C494.65,-127.79 571.37,-120.15 597,-108 608.68,-102.47 619.55,-93.44 628.37,-84.63"/>
+            <polygon fill="black" stroke="black" points="630.92,-87.03 635.26,-77.37 625.84,-82.21 630.92,-87.03"/>
         </g>
         <!-- mrs.domain.type.date.CurrentDate -->
-        <g id="node7" class="node">
+        <g id="node10" class="node">
             <title>mrs.domain.type.date.CurrentDate</title>
-            <polygon fill="#eedd82" stroke="red" points="371.5,-239 288.5,-239 288.5,-201 371.5,-201 371.5,-239"/>
-            <text text-anchor="middle" x="330" y="-223.8" font-family="Times,serif" font-size="14.00">現在日</text>
-            <text text-anchor="middle" x="330" y="-208.8" font-family="Times,serif" font-size="14.00">CurrentDate</text>
+            <polygon fill="#eedd82" stroke="red" points="512.5,-239 429.5,-239 429.5,-201 512.5,-201 512.5,-239"/>
+            <text text-anchor="middle" x="471" y="-223.8" font-family="Times,serif" font-size="14.00">現在日</text>
+            <text text-anchor="middle" x="471" y="-208.8" font-family="Times,serif" font-size="14.00">CurrentDate</text>
         </g>
         <!-- mrs.domain.type.date.Days -->
-        <g id="node8" class="node">
+        <g id="node11" class="node">
             <title>mrs.domain.type.date.Days</title>
-            <polygon fill="#eedd82" stroke="red" points="270,-239 216,-239 216,-201 270,-201 270,-239"/>
-            <text text-anchor="middle" x="243" y="-223.8" font-family="Times,serif" font-size="14.00">日数</text>
-            <text text-anchor="middle" x="243" y="-208.8" font-family="Times,serif" font-size="14.00">Days</text>
+            <polygon fill="#eedd82" stroke="red" points="411,-239 357,-239 357,-201 411,-201 411,-239"/>
+            <text text-anchor="middle" x="384" y="-223.8" font-family="Times,serif" font-size="14.00">日数</text>
+            <text text-anchor="middle" x="384" y="-208.8" font-family="Times,serif" font-size="14.00">Days</text>
         </g>
     </g>
 </svg>
