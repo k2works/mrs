@@ -14,12 +14,12 @@ public class ReservableRoomId implements Serializable {
 
     private LocalDate reservedDate;
 
+    public ReservableRoomId() {
+    }
+
     public ReservableRoomId(Integer roomId, LocalDate reservedDate) {
         this.roomId = roomId;
         this.reservedDate = reservedDate;
-    }
-
-    public ReservableRoomId(){
     }
 
     @Override
@@ -53,15 +53,7 @@ public class ReservableRoomId implements Serializable {
         return roomId;
     }
 
-    public void setRoomId(Integer roomId) {
-        this.roomId = roomId;
-    }
-
     public LocalDate getReservedDate() {
         return reservedDate;
-    }
-
-    public void setReservedDate(LocalDate reservedDate) {
-        this.reservedDate = reservedDate;
     }
 }
