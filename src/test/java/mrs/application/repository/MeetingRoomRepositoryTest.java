@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
 
-import java.time.LocalDate;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -25,7 +23,6 @@ public class MeetingRoomRepositoryTest {
     @Sql("/schema.sql")
     @Sql("/data.sql")
     public void 会議室一覧を取得する() {
-        LocalDate date = LocalDate.now();
         MeetingRoom room = meetingRoomRepository.findById(1).get();
 
         assertNotNull(room);
