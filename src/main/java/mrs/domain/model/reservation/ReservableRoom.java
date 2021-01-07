@@ -18,11 +18,16 @@ public class ReservableRoom implements Serializable {
     @MapsId("roomId")
     private MeetingRoom meetingRoom;
 
+    public ReservableRoom() {
+    }
+
     public ReservableRoom(ReservableRoomId reservableRoomId) {
         this.reservableRoomId = reservableRoomId;
     }
 
-    public ReservableRoom() {
+    public ReservableRoom(ReservableRoomId reservableRoomId, MeetingRoom meetingRoom) {
+        this.reservableRoomId = reservableRoomId;
+        this.meetingRoom = meetingRoom;
     }
 
     public MeetingRoom meetingRoom() {
@@ -33,15 +38,4 @@ public class ReservableRoom implements Serializable {
         return reservableRoomId;
     }
 
-    public void setReservableRoomId(ReservableRoomId reservableRoomId) {
-        this.reservableRoomId = reservableRoomId;
-    }
-
-    public MeetingRoom getMeetingRoom() {
-        return meetingRoom;
-    }
-
-    public void setMeetingRoom(MeetingRoom meetingRoom) {
-        this.meetingRoom = meetingRoom;
-    }
 }
