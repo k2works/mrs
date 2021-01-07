@@ -63,8 +63,7 @@ public class ReservationServiceTest {
     }
 
     private Reservation 予約を作る(ReservableRoom reservableRoom) {
-        Reservation reservation = new Reservation();
-        reservation.setReservableRoom(reservableRoom);
+        Reservation reservation = new Reservation(null, null, reservableRoom, null);
         return reservation;
     }
 

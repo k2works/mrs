@@ -68,15 +68,7 @@ public class Reservation implements Serializable {
         return reservableRoom;
     }
 
-    public void setReservableRoom(ReservableRoom reservableRoom) {
-        this.reservableRoom = reservableRoom;
-    }
-
     public User getUser() {
         return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 }
