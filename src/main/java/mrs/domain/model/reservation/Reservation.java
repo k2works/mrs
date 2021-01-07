@@ -48,10 +48,6 @@ public class Reservation implements Serializable {
         return target.endTime.isAfter(startTime) && endTime.isAfter(target.startTime);
     }
 
-    public User user() {
-        return user;
-    }
-
     public Integer getReservationId() {
         return reservationId;
     }
@@ -64,11 +60,11 @@ public class Reservation implements Serializable {
         return endTime;
     }
 
-    public ReservableRoom getReservableRoom() {
+    public ReservableRoom reservableRoom() {
         return reservableRoom;
     }
 
-    public User getUser() {
+    public User user() {
         return user;
     }
 }

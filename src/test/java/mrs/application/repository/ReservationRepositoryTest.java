@@ -42,7 +42,7 @@ public class ReservationRepositoryTest {
         Reservation value = reservation.get();
 
         Assertions.assertNotNull(value);
-        Assertions.assertEquals("太郎", value.getUser().getFirstName());
+        Assertions.assertEquals("太郎", value.user().getFirstName());
     }
 
     @Test
@@ -51,7 +51,7 @@ public class ReservationRepositoryTest {
         Reservation value = reservation.get();
 
         Assertions.assertNotNull(value);
-        Assertions.assertEquals(1, value.getReservableRoom().reservableRoomId().roomId());
-        Assertions.assertEquals(LocalDate.now(), value.getReservableRoom().reservableRoomId().reservedDate());
+        Assertions.assertEquals(1, value.reservableRoom().reservableRoomId().roomId());
+        Assertions.assertEquals(LocalDate.now(), value.reservableRoom().reservableRoomId().reservedDate());
     }
 }
