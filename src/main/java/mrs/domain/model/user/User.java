@@ -27,36 +27,29 @@ public class User implements Serializable {
     public User(String userId, String password, String firstName, String lastName, RoleName roleName) {
         this.userId = userId;
         this.password = password;
+        //TODO 値オブジェクトに置き換える
         this.firstName = firstName;
         this.lastName = lastName;
         this.roleName = roleName;
-    }
-
-    public RoleName roleName() {
-        return roleName;
     }
 
     public String userId() {
         return userId;
     }
 
-    public String getUserId() {
-        return userId;
-    }
-
-    public String getPassword() {
+    public String password() {
         return password;
     }
 
-    public String getFirstName() {
+    public String firstName() {
         return firstName;
     }
 
-    public String getLastName() {
+    public String lastName() {
         return lastName;
     }
 
-    public RoleName getRoleName() {
+    public RoleName roleName() {
         return roleName;
     }
 }
