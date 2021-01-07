@@ -3,6 +3,7 @@ package mrs.application.service.room;
 import mrs.MrsApplication;
 import mrs.domain.model.reservation.ReservableRoom;
 import mrs.domain.model.room.MeetingRoom;
+import mrs.domain.model.room.RoomId;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -31,9 +32,10 @@ public class RoomServiceTest {
         @Sql("/data.sql")
         @Transactional
         public void 会議室一覧を取得する() {
-            MeetingRoom rooms = roomService.findMeetingRoom(1);
+            RoomId id = new RoomId(1);
+            MeetingRoom room = roomService.findMeetingRoom(id);
 
-            assertEquals(1, rooms.roomId().value());
+            assertEquals(id, room.roomId());
         }
 
         @Test

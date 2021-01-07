@@ -4,6 +4,7 @@ import mrs.application.repository.MeetingRoomRepository;
 import mrs.application.repository.ReservableRoomRepository;
 import mrs.domain.model.reservation.ReservableRoom;
 import mrs.domain.model.room.MeetingRoom;
+import mrs.domain.model.room.RoomId;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -27,8 +28,8 @@ public class RoomService {
     /**
      * 会議室を検索する
      */
-    public MeetingRoom findMeetingRoom(Integer roomId) {
-        return meetingRoomRepository.getOne(roomId);
+    public MeetingRoom findMeetingRoom(RoomId roomId) {
+        return meetingRoomRepository.getOne(roomId.value());
     }
 
     /**

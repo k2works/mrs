@@ -55,7 +55,7 @@ public class ReservationsController {
                         .limit(24 * 2)
                         .collect(Collectors.toList());
 
-        model.addAttribute("room", roomService.findMeetingRoom(roomId));
+        model.addAttribute("room", roomService.findMeetingRoom(new RoomId(roomId)));
         model.addAttribute("reservations", reservations);
         model.addAttribute("timeList", timeList);
         // model.addAttribute("user", dummyUser());
