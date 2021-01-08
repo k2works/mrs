@@ -1,11 +1,14 @@
 package mrs.presentation.reservation;
 
+import mrs.application.coordinator.reservation.ReservationCoordinator;
 import mrs.application.service.reservation.AlreadyReservedException;
-import mrs.application.service.reservation.ReservationService;
 import mrs.application.service.reservation.UnavailableReservationException;
-import mrs.application.service.room.RoomService;
 import mrs.application.service.user.ReservationUserDetails;
-import mrs.domain.model.reservation.*;
+import mrs.domain.model.reservation.ReservableRoomId;
+import mrs.domain.model.reservation.ReservationId;
+import mrs.domain.model.reservation.Reservations;
+import mrs.domain.model.reservation.ReservedDate;
+import mrs.domain.model.room.MeetingRoom;
 import mrs.domain.model.room.RoomId;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.access.AccessDeniedException;
@@ -28,12 +31,10 @@ import java.util.stream.Stream;
 @Controller
 @RequestMapping("reservations/{date}/{roomId}")
 public class ReservationsController {
-    private final RoomService roomService;
-    private final ReservationService reservationService;
+    private final ReservationCoordinator reservationCoordinator;
 
-    public ReservationsController(RoomService roomService, ReservationService reservationService) {
-        this.roomService = roomService;
-        this.reservationService = reservationService;
+    public ReservationsController(ReservationCoordinator reservationCoordinator) {
+        this.reservationCoordinator = reservationCoordinator;
     }
 
     @ModelAttribute
@@ -47,15 +48,16 @@ public class ReservationsController {
 
     @GetMapping
     String reserveForm(@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @PathVariable("date") LocalDate date, @PathVariable("roomId") Integer roomId, Model model) {
+        MeetingRoom room = reservationCoordinator.searchMeetingRoom(new RoomId(roomId));
         ReservableRoomId reservableRoomId = new ReservableRoomId(new RoomId(roomId), new ReservedDate(date));
-        Reservations reservations = reservationService.findReservations(reservableRoomId);
+        Reservations reservations = reservationCoordinator.searchReservations(reservableRoomId);
 
         List<LocalTime> timeList =
                 Stream.iterate(LocalTime.of(0, 0), t -> t.plusMinutes(30))
                         .limit(24 * 2)
                         .collect(Collectors.toList());
 
-        model.addAttribute("room", roomService.findMeetingRoom(new RoomId(roomId)));
+        model.addAttribute("room", room);
         model.addAttribute("reservations", reservations.value());
         model.addAttribute("timeList", timeList);
         // model.addAttribute("user", dummyUser());
@@ -74,17 +76,8 @@ public class ReservationsController {
             return reserveForm(date, roomId, model);
         }
 
-        ReservableRoom reservableRoom = new ReservableRoom(
-                new ReservableRoomId(new RoomId(roomId), new ReservedDate(date)));
-        ReservedTime reservedTime = new ReservedTime(form.getStartTime(), form.getEndTime());
-        Reservation reservation = new Reservation(
-                reservedTime,
-                reservableRoom,
-                userDetails.getUser()
-        );
-
         try {
-            reservationService.reserve(reservation);
+            reservationCoordinator.reserveMeetingRoom(form.getStartTime(), form.getEndTime(), userDetails, date, roomId);
         } catch (UnavailableReservationException | AlreadyReservedException e) {
             model.addAttribute("error", e.getMessage());
             return reserveForm(date, roomId, model);
@@ -102,9 +95,7 @@ public class ReservationsController {
                   @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @PathVariable("date") LocalDate date,
                   Model model) {
         try {
-            Reservation reservation = reservationService.findOne(new ReservationId(reservationId));
-            System.out.println(reservation);
-            reservationService.cancel(reservation);
+            reservationCoordinator.cancelReservedMeetingRoom(new ReservationId(reservationId));
         } catch (AccessDeniedException e) {
             model.addAttribute("error", e.getMessage());
             return reserveForm(date, roomId, model);

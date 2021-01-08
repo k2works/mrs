@@ -1,7 +1,6 @@
 package mrs.presentation.reservation;
 
-import mrs.application.service.reservation.ReservationService;
-import mrs.application.service.room.RoomService;
+import mrs.application.coordinator.reservation.ReservationCoordinator;
 import mrs.domain.model.reservation.Reservation;
 import mrs.domain.model.reservation.Reservations;
 import mrs.domain.model.room.MeetingRoom;
@@ -34,10 +33,7 @@ public class ReservationsControllerTest {
     ReservationsController controller;
 
     @Mock
-    RoomService mockRoomService;
-
-    @Mock
-    ReservationService mockReservationService;
+    ReservationCoordinator mockReservationCoordinator;
 
     @BeforeEach
     public void setUpMockMvc() {
@@ -49,9 +45,9 @@ public class ReservationsControllerTest {
     @Sql("/data.sql")
     void 予約を表示する() throws Exception {
         LocalDate today = LocalDate.now();
-        when(mockRoomService.findMeetingRoom(any())).thenReturn(new MeetingRoom());
+        when(mockReservationCoordinator.searchMeetingRoom(any())).thenReturn(new MeetingRoom());
         List<Reservation> result = new ArrayList<>(Collections.singleton(new Reservation()));
-        when(mockReservationService.findReservations(any())).thenReturn(new Reservations(result));
+        when(mockReservationCoordinator.searchReservations(any())).thenReturn(new Reservations(result));
 
         mockMvc.perform(get("/reservations/" + today.toString() + "/1"))
                 .andExpect(status().isOk());
