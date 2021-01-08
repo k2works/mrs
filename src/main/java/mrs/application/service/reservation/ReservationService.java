@@ -2,9 +2,7 @@ package mrs.application.service.reservation;
 
 import mrs.application.repository.ReservableRoomRepository;
 import mrs.application.repository.ReservationRepository;
-import mrs.domain.model.reservation.ReservableRoom;
-import mrs.domain.model.reservation.ReservableRoomId;
-import mrs.domain.model.reservation.Reservation;
+import mrs.domain.model.reservation.*;
 import org.springframework.security.access.method.P;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
@@ -26,8 +24,11 @@ public class ReservationService {
         this.reservableRoomRepository = reservableRoomRepository;
     }
 
+    /**
+     * 会議室を予約する
+     */
     public Reservation reserve(Reservation reservation) {
-        ReservableRoomId reservableRoomId = reservation.getReservableRoom().getReservableRoomId();
+        ReservableRoomId reservableRoomId = reservation.reservableRoom().reservableRoomId();
         // 悲観ロック
         ReservableRoom reservable = reservableRoomRepository.findOneForUpdateByReservableRoomId(reservableRoomId);
         if (reservable == null) {
@@ -43,16 +44,26 @@ public class ReservationService {
         return reservation;
     }
 
-    @PreAuthorize("hasRole('ADMIN') or #reservation.user.userId == principal.user.userId")
+    /**
+     * 会議室の予約をキャンセルする
+     */
+    @PreAuthorize("hasRole('ADMIN') or #reservation.user.userId.value == principal.user.userId.value")
     public void cancel(@P("reservation") Reservation reservation) {
         reservationRepository.delete(reservation);
     }
 
-    public Reservation findOne(Integer reservationId) {
-        return reservationRepository.getOne(reservationId);
+    /**
+     * 会議室の予約を探す
+     */
+    public Reservation findOne(ReservationId reservationId) {
+        return reservationRepository.getOne(reservationId.value());
     }
 
-    public List<Reservation> findReservations(ReservableRoomId reservableRoomId) {
-        return reservationRepository.findByReservableRoom_ReservableRoomIdOrderByStartTimeAsc(reservableRoomId);
+    /**
+     * 会議室の予約集合を探す
+     */
+    public Reservations findReservations(ReservableRoomId reservableRoomId) {
+        List<Reservation> result = reservationRepository.findByReservableRoom_ReservableRoomIdOrderByStartTimeAsc(reservableRoomId);
+        return new Reservations(result);
     }
 }

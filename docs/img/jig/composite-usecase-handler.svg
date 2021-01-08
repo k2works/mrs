@@ -1,239 +1,324 @@
-<svg width="1205px" height="438px"
- viewBox="0.00 0.00 1205.00 438.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1.0 1.0) rotate(0) translate(4 411)">
-<title>ユースケース複合図</title>
-<polygon fill="white" stroke="transparent" points="-4,27 -4,-411 1201,-411 1201,27 -4,27"/>
-<text text-anchor="middle" x="598.5" y="15.2" font-family="Times,serif" font-size="14.00">ユースケース複合図</text>
-<!-- mrs.application.service.reservation.ReservationService.cancel(mrs.domain.model.reservation.Reservation) -->
-<g id="node1" class="node">
-<title>mrs.application.service.reservation.ReservationService.cancel(mrs.domain.model.reservation.Reservation)</title>
-<g id="a_node1"><a xlink:href="https://github.com/system-sekkei/library/tree/master/src/main/java/mrs/application/service/reservation/ReservationService.java" xlink:title="ReservationService.cancel(Reservation)">
-<ellipse fill="greenyellow" stroke="black" cx="86.35" cy="-89.7" rx="86.03" ry="26.74"/>
-<text text-anchor="middle" x="86.35" y="-93.5" font-family="Times,serif" font-size="14.00">ReservationService</text>
-<text text-anchor="middle" x="86.35" y="-78.5" font-family="Times,serif" font-size="14.00">cancel</text>
-</a>
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1146px"
+     height="651px" viewBox="0.00 0.00 1146.00 651.00" xmlns="http://www.w3.org/2000/svg">
+    <g id="graph0" class="graph" transform="scale(1.0 1.0) rotate(0) translate(4 624)">
+        <title>ユースケース複合図</title>
+        <polygon fill="white" stroke="none" points="-4,27 -4,-624 1142,-624 1142,27 -4,27"/>
+        <text text-anchor="middle" x="569" y="15.2" font-family="Times New Roman,serif" font-size="14.00">ユースケース複合図
+        </text>
+        <!-- mrs.application.coordinator.reservation.ReservationCoordinator.cancelReservedMeetingRoom(mrs.domain.model.reservation.ReservationId) -->
+        <g id="node1" class="node">
+            <title>
+                mrs.application.coordinator.reservation.ReservationCoordinator.cancelReservedMeetingRoom(mrs.domain.model.reservation.ReservationId)
+            </title>
+            <g id="a_node1">
+                <a xlink:href="https://github.com/system-sekkei/library/tree/master/src/main/java/mrs/application/coordinator/reservation/ReservationCoordinator.java"
+                   xlink:title="ReservationCoordinator.cancelReservedMeetingRoom(ReservationId)">
+                    <ellipse fill="greenyellow" stroke="black" cx="498.69" cy="-359.085" rx="126.978" ry="18"/>
+                    <text text-anchor="middle" x="498.69" y="-355.385" font-family="Times New Roman,serif"
+                          font-size="14.00">会議室の予約をキャンセルする
+                    </text>
+                </a>
+            </g>
+        </g>
+        <!-- mrs.domain.model.reservation.ReservationId -->
+        <g id="node2" class="node">
+            <title>mrs.domain.model.reservation.ReservationId</title>
+<g id="a_node2">
+    <a xlink:title="ReservationId">
+        <polygon fill="none" stroke="black"
+                 points="463.767,-427.171 407.767,-427.171 407.767,-391.171 463.767,-391.171 463.767,-427.171"/>
+        <text text-anchor="middle" x="435.767" y="-405.471" font-family="Times New Roman,serif" font-size="14.00">予約ID
+        </text>
+    </a>
 </g>
+</g>
+<!-- mrs.application.coordinator.reservation.ReservationCoordinator.cancelReservedMeetingRoom(mrs.domain.model.reservation.ReservationId)&#45;&gt;mrs.domain.model.reservation.ReservationId -->
+<g id="edge1" class="edge"><title>mrs.application.coordinator.reservation.ReservationCoordinator.cancelReservedMeetingRoom(mrs.domain.model.reservation.ReservationId)&#45;&gt;mrs.domain.model.reservation.ReservationId</title>
+    <path fill="none" stroke="black" stroke-dasharray="5,2"
+          d="M476.328,-376.884C470.535,-381.496 464.292,-386.465 458.481,-391.091"/>
 </g>
 <!-- mrs.domain.model.reservation.Reservation -->
-<g id="node2" class="node">
-<title>mrs.domain.model.reservation.Reservation</title>
-<g id="a_node2"><a xlink:title="Reservation">
-<polygon fill="none" stroke="black" points="185.58,-173.55 131.58,-173.55 131.58,-137.55 185.58,-137.55 185.58,-173.55"/>
-<text text-anchor="middle" x="158.58" y="-151.85" font-family="Times,serif" font-size="14.00">予約</text>
-</a>
+<g id="node3" class="node"><title>mrs.domain.model.reservation.Reservation</title>
+<g id="a_node3">
+    <a xlink:title="Reservation">
+        <polygon fill="none" stroke="black"
+                 points="580.267,-428.987 526.267,-428.987 526.267,-392.987 580.267,-392.987 580.267,-428.987"/>
+        <text text-anchor="middle" x="553.267" y="-407.287" font-family="Times New Roman,serif" font-size="14.00">予約
+        </text>
+    </a>
 </g>
 </g>
-<!-- mrs.application.service.reservation.ReservationService.cancel(mrs.domain.model.reservation.Reservation)&#45;&gt;mrs.domain.model.reservation.Reservation -->
-<g id="edge1" class="edge">
-<title>mrs.application.service.reservation.ReservationService.cancel(mrs.domain.model.reservation.Reservation)&#45;&gt;mrs.domain.model.reservation.Reservation</title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M114.49,-115.35C122.57,-122.71 131.21,-130.59 138.68,-137.4"/>
-</g>
-<!-- mrs.application.service.reservation.ReservationService.findOne(java.lang.Integer) -->
-<g id="node4" class="node">
-<title>mrs.application.service.reservation.ReservationService.findOne(java.lang.Integer)</title>
-<g id="a_node4"><a xlink:href="https://github.com/system-sekkei/library/tree/master/src/main/java/mrs/application/service/reservation/ReservationService.java" xlink:title="ReservationService.findOne(Integer)">
-<ellipse fill="greenyellow" stroke="black" cx="119.48" cy="-293.47" rx="86.03" ry="26.74"/>
-<text text-anchor="middle" x="119.48" y="-297.27" font-family="Times,serif" font-size="14.00">ReservationService</text>
-<text text-anchor="middle" x="119.48" y="-282.27" font-family="Times,serif" font-size="14.00">findOne</text>
-</a>
-</g>
-</g>
-<!-- mrs.domain.model.reservation.Reservation&#45;&gt;mrs.application.service.reservation.ReservationService.findOne(java.lang.Integer) -->
-<g id="edge3" class="edge">
-<title>mrs.domain.model.reservation.Reservation&#45;&gt;mrs.application.service.reservation.ReservationService.findOne(java.lang.Integer)</title>
-<path fill="none" stroke="black" stroke-width="2" d="M153.47,-173.58C146.74,-197.31 134.86,-239.22 127.07,-266.67"/>
-</g>
-<!-- mrs.application.service.reservation.ReservationService.reserve(mrs.domain.model.reservation.Reservation) -->
-<g id="node9" class="node">
-<title>mrs.application.service.reservation.ReservationService.reserve(mrs.domain.model.reservation.Reservation)</title>
-<g id="a_node9"><a xlink:href="https://github.com/system-sekkei/library/tree/master/src/main/java/mrs/application/service/reservation/ReservationService.java" xlink:title="ReservationService.reserve(Reservation)">
-<ellipse fill="greenyellow" stroke="black" cx="324.99" cy="-84.71" rx="86.03" ry="26.74"/>
-<text text-anchor="middle" x="324.99" y="-88.51" font-family="Times,serif" font-size="14.00">ReservationService</text>
-<text text-anchor="middle" x="324.99" y="-73.51" font-family="Times,serif" font-size="14.00">reserve</text>
-</a>
-</g>
-</g>
-<!-- mrs.domain.model.reservation.Reservation&#45;&gt;mrs.application.service.reservation.ReservationService.reserve(mrs.domain.model.reservation.Reservation) -->
-<g id="edge9" class="edge">
-<title>mrs.domain.model.reservation.Reservation&#45;&gt;mrs.application.service.reservation.ReservationService.reserve(mrs.domain.model.reservation.Reservation)</title>
-<path fill="none" stroke="black" stroke-width="2" d="M185.69,-144.01C209.54,-133.86 244.91,-118.8 274.04,-106.4"/>
+<!-- mrs.application.coordinator.reservation.ReservationCoordinator.cancelReservedMeetingRoom(mrs.domain.model.reservation.ReservationId)&#45;&gt;mrs.domain.model.reservation.Reservation -->
+<g id="edge2" class="edge"><title>mrs.application.coordinator.reservation.ReservationCoordinator.cancelReservedMeetingRoom(mrs.domain.model.reservation.ReservationId)&#45;&gt;mrs.domain.model.reservation.Reservation</title>
+    <path fill="none" stroke="black" stroke-dasharray="1,5"
+          d="M517.472,-376.947C522.899,-382.108 528.825,-387.743 534.265,-392.916"/>
 </g>
 <!-- mrs.presentation.reservation.ReservationsController -->
-<g id="node3" class="node">
-<title>mrs.presentation.reservation.ReservationsController</title>
-<g id="a_node3"><a xlink:title="ReservationsController">
-<polygon fill="lightgray" stroke="black" points="390.74,-157.1 248.74,-157.1 248.74,-121.1 390.74,-121.1 390.74,-157.1"/>
-<text text-anchor="middle" x="319.74" y="-135.4" font-family="Times,serif" font-size="14.00">ReservationsController</text>
-</a>
+<g id="node4" class="node"><title>mrs.presentation.reservation.ReservationsController</title>
+<g id="a_node4">
+    <a xlink:title="ReservationsController">
+        <polygon fill="lightgray" stroke="black"
+                 points="558.325,-332.887 452.325,-332.887 452.325,-296.887 558.325,-296.887 558.325,-332.887"/>
+        <text text-anchor="middle" x="505.325" y="-311.187" font-family="Times New Roman,serif" font-size="14.00">
+            会議室予約画面
+        </text>
+    </a>
 </g>
 </g>
-<!-- mrs.presentation.reservation.ReservationsController&#45;&gt;mrs.application.service.reservation.ReservationService.cancel(mrs.domain.model.reservation.Reservation) -->
-<g id="edge2" class="edge">
-<title>mrs.presentation.reservation.ReservationsController&#45;&gt;mrs.application.service.reservation.ReservationService.cancel(mrs.domain.model.reservation.Reservation)</title>
-<path fill="none" stroke="black" stroke-dasharray="1,5" d="M248.45,-124.01C219.76,-117.94 186.74,-110.95 158.01,-104.87"/>
+<!-- mrs.presentation.reservation.ReservationsController&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.cancelReservedMeetingRoom(mrs.domain.model.reservation.ReservationId) -->
+<g id="edge3" class="edge"><title>mrs.presentation.reservation.ReservationsController&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.cancelReservedMeetingRoom(mrs.domain.model.reservation.ReservationId)</title>
+    <path fill="none" stroke="black" stroke-dasharray="1,5"
+          d="M502.588,-333.119C502.202,-335.688 501.806,-338.328 501.42,-340.895"/>
 </g>
-<!-- mrs.presentation.reservation.ReservationsController&#45;&gt;mrs.application.service.reservation.ReservationService.findOne(java.lang.Integer) -->
-<g id="edge5" class="edge">
-<title>mrs.presentation.reservation.ReservationsController&#45;&gt;mrs.application.service.reservation.ReservationService.findOne(java.lang.Integer)</title>
-<path fill="none" stroke="black" stroke-dasharray="1,5" d="M296.38,-157.11C260.68,-184.63 192.44,-237.23 151.95,-268.44"/>
-</g>
-<!-- mrs.application.service.reservation.ReservationService.findReservations(mrs.domain.model.reservation.ReservableRoomId) -->
-<g id="node6" class="node">
-<title>mrs.application.service.reservation.ReservationService.findReservations(mrs.domain.model.reservation.ReservableRoomId)</title>
-<g id="a_node6"><a xlink:href="https://github.com/system-sekkei/library/tree/master/src/main/java/mrs/application/service/reservation/ReservationService.java" xlink:title="ReservationService.findReservations(ReservableRoomId)">
-<ellipse fill="greenyellow" stroke="black" cx="568.86" cy="-73.23" rx="86.03" ry="26.74"/>
-<text text-anchor="middle" x="568.86" y="-77.03" font-family="Times,serif" font-size="14.00">ReservationService</text>
-<text text-anchor="middle" x="568.86" y="-62.03" font-family="Times,serif" font-size="14.00">findReservations</text>
-</a>
+<!-- mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.ReservedTime, mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails) -->
+<g id="node5" class="node"><title>mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.ReservedTime, mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails)</title>
+<g id="a_node5">
+    <a xlink:href="https://github.com/system-sekkei/library/tree/master/src/main/java/mrs/application/coordinator/reservation/ReservationCoordinator.java"
+       xlink:title="ReservationCoordinator.reserveMeetingRoom(ReservedTime, ReservableRoom, ReservationUserDetails)">
+        <ellipse fill="greenyellow" stroke="black" cx="712.365" cy="-398.355" rx="77.1866" ry="18"/>
+        <text text-anchor="middle" x="712.365" y="-394.655" font-family="Times New Roman,serif" font-size="14.00">
+            会議室を予約する
+        </text>
+    </a>
 </g>
 </g>
-<!-- mrs.presentation.reservation.ReservationsController&#45;&gt;mrs.application.service.reservation.ReservationService.findReservations(mrs.domain.model.reservation.ReservableRoomId) -->
-<g id="edge8" class="edge">
-<title>mrs.presentation.reservation.ReservationsController&#45;&gt;mrs.application.service.reservation.ReservationService.findReservations(mrs.domain.model.reservation.ReservableRoomId)</title>
-<path fill="none" stroke="black" stroke-dasharray="1,5" d="M388.14,-121.02C423.86,-111.57 467.38,-100.06 502.76,-90.71"/>
+<!-- mrs.presentation.reservation.ReservationsController&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.ReservedTime, mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails) -->
+<g id="edge9" class="edge"><title>mrs.presentation.reservation.ReservationsController&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.ReservedTime, mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails)</title>
+    <path fill="none" stroke="black" stroke-dasharray="1,5"
+          d="M549.995,-332.896C586.846,-347.752 638.597,-368.616 673.695,-382.765"/>
 </g>
-<!-- mrs.presentation.reservation.ReservationsController&#45;&gt;mrs.application.service.reservation.ReservationService.reserve(mrs.domain.model.reservation.Reservation) -->
-<g id="edge12" class="edge">
-<title>mrs.presentation.reservation.ReservationsController&#45;&gt;mrs.application.service.reservation.ReservationService.reserve(mrs.domain.model.reservation.Reservation)</title>
-<path fill="none" stroke="black" stroke-dasharray="1,5" d="M321.49,-120.99C321.77,-118.02 322.08,-114.89 322.38,-111.77"/>
-</g>
-<!-- mrs.application.service.room.RoomService.findMeetingRoom(java.lang.Integer) -->
-<g id="node11" class="node">
-<title>mrs.application.service.room.RoomService.findMeetingRoom(java.lang.Integer)</title>
-<g id="a_node11"><a xlink:href="https://github.com/system-sekkei/library/tree/master/src/main/java/mrs/application/service/room/RoomService.java" xlink:title="RoomService.findMeetingRoom(Integer)">
-<ellipse fill="greenyellow" stroke="black" cx="293.52" cy="-204.06" rx="82.96" ry="26.74"/>
-<text text-anchor="middle" x="293.52" y="-207.86" font-family="Times,serif" font-size="14.00">RoomService</text>
-<text text-anchor="middle" x="293.52" y="-192.86" font-family="Times,serif" font-size="14.00">findMeetingRoom</text>
-</a>
+<!-- mrs.application.coordinator.reservation.ReservationCoordinator.searchMeetingRoom(mrs.domain.model.room.RoomId) -->
+<g id="node10" class="node"><title>mrs.application.coordinator.reservation.ReservationCoordinator.searchMeetingRoom(mrs.domain.model.room.RoomId)</title>
+<g id="a_node10">
+    <a xlink:href="https://github.com/system-sekkei/library/tree/master/src/main/java/mrs/application/coordinator/reservation/ReservationCoordinator.java"
+       xlink:title="ReservationCoordinator.searchMeetingRoom(RoomId)">
+        <ellipse fill="greenyellow" stroke="black" cx="598.423" cy="-192.375" rx="60.3893" ry="18"/>
+        <text text-anchor="middle" x="598.423" y="-188.675" font-family="Times New Roman,serif" font-size="14.00">
+            会議室を探す
+        </text>
+    </a>
 </g>
 </g>
-<!-- mrs.presentation.reservation.ReservationsController&#45;&gt;mrs.application.service.room.RoomService.findMeetingRoom(java.lang.Integer) -->
-<g id="edge15" class="edge">
-<title>mrs.presentation.reservation.ReservationsController&#45;&gt;mrs.application.service.room.RoomService.findMeetingRoom(java.lang.Integer)</title>
-<path fill="none" stroke="black" stroke-dasharray="1,5" d="M312.44,-157.2C309.95,-163.35 307.12,-170.37 304.41,-177.07"/>
+<!-- mrs.presentation.reservation.ReservationsController&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchMeetingRoom(mrs.domain.model.room.RoomId) -->
+<g id="edge12" class="edge"><title>mrs.presentation.reservation.ReservationsController&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchMeetingRoom(mrs.domain.model.room.RoomId)</title>
+    <path fill="none" stroke="black" stroke-dasharray="1,5"
+          d="M519.062,-296.81C536.765,-273.514 567.35,-233.266 584.933,-210.128"/>
 </g>
-<!-- java.lang.Integer -->
-<g id="node5" class="node">
-<title>java.lang.Integer</title>
-<g id="a_node5"><a xlink:title="Integer">
-<polygon fill="none" stroke="black" points="274.33,-406.61 219.33,-406.61 219.33,-370.61 274.33,-370.61 274.33,-406.61"/>
-<text text-anchor="middle" x="246.83" y="-384.91" font-family="Times,serif" font-size="14.00">Integer</text>
-</a>
-</g>
-</g>
-<!-- mrs.application.service.reservation.ReservationService.findOne(java.lang.Integer)&#45;&gt;java.lang.Integer -->
-<g id="edge4" class="edge">
-<title>mrs.application.service.reservation.ReservationService.findOne(java.lang.Integer)&#45;&gt;java.lang.Integer</title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M152.94,-318.47C174.75,-334.76 202.73,-355.66 222.45,-370.4"/>
-</g>
-<!-- mrs.domain.model.reservation.ReservableRoomId -->
-<g id="node8" class="node">
-<title>mrs.domain.model.reservation.ReservableRoomId</title>
-<g id="a_node8"><a xlink:title="ReservableRoomId">
-<polygon fill="none" stroke="black" points="599.68,-36.23 468.68,-36.23 468.68,-0.23 599.68,-0.23 599.68,-36.23"/>
-<text text-anchor="middle" x="534.18" y="-14.53" font-family="Times,serif" font-size="14.00">予約可能会議室ID</text>
-</a>
+<!-- mrs.application.coordinator.reservation.ReservationCoordinator.searchReservations(mrs.domain.model.reservation.ReservableRoomId) -->
+<g id="node17" class="node"><title>mrs.application.coordinator.reservation.ReservationCoordinator.searchReservations(mrs.domain.model.reservation.ReservableRoomId)</title>
+<g id="a_node17">
+    <a xlink:href="https://github.com/system-sekkei/library/tree/master/src/main/java/mrs/application/coordinator/reservation/ReservationCoordinator.java"
+       xlink:title="ReservationCoordinator.searchReservations(ReservableRoomId)">
+        <ellipse fill="greenyellow" stroke="black" cx="249.277" cy="-271.101" rx="102.082" ry="18"/>
+        <text text-anchor="middle" x="249.277" y="-267.401" font-family="Times New Roman,serif" font-size="14.00">
+            会議室の予約集合を探す
+        </text>
+    </a>
 </g>
 </g>
-<!-- mrs.application.service.reservation.ReservationService.findReservations(mrs.domain.model.reservation.ReservableRoomId)&#45;&gt;mrs.domain.model.reservation.ReservableRoomId -->
-<g id="edge7" class="edge">
-<title>mrs.application.service.reservation.ReservationService.findReservations(mrs.domain.model.reservation.ReservableRoomId)&#45;&gt;mrs.domain.model.reservation.ReservableRoomId</title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M552.13,-46.7C549.91,-43.18 547.68,-39.65 545.58,-36.32"/>
+<!-- mrs.presentation.reservation.ReservationsController&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchReservations(mrs.domain.model.reservation.ReservableRoomId) -->
+<g id="edge18" class="edge"><title>mrs.presentation.reservation.ReservationsController&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchReservations(mrs.domain.model.reservation.ReservableRoomId)</title>
+    <path fill="none" stroke="black" stroke-dasharray="1,5"
+          d="M452.272,-305.815C414.773,-299.402 364.024,-290.724 322.65,-283.648"/>
 </g>
-<!-- java.util.List -->
-<g id="node7" class="node">
-<title>java.util.List</title>
-<g id="a_node7"><a xlink:title="List">
-<polygon fill="none" stroke="black" points="790.66,-143.3 736.66,-143.3 736.66,-107.3 790.66,-107.3 790.66,-143.3"/>
-<text text-anchor="middle" x="763.66" y="-121.6" font-family="Times,serif" font-size="14.00">List</text>
-</a>
+<!-- mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.ReservedTime, mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails)&#45;&gt;mrs.domain.model.reservation.Reservation -->
+<g id="edge7" class="edge"><title>mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.ReservedTime, mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails)&#45;&gt;mrs.domain.model.reservation.Reservation</title>
+    <path fill="none" stroke="black" stroke-dasharray="1,5"
+          d="M638.87,-404.19C618.027,-405.845 596.626,-407.544 580.436,-408.83"/>
 </g>
-</g>
-<!-- java.util.List&#45;&gt;mrs.application.service.reservation.ReservationService.findReservations(mrs.domain.model.reservation.ReservableRoomId) -->
-<g id="edge6" class="edge">
-<title>java.util.List&#45;&gt;mrs.application.service.reservation.ReservationService.findReservations(mrs.domain.model.reservation.ReservableRoomId)</title>
-<path fill="none" stroke="black" stroke-width="2" d="M736.57,-118.06C710.33,-111.04 669.51,-100.13 634.71,-90.83"/>
-</g>
-<!-- mrs.application.service.room.RoomService.findReservableRooms(java.time.LocalDate) -->
-<g id="node13" class="node">
-<title>mrs.application.service.room.RoomService.findReservableRooms(java.time.LocalDate)</title>
-<g id="a_node13"><a xlink:href="https://github.com/system-sekkei/library/tree/master/src/main/java/mrs/application/service/room/RoomService.java" xlink:title="RoomService.findReservableRooms(LocalDate)">
-<ellipse fill="greenyellow" stroke="black" cx="948.92" cy="-224.26" rx="96.75" ry="26.74"/>
-<text text-anchor="middle" x="948.92" y="-228.06" font-family="Times,serif" font-size="14.00">RoomService</text>
-<text text-anchor="middle" x="948.92" y="-213.06" font-family="Times,serif" font-size="14.00">findReservableRooms</text>
-</a>
+<!-- mrs.application.service.user.ReservationUserDetails -->
+<g id="node6" class="node"><title>mrs.application.service.user.ReservationUserDetails</title>
+<g id="a_node6">
+    <a xlink:title="ReservationUserDetails">
+        <polygon fill="none" stroke="black"
+                 points="845.33,-465.295 726.33,-465.295 726.33,-429.295 845.33,-429.295 845.33,-465.295"/>
+        <text text-anchor="middle" x="785.83" y="-443.595" font-family="Times New Roman,serif" font-size="14.00">
+            予約ユーザー詳細
+        </text>
+    </a>
 </g>
 </g>
-<!-- java.util.List&#45;&gt;mrs.application.service.room.RoomService.findReservableRooms(java.time.LocalDate) -->
-<g id="edge16" class="edge">
-<title>java.util.List&#45;&gt;mrs.application.service.room.RoomService.findReservableRooms(java.time.LocalDate)</title>
-<path fill="none" stroke="black" stroke-width="2" d="M790.99,-139.9C820.79,-155.82 868.91,-181.53 904.22,-200.39"/>
-</g>
-<!-- mrs.application.service.reservation.ReservationService.reserve(mrs.domain.model.reservation.Reservation)&#45;&gt;mrs.domain.model.reservation.ReservableRoomId -->
-<g id="edge11" class="edge">
-<title>mrs.application.service.reservation.ReservationService.reserve(mrs.domain.model.reservation.Reservation)&#45;&gt;mrs.domain.model.reservation.ReservableRoomId</title>
-<path fill="none" stroke="black" stroke-dasharray="1,5" d="M385.49,-65.48C414.45,-56.28 448.93,-45.32 477.39,-36.28"/>
+<!-- mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.ReservedTime, mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails)&#45;&gt;mrs.application.service.user.ReservationUserDetails -->
+<g id="edge4" class="edge"><title>mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.ReservedTime, mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails)&#45;&gt;mrs.application.service.user.ReservationUserDetails</title>
+    <path fill="none" stroke="black" stroke-dasharray="5,2"
+          d="M738.06,-415.472C744.68,-419.882 751.828,-424.644 758.527,-429.106"/>
 </g>
 <!-- mrs.domain.model.reservation.ReservableRoom -->
-<g id="node10" class="node">
-<title>mrs.domain.model.reservation.ReservableRoom</title>
-<g id="a_node10"><a xlink:title="ReservableRoom">
-<polygon fill="none" stroke="black" points="372.84,-37.22 256.84,-37.22 256.84,-1.22 372.84,-1.22 372.84,-37.22"/>
-<text text-anchor="middle" x="314.84" y="-15.52" font-family="Times,serif" font-size="14.00">予約可能会議室</text>
-</a>
+<g id="node7" class="node"><title>mrs.domain.model.reservation.ReservableRoom</title>
+<g id="a_node7">
+    <a xlink:title="ReservableRoom">
+        <polygon fill="none" stroke="black"
+                 points="830.448,-619.892 724.448,-619.892 724.448,-583.892 830.448,-583.892 830.448,-619.892"/>
+        <text text-anchor="middle" x="777.448" y="-598.192" font-family="Times New Roman,serif" font-size="14.00">
+            予約可能会議室
+        </text>
+    </a>
 </g>
 </g>
-<!-- mrs.application.service.reservation.ReservationService.reserve(mrs.domain.model.reservation.Reservation)&#45;&gt;mrs.domain.model.reservation.ReservableRoom -->
-<g id="edge10" class="edge">
-<title>mrs.application.service.reservation.ReservationService.reserve(mrs.domain.model.reservation.Reservation)&#45;&gt;mrs.domain.model.reservation.ReservableRoom</title>
-<path fill="none" stroke="black" stroke-dasharray="1,5" d="M320.8,-57.69C319.75,-50.93 318.65,-43.83 317.68,-37.59"/>
+<!-- mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.ReservedTime, mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails)&#45;&gt;mrs.domain.model.reservation.ReservableRoom -->
+<g id="edge5" class="edge"><title>mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.ReservedTime, mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails)&#45;&gt;mrs.domain.model.reservation.ReservableRoom</title>
+    <path fill="none" stroke="black" stroke-dasharray="5,2"
+          d="M718.141,-416.418C730.492,-455.042 759.347,-545.281 771.686,-583.87"/>
 </g>
-<!-- mrs.application.service.room.RoomService.findMeetingRoom(java.lang.Integer)&#45;&gt;java.lang.Integer -->
-<g id="edge14" class="edge">
-<title>mrs.application.service.room.RoomService.findMeetingRoom(java.lang.Integer)&#45;&gt;java.lang.Integer</title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M286.73,-230.89C277.1,-268.98 259.71,-337.72 251.44,-370.4"/>
+<!-- mrs.domain.model.reservation.ReservedTime -->
+<g id="node8" class="node"><title>mrs.domain.model.reservation.ReservedTime</title>
+<g id="a_node8">
+    <a xlink:title="ReservedTime">
+        <polygon fill="none" stroke="black"
+                 points="931.741,-487.824 863.741,-487.824 863.741,-451.824 931.741,-451.824 931.741,-487.824"/>
+        <text text-anchor="middle" x="897.741" y="-466.124" font-family="Times New Roman,serif" font-size="14.00">予約時間
+        </text>
+    </a>
+</g>
+</g>
+<!-- mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.ReservedTime, mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails)&#45;&gt;mrs.domain.model.reservation.ReservedTime -->
+<g id="edge6" class="edge"><title>mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.ReservedTime, mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails)&#45;&gt;mrs.domain.model.reservation.ReservedTime</title>
+    <path fill="none" stroke="black" stroke-dasharray="5,2"
+          d="M752.589,-413.863C785.706,-426.631 832.147,-444.535 863.506,-456.625"/>
+</g>
+<!-- mrs.domain.model.user.User -->
+<g id="node9" class="node"><title>mrs.domain.model.user.User</title>
+<g id="a_node9">
+    <a xlink:title="User">
+        <polygon fill="none" stroke="black"
+                 points="924.947,-338.674 856.947,-338.674 856.947,-302.674 924.947,-302.674 924.947,-338.674"/>
+        <text text-anchor="middle" x="890.947" y="-316.974" font-family="Times New Roman,serif" font-size="14.00">ユーザー
+        </text>
+    </a>
+</g>
+</g>
+<!-- mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.ReservedTime, mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails)&#45;&gt;mrs.domain.model.user.User -->
+<g id="edge8" class="edge"><title>mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.ReservedTime, mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails)&#45;&gt;mrs.domain.model.user.User</title>
+    <path fill="none" stroke="black" stroke-dasharray="1,5"
+          d="M748.935,-382.448C780.568,-368.688 825.956,-348.944 856.846,-335.508"/>
+</g>
+<!-- mrs.domain.model.room.RoomId -->
+<g id="node12" class="node"><title>mrs.domain.model.room.RoomId</title>
+<g id="a_node12">
+    <a xlink:title="RoomId">
+        <polygon fill="none" stroke="black"
+                 points="666.757,-35.6899 597.757,-35.6899 597.757,0.310133 666.757,0.310133 666.757,-35.6899"/>
+        <text text-anchor="middle" x="632.257" y="-13.9899" font-family="Times New Roman,serif" font-size="14.00">
+            会議室ID
+        </text>
+    </a>
+</g>
+</g>
+<!-- mrs.application.coordinator.reservation.ReservationCoordinator.searchMeetingRoom(mrs.domain.model.room.RoomId)&#45;&gt;mrs.domain.model.room.RoomId -->
+<g id="edge11" class="edge"><title>mrs.application.coordinator.reservation.ReservationCoordinator.searchMeetingRoom(mrs.domain.model.room.RoomId)&#45;&gt;mrs.domain.model.room.RoomId</title>
+    <path fill="none" stroke="black" stroke-dasharray="5,2"
+          d="M601.917,-174.339C608.4,-140.865 622.224,-69.4868 628.732,-35.8899"/>
 </g>
 <!-- mrs.domain.model.room.MeetingRoom -->
-<g id="node12" class="node">
-<title>mrs.domain.model.room.MeetingRoom</title>
-<g id="a_node12"><a xlink:title="MeetingRoom">
-<polygon fill="none" stroke="black" points="333.96,-278.17 274.96,-278.17 274.96,-242.17 333.96,-242.17 333.96,-278.17"/>
-<text text-anchor="middle" x="304.46" y="-256.47" font-family="Times,serif" font-size="14.00">会議室</text>
-</a>
+<g id="node11" class="node"><title>mrs.domain.model.room.MeetingRoom</title>
+<g id="a_node11">
+    <a xlink:title="MeetingRoom">
+        <polygon fill="none" stroke="black"
+                 points="637.871,-150.018 582.871,-150.018 582.871,-114.018 637.871,-114.018 637.871,-150.018"/>
+        <text text-anchor="middle" x="610.371" y="-128.318" font-family="Times New Roman,serif" font-size="14.00">会議室
+        </text>
+    </a>
 </g>
 </g>
-<!-- mrs.domain.model.room.MeetingRoom&#45;&gt;mrs.application.service.room.RoomService.findMeetingRoom(java.lang.Integer) -->
-<g id="edge13" class="edge">
-<title>mrs.domain.model.room.MeetingRoom&#45;&gt;mrs.application.service.room.RoomService.findMeetingRoom(java.lang.Integer)</title>
-<path fill="none" stroke="black" stroke-width="2" d="M300.94,-242.11C300.26,-238.65 299.54,-234.95 298.83,-231.28"/>
+<!-- mrs.domain.model.room.MeetingRoom&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchMeetingRoom(mrs.domain.model.room.RoomId) -->
+<g id="edge10" class="edge"><title>mrs.domain.model.room.MeetingRoom&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchMeetingRoom(mrs.domain.model.room.RoomId)</title>
+    <path fill="none" stroke="black" stroke-width="2"
+          d="M606.786,-150.127C605.274,-157.766 603.518,-166.641 602.006,-174.279"/>
 </g>
-<!-- java.time.LocalDate -->
-<g id="node14" class="node">
-<title>java.time.LocalDate</title>
-<g id="a_node14"><a xlink:title="LocalDate">
-<polygon fill="none" stroke="black" points="1197.24,-257.77 1124.24,-257.77 1124.24,-221.77 1197.24,-221.77 1197.24,-257.77"/>
-<text text-anchor="middle" x="1160.74" y="-236.07" font-family="Times,serif" font-size="14.00">LocalDate</text>
-</a>
+<!-- mrs.application.coordinator.reservation.ReservationCoordinator.searchReservableRooms(mrs.domain.model.reservation.ReservedDate) -->
+<g id="node13" class="node"><title>mrs.application.coordinator.reservation.ReservationCoordinator.searchReservableRooms(mrs.domain.model.reservation.ReservedDate)</title>
+<g id="a_node13">
+    <a xlink:href="https://github.com/system-sekkei/library/tree/master/src/main/java/mrs/application/coordinator/reservation/ReservationCoordinator.java"
+       xlink:title="ReservationCoordinator.searchReservableRooms(ReservedDate)">
+        <ellipse fill="greenyellow" stroke="black" cx="1027.94" cy="-126.999" rx="110.48" ry="18"/>
+        <text text-anchor="middle" x="1027.94" y="-123.299" font-family="Times New Roman,serif" font-size="14.00">
+            予約可能会議室集合を探す
+        </text>
+    </a>
 </g>
 </g>
-<!-- mrs.application.service.room.RoomService.findReservableRooms(java.time.LocalDate)&#45;&gt;java.time.LocalDate -->
-<g id="edge17" class="edge">
-<title>mrs.application.service.room.RoomService.findReservableRooms(java.time.LocalDate)&#45;&gt;java.time.LocalDate</title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M1042.75,-231.13C1071.52,-233.24 1101.5,-235.43 1124.04,-237.08"/>
+<!-- mrs.domain.model.reservation.ReservedDate -->
+<g id="node15" class="node"><title>mrs.domain.model.reservation.ReservedDate</title>
+<g id="a_node15">
+    <a xlink:title="ReservedDate">
+        <polygon fill="none" stroke="black"
+                 points="1047.48,-97.8507 992.477,-97.8507 992.477,-61.8507 1047.48,-61.8507 1047.48,-97.8507"/>
+        <text text-anchor="middle" x="1019.98" y="-76.1507" font-family="Times New Roman,serif" font-size="14.00">予約日
+        </text>
+    </a>
+</g>
+</g>
+<!-- mrs.application.coordinator.reservation.ReservationCoordinator.searchReservableRooms(mrs.domain.model.reservation.ReservedDate)&#45;&gt;mrs.domain.model.reservation.ReservedDate -->
+<g id="edge14" class="edge"><title>mrs.application.coordinator.reservation.ReservationCoordinator.searchReservableRooms(mrs.domain.model.reservation.ReservedDate)&#45;&gt;mrs.domain.model.reservation.ReservedDate</title>
+    <path fill="none" stroke="black" stroke-dasharray="5,2"
+          d="M1024.89,-108.905C1024.29,-105.373 1023.66,-101.668 1023.07,-98.13"/>
+</g>
+<!-- mrs.domain.model.reservation.ReservableRooms -->
+<g id="node14" class="node"><title>mrs.domain.model.reservation.ReservableRooms</title>
+<g id="a_node14">
+    <a xlink:title="ReservableRooms">
+        <polygon fill="none" stroke="black"
+                 points="875.173,-159.757 744.173,-159.757 744.173,-123.757 875.173,-123.757 875.173,-159.757"/>
+        <text text-anchor="middle" x="809.673" y="-138.057" font-family="Times New Roman,serif" font-size="14.00">
+            予約可能会議室集合
+        </text>
+    </a>
+</g>
+</g>
+<!-- mrs.domain.model.reservation.ReservableRooms&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchReservableRooms(mrs.domain.model.reservation.ReservedDate) -->
+<g id="edge13" class="edge"><title>mrs.domain.model.reservation.ReservableRooms&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchReservableRooms(mrs.domain.model.reservation.ReservedDate)</title>
+    <path fill="none" stroke="black" stroke-width="2"
+          d="M875.457,-137.309C891.273,-136.239 908.539,-135.072 925.584,-133.92"/>
 </g>
 <!-- mrs.presentation.room.RoomsController -->
-<g id="node15" class="node">
-<title>mrs.presentation.room.RoomsController</title>
-<g id="a_node15"><a xlink:title="RoomsController">
-<polygon fill="lightgray" stroke="black" points="1020.76,-298.29 909.76,-298.29 909.76,-262.29 1020.76,-262.29 1020.76,-298.29"/>
-<text text-anchor="middle" x="965.26" y="-276.59" font-family="Times,serif" font-size="14.00">RoomsController</text>
-</a>
+<g id="node16" class="node"><title>mrs.presentation.room.RoomsController</title>
+<g id="a_node16">
+    <a xlink:title="RoomsController">
+        <polygon fill="lightgray" stroke="black"
+                 points="1105.97,-189.998 999.969,-189.998 999.969,-153.998 1105.97,-153.998 1105.97,-189.998"/>
+        <text text-anchor="middle" x="1052.97" y="-168.298" font-family="Times New Roman,serif" font-size="14.00">
+            会議室一覧画面
+        </text>
+    </a>
 </g>
 </g>
-<!-- mrs.presentation.room.RoomsController&#45;&gt;mrs.application.service.room.RoomService.findReservableRooms(java.time.LocalDate) -->
-<g id="edge18" class="edge">
-<title>mrs.presentation.room.RoomsController&#45;&gt;mrs.application.service.room.RoomService.findReservableRooms(java.time.LocalDate)</title>
-<path fill="none" stroke="black" stroke-dasharray="1,5" d="M960,-262.26C958.99,-258.8 957.91,-255.11 956.84,-251.45"/>
+<!-- mrs.presentation.room.RoomsController&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchReservableRooms(mrs.domain.model.reservation.ReservedDate) -->
+<g id="edge15" class="edge"><title>mrs.presentation.room.RoomsController&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchReservableRooms(mrs.domain.model.reservation.ReservedDate)</title>
+    <path fill="none" stroke="black" stroke-dasharray="1,5"
+          d="M1042.93,-153.954C1041.3,-151.02 1039.61,-147.981 1037.98,-145.046"/>
+</g>
+<!-- mrs.domain.model.reservation.ReservableRoomId -->
+<g id="node19" class="node"><title>mrs.domain.model.reservation.ReservableRoomId</title>
+<g id="a_node19">
+    <a xlink:title="ReservableRoomId">
+        <polygon fill="none" stroke="black"
+                 points="119.73,-163.263 -0.270397,-163.263 -0.270397,-127.263 119.73,-127.263 119.73,-163.263"/>
+        <text text-anchor="middle" x="59.7296" y="-141.563" font-family="Times New Roman,serif" font-size="14.00">
+            予約可能会議室ID
+        </text>
+    </a>
+</g>
+</g>
+<!-- mrs.application.coordinator.reservation.ReservationCoordinator.searchReservations(mrs.domain.model.reservation.ReservableRoomId)&#45;&gt;mrs.domain.model.reservation.ReservableRoomId -->
+<g id="edge17" class="edge"><title>mrs.application.coordinator.reservation.ReservationCoordinator.searchReservations(mrs.domain.model.reservation.ReservableRoomId)&#45;&gt;mrs.domain.model.reservation.ReservableRoomId</title>
+    <path fill="none" stroke="black" stroke-dasharray="5,2"
+          d="M222.921,-253.604C187.114,-229.832 123.408,-187.539 87.089,-163.427"/>
+</g>
+<!-- mrs.domain.model.reservation.Reservations -->
+<g id="node18" class="node"><title>mrs.domain.model.reservation.Reservations</title>
+<g id="a_node18">
+    <a xlink:title="Reservations">
+        <polygon fill="none" stroke="black"
+                 points="90.4542,-346.248 22.4542,-346.248 22.4542,-310.248 90.4542,-310.248 90.4542,-346.248"/>
+        <text text-anchor="middle" x="56.4542" y="-324.548" font-family="Times New Roman,serif" font-size="14.00">予約集合
+        </text>
+    </a>
+</g>
+</g>
+<!-- mrs.domain.model.reservation.Reservations&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchReservations(mrs.domain.model.reservation.ReservableRoomId) -->
+<g id="edge16" class="edge"><title>mrs.domain.model.reservation.Reservations&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchReservations(mrs.domain.model.reservation.ReservableRoomId)</title>
+    <path fill="none" stroke="black" stroke-width="2"
+          d="M90.4831,-318.163C119.999,-309.415 163.185,-296.616 197.071,-286.573"/>
 </g>
 </g>
 </svg>

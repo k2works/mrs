@@ -13,7 +13,7 @@
 <ul>
     <li th:each="room: ${rooms}">
         <a th:href="@{'/reservations/' + ${date} + '/' + ${room.meetingRoom.roomId}}"
-           th:text="${room.meetingRoom.roomName}"></a>
+           th:text="${room.meetingRoom.roomName.value}"></a>
     </li>
 </ul>
 <form method="post" th:action="@{/logout}">

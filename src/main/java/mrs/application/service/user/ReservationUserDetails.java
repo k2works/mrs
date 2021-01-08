@@ -7,6 +7,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 
+/**
+ * 予約ユーザー詳細
+ */
 public class ReservationUserDetails implements UserDetails {
     private final User user;
 
@@ -20,17 +23,17 @@ public class ReservationUserDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return AuthorityUtils.createAuthorityList("ROLE_" + this.user.getRoleName().name());
+        return AuthorityUtils.createAuthorityList("ROLE_" + this.user.roleName().name());
     }
 
     @Override
     public String getPassword() {
-        return this.user.getPassword();
+        return this.user.password().value();
     }
 
     @Override
     public String getUsername() {
-        return this.user.getUserId();
+        return this.user.userId().value();
     }
 
     @Override

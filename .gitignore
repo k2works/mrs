@@ -38,3 +38,4 @@ build/
 !.elasticbeanstalk/*.global.yml
 
 .gradle
+bin

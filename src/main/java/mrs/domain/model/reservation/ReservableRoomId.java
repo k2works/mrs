@@ -1,5 +1,7 @@
 package mrs.domain.model.reservation;
 
+import mrs.domain.model.room.RoomId;
+
 import javax.persistence.Embeddable;
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -14,12 +16,12 @@ public class ReservableRoomId implements Serializable {
 
     private LocalDate reservedDate;
 
-    public ReservableRoomId(Integer roomId, LocalDate reservedDate) {
-        this.roomId = roomId;
-        this.reservedDate = reservedDate;
+    public ReservableRoomId() {
     }
 
-    public ReservableRoomId(){
+    public ReservableRoomId(RoomId roomId, ReservedDate reservedDate) {
+        this.roomId = roomId.value();
+        this.reservedDate = reservedDate.value;
     }
 
     @Override
@@ -49,19 +51,11 @@ public class ReservableRoomId implements Serializable {
         return true;
     }
 
-    public Integer getRoomId() {
+    public Integer roomId() {
         return roomId;
     }
 
-    public void setRoomId(Integer roomId) {
-        this.roomId = roomId;
-    }
-
-    public LocalDate getReservedDate() {
+    public LocalDate reservedDate() {
         return reservedDate;
-    }
-
-    public void setReservedDate(LocalDate reservedDate) {
-        this.reservedDate = reservedDate;
     }
 }

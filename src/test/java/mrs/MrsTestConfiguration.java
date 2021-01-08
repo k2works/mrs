@@ -1,8 +1,7 @@
 package mrs;
 
 import mrs.application.service.user.ReservationUserDetails;
-import mrs.domain.model.user.RoleName;
-import mrs.domain.model.user.User;
+import mrs.domain.model.user.*;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
@@ -17,13 +16,13 @@ public class MrsTestConfiguration {
     public UserDetailsService userDetailsService() {
         return new UserDetailsService() {
             @Override
-            public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-                User user = new User();
-                user.setUserId(s);
-                user.setFirstName("太郎");
-                user.setLastName("山田");
-                user.setRoleName(RoleName.ADMIN);
-                user.setPassword("password");
+            public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
+                User user = new User(
+                        new UserId(userId),
+                        new Password("password"),
+                        new Name("山田", "太郎"),
+                        RoleName.ADMIN
+                );
                 return new ReservationUserDetails(user);
             }
         };

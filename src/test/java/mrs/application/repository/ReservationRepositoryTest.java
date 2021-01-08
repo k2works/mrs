@@ -3,7 +3,10 @@ package mrs.application.repository;
 import mrs.MrsApplication;
 import mrs.domain.model.reservation.ReservableRoomId;
 import mrs.domain.model.reservation.Reservation;
+import mrs.domain.model.reservation.ReservedDate;
+import mrs.domain.model.room.RoomId;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,6 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @Sql("/schema.sql")
 @Sql("/data.sql")
 @SpringBootTest(classes = MrsApplication.class)
+@DisplayName("予約レポジトリ")
 public class ReservationRepositoryTest {
 
     @Autowired
@@ -27,7 +31,7 @@ public class ReservationRepositoryTest {
     @Test
     public void 予約一覧を取得する() {
         LocalDate date = LocalDate.now();
-        ReservableRoomId reservableRoomId = new ReservableRoomId(1, date);
+        ReservableRoomId reservableRoomId = new ReservableRoomId(new RoomId(1), new ReservedDate(date));
         List<Reservation> reservations = reservationRepository.findAll();
 
         assertNotNull(reservations);
@@ -40,7 +44,7 @@ public class ReservationRepositoryTest {
         Reservation value = reservation.get();
 
         Assertions.assertNotNull(value);
-        Assertions.assertEquals("太郎", value.getUser().getFirstName());
+        Assertions.assertEquals("山田 太郎", value.user().name().toString());
     }
 
     @Test
@@ -49,7 +53,7 @@ public class ReservationRepositoryTest {
         Reservation value = reservation.get();
 
         Assertions.assertNotNull(value);
-        Assertions.assertEquals(1, value.getReservableRoom().getReservableRoomId().getRoomId());
-        Assertions.assertEquals(LocalDate.now(), value.getReservableRoom().getReservableRoomId().getReservedDate());
+        Assertions.assertEquals(1, value.reservableRoom().reservableRoomId().roomId());
+        Assertions.assertEquals(LocalDate.now(), value.reservableRoom().reservableRoomId().reservedDate());
     }
 }

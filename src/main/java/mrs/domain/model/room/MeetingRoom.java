@@ -17,27 +17,19 @@ public class MeetingRoom implements Serializable {
 
     private String roomName;
 
-    public Integer roomId() {
-        return roomId;
+    public MeetingRoom() {
     }
 
-    public String roomName() {
-        return roomName;
+    public MeetingRoom(RoomId roomId, RoomName roomName) {
+        this.roomId = roomId.value;
+        this.roomName = roomName.value;
     }
 
-    public Integer getRoomId() {
-        return roomId;
+    public RoomId roomId() {
+        return new RoomId(roomId);
     }
 
-    public void setRoomId(Integer roomId) {
-        this.roomId = roomId;
-    }
-
-    public String getRoomName() {
-        return roomName;
-    }
-
-    public void setRoomName(String roomName) {
-        this.roomName = roomName;
+    public RoomName roomName() {
+        return new RoomName(roomName);
     }
 }

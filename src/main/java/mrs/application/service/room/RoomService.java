@@ -3,11 +3,13 @@ package mrs.application.service.room;
 import mrs.application.repository.MeetingRoomRepository;
 import mrs.application.repository.ReservableRoomRepository;
 import mrs.domain.model.reservation.ReservableRoom;
+import mrs.domain.model.reservation.ReservableRooms;
+import mrs.domain.model.reservation.ReservedDate;
 import mrs.domain.model.room.MeetingRoom;
+import mrs.domain.model.room.RoomId;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -24,11 +26,18 @@ public class RoomService {
         this.reservableRoomRepository = reservableRoomRepository;
     }
 
-    public MeetingRoom findMeetingRoom(Integer roomId) {
-        return meetingRoomRepository.getOne(roomId);
+    /**
+     * 会議室を探す
+     */
+    public MeetingRoom findMeetingRoom(RoomId roomId) {
+        return meetingRoomRepository.getOne(roomId.value());
     }
 
-    public List<ReservableRoom> findReservableRooms(LocalDate date) {
-        return reservableRoomRepository.findByReservableRoomId_ReservedDateOrderByReservableRoomId_RoomIdAsc(date);
+    /**
+     * 予約可能会議室集合を探す
+     */
+    public ReservableRooms findReservableRooms(ReservedDate date) {
+        List<ReservableRoom> result = reservableRoomRepository.findByReservableRoomId_ReservedDateOrderByReservableRoomId_RoomIdAsc(date.value());
+        return new ReservableRooms(result);
     }
 }
