@@ -91,9 +91,9 @@
 <path fill="none" stroke="black" d="M412.9,-259.267C450.999,-253.435 497.204,-246.363 536.636,-240.328"/>
 <polygon fill="black" stroke="black" points="537.414,-243.75 546.77,-238.777 536.355,-236.83 537.414,-243.75"/>
 </g>
-<!-- mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(java.time.LocalTime, java.time.LocalTime, mrs.application.service.user.ReservationUserDetails, java.time.LocalDate, java.lang.Integer) -->
-<g id="node6" class="node"><title>mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(java.time.LocalTime, java.time.LocalTime, mrs.application.service.user.ReservationUserDetails, java.time.LocalDate, java.lang.Integer)</title>
-<g id="a_node6"><a xlink:href="https://github.com/system-sekkei/library/tree/master/src/main/java/mrs/application/coordinator/reservation/ReservationCoordinator.java" xlink:title="ReservationCoordinator.reserveMeetingRoom(LocalTime, LocalTime, ReservationUserDetails, LocalDate, Integer)">
+<!-- mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.ReservedTime, mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails) -->
+<g id="node6" class="node"><title>mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.ReservedTime, mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails)</title>
+<g id="a_node6"><a xlink:href="https://github.com/system-sekkei/library/tree/master/src/main/java/mrs/application/coordinator/reservation/ReservationCoordinator.java" xlink:title="ReservationCoordinator.reserveMeetingRoom(ReservedTime, ReservableRoom, ReservationUserDetails)">
 <ellipse fill="greenyellow" stroke="black" cx="335.239" cy="-163" rx="77.1866" ry="18"/>
 <text text-anchor="middle" x="335.239" y="-159.3" font-family="Times New Roman,serif" font-size="14.00">会議室を予約する</text>
 </a>
@@ -107,8 +107,8 @@
 </a>
 </g>
 </g>
-<!-- mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(java.time.LocalTime, java.time.LocalTime, mrs.application.service.user.ReservationUserDetails, java.time.LocalDate, java.lang.Integer)&#45;&gt;mrs.application.service.reservation.ReservationService.reserve(mrs.domain.model.reservation.Reservation) -->
-<g id="edge4" class="edge"><title>mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(java.time.LocalTime, java.time.LocalTime, mrs.application.service.user.ReservationUserDetails, java.time.LocalDate, java.lang.Integer)&#45;&gt;mrs.application.service.reservation.ReservationService.reserve(mrs.domain.model.reservation.Reservation)</title>
+<!-- mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.ReservedTime, mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails)&#45;&gt;mrs.application.service.reservation.ReservationService.reserve(mrs.domain.model.reservation.Reservation) -->
+<g id="edge4" class="edge"><title>mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.ReservedTime, mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails)&#45;&gt;mrs.application.service.reservation.ReservationService.reserve(mrs.domain.model.reservation.Reservation)</title>
 <path fill="none" stroke="black" d="M410.122,-158.41C431.179,-154.098 452.989,-146.427 469.978,-133 485.884,-120.429 473.937,-104.4 489.978,-92 503.842,-81.2825 520.862,-74.5046 538.056,-70.2843"/>
 <polygon fill="black" stroke="black" points="539.148,-73.6286 548.177,-68.0846 537.662,-66.7883 539.148,-73.6286"/>
 </g>
@@ -162,8 +162,18 @@
 </a>
 </g>
 </g>
+<!-- mrs.presentation.reservation.ReservationsController.reserve(mrs.presentation.reservation.ReservationForm, org.springframework.validation.BindingResult, mrs.application.service.user.ReservationUserDetails, java.time.LocalDate, java.lang.Integer, org.springframework.ui.Model) -->
+<g id="node13" class="node"><title>mrs.presentation.reservation.ReservationsController.reserve(mrs.presentation.reservation.ReservationForm, org.springframework.validation.BindingResult, mrs.application.service.user.ReservationUserDetails, java.time.LocalDate, java.lang.Integer, org.springframework.ui.Model)</title>
+<polygon fill="lightgray" stroke="black" points="118,-181 62,-181 62,-145 118,-145 118,-181"/>
+<text text-anchor="middle" x="90" y="-159.3" font-family="Times New Roman,serif" font-size="14.00">reserve</text>
+</g>
+<!-- mrs.presentation.reservation.ReservationsController.reserve(mrs.presentation.reservation.ReservationForm, org.springframework.validation.BindingResult, mrs.application.service.user.ReservationUserDetails, java.time.LocalDate, java.lang.Integer, org.springframework.ui.Model)&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.ReservedTime, mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails) -->
+<g id="edge8" class="edge"><title>mrs.presentation.reservation.ReservationsController.reserve(mrs.presentation.reservation.ReservationForm, org.springframework.validation.BindingResult, mrs.application.service.user.ReservationUserDetails, java.time.LocalDate, java.lang.Integer, org.springframework.ui.Model)&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.ReservedTime, mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails)</title>
+<path fill="none" stroke="black" stroke-dasharray="5,2" d="M118.43,-163C149.617,-163 202.096,-163 247.493,-163"/>
+<polygon fill="black" stroke="black" points="247.66,-166.5 257.66,-163 247.66,-159.5 247.66,-166.5"/>
+</g>
 <!-- mrs.presentation.reservation.ReservationsController.cancel(mrs.application.service.user.ReservationUserDetails, java.lang.Integer, java.lang.Integer, java.time.LocalDate, org.springframework.ui.Model) -->
-<g id="node13" class="node"><title>mrs.presentation.reservation.ReservationsController.cancel(mrs.application.service.user.ReservationUserDetails, java.lang.Integer, java.lang.Integer, java.time.LocalDate, org.springframework.ui.Model)</title>
+<g id="node14" class="node"><title>mrs.presentation.reservation.ReservationsController.cancel(mrs.application.service.user.ReservationUserDetails, java.lang.Integer, java.lang.Integer, java.time.LocalDate, org.springframework.ui.Model)</title>
 <polygon fill="lightgray" stroke="black" points="117,-235 63,-235 63,-199 117,-199 117,-235"/>
 <text text-anchor="middle" x="90" y="-213.3" font-family="Times New Roman,serif" font-size="14.00">cancel</text>
 </g>
@@ -171,16 +181,6 @@
 <g id="edge7" class="edge"><title>mrs.presentation.reservation.ReservationsController.cancel(mrs.application.service.user.ReservationUserDetails, java.lang.Integer, java.lang.Integer, java.time.LocalDate, org.springframework.ui.Model)&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.cancelReservedMeetingRoom(mrs.domain.model.reservation.ReservationId)</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M117.031,-217C137.268,-217 167.046,-217 198.104,-217"/>
 <polygon fill="black" stroke="black" points="198.222,-220.5 208.222,-217 198.222,-213.5 198.222,-220.5"/>
-</g>
-<!-- mrs.presentation.reservation.ReservationsController.reserve(mrs.presentation.reservation.ReservationForm, org.springframework.validation.BindingResult, mrs.application.service.user.ReservationUserDetails, java.time.LocalDate, java.lang.Integer, org.springframework.ui.Model) -->
-<g id="node14" class="node"><title>mrs.presentation.reservation.ReservationsController.reserve(mrs.presentation.reservation.ReservationForm, org.springframework.validation.BindingResult, mrs.application.service.user.ReservationUserDetails, java.time.LocalDate, java.lang.Integer, org.springframework.ui.Model)</title>
-<polygon fill="lightgray" stroke="black" points="118,-181 62,-181 62,-145 118,-145 118,-181"/>
-<text text-anchor="middle" x="90" y="-159.3" font-family="Times New Roman,serif" font-size="14.00">reserve</text>
-</g>
-<!-- mrs.presentation.reservation.ReservationsController.reserve(mrs.presentation.reservation.ReservationForm, org.springframework.validation.BindingResult, mrs.application.service.user.ReservationUserDetails, java.time.LocalDate, java.lang.Integer, org.springframework.ui.Model)&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(java.time.LocalTime, java.time.LocalTime, mrs.application.service.user.ReservationUserDetails, java.time.LocalDate, java.lang.Integer) -->
-<g id="edge8" class="edge"><title>mrs.presentation.reservation.ReservationsController.reserve(mrs.presentation.reservation.ReservationForm, org.springframework.validation.BindingResult, mrs.application.service.user.ReservationUserDetails, java.time.LocalDate, java.lang.Integer, org.springframework.ui.Model)&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(java.time.LocalTime, java.time.LocalTime, mrs.application.service.user.ReservationUserDetails, java.time.LocalDate, java.lang.Integer)</title>
-<path fill="none" stroke="black" stroke-dasharray="5,2" d="M118.43,-163C149.617,-163 202.096,-163 247.493,-163"/>
-<polygon fill="black" stroke="black" points="247.66,-166.5 257.66,-163 247.66,-159.5 247.66,-166.5"/>
 </g>
 <!-- mrs.presentation.reservation.ReservationsController.reserveForm(java.time.LocalDate, java.lang.Integer, org.springframework.ui.Model) -->
 <g id="node15" class="node"><title>mrs.presentation.reservation.ReservationsController.reserveForm(java.time.LocalDate, java.lang.Integer, org.springframework.ui.Model)</title>
@@ -197,23 +197,23 @@
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M133.798,-283.114C151.844,-288.032 173.122,-293.583 192.5,-298 218.581,-303.945 247.566,-309.628 272.495,-314.234"/>
 <polygon fill="black" stroke="black" points="272.083,-317.716 282.549,-316.074 273.343,-310.831 272.083,-317.716"/>
 </g>
-<!-- mrs.presentation.room.RoomsController.listRooms(java.time.LocalDate, org.springframework.ui.Model) -->
-<g id="node16" class="node"><title>mrs.presentation.room.RoomsController.listRooms(java.time.LocalDate, org.springframework.ui.Model)</title>
+<!-- mrs.presentation.room.RoomsController.listRooms(org.springframework.ui.Model) -->
+<g id="node16" class="node"><title>mrs.presentation.room.RoomsController.listRooms(org.springframework.ui.Model)</title>
 <polygon fill="lightgray" stroke="black" points="127,-426 53,-426 53,-390 127,-390 127,-426"/>
 <text text-anchor="middle" x="90" y="-404.3" font-family="Times New Roman,serif" font-size="14.00">listRooms</text>
 </g>
-<!-- mrs.presentation.room.RoomsController.listRooms(java.time.LocalDate, org.springframework.ui.Model)&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchReservableRooms(mrs.domain.model.reservation.ReservedDate) -->
-<g id="edge10" class="edge"><title>mrs.presentation.room.RoomsController.listRooms(java.time.LocalDate, org.springframework.ui.Model)&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchReservableRooms(mrs.domain.model.reservation.ReservedDate)</title>
+<!-- mrs.presentation.room.RoomsController.listRooms(org.springframework.ui.Model)&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchReservableRooms(mrs.domain.model.reservation.ReservedDate) -->
+<g id="edge11" class="edge"><title>mrs.presentation.room.RoomsController.listRooms(org.springframework.ui.Model)&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchReservableRooms(mrs.domain.model.reservation.ReservedDate)</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M127.153,-403.69C155.762,-400.279 197.131,-395.347 235.384,-390.786"/>
 <polygon fill="black" stroke="black" points="236.038,-394.233 245.553,-389.573 235.209,-387.282 236.038,-394.233"/>
 </g>
-<!-- mrs.presentation.room.RoomsController.listRooms(org.springframework.ui.Model) -->
-<g id="node17" class="node"><title>mrs.presentation.room.RoomsController.listRooms(org.springframework.ui.Model)</title>
+<!-- mrs.presentation.room.RoomsController.listRooms(java.time.LocalDate, org.springframework.ui.Model) -->
+<g id="node17" class="node"><title>mrs.presentation.room.RoomsController.listRooms(java.time.LocalDate, org.springframework.ui.Model)</title>
 <polygon fill="lightgray" stroke="black" points="127,-372 53,-372 53,-336 127,-336 127,-372"/>
 <text text-anchor="middle" x="90" y="-350.3" font-family="Times New Roman,serif" font-size="14.00">listRooms</text>
 </g>
-<!-- mrs.presentation.room.RoomsController.listRooms(org.springframework.ui.Model)&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchReservableRooms(mrs.domain.model.reservation.ReservedDate) -->
-<g id="edge11" class="edge"><title>mrs.presentation.room.RoomsController.listRooms(org.springframework.ui.Model)&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchReservableRooms(mrs.domain.model.reservation.ReservedDate)</title>
+<!-- mrs.presentation.room.RoomsController.listRooms(java.time.LocalDate, org.springframework.ui.Model)&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchReservableRooms(mrs.domain.model.reservation.ReservedDate) -->
+<g id="edge10" class="edge"><title>mrs.presentation.room.RoomsController.listRooms(java.time.LocalDate, org.springframework.ui.Model)&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchReservableRooms(mrs.domain.model.reservation.ReservedDate)</title>
 <path fill="none" stroke="black" stroke-dasharray="5,2" d="M127.153,-357.716C154.673,-360.544 193.999,-364.586 231.001,-368.389"/>
 <polygon fill="black" stroke="black" points="231.059,-371.914 241.365,-369.454 231.775,-364.95 231.059,-371.914"/>
 </g>

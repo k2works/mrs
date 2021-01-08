@@ -17,7 +17,7 @@
 <text text-anchor="middle" x="545.5" y="-46" font-family="Times New Roman,serif" font-size="30.00">ReservableRoomId</text>
 </g>
 <!-- mrs.domain.model.reservation.ReservableRoom&#45;&gt;mrs.domain.model.reservation.ReservableRoomId -->
-<g id="edge1" class="edge"><title>mrs.domain.model.reservation.ReservableRoom&#45;&gt;mrs.domain.model.reservation.ReservableRoomId</title>
+<g id="edge3" class="edge"><title>mrs.domain.model.reservation.ReservableRoom&#45;&gt;mrs.domain.model.reservation.ReservableRoomId</title>
 <path fill="none" stroke="black" d="M387.165,-89.4824C395.637,-88.4334 404.243,-87.3677 412.841,-86.303"/>
 <polygon fill="black" stroke="black" points="413.427,-89.7573 422.921,-85.0549 412.566,-82.8104 413.427,-89.7573"/>
 </g>
@@ -28,7 +28,7 @@
 <text text-anchor="middle" x="768.5" y="-83" font-family="Times New Roman,serif" font-size="30.00">RoomId</text>
 </g>
 <!-- mrs.domain.model.reservation.ReservableRoomId&#45;&gt;mrs.domain.model.room.RoomId -->
-<g id="edge3" class="edge"><title>mrs.domain.model.reservation.ReservableRoomId&#45;&gt;mrs.domain.model.room.RoomId</title>
+<g id="edge5" class="edge"><title>mrs.domain.model.reservation.ReservableRoomId&#45;&gt;mrs.domain.model.room.RoomId</title>
 <path fill="none" stroke="black" d="M668.313,-90.394C676.992,-91.8471 685.577,-93.2843 693.85,-94.6695"/>
 <polygon fill="black" stroke="black" points="693.333,-98.1315 703.773,-96.3308 694.489,-91.2276 693.333,-98.1315"/>
 </g>
@@ -39,7 +39,7 @@
 <text text-anchor="middle" x="65.5" y="-91.8" font-family="Times New Roman,serif" font-size="14.00">ReservableRooms</text>
 </g>
 <!-- mrs.domain.model.reservation.ReservableRooms&#45;&gt;mrs.domain.model.reservation.ReservableRoom -->
-<g id="edge5" class="edge"><title>mrs.domain.model.reservation.ReservableRooms&#45;&gt;mrs.domain.model.reservation.ReservableRoom</title>
+<g id="edge1" class="edge"><title>mrs.domain.model.reservation.ReservableRooms&#45;&gt;mrs.domain.model.reservation.ReservableRoom</title>
 <path fill="none" stroke="black" d="M131.066,-103C139.365,-103 148.06,-103 156.894,-103"/>
 <polygon fill="black" stroke="black" points="156.913,-106.5 166.913,-103 156.913,-99.5001 156.913,-106.5"/>
 </g>
@@ -50,12 +50,12 @@
 <text text-anchor="middle" x="65.5" y="-30.8" font-family="Times New Roman,serif" font-size="14.00">Reservation</text>
 </g>
 <!-- mrs.domain.model.reservation.Reservation&#45;&gt;mrs.domain.model.reservation.ReservableRoom -->
-<g id="edge6" class="edge"><title>mrs.domain.model.reservation.Reservation&#45;&gt;mrs.domain.model.reservation.ReservableRoom</title>
+<g id="edge2" class="edge"><title>mrs.domain.model.reservation.Reservation&#45;&gt;mrs.domain.model.reservation.ReservableRoom</title>
 <path fill="none" stroke="black" d="M107.391,-53.9062C121.96,-58.1481 139.193,-63.166 156.986,-68.3468"/>
 <polygon fill="black" stroke="black" points="156.335,-71.8026 166.915,-71.2378 158.292,-65.0817 156.335,-71.8026"/>
 </g>
 <!-- mrs.domain.model.reservation.Reservation&#45;&gt;mrs.domain.model.reservation.ReservableRoomId -->
-<g id="edge2" class="edge"><title>mrs.domain.model.reservation.Reservation&#45;&gt;mrs.domain.model.reservation.ReservableRoomId</title>
+<g id="edge4" class="edge"><title>mrs.domain.model.reservation.Reservation&#45;&gt;mrs.domain.model.reservation.ReservableRoomId</title>
 <path fill="none" stroke="black" d="M107.001,-43.4331C167.831,-45.6903 286.387,-50.4954 387,-57 395.364,-57.5407 403.974,-58.1375 412.653,-58.7692"/>
 <polygon fill="black" stroke="black" points="412.63,-62.2771 422.862,-59.5256 413.148,-55.2962 412.63,-62.2771"/>
 </g>
@@ -66,7 +66,7 @@
 <text text-anchor="middle" x="545.5" y="-132.8" font-family="Times New Roman,serif" font-size="14.00">MeetingRoom</text>
 </g>
 <!-- mrs.domain.model.room.MeetingRoom&#45;&gt;mrs.domain.model.room.RoomId -->
-<g id="edge4" class="edge"><title>mrs.domain.model.room.MeetingRoom&#45;&gt;mrs.domain.model.room.RoomId</title>
+<g id="edge6" class="edge"><title>mrs.domain.model.room.MeetingRoom&#45;&gt;mrs.domain.model.room.RoomId</title>
 <path fill="none" stroke="black" d="M593.639,-136.108C622.705,-131.242 660.604,-124.897 693.596,-119.373"/>
 <polygon fill="black" stroke="black" points="694.378,-122.791 703.663,-117.688 693.222,-115.887 694.378,-122.791"/>
 </g>
