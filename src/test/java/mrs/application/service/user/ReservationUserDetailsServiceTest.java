@@ -22,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @DisplayName("予約ユーザーサービス")
 public class ReservationUserDetailsServiceTest {
    @Nested
-   @DisplayName("ユーザー情報")
+   @DisplayName("予約ユーザーを取得する")
    class UserInfo {
       @Autowired
       ReservationUserDetailsService reservationUserDetailsService;

@@ -22,8 +22,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @DisplayName("会議室サービス")
 public class RoomServiceTest {
     @Nested
-    @DisplayName("会議室一覧")
-    class ListRooms {
+    @DisplayName("会議室を探す")
+    class SearchMeetingRoom {
         @Autowired
         RoomService roomService;
 
@@ -31,17 +31,24 @@ public class RoomServiceTest {
         @Sql("/schema.sql")
         @Sql("/data.sql")
         @Transactional
-        public void 会議室一覧を取得する() {
+        public void 会議室が登録されていれば取得できる() {
             RoomId id = new RoomId(1);
             MeetingRoom room = roomService.findMeetingRoom(id);
 
             assertEquals(id, room.roomId());
         }
+    }
+
+    @Nested
+    @DisplayName("予約可能会議室集合を探す")
+    class SearchReservableRooms {
+        @Autowired
+        RoomService roomService;
 
         @Test
         @Sql("/schema.sql")
         @Sql("/data.sql")
-        public void 予約可能会議室一覧を取得する() {
+        public void 予約可能会議室が存在すれば予約可能会議室集合を取得できる() {
             ReservedDate date = new ReservedDate(LocalDate.now());
             ReservableRooms rooms = roomService.findReservableRooms(date);
 

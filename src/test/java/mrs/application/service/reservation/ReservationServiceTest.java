@@ -34,62 +34,8 @@ import static org.junit.jupiter.api.Assertions.*;
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 @DisplayName("予約サービス")
 public class ReservationServiceTest {
-    private ReservableRoom 予約が可能な会議室を作る(MeetingRoom room) {
-        RoomId roomId = new RoomId(1);
-        ReservedDate date = new ReservedDate(LocalDate.now());
-        return new ReservableRoom(
-                new ReservableRoomId(roomId, date),
-                room
-        );
-    }
-
-    private void 予約会議室を登録する(ReservableRoom reservableRoom, ReservableRoomRepository repository) {
-        repository.save(reservableRoom);
-    }
-
-    private void 予約する(ReservationService service, Reservation reservation) {
-        service.reserve(reservation);
-    }
-
-    private void キャンセルする(ReservationService service, Reservation reservation) {
-        service.cancel(reservation);
-    }
-
-    private MeetingRoom 会議室を作る(MeetingRoomRepository repository) {
-        MeetingRoom room = new MeetingRoom(new RoomId(1), new RoomName("会議室"));
-        repository.save(room);
-        return room;
-    }
-
-    private Reservation 予約を作る(ReservableRoom reservableRoom) {
-        ReservedTime reservedTime = new ReservedTime(null, null);
-        Reservation reservation = new Reservation(reservedTime, reservableRoom, null);
-        return reservation;
-    }
-
-    private Reservation 予約を作る(ReservableRoom reservableRoom, LocalTime start, LocalTime end) {
-        ReservedTime reservedTime = new ReservedTime(start, end);
-        User user = ユーザーを作る();
-        Reservation reservation = new Reservation(reservedTime, reservableRoom, user);
-        return reservation;
-    }
-
-    private User ユーザーを作る() {
-        User user = new User(
-                new UserId("tar-yamada"),
-                new Password("$2a$10$oxSJ1.keBwxmsMLkcT9lPeAIxfNTPNQxpeywMrF7A3kVszwUTqfTK"),
-                new Name("山田", "太郎"),
-                RoleName.ADMIN
-        );
-        return user;
-    }
-
-    private void ユーザーを登録する(UserRepository repository) {
-        repository.save(ユーザーを作る());
-    }
-
     @Nested
-    @DisplayName("予約")
+    @DisplayName("会議室を予約する")
     class Reserve {
         @Autowired
         ReservationService reservationService;
@@ -105,7 +51,7 @@ public class ReservationServiceTest {
         @Test
         @Sql("/data.sql")
         @Transactional
-        public void 会議室を予約する() {
+        public void 会議室を予約が成功したら予約データが登録される() {
             MeetingRoom room = new MeetingRoom(new RoomId(1), new RoomName("会議室"));
             ReservableRoom reservableRoom = 予約が可能な会議室を作る(room);
             mrs.domain.model.reservation.Reservation reservation = 予約を作る(reservableRoom, LocalTime.of(9, 0), LocalTime.of(10, 0));
@@ -176,7 +122,7 @@ public class ReservationServiceTest {
     }
 
     @Nested
-    @DisplayName("キャンセル")
+    @DisplayName("会議室の予約をキャンセルする")
     class Cancel {
         @Autowired
         ReservationService reservationService;
@@ -191,7 +137,7 @@ public class ReservationServiceTest {
 
         @Test
         @WithMockUser(username = "test", roles = {"ADMIN"})
-        public void 予約を取り消す() {
+        public void 予約をキャンセルしたら予約データが削除される() {
             ユーザーを登録する(userRepository);
             MeetingRoom room = 会議室を作る(meetingRoomRepository);
             ReservableRoom reservableRoom = 予約が可能な会議室を作る(room);
@@ -203,6 +149,60 @@ public class ReservationServiceTest {
             List<Reservation> result = 予約を全件検索する(reservationRepository);
             assertEquals(0, result.size());
         }
+    }
+
+    private ReservableRoom 予約が可能な会議室を作る(MeetingRoom room) {
+        RoomId roomId = new RoomId(1);
+        ReservedDate date = new ReservedDate(LocalDate.now());
+        return new ReservableRoom(
+                new ReservableRoomId(roomId, date),
+                room
+        );
+    }
+
+    private void 予約会議室を登録する(ReservableRoom reservableRoom, ReservableRoomRepository repository) {
+        repository.save(reservableRoom);
+    }
+
+    private void 予約する(ReservationService service, Reservation reservation) {
+        service.reserve(reservation);
+    }
+
+    private void キャンセルする(ReservationService service, Reservation reservation) {
+        service.cancel(reservation);
+    }
+
+    private MeetingRoom 会議室を作る(MeetingRoomRepository repository) {
+        MeetingRoom room = new MeetingRoom(new RoomId(1), new RoomName("会議室"));
+        repository.save(room);
+        return room;
+    }
+
+    private Reservation 予約を作る(ReservableRoom reservableRoom) {
+        ReservedTime reservedTime = new ReservedTime(null, null);
+        Reservation reservation = new Reservation(reservedTime, reservableRoom, null);
+        return reservation;
+    }
+
+    private Reservation 予約を作る(ReservableRoom reservableRoom, LocalTime start, LocalTime end) {
+        ReservedTime reservedTime = new ReservedTime(start, end);
+        User user = ユーザーを作る();
+        Reservation reservation = new Reservation(reservedTime, reservableRoom, user);
+        return reservation;
+    }
+
+    private User ユーザーを作る() {
+        User user = new User(
+                new UserId("tar-yamada"),
+                new Password("$2a$10$oxSJ1.keBwxmsMLkcT9lPeAIxfNTPNQxpeywMrF7A3kVszwUTqfTK"),
+                new Name("山田", "太郎"),
+                RoleName.ADMIN
+        );
+        return user;
+    }
+
+    private void ユーザーを登録する(UserRepository repository) {
+        repository.save(ユーザーを作る());
     }
 
     private Reservation 予約を検索する(Integer id, ReservationRepository repository) {
