@@ -4,10 +4,7 @@ import mrs.application.coordinator.reservation.ReservationCoordinator;
 import mrs.application.service.reservation.AlreadyReservedException;
 import mrs.application.service.reservation.UnavailableReservationException;
 import mrs.application.service.user.ReservationUserDetails;
-import mrs.domain.model.reservation.ReservableRoomId;
-import mrs.domain.model.reservation.ReservationId;
-import mrs.domain.model.reservation.Reservations;
-import mrs.domain.model.reservation.ReservedDate;
+import mrs.domain.model.reservation.*;
 import mrs.domain.model.room.MeetingRoom;
 import mrs.domain.model.room.RoomId;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -77,7 +74,9 @@ public class ReservationsController {
         }
 
         try {
-            reservationCoordinator.reserveMeetingRoom(form.getStartTime(), form.getEndTime(), userDetails, date, roomId);
+            ReservableRoom reservableRoom = new ReservableRoom(new ReservableRoomId(new RoomId(roomId), new ReservedDate(date)));
+            ReservedTime reservedTime = new ReservedTime(form.getStartTime(), form.getEndTime());
+            reservationCoordinator.reserveMeetingRoom(reservedTime, reservableRoom, userDetails);
         } catch (UnavailableReservationException | AlreadyReservedException e) {
             model.addAttribute("error", e.getMessage());
             return reserveForm(date, roomId, model);

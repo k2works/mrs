@@ -8,9 +8,6 @@ import mrs.domain.model.room.MeetingRoom;
 import mrs.domain.model.room.RoomId;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-
 /**
  * 会議室予約業務
  */
@@ -27,10 +24,7 @@ public class ReservationCoordinator {
     /**
      * 会議室を予約する
      */
-    public void reserveMeetingRoom(LocalTime startTime, LocalTime endTime, ReservationUserDetails userDetails, LocalDate date, Integer roomId) {
-        ReservableRoom reservableRoom = new ReservableRoom(
-                new ReservableRoomId(new RoomId(roomId), new ReservedDate(date)));
-        ReservedTime reservedTime = new ReservedTime(startTime, endTime);
+    public void reserveMeetingRoom(ReservedTime reservedTime, ReservableRoom reservableRoom, ReservationUserDetails userDetails) {
         Reservation reservation = new Reservation(
                 reservedTime,
                 reservableRoom,
