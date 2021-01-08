@@ -60,4 +60,11 @@ public class ReservationCoordinator {
     public MeetingRoom searchMeetingRoom(RoomId roomId) {
         return roomService.findMeetingRoom(roomId);
     }
+
+    /**
+     * 予約可能会議室集合を探す
+     */
+    public ReservableRooms searchReservableRooms(ReservedDate reservedDate) {
+        return roomService.findReservableRooms(reservedDate);
+    }
 }

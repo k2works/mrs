@@ -1,6 +1,6 @@
 package mrs.presentation.room;
 
-import mrs.application.service.room.RoomService;
+import mrs.application.coordinator.reservation.ReservationCoordinator;
 import mrs.domain.model.reservation.ReservableRooms;
 import mrs.domain.model.reservation.ReservedDate;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -18,16 +18,16 @@ import java.time.LocalDate;
 @Controller
 @RequestMapping("rooms")
 public class RoomsController {
-    private final RoomService roomService;
+    private final ReservationCoordinator reservationCoordinator;
 
-    public RoomsController(RoomService roomService) {
-        this.roomService = roomService;
+    public RoomsController(ReservationCoordinator reservationCoordinator) {
+        this.reservationCoordinator = reservationCoordinator;
     }
 
     @GetMapping
     String listRooms(Model model) {
         ReservedDate date = new ReservedDate(LocalDate.now());
-        ReservableRooms rooms = roomService.findReservableRooms(date);
+        ReservableRooms rooms = reservationCoordinator.searchReservableRooms(date);
         model.addAttribute("date", date.value());
         model.addAttribute("rooms", rooms.value());
         return "room/listRooms";
@@ -37,7 +37,8 @@ public class RoomsController {
     String listRooms(
             @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @PathVariable("date") LocalDate date, Model model
     ) {
-        ReservableRooms rooms = roomService.findReservableRooms(new ReservedDate(date));
+        ReservedDate reservedDate = new ReservedDate(date);
+        ReservableRooms rooms = reservationCoordinator.searchReservableRooms(reservedDate);
         model.addAttribute("rooms", rooms.value());
         return "room/listRooms";
     }
