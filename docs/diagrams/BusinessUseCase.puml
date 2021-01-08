@@ -1,0 +1,19 @@
+@startuml
+
+title ビジネスユースケース図 - 会議室予約業務
+
+left to right direction
+
+actor 利用者
+
+usecase Web予約
+usecase Web予約キャンセル
+
+artifact 会議室
+
+:利用者: -- (Web予約)
+:利用者: -- (Web予約キャンセル)
+(Web予約) -- 会議室
+(Web予約キャンセル) -- 会議室
+
+@enduml

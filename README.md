@@ -9,9 +9,25 @@
 
 ## 概要
 
-Spring 徹底入門 Spring Framework による Java アプリケーション開発 チュートリアル
+Spring 徹底入門 Spring Framework による Java アプリケーション開発 チュートリアルの実装例
+
+実装にあたっては [CCSR手法](https://masuda220.hatenablog.com/entry/2020/05/27/103750) を参考にオリジナルをリファクタリングした。
+
+### アプリケーションの内容
+
+会議室の予約とキャンセルを行うビジネスユースケース
+
+- Webで会議室の予約を行う
+- Webで会議室の予約をキャンセルする
+
+![](./docs/img/diagrams/BusinessUseCase.png)
 
 ### 目的
+
+- SpringBootの学習
+- CCSR手法の実践
+- テスト駆動開発とリファクタリングの実践
+- 継続的インテグレーションの実践
 
 ### 前提
 
