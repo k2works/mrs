@@ -1,4 +1,4 @@
-package mrs.infrastructure.datasource;
+package mrs.infrastructure.datasource.todo;
 
 import mrs.domain.model.todo.Todo;
 import org.junit.jupiter.api.Test;
