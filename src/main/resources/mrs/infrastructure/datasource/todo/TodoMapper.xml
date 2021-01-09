@@ -9,4 +9,7 @@
     <select id="select" resultType="mrs.domain.model.todo.Todo">
         SELECT id, title, details, finished FROM todo WHERE id = #{id}
     </select>
+    <select id="selectAllJoin" resultType="mrs.domain.model.todo.Todo">
+        SELECT id, title, details, finished FROM todo
+    </select>
 </mapper>
