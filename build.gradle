@@ -34,6 +34,7 @@ dependencies {
     runtimeOnly 'org.springframework.boot:spring-boot-devtools:2.4.1'
     runtimeOnly 'com.h2database:h2:1.4.200'
     runtimeOnly 'org.postgresql:postgresql:42.2.18'
+    runtimeOnly 'mysql:mysql-connector-java:5.1.47'
     testImplementation("org.springframework.boot:spring-boot-starter-test:2.4.1") {
         exclude(group: 'org.junit.vintage')
     }

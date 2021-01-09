@@ -39,3 +39,5 @@ build/
 
 .gradle
 bin
+
+docker/db/data
