@@ -1,2 +1,3 @@
 /* DATABASEを作成 */
-CREATE DATABASE testdb;
+CREATE
+DATABASE appdb;

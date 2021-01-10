@@ -40,4 +40,4 @@ build/
 .gradle
 bin
 
-docker/db/data
+docker/mysql/data
