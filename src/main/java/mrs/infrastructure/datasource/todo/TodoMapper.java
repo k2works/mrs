@@ -10,4 +10,5 @@ public interface TodoMapper {
     void insert(Todo todo);
     Todo select(int id);
     List<Todo> selectAllJoin();
+    int update(Todo record);
 }

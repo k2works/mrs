@@ -19,6 +19,17 @@ public class Todo {
         this.finished = finished;
     }
 
+    public Todo(int id, String title, String details, boolean finished) {
+        this.id = id;
+        this.title = title;
+        this.details = details;
+        this.finished = finished;
+    }
+
+    public int id() {
+        return id;
+    }
+
     public String title() {
         return title;
     }
@@ -31,4 +42,7 @@ public class Todo {
         return finished;
     }
 
+    public Todo finish() {
+        return new Todo(id, title, details, true);
+    }
 }
