@@ -22,7 +22,7 @@ public class TodoMapperTest {
         todoMapper.insert(newTodo);
 
         Todo result = todoMapper.select(1);
-        assertEquals("飲み会", result.getTitle());
-        assertEquals("銀座 19:00", result.getDetails());
+        assertEquals("飲み会", result.title());
+        assertEquals("銀座 19:00", result.details());
     }
 }

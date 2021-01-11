@@ -19,15 +19,15 @@ public class Todo {
         this.finished = finished;
     }
 
-    public String getTitle() {
+    public String title() {
         return title;
     }
 
-    public String getDetails() {
+    public String details() {
         return details;
     }
 
-    public boolean isFinished() {
+    public boolean finished() {
         return finished;
     }
 
