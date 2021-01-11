@@ -8,7 +8,7 @@
         </commentGenerator>
         <jdbcConnection
                 driverClass="org.postgresql.Driver"
-                connectionURL="jdbc:postgresql://localhost:5432/testdb"
+                connectionURL="jdbc:postgresql://localhost:5432/appdb"
                 userId="root"
                 password="root" />
         <javaModelGenerator
@@ -63,6 +63,18 @@
                modelType="flat">
         </table>
         <table tableName="usr"
+               enableInsert="true"
+               enableSelectByPrimaryKey="true"
+               enableSelectByExample="false"
+               enableUpdateByPrimaryKey="true"
+               enableUpdateByExample="false"
+               enableDeleteByPrimaryKey="true"
+               enableDeleteByExample="false"
+               enableCountByExample="false"
+               selectByExampleQueryId="false"
+               modelType="flat">
+        </table>
+        <table tableName="todo"
                enableInsert="true"
                enableSelectByPrimaryKey="true"
                enableSelectByExample="false"
