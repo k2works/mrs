@@ -25,14 +25,18 @@ public class TodoDataSourceTest {
 
     @Test
     void 全てのやることを関連テーブルも含めて取得できる() throws Exception {
-        Todo newTodo = new Todo();
-        newTodo.setTitle("飲み会1");
-        newTodo.setDetails("銀座 19:00");
+        Todo newTodo = new Todo(
+                "飲み会",
+                "銀座 19:00",
+                false
+        );
         todoMapper.insert(newTodo);
 
-        newTodo = new Todo();
-        newTodo.setTitle("飲み会2");
-        newTodo.setDetails("銀座 19:00");
+        newTodo = new Todo(
+                "飲み会2",
+                "銀座 19:00",
+                false
+        );
         todoMapper.insert(newTodo);
 
         List<Todo> result = todoDataSource.selectAllJoin();

@@ -14,13 +14,15 @@ public class TodoMapperTest {
 
     @Test
     void やることが登録される() throws Exception {
-        Todo newTodo = new Todo();
-        newTodo.setTitle("飲み会");
-        newTodo.setDetails("銀座 19:00");
+        Todo newTodo = new Todo(
+                "飲み会",
+                "銀座 19:00",
+                false
+        );
         todoMapper.insert(newTodo);
 
         Todo result = todoMapper.select(1);
-        assertEquals("飲み会",result.getTitle());
-        assertEquals("銀座 19:00",result.getDetails());
+        assertEquals("飲み会", result.getTitle());
+        assertEquals("銀座 19:00", result.getDetails());
     }
 }
