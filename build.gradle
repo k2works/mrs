@@ -9,6 +9,7 @@ plugins {
     id 'org.dddjava.jig-gradle-plugin' version '2020.11.2.1'
     id 'com.cosminpolifronie.gradle.plantuml' version '1.6.0'
     id "com.arenagod.gradle.MybatisGenerator" version "1.3"
+    id 'de.undercouch.download' version '4.0.1'
 }
 
 sourceCompatibility = '11'
@@ -111,3 +112,51 @@ mybatisGenerator {
     }
 }
 
+// SchemaSpy Task
+configurations {
+    // JDBC ドライバのためのコンフィギュレーション
+    jdbc
+}
+
+dependencies {
+    // JDBC ドライバのライブラリ
+    jdbc(
+            'org.postgresql:postgresql:42.2.6'
+    )
+}
+
+tasks.register( 'schemaSpy', JavaExec ) {
+    description = 'Generates database documents.'
+
+    group = name
+
+    ext.outputDir = file( "${buildDir}/${name}" )
+
+    download {
+        ext.schemaSpyFile = file( "${downloadTaskDir}/${name}/schemaspy.jar" )
+
+        src( 'https://github.com/schemaspy/schemaspy/releases/download/v6.1.0/schemaspy-6.1.0.jar' )
+        dest( schemaSpyFile )
+        overwrite = false
+    }
+
+    File driverFile = configurations.jdbc.files.first()
+
+    main = '-jar'
+    args = [
+            schemaSpyFile,
+            '-t', 'pgsql',
+            '-dp', driverFile,
+            '-host', 'localhost',
+            '-port', '5432',
+            '-u', 'root',
+            '-p', 'root',
+            '-db', 'appdb',
+            '-s', 'public',
+            '-o', outputDir
+    ]
+
+    doFirst {
+        outputDir.deleteDir()
+    }
+}
