@@ -1,19 +1,30 @@
 <svg width="87px" height="115px"
- viewBox="0.00 0.00 87.00 115.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1.0 1.0) rotate(0) translate(4 88)">
-<title>区分図</title>
-<polygon fill="white" stroke="transparent" points="-4,27 -4,-88 83,-88 83,27 -4,27"/>
-<text text-anchor="middle" x="39.5" y="15.2" font-family="Times,serif" font-size="14.00">区分図</text>
-<!-- mrs.domain.model.user.RoleName -->
-<g id="node1" class="node">
-<title>mrs.domain.model.user.RoleName</title>
-<polygon fill="lemonchiffon" stroke="black" points="78.74,-83.64 -0.26,-83.64 -0.26,0.36 78.74,0.36 78.74,-83.64"/>
-<text text-anchor="start" x="25.24" y="-66.44" font-family="Times,serif" font-size="14.00">役割</text>
-<text text-anchor="start" x="10.24" y="-51.44" font-family="Times,serif" font-size="14.00">RoleName</text>
-<polygon fill="none" stroke="black" points="8.24,-24.64 8.24,-45.64 71.24,-45.64 71.24,-24.64 8.24,-24.64"/>
-<text text-anchor="start" x="16.24" y="-31.44" font-family="Times,serif" font-size="14.00">ADMIN</text>
-<polygon fill="none" stroke="black" points="8.24,-3.64 8.24,-24.64 71.24,-24.64 71.24,-3.64 8.24,-3.64"/>
-<text text-anchor="start" x="22.24" y="-10.44" font-family="Times,serif" font-size="14.00">USER</text>
-</g>
+     viewBox="0.00 0.00 87.00 115.00" xmlns="http://www.w3.org/2000/svg">
+    <g id="graph0" class="graph" transform="scale(1.0 1.0) rotate(0) translate(4 88)">
+        <title>区分図</title>
+        <polygon fill="white" stroke="none" points="-4,27 -4,-88 83,-88 83,27 -4,27"/>
+        <text text-anchor="middle" x="39.5" y="15.2" font-family="Times New Roman,serif" font-size="14.00">区分図</text>
+        <!-- mrs.domain.model.user.RoleName -->
+        <g id="node1" class="node">
+            <title>mrs.domain.model.user.RoleName</title>
+            <polygon fill="lemonchiffon" stroke="black"
+                     points="78.6449,-84.2963 -0.355135,-84.2963 -0.355135,-0.296263 78.6449,-0.296263 78.6449,-84.2963"/>
+            <text text-anchor="start" x="26.6449" y="-67.0963" font-family="Times New Roman,serif" font-size="14.00">
+                役割
+            </text>
+            <text text-anchor="start" x="10.1449" y="-52.0963" font-family="Times New Roman,serif" font-size="14.00">
+                RoleName
+            </text>
+            <polygon fill="none" stroke="black"
+                     points="8.14487,-25.2963 8.14487,-46.2963 71.1449,-46.2963 71.1449,-25.2963 8.14487,-25.2963"/>
+            <text text-anchor="start" x="16.6449" y="-32.0963" font-family="Times New Roman,serif" font-size="14.00">
+                ADMIN
+            </text>
+            <polygon fill="none" stroke="black"
+                     points="8.14487,-4.29626 8.14487,-25.2963 71.1449,-25.2963 71.1449,-4.29626 8.14487,-4.29626"/>
+            <text text-anchor="start" x="21.1449" y="-11.0963" font-family="Times New Roman,serif" font-size="14.00">
+                USER
+            </text>
+        </g>
 </g>
 </svg>

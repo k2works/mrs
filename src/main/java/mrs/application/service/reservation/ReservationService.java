@@ -43,11 +43,12 @@ public class ReservationService {
         return reservation;
     }
 
+    //@PreAuthorize("hasRole('ADMIN') or #reservation.user.userId.value == principal.user.userId.value")
+    // TODO MyBatisでEnumを扱えるようにする
+
     /**
      * 会議室の予約をキャンセルする
      */
-    //TODO MyBatisでEnumを扱えるようにする
-    //@PreAuthorize("hasRole('ADMIN') or #reservation.user.userId.value == principal.user.userId.value")
     public void cancel(@P("reservation") Reservation reservation) {
         reservationRepository.delete(reservation);
     }
