@@ -12,4 +12,6 @@ public interface ReservationMapperExt extends ReservationMapper {
     List<Reservation> findByReservableRoom_ReservableRoomIdOrderByStartTimeAsc(ReservableRoomId reservableRoomId);
 
     List<Reservation> findAll();
+
+    Reservation findById(int reservationId);
 }

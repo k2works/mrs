@@ -45,11 +45,30 @@
                r.start_time,
                r.reserved_date,
                r.room_id,
-               r.user_Id
+               r.user_Id,
+               u.first_name,
+               u.last_name
         FROM Reservation r
                  LEFT OUTER JOIN reservable_room rr
                                  ON r.reserved_date = rr.reserved_date AND r.room_id = rr.room_id
                  LEFT OUTER JOIN usr u
                                  ON r.user_id = u.user_id
+    </select>
+
+    <select id="findById" resultMap="findReservationResultMap">
+        SELECT r.reservation_id,
+               r.end_time,
+               r.start_time,
+               r.reserved_date,
+               r.room_id,
+               r.user_Id,
+               u.first_name,
+               u.last_name
+        FROM Reservation r
+                 LEFT OUTER JOIN reservable_room rr
+                                 ON r.reserved_date = rr.reserved_date AND r.room_id = rr.room_id
+                 LEFT OUTER JOIN usr u
+                                 ON r.user_id = u.user_id
+        WHERE r.reservation_id = #{reservatoinId}
     </select>
 </mapper>

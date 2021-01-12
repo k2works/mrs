@@ -42,7 +42,7 @@ public class ReservationDataSource implements ReservationRepository {
     }
 
     @Override
-    public Optional<Reservation> findById(int i) {
-        return Optional.ofNullable(reservationMapper.selectByPrimaryKey(i));
+    public Optional<Reservation> findById(int reservationId) {
+        return Optional.ofNullable(reservationMapper.findById(reservationId));
     }
 }
