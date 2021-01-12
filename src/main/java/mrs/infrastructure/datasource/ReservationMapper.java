@@ -1,6 +1,6 @@
 package mrs.infrastructure.datasource;
 
-import mrs.domain.model.Reservation;
+import mrs.domain.model.reservation.Reservation;
 import org.apache.ibatis.annotations.*;
 
 @Mapper

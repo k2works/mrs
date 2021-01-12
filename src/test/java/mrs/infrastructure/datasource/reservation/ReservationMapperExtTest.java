@@ -1,11 +1,14 @@
 package mrs.infrastructure.datasource.reservation;
 
-import mrs.domain.model.Reservation;
-import mrs.domain.model.reservation.ReservableRoomId;
+import mrs.domain.model.reservation.*;
+import mrs.domain.model.room.RoomId;
+import mrs.domain.model.user.*;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
@@ -17,10 +20,22 @@ public class ReservationMapperExtTest {
     @Autowired
     ReservationMapperExt reservationMapper;
 
+    @BeforeEach
+    void setUp() {
+        reservationMapper.deleteByPrimaryKey(1);
+        reservationMapper.deleteByPrimaryKey(2);
+        reservationMapper.deleteByPrimaryKey(3);
+        reservationMapper.deleteByPrimaryKey(4);
+    }
+
     @Test
     void 予約が登録できる() {
-        Reservation reservation = new Reservation();
-        reservation.setReservationId(1);
+        ReservationId id = new ReservationId(1);
+        ReservedDate date = new ReservedDate(LocalDate.now());
+        ReservedTime time = new ReservedTime(LocalTime.of(10, 0), LocalTime.of(11, 0));
+        ReservableRoom room = new ReservableRoom(new ReservableRoomId(new RoomId(1), date));
+        User user = new User(new UserId("Test"), new Password("Password"), new Name("山田", "太郎"), RoleName.USER);
+        Reservation reservation = new Reservation(id, date, time, room, user);
         reservationMapper.insert(reservation);
 
         Reservation result = reservationMapper.selectByPrimaryKey(1);
@@ -30,22 +45,30 @@ public class ReservationMapperExtTest {
 
     @Test
     void 予約を更新できる() {
-        Reservation reservation = new Reservation();
-        reservation.setReservationId(2);
+        ReservationId id = new ReservationId(2);
+        ReservedDate date = new ReservedDate(LocalDate.now().plusDays(1));
+        ReservedTime time = new ReservedTime(LocalTime.of(10, 0), LocalTime.of(11, 0));
+        ReservableRoom room = new ReservableRoom(new ReservableRoomId(new RoomId(1), date));
+        User user = new User(new UserId("Test"), new Password("Password"), new Name("山田", "太郎"), RoleName.USER);
+        Reservation reservation = new Reservation(id, date, time, room, user);
         reservationMapper.insert(reservation);
 
         Reservation update = reservationMapper.selectByPrimaryKey(2);
-        update.setStartTime(LocalTime.of(10, 0));
-        reservationMapper.updateByPrimaryKey(update);
+        Reservation updateReservation = new Reservation(new ReservationId(update.getReservationId()), date, new ReservedTime(LocalTime.of(11, 0), LocalTime.of(12, 0)), room, user);
+        reservationMapper.updateByPrimaryKey(updateReservation);
         Reservation result = reservationMapper.selectByPrimaryKey(2);
 
-        assertEquals("10:00", result.getStartTime().toString());
+        assertEquals("11:00", result.getStartTime().toString());
     }
 
     @Test
     void 予約を削除できる() {
-        Reservation reservation = new Reservation();
-        reservation.setReservationId(3);
+        ReservationId id = new ReservationId(3);
+        ReservedDate date = new ReservedDate(LocalDate.now().plusDays(2));
+        ReservedTime time = new ReservedTime(LocalTime.of(10, 0), LocalTime.of(11, 0));
+        ReservableRoom room = new ReservableRoom(new ReservableRoomId(new RoomId(1), date));
+        User user = new User(new UserId("Test"), new Password("Password"), new Name("山田", "太郎"), RoleName.USER);
+        Reservation reservation = new Reservation(id, date, time, room, user);
         reservationMapper.insert(reservation);
         Reservation delete = reservationMapper.selectByPrimaryKey(3);
 
@@ -57,8 +80,12 @@ public class ReservationMapperExtTest {
 
     @Test
     void 開始時間順に予約可能会議室集合を取得できる() {
-        Reservation reservation = new Reservation();
-        reservation.setReservationId(4);
+        ReservationId id = new ReservationId(4);
+        ReservedDate date = new ReservedDate(LocalDate.now().plusDays(3));
+        ReservedTime time = new ReservedTime(LocalTime.of(10, 0), LocalTime.of(11, 0));
+        ReservableRoom room = new ReservableRoom(new ReservableRoomId(new RoomId(1), date));
+        User user = new User(new UserId("Test"), new Password("Password"), new Name("山田", "太郎"), RoleName.USER);
+        Reservation reservation = new Reservation(id, date, time, room, user);
         reservationMapper.insert(reservation);
 
         ReservableRoomId reservableRoomId = new ReservableRoomId();

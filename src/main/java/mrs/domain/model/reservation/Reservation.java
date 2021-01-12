@@ -2,30 +2,21 @@ package mrs.domain.model.reservation;
 
 import mrs.domain.model.user.User;
 
-import javax.persistence.*;
-import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Objects;
 
 /**
  * 予約
  */
-@Entity
-public class Reservation implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class Reservation {
     private Integer reservationId;
-
     private LocalTime startTime;
-
     private LocalTime endTime;
-
-    @ManyToOne
-    @JoinColumns({@JoinColumn(name = "reserved_date"), @JoinColumn(name = "room_id")})
+    private LocalDate reservedDate;
+    private Integer roomId;
+    private String userId;
     private ReservableRoom reservableRoom;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id")
     private User user;
 
     public Reservation() {
@@ -42,6 +33,17 @@ public class Reservation implements Serializable {
         this.reservationId = reservationId.value;
         this.startTime = reservedTime.start;
         this.endTime = reservedTime.end;
+        this.reservableRoom = room;
+        this.user = user;
+    }
+
+    public Reservation(ReservationId reservationId, ReservedDate reservedDate, ReservedTime reservedTime, ReservableRoom room, User user) {
+        this.reservationId = reservationId.value;
+        this.reservedDate = reservedDate.value;
+        this.startTime = reservedTime.start;
+        this.endTime = reservedTime.end;
+        this.roomId = room.reservableRoomId().roomId();
+        this.userId = user.userId().value();
         this.reservableRoom = room;
         this.user = user;
     }
