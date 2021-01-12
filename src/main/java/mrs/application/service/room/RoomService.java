@@ -34,7 +34,7 @@ public class RoomService {
     }
 
     /**
-     * 予約可能会議室集合を探す
+     * 予約可能会議室一覧を探す
      */
     public ReservableRooms findReservableRooms(ReservedDate date) {
         List<ReservableRoom> result = reservableRoomRepository.findByReservableRoomId_ReservedDateOrderByReservableRoomId_RoomIdAsc(date.value());

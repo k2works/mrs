@@ -35,7 +35,7 @@
                 </a>
             </g>
         </g>
-<!-- mrs.domain.model.reservation.Reservation -->
+        <!-- mrs.domain.model.reservation.Reservation -->
         <g id="node9" class="node">
             <title>mrs.domain.model.reservation.Reservation</title>
             <polygon fill="white" stroke="black"
@@ -46,7 +46,7 @@
                 Reservation
             </text>
         </g>
-<!-- mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.ReservedTime, mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails)&#45;&gt;mrs.domain.model.reservation.Reservation -->
+        <!-- mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.ReservedTime, mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails)&#45;&gt;mrs.domain.model.reservation.Reservation -->
         <g id="edge4" class="edge">
             <title>
                 mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.ReservedTime,
@@ -114,7 +114,7 @@
                    xlink:title="ReservationCoordinator.searchReservations(ReservableRoomId)">
                     <ellipse fill="#eedd82" stroke="black" cx="126.739" cy="-95" rx="102.082" ry="18"/>
                     <text text-anchor="middle" x="126.739" y="-91.3" font-family="Times New Roman,serif"
-                          font-size="14.00">会議室の予約集合を探す
+                          font-size="14.00">会議室の予約一覧を探す
                     </text>
                 </a>
             </g>
@@ -125,7 +125,7 @@
             <polygon fill="white" stroke="black"
                      points="378.478,-114 289.478,-114 289.478,-76 378.478,-76 378.478,-114"/>
             <text text-anchor="middle" x="333.978" y="-98.8" font-family="Times New Roman,serif" font-size="14.00">
-                予約集合
+                予約一覧
             </text>
             <text text-anchor="middle" x="333.978" y="-83.8" font-family="Times New Roman,serif" font-size="14.00">
                 Reservations
@@ -222,7 +222,7 @@
                    xlink:title="ReservationService.findReservations(ReservableRoomId)">
                     <ellipse fill="#eedd82" stroke="black" cx="126.739" cy="-41" rx="102.082" ry="18"/>
                     <text text-anchor="middle" x="126.739" y="-37.3" font-family="Times New Roman,serif"
-                          font-size="14.00">会議室の予約集合を探す
+                          font-size="14.00">会議室の予約一覧を探す
                     </text>
                 </a>
             </g>

@@ -61,7 +61,7 @@ public class ReservationService {
     }
 
     /**
-     * 会議室の予約集合を探す
+     * 会議室の予約一覧を探す
      */
     public Reservations findReservations(ReservableRoomId reservableRoomId) {
         List<Reservation> result = reservationRepository.findByReservableRoom_ReservableRoomIdOrderByStartTimeAsc(reservableRoomId);

@@ -44,7 +44,7 @@ public class ReservationCoordinator {
     }
 
     /**
-     * 会議室の予約集合を探す
+     * 会議室の予約一覧を探す
      */
     public Reservations searchReservations(ReservableRoomId reservableRoomId) {
         return reservationService.findReservations(reservableRoomId);
@@ -58,7 +58,7 @@ public class ReservationCoordinator {
     }
 
     /**
-     * 予約可能会議室集合を探す
+     * 予約可能会議室一覧を探す
      */
     public ReservableRooms searchReservableRooms(ReservedDate reservedDate) {
         return roomService.findReservableRooms(reservedDate);
