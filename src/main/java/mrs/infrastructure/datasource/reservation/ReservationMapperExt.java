@@ -10,4 +10,6 @@ import java.util.List;
 @Mapper
 public interface ReservationMapperExt extends ReservationMapper {
     List<Reservation> findByReservableRoom_ReservableRoomIdOrderByStartTimeAsc(ReservableRoomId reservableRoomId);
+
+    List<Reservation> findAll();
 }

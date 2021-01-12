@@ -16,6 +16,7 @@ public class Reservation {
     private LocalDate reservedDate;
     private Integer roomId;
     private String userId;
+    private ReservableRoomId reservableRoomId;
     private ReservableRoom reservableRoom;
     private User user;
 
@@ -48,8 +49,18 @@ public class Reservation {
         this.user = user;
     }
 
+    public Reservation(ReservedDate reservedDate, ReservedTime reservedTime, ReservableRoom room, User user) {
+        this.reservedDate = reservedDate.value;
+        this.startTime = reservedTime.start;
+        this.endTime = reservedTime.end;
+        this.roomId = room.reservableRoomId().roomId();
+        this.userId = user.userId().value();
+        this.reservableRoom = room;
+        this.user = user;
+    }
+
     public boolean overlap(Reservation target) {
-        if (!Objects.equals(reservableRoom.reservableRoomId(), target.reservableRoom.reservableRoomId())) {
+        if (!Objects.equals(reservableRoomId, target.reservableRoom.reservableRoomId())) {
             return false;
         }
         if (startTime.equals(target.startTime) && endTime.equals(target.endTime)) {

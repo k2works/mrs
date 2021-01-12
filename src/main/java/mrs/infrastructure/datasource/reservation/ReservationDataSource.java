@@ -28,7 +28,7 @@ public class ReservationDataSource implements ReservationRepository {
 
     @Override
     public List<Reservation> findAll() {
-        return null;
+        return reservationMapper.findAll();
     }
 
     @Override

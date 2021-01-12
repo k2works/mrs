@@ -11,6 +11,8 @@ import mrs.domain.model.room.MeetingRoom;
 import mrs.domain.model.room.RoomId;
 import mrs.domain.model.room.RoomName;
 import mrs.domain.model.user.*;
+import mrs.infrastructure.datasource.reservation.ReservationMapperExt;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -34,6 +36,14 @@ import static org.junit.jupiter.api.Assertions.*;
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 @DisplayName("予約サービス")
 public class ReservationServiceTest {
+    private Reservation 予約を作る(ReservationId id, ReservableRoom room, LocalTime start, LocalTime end) {
+        ReservedTime time = new ReservedTime(start, end);
+        User user = ユーザーを作る();
+        ReservedDate date = new ReservedDate(room.reservableRoomId().reservedDate());
+        Reservation reservation = new Reservation(id, date, time, room, user);
+        return reservation;
+    }
+
     @Nested
     @DisplayName("会議室を予約する")
     class Reserve {
@@ -47,6 +57,14 @@ public class ReservationServiceTest {
         ReservableRoomRepository reservableRoomRepository;
         @Autowired
         UserRepository userRepository;
+        @Autowired
+        ReservationMapperExt reservationMapper;
+
+        @BeforeEach
+        void clean() {
+            reservationMapper.deleteByPrimaryKey(1);
+            reservationMapper.deleteByPrimaryKey(2);
+        }
 
         @Test
         @Sql("/data.sql")
@@ -54,7 +72,7 @@ public class ReservationServiceTest {
         public void 会議室を予約が成功したら予約データが登録される() {
             MeetingRoom room = new MeetingRoom(new RoomId(1), new RoomName("会議室"));
             ReservableRoom reservableRoom = 予約が可能な会議室を作る(room);
-            mrs.domain.model.reservation.Reservation reservation = 予約を作る(reservableRoom, LocalTime.of(9, 0), LocalTime.of(10, 0));
+            Reservation reservation = 予約を作る(new ReservationId(1), reservableRoom, LocalTime.of(9, 0), LocalTime.of(10, 0));
             予約する(reservationService, reservation);
 
             mrs.domain.model.reservation.Reservation result = 予約を検索する(1, reservationRepository);
@@ -79,9 +97,9 @@ public class ReservationServiceTest {
             MeetingRoom room = 会議室を作る(meetingRoomRepository);
             ReservableRoom reservableRoom = 予約が可能な会議室を作る(room);
             予約会議室を登録する(reservableRoom, reservableRoomRepository);
-            Reservation reservation = 予約を作る(reservableRoom, LocalTime.of(9, 0), LocalTime.of(10, 0));
+            Reservation reservation = 予約を作る(new ReservationId(1), reservableRoom, LocalTime.of(9, 0), LocalTime.of(10, 0));
             予約する(reservationService, reservation);
-            Reservation reservation2 = 予約を作る(reservableRoom, LocalTime.of(11, 0), LocalTime.of(12, 0));
+            Reservation reservation2 = 予約を作る(new ReservationId(2), reservableRoom, LocalTime.of(11, 0), LocalTime.of(12, 0));
             予約する(reservationService, reservation2);
 
             List<Reservation> result = 予約を全件検索する(reservationRepository);
@@ -94,9 +112,9 @@ public class ReservationServiceTest {
             MeetingRoom room = 会議室を作る(meetingRoomRepository);
             ReservableRoom reservableRoom = 予約が可能な会議室を作る(room);
             予約会議室を登録する(reservableRoom, reservableRoomRepository);
-            Reservation reservation = 予約を作る(reservableRoom, LocalTime.of(9, 0), LocalTime.of(10, 0));
+            Reservation reservation = 予約を作る(new ReservationId(1), reservableRoom, LocalTime.of(9, 0), LocalTime.of(10, 0));
             予約する(reservationService, reservation);
-            Reservation reservation2 = 予約を作る(reservableRoom, LocalTime.of(9, 30), LocalTime.of(10, 30));
+            Reservation reservation2 = 予約を作る(new ReservationId(2), reservableRoom, LocalTime.of(9, 30), LocalTime.of(10, 30));
 
             Throwable result = assertThrows(AlreadyReservedException.class, () -> {
                 予約する(reservationService, reservation2);
@@ -110,44 +128,14 @@ public class ReservationServiceTest {
             MeetingRoom room = 会議室を作る(meetingRoomRepository);
             ReservableRoom reservableRoom = 予約が可能な会議室を作る(room);
             予約会議室を登録する(reservableRoom, reservableRoomRepository);
-            Reservation reservation = 予約を作る(reservableRoom, LocalTime.of(9, 0), LocalTime.of(12, 0));
+            Reservation reservation = 予約を作る(new ReservationId(1), reservableRoom, LocalTime.of(9, 0), LocalTime.of(12, 0));
             予約する(reservationService, reservation);
-            Reservation reservation2 = 予約を作る(reservableRoom, LocalTime.of(10, 0), LocalTime.of(11, 0));
+            Reservation reservation2 = 予約を作る(new ReservationId(2), reservableRoom, LocalTime.of(10, 0), LocalTime.of(11, 0));
 
             Throwable result = assertThrows(AlreadyReservedException.class, () -> {
                 予約する(reservationService, reservation2);
             });
             assertEquals("入力の時間帯はすでに予約済です。", result.getMessage());
-        }
-    }
-
-    @Nested
-    @DisplayName("会議室の予約をキャンセルする")
-    class Cancel {
-        @Autowired
-        ReservationService reservationService;
-        @Autowired
-        ReservationRepository reservationRepository;
-        @Autowired
-        MeetingRoomRepository meetingRoomRepository;
-        @Autowired
-        ReservableRoomRepository reservableRoomRepository;
-        @Autowired
-        UserRepository userRepository;
-
-        @Test
-        @WithMockUser(username = "test", roles = {"ADMIN"})
-        public void 予約をキャンセルしたら予約データが削除される() {
-            ユーザーを登録する(userRepository);
-            MeetingRoom room = 会議室を作る(meetingRoomRepository);
-            ReservableRoom reservableRoom = 予約が可能な会議室を作る(room);
-            予約会議室を登録する(reservableRoom, reservableRoomRepository);
-            Reservation reservation = 予約を作る(reservableRoom, LocalTime.of(9, 0), LocalTime.of(10, 0));
-            予約する(reservationService, reservation);
-            キャンセルする(reservationService, reservation);
-
-            List<Reservation> result = 予約を全件検索する(reservationRepository);
-            assertEquals(0, result.size());
         }
     }
 
@@ -184,11 +172,43 @@ public class ReservationServiceTest {
         return reservation;
     }
 
-    private Reservation 予約を作る(ReservableRoom reservableRoom, LocalTime start, LocalTime end) {
-        ReservedTime reservedTime = new ReservedTime(start, end);
-        User user = ユーザーを作る();
-        Reservation reservation = new Reservation(reservedTime, reservableRoom, user);
-        return reservation;
+    @Nested
+    @DisplayName("会議室の予約をキャンセルする")
+    class Cancel {
+        @Autowired
+        ReservationService reservationService;
+        @Autowired
+        ReservationRepository reservationRepository;
+        @Autowired
+        MeetingRoomRepository meetingRoomRepository;
+        @Autowired
+        ReservableRoomRepository reservableRoomRepository;
+        @Autowired
+        UserRepository userRepository;
+        @Autowired
+        ReservationMapperExt reservationMapper;
+
+        @BeforeEach
+        void clean() {
+            reservationMapper.deleteByPrimaryKey(1);
+        }
+
+        @Test
+        @WithMockUser(username = "test", roles = {"ADMIN"})
+        public void 予約をキャンセルしたら予約データが削除される() {
+            ユーザーを登録する(userRepository);
+            MeetingRoom room = 会議室を作る(meetingRoomRepository);
+            ReservableRoom reservableRoom = 予約が可能な会議室を作る(room);
+            予約会議室を登録する(reservableRoom, reservableRoomRepository);
+            Reservation reservation = 予約を作る(new ReservationId(1), reservableRoom, LocalTime.of(9, 0), LocalTime.of(10, 0));
+            予約する(reservationService, reservation);
+
+            Reservation cancelReservation = reservationRepository.getOne(1);
+            キャンセルする(reservationService, cancelReservation);
+
+            List<Reservation> result = 予約を全件検索する(reservationRepository);
+            assertEquals(0, result.size());
+        }
     }
 
     private User ユーザーを作る() {
