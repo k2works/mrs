@@ -2,11 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="mrs.infrastructure.datasource.todo.TodoMapper">
-    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO todo (title, details, finished)
-        VALUES (#{title}, #{details}, #{finished})
-    </insert>
+<mapper namespace="mrs.infrastructure.datasource.todo.TodoMapperExt">
     <select id="select" resultType="mrs.domain.model.todo.Todo">
         SELECT id, title, details, finished
         FROM todo
@@ -16,7 +12,7 @@
         SELECT id, title, details, finished
         FROM todo
     </select>
-    <update id="update" parameterType="mrs.domain.model.Todo">
+    <update id="update" parameterType="mrs.domain.model.todo.Todo">
         update todo
         <set>
             <if test="title != null">

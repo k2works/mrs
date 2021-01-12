@@ -1,6 +1,7 @@
 package mrs.infrastructure.datasource.todo;
 
 import mrs.domain.model.todo.Todo;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -15,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @AutoConfigureMockMvc
 public class TodoDataSourceTest {
     @Autowired
-    TodoMapper todoMapper;
+    TodoMapperExt todoMapper;
 
     @Autowired
     TodoDataSource todoDataSource;
@@ -23,9 +24,16 @@ public class TodoDataSourceTest {
     @Autowired
     MockMvc mockMvc;
 
+    @AfterEach
+    void clean() {
+        todoMapper.deleteByPrimaryKey(1);
+        todoMapper.deleteByPrimaryKey(2);
+    }
+
     @Test
     void 全てのやることを関連テーブルも含めて取得できる() throws Exception {
         Todo newTodo = new Todo(
+                1,
                 "飲み会",
                 "銀座 19:00",
                 false
@@ -33,6 +41,7 @@ public class TodoDataSourceTest {
         todoMapper.insert(newTodo);
 
         newTodo = new Todo(
+                2,
                 "飲み会2",
                 "銀座 19:00",
                 false

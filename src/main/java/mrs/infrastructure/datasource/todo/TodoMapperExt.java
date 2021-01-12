@@ -1,14 +1,16 @@
 package mrs.infrastructure.datasource.todo;
 
 import mrs.domain.model.todo.Todo;
+import mrs.infrastructure.datasource.TodoMapper;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
 @Mapper
-public interface TodoMapper {
-    void insert(Todo todo);
+public interface TodoMapperExt extends TodoMapper {
     Todo select(int id);
-    List<Todo> selectAllJoin();
+
     int update(Todo record);
+
+    List<Todo> selectAllJoin();
 }

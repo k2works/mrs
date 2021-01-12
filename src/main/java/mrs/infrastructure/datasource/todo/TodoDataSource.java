@@ -9,9 +9,9 @@ import java.util.List;
 
 @Repository
 public class TodoDataSource implements TodoRepository {
-    TodoMapper todoMapper;
+    TodoMapperExt todoMapper;
 
-    public TodoDataSource(TodoMapper todoMapper) {
+    public TodoDataSource(TodoMapperExt todoMapper) {
         this.todoMapper = todoMapper;
     }
 
