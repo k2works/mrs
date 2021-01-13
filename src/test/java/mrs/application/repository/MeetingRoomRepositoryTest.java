@@ -23,7 +23,7 @@ public class MeetingRoomRepositoryTest {
     @Sql("/schema.sql")
     @Sql("/data.sql")
     public void 会議室一覧を取得する() {
-        MeetingRoom room = meetingRoomRepository.findById(1).get();
+        MeetingRoom room = meetingRoomRepository.findBy(1);
 
         assertNotNull(room);
         assertEquals(1, room.roomId().value());

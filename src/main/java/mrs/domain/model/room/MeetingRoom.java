@@ -17,6 +17,7 @@ public class MeetingRoom implements Serializable {
 
     private String roomName;
 
+    @Deprecated
     public MeetingRoom() {
     }
 

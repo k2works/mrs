@@ -30,7 +30,7 @@ public class RoomService {
      * 会議室を探す
      */
     public MeetingRoom findMeetingRoom(RoomId roomId) {
-        return meetingRoomRepository.getOne(roomId.value());
+        return meetingRoomRepository.findBy(roomId.value());
     }
 
     /**
