@@ -1,5 +1,6 @@
 package mrs.domain.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class ReservableRoom {
@@ -10,7 +11,7 @@ public class ReservableRoom {
      *
      * @mbg.generated
      */
-    private Date reservedDate;
+    private LocalDate reservedDate;
 
     /**
      *
@@ -29,7 +30,7 @@ public class ReservableRoom {
      *
      * @mbg.generated
      */
-    public Date getReservedDate() {
+    public LocalDate getReservedDate() {
         return reservedDate;
     }
 
@@ -41,7 +42,7 @@ public class ReservableRoom {
      *
      * @mbg.generated
      */
-    public void setReservedDate(Date reservedDate) {
+    public void setReservedDate(LocalDate reservedDate) {
         this.reservedDate = reservedDate;
     }
 
