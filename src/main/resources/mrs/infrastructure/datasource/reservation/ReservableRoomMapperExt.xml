@@ -1,17 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mrs.infrastructure.datasource.reservation.ReservableRoomMapperExt">
-  <resultMap id="BaseResultMap" type="mrs.domain.model.ReservableRoom">
+  <resultMap id="BaseResultMap" type="mrs.domain.model.reservation.ReservableRoom">
     <id column="reserved_date" property="reservedDate" />
     <id column="room_id" property="roomId" />
+    <association property="reservableRoomId" javaType="mrs.domain.model.reservation.ReservableRoomId">
+        <id property="roomId" column="room_id"/>
+        <result property="reservedDate" column="reserved_date"/>
+    </association>
+    <association property="meetingRoom" javaType="mrs.domain.model.room.MeetingRoom">
+        <id property="roomId" column="room_id"/>
+        <result property="roomName" column="room_name"/>
+    </association>
   </resultMap>
   <select id="selectByPrimaryKey" parameterType="mrs.domain.model.reservation.ReservableRoomId" resultMap="BaseResultMap">
-    SELECT room_id,
-           reserved_date
+    SELECT rr.room_id,
+           rr.reserved_date,
+           rm.room_name
     FROM
-         reservable_room
+         reservable_room rr
+             LEFT OUTER JOIN meeting_room rm
+                             ON rr.room_id = rm.room_id
     WHERE
-          room_id = #{roomId} AND reserved_date = #{reservedDate}
+          rr.room_id = #{roomId} AND reserved_date = #{reservedDate}
   </select>
     <select id="selectAll" resultMap="BaseResultMap">
         SELECT room_id,

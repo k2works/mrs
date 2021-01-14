@@ -1,23 +1,13 @@
 package mrs.domain.model.room;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.io.Serializable;
-
 /**
  * 会議室
  */
-@Entity
-public class MeetingRoom implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class MeetingRoom {
     private Integer roomId;
 
     private String roomName;
 
-    @Deprecated
     public MeetingRoom() {
     }
 
@@ -32,5 +22,15 @@ public class MeetingRoom implements Serializable {
 
     public RoomName roomName() {
         return new RoomName(roomName);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null) return false;
+        MeetingRoom other = (MeetingRoom) obj;
+        if (roomId == null && roomName == null) {
+            return other.roomId == null && other.roomName == null;
+        } else return roomId.equals(other.roomId) && roomName.equals(other.roomName);
     }
 }

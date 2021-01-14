@@ -20,6 +20,7 @@ public class Reservation {
     private ReservableRoom reservableRoom;
     private User user;
 
+    @Deprecated
     public Reservation() {
     }
 

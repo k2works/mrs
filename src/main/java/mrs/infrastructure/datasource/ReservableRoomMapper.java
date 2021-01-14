@@ -2,7 +2,7 @@ package mrs.infrastructure.datasource;
 
 import java.time.LocalDate;
 import java.util.Date;
-import mrs.domain.model.ReservableRoom;
+import mrs.domain.model.reservation.ReservableRoom;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
