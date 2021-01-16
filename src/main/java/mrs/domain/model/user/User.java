@@ -1,13 +1,11 @@
 package mrs.domain.model.user;
 
-import javax.persistence.*;
+import javax.persistence.Id;
 import java.io.Serializable;
 
 /**
  * ユーザー
  */
-@Entity
-@Table(name="usr")
 public class User implements Serializable {
     @Id
     private String userId;
@@ -18,7 +16,6 @@ public class User implements Serializable {
 
     private String lastName;
 
-    @Enumerated(EnumType.STRING)
     private RoleName roleName;
 
     public User() {

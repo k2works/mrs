@@ -1,6 +1,8 @@
 package mrs.infrastructure.datasource.room;
 
 import mrs.application.repository.MeetingRoomRepository;
+import mrs.application.repository.ReservableRoomRepository;
+import mrs.application.repository.ReservationRepository;
 import mrs.domain.model.room.MeetingRoom;
 import mrs.domain.model.room.RoomId;
 import mrs.domain.model.room.RoomName;
@@ -16,13 +18,17 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 public class MeetingRoomDataSourceTest {
     @Autowired
-    MeetingRoomRepository meetingRoomRepository;
+    ReservationRepository reservationRepository;
     @Autowired
-    MeetingRoomMapperExt meetingRoomMapper;
+    ReservableRoomRepository reservableRoomRepository;
+    @Autowired
+    MeetingRoomRepository meetingRoomRepository;
 
     @BeforeEach
     void clean() {
-        meetingRoomMapper.deleteByPrimaryKey(1);
+        reservationRepository.deleteAll();
+        reservableRoomRepository.deleteAll();
+        meetingRoomRepository.deleteAll();
     }
 
     @Test

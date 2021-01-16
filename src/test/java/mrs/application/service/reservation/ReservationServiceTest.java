@@ -11,7 +11,6 @@ import mrs.domain.model.room.MeetingRoom;
 import mrs.domain.model.room.RoomId;
 import mrs.domain.model.room.RoomName;
 import mrs.domain.model.user.*;
-import mrs.infrastructure.datasource.reservation.ReservationMapperExt;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -21,9 +20,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.jdbc.Sql;
 
-import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
@@ -36,14 +33,6 @@ import static org.junit.jupiter.api.Assertions.*;
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 @DisplayName("予約サービス")
 public class ReservationServiceTest {
-    private Reservation 予約を作る(ReservationId id, ReservableRoom room, LocalTime start, LocalTime end) {
-        ReservedTime time = new ReservedTime(start, end);
-        User user = ユーザーを作る();
-        ReservedDate date = new ReservedDate(room.reservableRoomId().reservedDate());
-        Reservation reservation = new Reservation(id, date, time, room, user);
-        return reservation;
-    }
-
     @Nested
     @DisplayName("会議室を予約する")
     class Reserve {
@@ -57,21 +46,20 @@ public class ReservationServiceTest {
         ReservableRoomRepository reservableRoomRepository;
         @Autowired
         UserRepository userRepository;
-        @Autowired
-        ReservationMapperExt reservationMapper;
 
         @BeforeEach
         void clean() {
-            reservationMapper.deleteByPrimaryKey(1);
-            reservationMapper.deleteByPrimaryKey(2);
+            reservationRepository.deleteAll();
+            reservableRoomRepository.deleteAll();
+            meetingRoomRepository.deleteAll();
         }
 
         @Test
-        @Sql("/data.sql")
-        @Transactional
         public void 会議室を予約が成功したら予約データが登録される() {
-            MeetingRoom room = new MeetingRoom(new RoomId(1), new RoomName("会議室"));
+            ユーザーを登録する(userRepository);
+            MeetingRoom room = 会議室を作る(meetingRoomRepository);
             ReservableRoom reservableRoom = 予約が可能な会議室を作る(room);
+            予約会議室を登録する(reservableRoom, reservableRoomRepository);
             Reservation reservation = 予約を作る(new ReservationId(1), reservableRoom, LocalTime.of(9, 0), LocalTime.of(10, 0));
             予約する(reservationService, reservation);
 
@@ -139,6 +127,14 @@ public class ReservationServiceTest {
         }
     }
 
+    private Reservation 予約を作る(ReservationId id, ReservableRoom room, LocalTime start, LocalTime end) {
+        ReservedTime time = new ReservedTime(start, end);
+        User user = ユーザーを作る();
+        ReservedDate date = new ReservedDate(room.reservableRoomId().reservedDate());
+        Reservation reservation = new Reservation(id, date, time, room, user);
+        return reservation;
+    }
+
     private ReservableRoom 予約が可能な会議室を作る(MeetingRoom room) {
         RoomId roomId = new RoomId(1);
         ReservedDate date = new ReservedDate(LocalDate.now());
@@ -185,12 +181,12 @@ public class ReservationServiceTest {
         ReservableRoomRepository reservableRoomRepository;
         @Autowired
         UserRepository userRepository;
-        @Autowired
-        ReservationMapperExt reservationMapper;
 
         @BeforeEach
         void clean() {
-            reservationMapper.deleteByPrimaryKey(1);
+            reservationRepository.deleteAll();
+            reservableRoomRepository.deleteAll();
+            meetingRoomRepository.deleteAll();
         }
 
         @Test

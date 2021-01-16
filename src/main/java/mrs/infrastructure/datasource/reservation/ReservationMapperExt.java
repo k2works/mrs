@@ -14,4 +14,6 @@ public interface ReservationMapperExt extends ReservationMapper {
     List<Reservation> findAll();
 
     Reservation findById(int reservationId);
+
+    void deleteAll();
 }
