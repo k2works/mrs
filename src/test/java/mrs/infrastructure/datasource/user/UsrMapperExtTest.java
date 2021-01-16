@@ -1,7 +1,6 @@
 package mrs.infrastructure.datasource.user;
 
-import mrs.domain.model.Usr;
-import mrs.domain.model.user.RoleName;
+import mrs.domain.model.user.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,15 +14,15 @@ public class UsrMapperExtTest {
 
     @Test
     void ユーザーを登録する() {
-        Usr user = new Usr();
-        user.setUserId("user");
-        user.setFirstName("山田");
-        user.setLastName("太郎");
-        user.setPassword("パスワード");
-        user.setRoleName(RoleName.USER.toString());
+        User user = new User(
+                new UserId("user"),
+                new Password("password"),
+                new Name("山田", "太郎"),
+                RoleName.USER
+        );
         usrMapper.insert(user);
 
-        Usr result = usrMapper.selectByPrimaryKey("user");
+        User result = usrMapper.selectByPrimaryKey("user");
 
         assertNotNull(result);
     }
