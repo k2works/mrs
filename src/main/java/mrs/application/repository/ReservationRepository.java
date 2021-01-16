@@ -21,4 +21,6 @@ public interface ReservationRepository {
     void delete(Reservation reservation);
 
     Optional<Reservation> findById(int i);
+
+    void deleteAll();
 }

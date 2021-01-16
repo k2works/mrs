@@ -21,4 +21,8 @@ public interface ReservableRoomRepository {
     void save(ReservableRoom reservableRoom);
 
     void delete(ReservableRoomId id);
+
+    void deleteAll();
+
+    List<ReservableRoom> findAll();
 }

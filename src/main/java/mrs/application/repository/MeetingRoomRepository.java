@@ -12,4 +12,5 @@ public interface MeetingRoomRepository {
     void delete(MeetingRoom room);
     MeetingRoom findBy(Integer roomId);
     List<MeetingRoom> findAll();
+    void deleteAll();
 }

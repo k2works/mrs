@@ -1,13 +1,18 @@
 package mrs.infrastructure.datasource.reservation;
 
 import mrs.domain.model.reservation.*;
+import mrs.domain.model.room.MeetingRoom;
 import mrs.domain.model.room.RoomId;
+import mrs.domain.model.room.RoomName;
 import mrs.domain.model.user.*;
+import mrs.infrastructure.datasource.room.MeetingRoomMapperExt;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
 
+import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
@@ -18,14 +23,37 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 public class ReservationMapperExtTest {
     @Autowired
+    MeetingRoomMapperExt meetingRoomMapper;
+    @Autowired
+    ReservableRoomMapperExt reservableRoomMapper;
+    @Autowired
     ReservationMapperExt reservationMapper;
 
     @BeforeEach
     void setUp() {
+        // TODO 作った覚えのないデータができている
         reservationMapper.deleteByPrimaryKey(1);
         reservationMapper.deleteByPrimaryKey(2);
         reservationMapper.deleteByPrimaryKey(3);
         reservationMapper.deleteByPrimaryKey(4);
+        reservableRoomMapper.deleteByPrimaryKey(LocalDate.now(), 1);
+        reservableRoomMapper.deleteByPrimaryKey(LocalDate.now(), 2);
+        reservableRoomMapper.deleteByPrimaryKey(LocalDate.now(), 3);
+        reservableRoomMapper.deleteByPrimaryKey(LocalDate.now(), 4);
+        reservableRoomMapper.deleteByPrimaryKey(LocalDate.now().minusDays(1), 1);
+        reservableRoomMapper.deleteByPrimaryKey(LocalDate.now(), 1);
+        reservableRoomMapper.deleteByPrimaryKey(LocalDate.now().plusDays(1), 1);
+        reservableRoomMapper.deleteByPrimaryKey(LocalDate.now().minusDays(1), 7);
+        reservableRoomMapper.deleteByPrimaryKey(LocalDate.now(), 7);
+        reservableRoomMapper.deleteByPrimaryKey(LocalDate.now().plusDays(1), 7);
+        reservableRoomMapper.deleteByPrimaryKey(LocalDate.now().plusDays(2), 7);
+        meetingRoomMapper.deleteByPrimaryKey(1);
+        meetingRoomMapper.deleteByPrimaryKey(2);
+        meetingRoomMapper.deleteByPrimaryKey(3);
+        meetingRoomMapper.deleteByPrimaryKey(4);
+        meetingRoomMapper.deleteByPrimaryKey(5);
+        meetingRoomMapper.deleteByPrimaryKey(6);
+        meetingRoomMapper.deleteByPrimaryKey(7);
     }
 
     @Test
@@ -33,7 +61,8 @@ public class ReservationMapperExtTest {
         ReservationId id = new ReservationId(1);
         ReservedDate date = new ReservedDate(LocalDate.now());
         ReservedTime time = new ReservedTime(LocalTime.of(10, 0), LocalTime.of(11, 0));
-        ReservableRoom room = new ReservableRoom(new ReservableRoomId(new RoomId(1), date));
+        MeetingRoom meetingRoom = new MeetingRoom(new RoomId(1), new RoomName("会議室"));
+        ReservableRoom room = new ReservableRoom(new ReservableRoomId(new RoomId(1), date), meetingRoom);
         User user = new User(new UserId("Test"), new Password("Password"), new Name("山田", "太郎"), RoleName.USER);
         Reservation reservation = new Reservation(id, date, time, room, user);
         reservationMapper.insert(reservation);
@@ -48,7 +77,8 @@ public class ReservationMapperExtTest {
         ReservationId id = new ReservationId(2);
         ReservedDate date = new ReservedDate(LocalDate.now().plusDays(1));
         ReservedTime time = new ReservedTime(LocalTime.of(10, 0), LocalTime.of(11, 0));
-        ReservableRoom room = new ReservableRoom(new ReservableRoomId(new RoomId(1), date));
+        MeetingRoom meetingRoom = new MeetingRoom(new RoomId(1), new RoomName("会議室"));
+        ReservableRoom room = new ReservableRoom(new ReservableRoomId(new RoomId(1), date), meetingRoom);
         User user = new User(new UserId("Test"), new Password("Password"), new Name("山田", "太郎"), RoleName.USER);
         Reservation reservation = new Reservation(id, date, time, room, user);
         reservationMapper.insert(reservation);
@@ -66,7 +96,8 @@ public class ReservationMapperExtTest {
         ReservationId id = new ReservationId(3);
         ReservedDate date = new ReservedDate(LocalDate.now().plusDays(2));
         ReservedTime time = new ReservedTime(LocalTime.of(10, 0), LocalTime.of(11, 0));
-        ReservableRoom room = new ReservableRoom(new ReservableRoomId(new RoomId(1), date));
+        MeetingRoom meetingRoom = new MeetingRoom(new RoomId(1), new RoomName("会議室"));
+        ReservableRoom room = new ReservableRoom(new ReservableRoomId(new RoomId(1), date), meetingRoom);
         User user = new User(new UserId("Test"), new Password("Password"), new Name("山田", "太郎"), RoleName.USER);
         Reservation reservation = new Reservation(id, date, time, room, user);
         reservationMapper.insert(reservation);
@@ -83,7 +114,8 @@ public class ReservationMapperExtTest {
         ReservationId id = new ReservationId(4);
         ReservedDate date = new ReservedDate(LocalDate.now().plusDays(3));
         ReservedTime time = new ReservedTime(LocalTime.of(10, 0), LocalTime.of(11, 0));
-        ReservableRoom room = new ReservableRoom(new ReservableRoomId(new RoomId(1), date));
+        MeetingRoom meetingRoom = new MeetingRoom(new RoomId(1), new RoomName("会議室"));
+        ReservableRoom room = new ReservableRoom(new ReservableRoomId(new RoomId(1), date), meetingRoom);
         User user = new User(new UserId("Test"), new Password("Password"), new Name("山田", "太郎"), RoleName.USER);
         Reservation reservation = new Reservation(id, date, time, room, user);
         reservationMapper.insert(reservation);

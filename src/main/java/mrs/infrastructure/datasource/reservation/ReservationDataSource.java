@@ -45,4 +45,9 @@ public class ReservationDataSource implements ReservationRepository {
     public Optional<Reservation> findById(int reservationId) {
         return Optional.ofNullable(reservationMapper.findById(reservationId));
     }
+
+    @Override
+    public void deleteAll() {
+        reservationMapper.findAll().forEach(i -> reservationMapper.deleteByPrimaryKey(i.getReservationId()));
+    }
 }

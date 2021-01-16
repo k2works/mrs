@@ -34,4 +34,9 @@ public class MeetingRoomDataSource implements MeetingRoomRepository {
         return meetingRoomMapper.selectAll();
     }
 
+    @Override
+    public void deleteAll() {
+        meetingRoomMapper.selectAll().forEach(i -> meetingRoomMapper.deleteByPrimaryKey(i.roomId().value()));
+    }
+
 }

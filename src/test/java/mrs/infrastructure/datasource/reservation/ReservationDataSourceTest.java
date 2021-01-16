@@ -1,7 +1,10 @@
 package mrs.infrastructure.datasource.reservation;
 
+import mrs.application.repository.ReservationRepository;
 import mrs.domain.model.reservation.*;
+import mrs.domain.model.room.MeetingRoom;
 import mrs.domain.model.room.RoomId;
+import mrs.domain.model.room.RoomName;
 import mrs.domain.model.user.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -23,14 +26,14 @@ public class ReservationDataSourceTest {
     ReservationDataSource reservationDataSource;
 
     @Autowired
-    ReservationMapperExt reservationMapper;
+    ReservationRepository reservationRepository;
 
     @Autowired
     MockMvc mockMvc;
 
     @BeforeEach
     void clean() {
-        reservationMapper.deleteByPrimaryKey(1);
+        reservationRepository.deleteAll();
     }
 
     @Test
@@ -38,10 +41,11 @@ public class ReservationDataSourceTest {
         ReservationId id = new ReservationId(1);
         ReservedDate date = new ReservedDate(LocalDate.now());
         ReservedTime time = new ReservedTime(LocalTime.of(10, 0), LocalTime.of(11, 0));
-        ReservableRoom room = new ReservableRoom(new ReservableRoomId(new RoomId(1), date));
+        MeetingRoom meetingRoom = new MeetingRoom(new RoomId(1), new RoomName("会議室"));
+        ReservableRoom room = new ReservableRoom(new ReservableRoomId(new RoomId(1), date), meetingRoom);
         User user = new User(new UserId("Test"), new Password("Password"), new Name("山田", "太郎"), RoleName.USER);
         Reservation reservation = new Reservation(id, date, time, room, user);
-        reservationMapper.insert(reservation);
+        reservationRepository.save(reservation);
 
         ReservableRoomId reservableRoomId = new ReservableRoomId();
         List<Reservation> result = reservationDataSource.findByReservableRoom_ReservableRoomIdOrderByStartTimeAsc(reservableRoomId);
