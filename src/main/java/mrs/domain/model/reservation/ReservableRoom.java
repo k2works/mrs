@@ -2,7 +2,6 @@ package mrs.domain.model.reservation;
 
 import mrs.domain.model.room.MeetingRoom;
 
-import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -22,8 +21,9 @@ public class ReservableRoom implements Serializable {
     }
 
     public ReservableRoom(ReservableRoomId reservableRoomId) {
-        this.roomId = reservableRoomId.roomId();
+        this.reservableRoomId = reservableRoomId;
         this.reservedDate = reservableRoomId.reservedDate();
+        this.roomId = reservableRoomId.roomId();
     }
 
     public ReservableRoom(ReservableRoomId reservableRoomId, MeetingRoom meetingRoom) {
