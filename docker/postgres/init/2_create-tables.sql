@@ -11,6 +11,11 @@ CREATE TABLE meeting_room
     room_name VARCHAR(255) NOT NULL,
     PRIMARY KEY (room_id)
 );
+comment
+on table public.meeting_room is '会議室'
+comment on column public.meeting_room.room_id is '会議室ID'
+comment on column public.meeting_room.room_name is '会議室名'
+
 CREATE TABLE reservable_room
 (
     reserved_date DATE NOT NULL,
@@ -18,6 +23,11 @@ CREATE TABLE reservable_room
     PRIMARY KEY (reserved_date, room_id),
     FOREIGN KEY (room_id) REFERENCES meeting_room
 );
+comment
+on table public.reservable_room is '予約可能会議室'
+comment on column public.reservable_room.reserved_date is '予約日'
+comment on column public.reservable_room.room_id is '会議室ID'
+
 CREATE TABLE usr
 (
     user_id    VARCHAR(255) NOT NULL,
@@ -27,6 +37,14 @@ CREATE TABLE usr
     role_name  VARCHAR(255) NOT NULL,
     PRIMARY KEY (user_id)
 );
+comment
+on table public.usr is 'ユーザー'
+comment on column public.usr.user_id is 'ユーザーID'
+comment on column public.usr.first_name is '姓'
+comment on column public.usr.last_name is '名'
+comment on column public.usr.password is 'パスワード'
+comment on column public.usr.role_name is '役割'
+
 CREATE TABLE reservation
 (
     reservation_id SERIAL       NOT NULL,
@@ -39,6 +57,14 @@ CREATE TABLE reservation
     FOREIGN KEY (reserved_date, room_id) REFERENCES reservable_room,
     FOREIGN KEY (user_id) REFERENCES usr
 );
+comment
+on table public.reservation is '予約'
+comment on column public.reservation.reservation_id is '予約ID'
+comment on column public.reservation.end_time is '予約終了時間'
+comment on column public.reservation.start_time is '予約開始時間'
+comment on column public.reservation.reserved_date is '予約日'
+comment on column public.reservation.room_id is '会議室ID'
+comment on column public.reservation.user_id is 'ユーザーID'
 
 CREATE TABLE todo
 (
@@ -48,3 +74,9 @@ CREATE TABLE todo
     finished BOOLEAN NOT NULL,
     PRIMARY KEY (id)
 );
+comment
+on table public.todo is 'やること'
+comment on column public.todo.id is 'ID'
+comment on column public.todo.title is 'タイトル'
+comment on column public.todo.details is '詳細'
+comment on column public.todo.finished is '完了'
