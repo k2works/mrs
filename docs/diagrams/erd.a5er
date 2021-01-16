@@ -1,0 +1,189 @@
+﻿# A5:ER FORMAT:14
+# A5:ER ENCODING:UTF8
+# A5:ER Mk-1 Copyright (C)2007 m.matsubara
+# A5:SQL Mk-2 Copyright (C)1997 m.matsubara
+#  https://a5m2.mmatsubara.com
+
+[Manager]
+ProjectName=
+Author=
+MaxEntityRowShow=1000
+ReadOnlyRecommend=0
+Page=Main
+PageInfo="Main",2,"A3Landscape",$FFFFFF
+LogicalView=1
+DecodeDomain=0
+ViewModePageIndividually=1
+ViewMode=2
+ViewFormat=0
+UseNondependenceDashLine=0
+FontName=Tahoma
+FontSize=6
+PaperSize=A4Landscape
+HeaderLeft=
+HeaderCenter=
+HeaderRight=
+FooterLeft=
+FooterCenter=
+FooterRight=
+ShowPageoutRelation=1
+DefaultPkName=%0:s_PKC
+DefaultPkIndexName=%0:s_PKI
+DefaultIndexName=%0:s_IX%1:d
+DefaultFkName=%0:s_FK%1:d
+SqlSeparator=0
+UpperCaseKeyword=0
+ShowTag=1
+ShowCommonAttributes=0
+
+[Entity]
+PName=meeting_room
+LName=会議室
+Comment=
+TableOption=
+Page=Main
+Left=900
+Top=500
+Field="会議室ID","room_id","serial","NOT NULL",0,"","",$FFFFFFFF,""
+Field="会議室名","room_name","character varying(255)","NOT NULL",,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+Position="Main",900,500
+ZOrder=-1
+
+[Entity]
+PName=reservable_room
+LName=予約可能会議室
+Comment=
+TableOption=
+Page=Main
+Left=450
+Top=300
+Field="予約日","reserved_date","date","NOT NULL",0,"","",$FFFFFFFF,""
+Field="会議室ID","room_id","integer","NOT NULL",1,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+Position="Main",450,300
+ZOrder=-2
+
+[Entity]
+PName=reservation
+LName=予約
+Comment=
+TableOption=
+Page=Main
+Left=100
+Top=150
+Field="予約ID","reservation_id","serial","NOT NULL",0,"","",$FFFFFFFF,""
+Field="予約終了時間","end_time","time without time zone","NOT NULL",,"","",$FFFFFFFF,""
+Field="予約開始時間","start_time","time without time zone","NOT NULL",,"","",$FFFFFFFF,""
+Field="予約日","reserved_date","date","NOT NULL",,"","",$FFFFFFFF,""
+Field="会議室ID","room_id","integer","NOT NULL",,"","",$FFFFFFFF,""
+Field="ユーザーID","user_id","character varying(255)","NOT NULL",,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+Position="Main",100,150
+ZOrder=-3
+
+[Entity]
+PName=todo
+LName=やること
+Comment=
+TableOption=
+Page=Main
+Left=700
+Top=100
+Field="ID","id","serial","NOT NULL",0,"","",$FFFFFFFF,""
+Field="タイトル","title","text","NOT NULL",,"","",$FFFFFFFF,""
+Field="詳細","details","text",,,"","",$FFFFFFFF,""
+Field="完了","finished","boolean","NOT NULL",,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+Position="Main",700,100
+ZOrder=-4
+
+[Entity]
+PName=usr
+LName=ユーザー
+Comment=
+TableOption=
+Page=Main
+Left=350
+Top=500
+Field="ユーザーID","user_id","character varying(255)","NOT NULL",0,"","",$FFFFFFFF,""
+Field="姓","first_name","character varying(255)","NOT NULL",,"","",$FFFFFFFF,""
+Field="名","last_name","character varying(255)","NOT NULL",,"","",$FFFFFFFF,""
+Field="パスワード","password","character varying(255)","NOT NULL",,"","",$FFFFFFFF,""
+Field="役割","role_name","character varying(255)","NOT NULL",,"","",$FFFFFFFF,""
+EffectMode=None
+Color=$000000
+BkColor=$FFFFFF
+Position="Main",350,500
+ZOrder=-5
+
+[Relation]
+Entity1=usr
+Entity2=reservation
+RelationType1=1
+RelationType2=3
+Fields1=user_id
+Fields2=user_id
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,500,9500,351,R,R,""
+Dependence=0
+Caption=
+PName=
+LineMode=0
+Bar1=50
+Bar2=950
+Bar3=35
+TermPos1=R
+TermPos2=R
+ZOrder=-8
+
+[Relation]
+Entity1=reservable_room
+Entity2=reservation
+RelationType1=1
+RelationType2=3
+Fields1=reserved_date,room_id
+Fields2=reserved_date,room_id
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,500,9500,500,R,R,""
+Dependence=0
+Caption=
+PName=
+LineMode=0
+Bar1=50
+Bar2=950
+Bar3=50
+TermPos1=R
+TermPos2=R
+ZOrder=-7
+
+[Relation]
+Entity1=meeting_room
+Entity2=reservable_room
+RelationType1=1
+RelationType2=3
+Fields1=room_id
+Fields2=room_id
+Cardinarity1=
+Cardinarity2=
+Position="MAIN",0,500,9500,0,R,R,""
+Dependence=1
+Caption=
+PName=
+LineMode=0
+Bar1=50
+Bar2=950
+Bar3=0
+TermPos1=R
+TermPos2=R
+ZOrder=-6
