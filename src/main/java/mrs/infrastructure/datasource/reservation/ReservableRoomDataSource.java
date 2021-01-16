@@ -3,7 +3,6 @@ package mrs.infrastructure.datasource.reservation;
 import mrs.application.repository.ReservableRoomRepository;
 import mrs.domain.model.reservation.ReservableRoom;
 import mrs.domain.model.reservation.ReservableRoomId;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
@@ -24,7 +23,7 @@ public class ReservableRoomDataSource implements ReservableRoomRepository {
 
     @Override
     public List<ReservableRoom> findByReservableRoomId_ReservedDateOrderByReservableRoomId_RoomIdAsc(LocalDate reservedDate) {
-        return null;
+        return reservableRoomMapper.findByReservableRoomId_ReservedDateOrderByReservableRoomId_RoomIdAsc(reservedDate);
     }
 
     @Override

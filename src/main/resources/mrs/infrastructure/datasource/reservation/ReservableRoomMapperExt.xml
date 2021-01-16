@@ -21,13 +21,22 @@
          reservable_room rr
              LEFT OUTER JOIN meeting_room rm
                              ON rr.room_id = rm.room_id
-    WHERE
-          rr.room_id = #{roomId} AND reserved_date = #{reservedDate}
+    WHERE rr.room_id = #{roomId}
+      AND reserved_date = #{reservedDate}
   </select>
     <select id="selectAll" resultMap="BaseResultMap">
         SELECT room_id,
                reserved_date
-        FROM
-            reservable_room
+        FROM reservable_room
+    </select>
+    <select id="findByReservableRoomId_ReservedDateOrderByReservableRoomId_RoomIdAsc" resultMap="BaseResultMap">
+        SELECT rr.room_id,
+               rr.reserved_date,
+               rm.room_name
+        FROM reservable_room rr
+                 LEFT OUTER JOIN meeting_room rm
+                                 ON rr.room_id = rm.room_id
+        WHERE reserved_date = #{reservedDate}
+        ORDER BY rr.room_id ASC
     </select>
 </mapper>
