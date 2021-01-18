@@ -43,3 +43,5 @@ bin
 docker/mysql/data
 
 node_modules
+cypress/screenshots
+cypress/videos

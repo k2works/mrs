@@ -7,7 +7,8 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "e2e": "cypress open",
+    "test": "cypress run"
   },
   "repository": {
     "type": "git",
@@ -26,5 +27,17 @@
   },
   "dependencies": {
     "cypress": "^6.2.1"
+  },
+  "cypress-cucumber-preprocessor": {
+    "step_definitions": "cypress/support/step_definitions/",
+    "nonGlobalStepDefinitions": false
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js"
+    ],
+    "testMatch": [
+      "**/**/*.test.js"
+    ]
   }
 }
