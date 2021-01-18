@@ -1,4 +1,3 @@
-\connect appdb
 CREATE TABLE meeting_room
 (
     room_id   SERIAL       NOT NULL,
@@ -75,21 +74,3 @@ on column public.reservation.room_id is '会議室ID';
 comment
 on column public.reservation.user_id is 'ユーザーID';
 
-CREATE TABLE todo
-(
-    id       SERIAL  NOT NULL,
-    title    TEXT    NOT NULL,
-    details  TEXT,
-    finished BOOLEAN NOT NULL,
-    PRIMARY KEY (id)
-);
-comment
-on table public.todo is 'やること';
-comment
-on column public.todo.id is 'ID';
-comment
-on column public.todo.title is 'タイトル';
-comment
-on column public.todo.details is '詳細';
-comment
-on column public.todo.finished is '完了';
