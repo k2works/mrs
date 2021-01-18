@@ -1,5 +1,6 @@
 package mrs.infrastructure.datasource.room;
 
+import mrs.MrsDBTest;
 import mrs.application.repository.MeetingRoomRepository;
 import mrs.application.repository.ReservableRoomRepository;
 import mrs.application.repository.ReservationRepository;
@@ -9,13 +10,12 @@ import mrs.domain.model.room.RoomName;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest
+@MrsDBTest
 public class MeetingRoomDataSourceTest {
     @Autowired
     ReservationRepository reservationRepository;

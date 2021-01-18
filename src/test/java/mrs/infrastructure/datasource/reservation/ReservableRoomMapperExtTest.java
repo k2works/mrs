@@ -1,5 +1,6 @@
 package mrs.infrastructure.datasource.reservation;
 
+import mrs.MrsDBTest;
 import mrs.domain.model.reservation.ReservableRoom;
 import mrs.domain.model.reservation.ReservableRoomId;
 import mrs.domain.model.reservation.ReservedDate;
@@ -7,16 +8,15 @@ import mrs.domain.model.room.MeetingRoom;
 import mrs.domain.model.room.RoomId;
 import mrs.domain.model.room.RoomName;
 import mrs.infrastructure.datasource.room.MeetingRoomMapperExt;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
 import java.util.List;
 
-@SpringBootTest
+import static org.junit.jupiter.api.Assertions.*;
+
+@MrsDBTest
 public class ReservableRoomMapperExtTest {
     @Autowired
     ReservationMapperExt reservationMapper;
@@ -26,20 +26,6 @@ public class ReservableRoomMapperExtTest {
 
     @Autowired
     ReservableRoomMapperExt reservableRoomMapper;
-
-    @BeforeEach
-    void clean() {
-        // TODO 作った覚えのないデータができている
-        reservationMapper.deleteByPrimaryKey(1);
-        reservableRoomMapper.deleteByPrimaryKey(LocalDate.now().minusDays(1), 1);
-        reservableRoomMapper.deleteByPrimaryKey(LocalDate.now(), 1);
-        reservableRoomMapper.deleteByPrimaryKey(LocalDate.now().plusDays(1), 1);
-        reservableRoomMapper.deleteByPrimaryKey(LocalDate.now().minusDays(1), 7);
-        reservableRoomMapper.deleteByPrimaryKey(LocalDate.now(), 7);
-        reservableRoomMapper.deleteByPrimaryKey(LocalDate.now().plusDays(1), 7);
-        reservableRoomMapper.deleteByPrimaryKey(LocalDate.now().plusDays(2), 7);
-        meetingRoomMapper.deleteByPrimaryKey(1);
-    }
 
     @Test
     void 予約可能会議室を登録できる() {

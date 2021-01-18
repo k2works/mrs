@@ -1,14 +1,16 @@
 package mrs.infrastructure.datasource.reservation;
 
+import mrs.MrsDBTest;
 import mrs.domain.model.reservation.*;
 import mrs.domain.model.room.MeetingRoom;
 import mrs.domain.model.room.RoomId;
 import mrs.domain.model.room.RoomName;
 import mrs.domain.model.user.*;
 import mrs.infrastructure.datasource.room.MeetingRoomMapperExt;
+import mrs.infrastructure.datasource.user.UsrMapperExt;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -17,7 +19,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-@SpringBootTest
+@MrsDBTest
 public class ReservationMapperExtTest {
     @Autowired
     MeetingRoomMapperExt meetingRoomMapper;
@@ -25,21 +27,24 @@ public class ReservationMapperExtTest {
     ReservableRoomMapperExt reservableRoomMapper;
     @Autowired
     ReservationMapperExt reservationMapper;
+    @Autowired
+    UsrMapperExt usrMapper;
 
     @BeforeEach
     void setUp() {
-        // TODO 作った覚えのないデータができている
-        reservationMapper.deleteByPrimaryKey(1);
     }
 
-    // TODO 参照制約エラーを解決する
+    @Test
     void 予約が登録できる() {
         ReservationId id = new ReservationId(1);
         ReservedDate date = new ReservedDate(LocalDate.now());
         ReservedTime time = new ReservedTime(LocalTime.of(10, 0), LocalTime.of(11, 0));
         MeetingRoom meetingRoom = new MeetingRoom(new RoomId(1), new RoomName("会議室"));
+        meetingRoomMapper.insert(meetingRoom);
         ReservableRoom room = new ReservableRoom(new ReservableRoomId(new RoomId(1), date), meetingRoom);
+        reservableRoomMapper.insert(room);
         User user = new User(new UserId("Test"), new Password("Password"), new Name("山田", "太郎"), RoleName.USER);
+        usrMapper.insert(user);
         Reservation reservation = new Reservation(id, date, time, room, user);
         reservationMapper.insert(reservation);
 
@@ -48,14 +53,17 @@ public class ReservationMapperExtTest {
         assertEquals(1, result.getReservationId());
     }
 
-    // TODO 参照制約エラーを解決する
+    @Test
     void 予約を更新できる() {
         ReservationId id = new ReservationId(2);
         ReservedDate date = new ReservedDate(LocalDate.now().plusDays(1));
         ReservedTime time = new ReservedTime(LocalTime.of(10, 0), LocalTime.of(11, 0));
         MeetingRoom meetingRoom = new MeetingRoom(new RoomId(1), new RoomName("会議室"));
+        meetingRoomMapper.insert(meetingRoom);
         ReservableRoom room = new ReservableRoom(new ReservableRoomId(new RoomId(1), date), meetingRoom);
+        reservableRoomMapper.insert(room);
         User user = new User(new UserId("Test"), new Password("Password"), new Name("山田", "太郎"), RoleName.USER);
+        usrMapper.insert(user);
         Reservation reservation = new Reservation(id, date, time, room, user);
         reservationMapper.insert(reservation);
 
@@ -67,14 +75,17 @@ public class ReservationMapperExtTest {
         assertEquals("11:00", result.getStartTime().toString());
     }
 
-    // TODO 参照制約エラーを解決する
+    @Test
     void 予約を削除できる() {
         ReservationId id = new ReservationId(3);
         ReservedDate date = new ReservedDate(LocalDate.now().plusDays(2));
         ReservedTime time = new ReservedTime(LocalTime.of(10, 0), LocalTime.of(11, 0));
         MeetingRoom meetingRoom = new MeetingRoom(new RoomId(1), new RoomName("会議室"));
+        meetingRoomMapper.insert(meetingRoom);
         ReservableRoom room = new ReservableRoom(new ReservableRoomId(new RoomId(1), date), meetingRoom);
+        reservableRoomMapper.insert(room);
         User user = new User(new UserId("Test"), new Password("Password"), new Name("山田", "太郎"), RoleName.USER);
+        usrMapper.insert(user);
         Reservation reservation = new Reservation(id, date, time, room, user);
         reservationMapper.insert(reservation);
         Reservation delete = reservationMapper.selectByPrimaryKey(3);
@@ -85,14 +96,17 @@ public class ReservationMapperExtTest {
         assertNull(result);
     }
 
-    // TODO 参照制約エラーを解決する
+    @Test
     void 開始時間順に予約可能会議室集合を取得できる() {
         ReservationId id = new ReservationId(4);
         ReservedDate date = new ReservedDate(LocalDate.now().plusDays(3));
         ReservedTime time = new ReservedTime(LocalTime.of(10, 0), LocalTime.of(11, 0));
         MeetingRoom meetingRoom = new MeetingRoom(new RoomId(1), new RoomName("会議室"));
+        meetingRoomMapper.insert(meetingRoom);
         ReservableRoom room = new ReservableRoom(new ReservableRoomId(new RoomId(1), date), meetingRoom);
+        reservableRoomMapper.insert(room);
         User user = new User(new UserId("Test"), new Password("Password"), new Name("山田", "太郎"), RoleName.USER);
+        usrMapper.insert(user);
         Reservation reservation = new Reservation(id, date, time, room, user);
         reservationMapper.insert(reservation);
 
