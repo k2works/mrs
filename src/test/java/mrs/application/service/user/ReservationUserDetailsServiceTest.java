@@ -1,23 +1,20 @@
 package mrs.application.service.user;
 
-import mrs.MrsTestConfiguration;
+import mrs.MrsDBTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.security.test.context.support.WithUserDetails;
-import org.springframework.test.annotation.DirtiesContext;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@SpringBootTest(classes = MrsTestConfiguration.class)
-@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
+@MrsDBTest
 @DisplayName("予約ユーザーサービス")
 public class ReservationUserDetailsServiceTest {
    @Nested
@@ -30,9 +27,9 @@ public class ReservationUserDetailsServiceTest {
 
       @Test
       public void ユーザー情報を取得する() {
-         UserDetails result = reservationUserDetailsService.loadUserByUsername("taro-yamada");
+         UserDetails result = reservationUserDetailsService.loadUserByUsername("test");
 
-         assertEquals("taro-yamada", result.getUsername());
+         assertEquals("test", result.getUsername());
       }
 
       @Test

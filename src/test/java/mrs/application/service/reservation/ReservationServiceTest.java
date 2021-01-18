@@ -1,7 +1,6 @@
 package mrs.application.service.reservation;
 
-import mrs.MrsApplication;
-import mrs.WebSecurityConfig;
+import mrs.MrsDBTest;
 import mrs.application.repository.MeetingRoomRepository;
 import mrs.application.repository.ReservableRoomRepository;
 import mrs.application.repository.ReservationRepository;
@@ -16,10 +15,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.test.context.support.WithMockUser;
-import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.context.ContextConfiguration;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -27,10 +23,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@SuppressWarnings("ALL")
-@SpringBootTest(classes = MrsApplication.class)
-@ContextConfiguration(classes = WebSecurityConfig.class)
-@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
+@MrsDBTest
 @DisplayName("予約サービス")
 public class ReservationServiceTest {
     @Nested
