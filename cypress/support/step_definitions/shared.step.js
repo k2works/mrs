@@ -6,6 +6,7 @@ const {
 } = require("cypress-cucumber-preprocessor/steps");
 
 import {AppPage} from "../pages/appPage";
+import {RoomsPage} from "../pages/roomsPage";
 
 // this will get called before each scenario
 let page;
@@ -18,6 +19,9 @@ Given(`{string} ページにアクセスする`, (pageName) => {
         case "アプリケーション":
             page = new AppPage();
             break;
+        case "会議室予約一覧画面":
+            page = new RoomsPage();
+            break;
         default:
             console.log("該当するページが存在しません");
     }
@@ -27,3 +31,15 @@ Given(`{string} ページにアクセスする`, (pageName) => {
 Then(`機能名 {string} が表示される`, (funcName) => {
     cy.get("body > :nth-child(3)").should("contain", funcName);
 });
+
+Given(`{string} としてログインしている`, (user) => {
+    switch (user) {
+        case ("利用者"):
+            page = new AppPage()
+            page.visit()
+            page.login()
+            break
+        default:
+            throw new Error('該当するページが存在しません')
+    }
+})
