@@ -45,3 +45,5 @@ docker/mysql/data
 node_modules
 cypress/screenshots
 cypress/videos
+cypress/cucumber-json
+cypress/report

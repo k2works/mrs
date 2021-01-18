@@ -8,7 +8,11 @@
   },
   "scripts": {
     "e2e": "cypress open",
-    "test": "cypress run"
+    "test": "cypress run",
+    "report:cucumber": "npm-run-all report:cucumber:clean test report:cucumber:generate report:cucumber:report",
+    "report:cucumber:generate": "node cypress/scripts/cucumber_generate.js",
+    "report:cucumber:report": "node cypress/scripts/cucumber_report.js",
+    "report:cucumber:clean": "rimraf cypress/report && rimraf cypress/cucumber-json"
   },
   "repository": {
     "type": "git",
@@ -19,6 +23,7 @@
   "license": "ISC",
   "devDependencies": {
     "cpx": "^1.5.0",
+    "cucumber-html-report": "^0.6.5",
     "cypress-cucumber-preprocessor": "^4.0.0",
     "foreman": "^3.0.1",
     "npm-run-all": "^4.1.5",
@@ -26,11 +31,18 @@
     "watch": "^1.0.2"
   },
   "dependencies": {
+    "cucumber-html-reporter": "^5.3.0",
     "cypress": "^6.2.1"
   },
   "cypress-cucumber-preprocessor": {
     "step_definitions": "cypress/support/step_definitions/",
-    "nonGlobalStepDefinitions": false
+    "nonGlobalStepDefinitions": false,
+    "cucumberJson": {
+      "generate": true,
+      "outputFolder": "cypress/cucumber-json",
+      "filePrefix": "",
+      "fileSuffix": ".cucumber"
+    }
   },
   "jest": {
     "moduleFileExtensions": [
