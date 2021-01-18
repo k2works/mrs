@@ -10,6 +10,7 @@ plugins {
     id 'com.cosminpolifronie.gradle.plantuml' version '1.6.0'
     id "com.arenagod.gradle.MybatisGenerator" version "1.3"
     id 'de.undercouch.download' version '4.0.1'
+    id "org.flywaydb.flyway" version "7.5.0"
 }
 
 sourceCompatibility = '11'
@@ -41,6 +42,7 @@ dependencies {
     }
     testImplementation 'irof:jig-erd:latest.release'
     compile "org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.3"
+    compile "org.flywaydb:flyway-core:7.5.0"
 }
 
 group = 'mrs'
