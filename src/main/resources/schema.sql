@@ -36,11 +36,3 @@ CREATE TABLE reservation
     FOREIGN KEY (user_id) REFERENCES usr
 );
 
-CREATE TABLE todo
-(
-    id       INT4    NOT NULL AUTO_INCREMENT,
-    title    TEXT    NOT NULL,
-    details  TEXT,
-    finished BOOLEAN NOT NULL,
-    PRIMARY KEY (id)
-);
