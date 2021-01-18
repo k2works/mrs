@@ -13,7 +13,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.security.test.context.support.WithUserDetails;
 import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.context.jdbc.Sql;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -30,8 +29,6 @@ public class ReservationUserDetailsServiceTest {
       UserDetailsService userDetailsService;
 
       @Test
-      @Sql("/schema.sql")
-      @Sql("/data.sql")
       public void ユーザー情報を取得する() {
          UserDetails result = reservationUserDetailsService.loadUserByUsername("taro-yamada");
 
