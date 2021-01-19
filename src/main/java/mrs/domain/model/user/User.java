@@ -8,9 +8,9 @@ import java.io.Serializable;
  */
 public class User implements Serializable {
     @Id
-    private String userId;
+    private UserId userId;
 
-    private String password;
+    private Password password;
 
     private String firstName;
 
@@ -22,19 +22,19 @@ public class User implements Serializable {
     }
 
     public User(UserId userId, Password password, Name name, RoleName roleName) {
-        this.userId = userId.value;
-        this.password = password.value;
+        this.userId = userId;
+        this.password = password;
         this.firstName = name.firstName;
         this.lastName = name.lastName;
         this.roleName = roleName;
     }
 
     public UserId userId() {
-        return new UserId(userId);
+        return userId;
     }
 
     public Password password() {
-        return new Password(password);
+        return password;
     }
 
     public RoleName roleName() {

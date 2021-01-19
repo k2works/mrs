@@ -2,10 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mrs.infrastructure.datasource.user.UsrMapperExt">
   <resultMap id="BaseResultMap" type="mrs.domain.model.user.User">
-    <id column="user_id" jdbcType="VARCHAR" property="userId"/>
+    <id column="user_id" jdbcType="VARCHAR" property="userId.value"/>
     <result column="first_name" jdbcType="VARCHAR" property="firstName"/>
     <result column="last_name" jdbcType="VARCHAR" property="lastName"/>
-    <result column="password" jdbcType="VARCHAR" property="password"/>
+    <result column="password" jdbcType="VARCHAR" property="password.value"/>
     <result column="role_name" jdbcType="VARCHAR" property="roleName"/>
   </resultMap>
 </mapper>

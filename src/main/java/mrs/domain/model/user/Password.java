@@ -10,6 +10,9 @@ public class Password {
         this.value = value;
     }
 
+    public Password() {
+    }
+
     public String value() {
         return value;
     }

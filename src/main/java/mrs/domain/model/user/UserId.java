@@ -10,6 +10,9 @@ public class UserId {
         this.value = value;
     }
 
+    public UserId() {
+    }
+
     public String value() {
         return value;
     }
