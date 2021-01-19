@@ -2,14 +2,12 @@ package mrs.domain.model.reservation;
 
 import mrs.domain.model.room.RoomId;
 
-import javax.persistence.Embeddable;
 import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
  * 予約可能会議室ID
  */
-@Embeddable
 public class ReservableRoomId implements Serializable {
 
     private Integer roomId;
