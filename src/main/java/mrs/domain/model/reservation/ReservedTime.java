@@ -14,6 +14,9 @@ public class ReservedTime {
         this.end = end;
     }
 
+    public ReservedTime() {
+    }
+
     public LocalTime start() {
         return start;
     }

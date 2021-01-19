@@ -10,9 +10,10 @@ import java.util.Objects;
  */
 public class Reservation {
     private ReservationId reservationId;
+    private ReservedDate reservedDate;
+    private ReservedTime reservedTime;
     private LocalTime startTime;
     private LocalTime endTime;
-    private ReservedDate reservedDate;
     private Integer roomId;
     private String userId;
     private ReservableRoomId reservableRoomId;
@@ -26,6 +27,7 @@ public class Reservation {
     public Reservation(ReservationId reservationId, ReservedDate reservedDate, ReservedTime reservedTime, ReservableRoom room, User user) {
         this.reservationId = reservationId;
         this.reservedDate = reservedDate;
+        this.reservedTime = reservedTime;
         this.startTime = reservedTime.start;
         this.endTime = reservedTime.end;
         this.roomId = room.reservableRoomId().roomId().value();
@@ -36,6 +38,7 @@ public class Reservation {
 
     public Reservation(ReservedDate reservedDate, ReservedTime reservedTime, ReservableRoom room, User user) {
         this.reservedDate = reservedDate;
+        this.reservedTime = reservedTime;
         this.startTime = reservedTime.start;
         this.endTime = reservedTime.end;
         this.roomId = room.reservableRoomId().roomId().value();
@@ -58,16 +61,20 @@ public class Reservation {
         return reservationId;
     }
 
+    public ReservedDate reservedDate() {
+        return reservedDate;
+    }
+
+    public ReservedTime reservedTime() {
+        return reservedTime;
+    }
+
     public LocalTime getStartTime() {
         return startTime;
     }
 
     public LocalTime getEndTime() {
         return endTime;
-    }
-
-    public ReservedTime reservedTime() {
-        return new ReservedTime(startTime, endTime);
     }
 
     public ReservableRoom reservableRoom() {
