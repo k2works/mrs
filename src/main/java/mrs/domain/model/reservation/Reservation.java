@@ -80,8 +80,4 @@ public class Reservation {
     public User user() {
         return user;
     }
-
-    public ReservableRoomId reservableRoomId() {
-        return reservableRoomId;
-    }
 }

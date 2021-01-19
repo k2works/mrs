@@ -12,6 +12,10 @@
             <id property="roomId.value" column="room_id"/>
             <result property="reservedDate.value" column="reserved_date"/>
         </association>
+        <association property="reservableRoom" javaType="mrs.domain.model.reservation.ReservableRoom">
+            <id property="roomId" column="room_id"/>
+            <result property="reservedDate" column="reserved_date"/>
+        </association>
         <association property="user" javaType="mrs.domain.model.user.User">
             <id property="userId.value" column="user_id"/>
             <result property="name.firstName" column="first_name"/>

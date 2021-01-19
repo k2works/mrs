@@ -41,4 +41,11 @@ public class ReservableRoom implements Serializable {
         return reservableRoomId;
     }
 
+    public LocalDate reservedDate() {
+        return reservedDate;
+    }
+
+    public Integer roomId() {
+        return roomId;
+    }
 }
