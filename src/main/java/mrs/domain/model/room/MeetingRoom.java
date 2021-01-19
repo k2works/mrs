@@ -6,14 +6,14 @@ package mrs.domain.model.room;
 public class MeetingRoom {
     private Integer roomId;
 
-    private String roomName;
+    private RoomName roomName;
 
     public MeetingRoom() {
     }
 
     public MeetingRoom(RoomId roomId, RoomName roomName) {
         this.roomId = roomId.value;
-        this.roomName = roomName.value;
+        this.roomName = roomName;
     }
 
     public RoomId roomId() {
@@ -21,7 +21,7 @@ public class MeetingRoom {
     }
 
     public RoomName roomName() {
-        return new RoomName(roomName);
+        return roomName;
     }
 
     @Override

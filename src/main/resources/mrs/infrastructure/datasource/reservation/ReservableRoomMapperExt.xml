@@ -10,7 +10,7 @@
     </association>
     <association property="meetingRoom" javaType="mrs.domain.model.room.MeetingRoom">
         <id property="roomId" column="room_id"/>
-        <result property="roomName" column="room_name"/>
+        <result property="roomName.value" column="room_name"/>
     </association>
   </resultMap>
   <select id="selectByPrimaryKey" parameterType="mrs.domain.model.reservation.ReservableRoomId" resultMap="BaseResultMap">

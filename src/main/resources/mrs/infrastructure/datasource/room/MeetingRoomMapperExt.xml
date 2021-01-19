@@ -3,7 +3,7 @@
 <mapper namespace="mrs.infrastructure.datasource.room.MeetingRoomMapperExt">
     <resultMap id="BaseResultMap" type="mrs.domain.model.room.MeetingRoom">
         <id column="room_id" property="roomId" />
-        <result column="room_name" property="roomName" />
+        <result column="room_name" property="roomName.value"/>
     </resultMap>
 
     <select id="selectAll" resultMap="BaseResultMap">

@@ -10,6 +10,9 @@ public class RoomName {
         this.value = value;
     }
 
+    public RoomName() {
+    }
+
     public String value() {
         return value;
     }
