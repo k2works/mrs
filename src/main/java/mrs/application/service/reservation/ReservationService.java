@@ -44,10 +44,10 @@ public class ReservationService {
         return reservation;
     }
 
+    @PreAuthorize("hasRole('ADMIN') or #reservation.user.userId.value == principal.user.userId.value")
     /**
      * 会議室の予約をキャンセルする
      */
-    @PreAuthorize("hasRole('ADMIN') or #reservation.user.userId.value == principal.user.userId.value")
     public void cancel(@P("reservation") Reservation reservation) {
         reservationRepository.delete(reservation);
     }
@@ -60,7 +60,7 @@ public class ReservationService {
     }
 
     /**
-     * 会議室の予約集合を探す
+     * 会議室の予約一覧を探す
      */
     public Reservations findReservations(ReservableRoomId reservableRoomId) {
         List<Reservation> result = reservationRepository.findByReservableRoom_ReservableRoomIdOrderByStartTimeAsc(reservableRoomId);

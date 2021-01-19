@@ -5,15 +5,20 @@ title ビジネスユースケース図 - 会議室予約業務
 left to right direction
 
 actor 利用者
+actor 管理者
 
 usecase Web予約
-usecase Web予約キャンセル
+note top of Web予約
+  利用者はインターネット経由で会議室の予約申し込み込みができる
+  利用者は自身の予約をキャンセルできる
+  管理者は他の利用者の予約をキャンセルできる
+end note
 
 artifact 会議室
 
 :利用者: -- (Web予約)
-:利用者: -- (Web予約キャンセル)
+:管理者: -- (Web予約)
 (Web予約) -- 会議室
-(Web予約キャンセル) -- 会議室
+
 
 @enduml

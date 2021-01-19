@@ -2,52 +2,51 @@ package mrs.domain.model.reservation;
 
 import mrs.domain.model.user.User;
 
-import javax.persistence.*;
-import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Objects;
 
 /**
  * 予約
  */
-@Entity
-public class Reservation implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class Reservation {
     private Integer reservationId;
-
     private LocalTime startTime;
-
     private LocalTime endTime;
-
-    @ManyToOne
-    @JoinColumns({@JoinColumn(name = "reserved_date"), @JoinColumn(name = "room_id")})
+    private LocalDate reservedDate;
+    private Integer roomId;
+    private String userId;
+    private ReservableRoomId reservableRoomId;
     private ReservableRoom reservableRoom;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id")
     private User user;
 
+    @Deprecated
     public Reservation() {
     }
 
-    public Reservation(ReservedTime reservedTime, ReservableRoom room, User user) {
+    public Reservation(ReservationId reservationId, ReservedDate reservedDate, ReservedTime reservedTime, ReservableRoom room, User user) {
+        this.reservationId = reservationId.value;
+        this.reservedDate = reservedDate.value;
         this.startTime = reservedTime.start;
         this.endTime = reservedTime.end;
+        this.roomId = room.reservableRoomId().roomId();
+        this.userId = user.userId().value();
         this.reservableRoom = room;
         this.user = user;
     }
 
-    public Reservation(ReservationId reservationId, ReservedTime reservedTime, ReservableRoom room, User user) {
-        this.reservationId = reservationId.value;
+    public Reservation(ReservedDate reservedDate, ReservedTime reservedTime, ReservableRoom room, User user) {
+        this.reservedDate = reservedDate.value;
         this.startTime = reservedTime.start;
         this.endTime = reservedTime.end;
+        this.roomId = room.reservableRoomId().roomId();
+        this.userId = user.userId().value();
         this.reservableRoom = room;
         this.user = user;
     }
 
     public boolean overlap(Reservation target) {
-        if (!Objects.equals(reservableRoom.reservableRoomId(), target.reservableRoom.reservableRoomId())) {
+        if (!Objects.equals(reservableRoomId, target.reservableRoom.reservableRoomId())) {
             return false;
         }
         if (startTime.equals(target.startTime) && endTime.equals(target.endTime)) {
@@ -78,5 +77,9 @@ public class Reservation implements Serializable {
 
     public User user() {
         return user;
+    }
+
+    public ReservableRoomId reservableRoomId() {
+        return reservableRoomId;
     }
 }

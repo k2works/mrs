@@ -1,0 +1,56 @@
+{
+  "name": "Mrs",
+  "version": "1.0.0",
+  "description": "[![Azure WebApp](https://img.shields.io/badge/Azure_WebApp-app--mrs-blue)](http://app-mrs.azurewebsites.net/) [![Azure DevOps](https://img.shields.io/badge/AzureDevOps-Mrs-blue)](https://dev.azure.com/k2works/Mrs) [![Build Status](https://dev.azure.com/k2works/Mrs/_apis/build/status/CI-Mrs?branchName=master)](https://dev.azure.com/k2works/Mrs/_build/latest?definitionId=9&branchName=master) [![Build Status](https://dev.azure.com/k2works/Mrs/_apis/build/status/CI-Mrs?branchName=develop)](https://dev.azure.com/k2works/Mrs/_build/latest?definitionId=9&branchName=develop) [![Java CI with Maven](https://github.com/k2works/mrs/workflows/Java%20CI%20with%20Maven/badge.svg)](https://github.com/k2works/mrs) [![Board Status](https://dev.azure.com/k2works/e0cfa8c1-ce91-4a4d-b558-e400d21a87db/b177bb37-c9f8-4987-a7e1-48fec6080f57/_apis/work/boardbadge/f6454edf-e0d2-400b-86a9-af0f740f9d3a)](https://dev.azure.com/k2works/e0cfa8c1-ce91-4a4d-b558-e400d21a87db/_boards/board/t/b177bb37-c9f8-4987-a7e1-48fec6080f57/Microsoft.RequirementCategory/)",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "e2e": "cypress open",
+    "test": "cypress run",
+    "report": "npm run report:cucumber",
+    "report:cucumber": "npm-run-all report:cucumber:clean test report:cucumber:generate report:cucumber:report",
+    "report:cucumber:generate": "node cypress/scripts/cucumber_generate.js",
+    "report:cucumber:report": "node cypress/scripts/cucumber_report.js",
+    "report:cucumber:clean": "rimraf cypress/report && rimraf cypress/cucumber-json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://k2works@dev.azure.com/k2works/Mrs/_git/Mrs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cpx": "^1.5.0",
+    "cucumber-html-report": "^0.6.5",
+    "cypress-cucumber-preprocessor": "^4.0.0",
+    "foreman": "^3.0.1",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2",
+    "watch": "^1.0.2"
+  },
+  "dependencies": {
+    "cucumber-html-reporter": "^5.3.0",
+    "cypress": "^6.2.1"
+  },
+  "cypress-cucumber-preprocessor": {
+    "step_definitions": "cypress/support/step_definitions/",
+    "nonGlobalStepDefinitions": false,
+    "cucumberJson": {
+      "generate": true,
+      "outputFolder": "cypress/cucumber-json",
+      "filePrefix": "",
+      "fileSuffix": ".cucumber"
+    }
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js"
+    ],
+    "testMatch": [
+      "**/**/*.test.js"
+    ]
+  }
+}

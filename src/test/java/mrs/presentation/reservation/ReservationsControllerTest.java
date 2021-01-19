@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
@@ -41,8 +40,6 @@ public class ReservationsControllerTest {
     }
 
     @Test
-    @Sql("/schema.sql")
-    @Sql("/data.sql")
     void 予約を表示する() throws Exception {
         LocalDate today = LocalDate.now();
         when(mockReservationCoordinator.searchMeetingRoom(any())).thenReturn(new MeetingRoom());

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mrs.infrastructure.datasource.reservation.ReservationMapperExt">
+    <resultMap id="findReservationResultMap" type="mrs.domain.model.reservation.Reservation">
+        <id column="reservation_id" property="reservationId"/>
+        <result column="end_time" property="endTime"/>
+        <result column="start_time" property="startTime"/>
+        <result column="reserved_date" property="reservedDate"/>
+        <result column="room_id" property="roomId"/>
+        <result column="user_id" property="userId"/>
+        <association property="reservableRoomId" javaType="mrs.domain.model.reservation.ReservableRoomId">
+            <id property="roomId" column="room_id"/>
+            <result property="reservedDate" column="reserved_date"/>
+        </association>
+        <association property="user" javaType="mrs.domain.model.user.User">
+            <id property="userId" column="user_id"/>
+            <result property="firstName" column="first_name"/>
+            <result property="lastName" column="last_name"/>
+            <result property="roleName" column="role_name"/>
+        </association>
+    </resultMap>
+    <select id="findByReservableRoom_ReservableRoomIdOrderByStartTimeAsc"
+            parameterType="mrs.domain.model.reservation.ReservableRoomId"
+            resultMap="findReservationResultMap">
+        SELECT r.reservation_id,
+               r.end_time,
+               r.start_time,
+               r.reserved_date,
+               r.room_id,
+               r.user_Id,
+               u.first_name,
+               u.last_name,
+               u.role_name
+        FROM Reservation r
+                 LEFT OUTER JOIN reservable_room rr
+                                 ON r.reserved_date = rr.reserved_date AND r.room_id = rr.room_id
+                 LEFT OUTER JOIN usr u
+                                 ON r.user_id = u.user_id
+        WHERE rr.reserved_date = #{reservedDate}
+          AND rr.room_id = #{roomId}
+        ORDER BY r.start_time ASC
+    </select>
+
+    <select id="findAll" resultMap="findReservationResultMap">
+        SELECT r.reservation_id,
+               r.end_time,
+               r.start_time,
+               r.reserved_date,
+               r.room_id,
+               r.user_Id,
+               u.first_name,
+               u.last_name,
+               u.role_name
+        FROM Reservation r
+                 LEFT OUTER JOIN reservable_room rr
+                                 ON r.reserved_date = rr.reserved_date AND r.room_id = rr.room_id
+                 LEFT OUTER JOIN usr u
+                                 ON r.user_id = u.user_id
+    </select>
+
+    <select id="findById" resultMap="findReservationResultMap">
+        SELECT r.reservation_id,
+               r.end_time,
+               r.start_time,
+               r.reserved_date,
+               r.room_id,
+               r.user_Id,
+               u.first_name,
+               u.last_name,
+               u.role_name
+        FROM Reservation r
+                 LEFT OUTER JOIN reservable_room rr
+                                 ON r.reserved_date = rr.reserved_date AND r.room_id = rr.room_id
+                 LEFT OUTER JOIN usr u
+                                 ON r.user_id = u.user_id
+        WHERE r.reservation_id = #{reservatoinId}
+    </select>
+</mapper>

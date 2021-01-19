@@ -30,11 +30,11 @@ public class RoomService {
      * 会議室を探す
      */
     public MeetingRoom findMeetingRoom(RoomId roomId) {
-        return meetingRoomRepository.getOne(roomId.value());
+        return meetingRoomRepository.findBy(roomId.value());
     }
 
     /**
-     * 予約可能会議室集合を探す
+     * 予約可能会議室一覧を探す
      */
     public ReservableRooms findReservableRooms(ReservedDate date) {
         List<ReservableRoom> result = reservableRoomRepository.findByReservableRoomId_ReservedDateOrderByReservableRoomId_RoomIdAsc(date.value());

@@ -2,6 +2,7 @@ DROP TABLE IF EXISTS meeting_room CASCADE;
 DROP TABLE IF EXISTS reservable_room CASCADE;
 DROP TABLE IF EXISTS reservation CASCADE;
 DROP TABLE IF EXISTS usr CASCADE;
+DROP TABLE IF EXISTS todo CASCADE;
 
 CREATE TABLE meeting_room (
                               room_id INT4 NOT NULL AUTO_INCREMENT,
@@ -34,3 +35,4 @@ CREATE TABLE reservation
     FOREIGN KEY (reserved_date, room_id) REFERENCES reservable_room,
     FOREIGN KEY (user_id) REFERENCES usr
 );
+

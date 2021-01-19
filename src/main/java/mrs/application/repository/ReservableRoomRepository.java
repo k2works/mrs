@@ -12,9 +12,17 @@ import java.util.List;
 /**
  * 予約可能会議室レポジトリ
  */
-public interface ReservableRoomRepository extends JpaRepository<ReservableRoom, ReservableRoomId> {
+public interface ReservableRoomRepository {
     @Lock(LockModeType.PESSIMISTIC_WRITE)
     ReservableRoom findOneForUpdateByReservableRoomId(ReservableRoomId reservableRoomId);
 
     List<ReservableRoom> findByReservableRoomId_ReservedDateOrderByReservableRoomId_RoomIdAsc(LocalDate reservedDate);
+
+    void save(ReservableRoom reservableRoom);
+
+    void delete(ReservableRoomId id);
+
+    void deleteAll();
+
+    List<ReservableRoom> findAll();
 }
