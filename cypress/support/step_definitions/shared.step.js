@@ -5,7 +5,7 @@ const {
     Then,
 } = require("cypress-cucumber-preprocessor/steps");
 
-import {AppPage} from "../pages/appPage";
+import {LoginPage} from "../pages/loginPage";
 import {RoomsPage} from "../pages/roomsPage";
 
 // this will get called before each scenario
@@ -16,10 +16,10 @@ Before(() => {
 
 Given(`{string} ページにアクセスする`, (pageName) => {
     switch (pageName) {
-        case "アプリケーション":
-            page = new AppPage();
+        case "ログイン":
+            page = new LoginPage();
             break;
-        case "会議室予約一覧画面":
+        case "会議室予約一覧":
             page = new RoomsPage();
             break;
         default:
@@ -35,7 +35,7 @@ Then(`機能名 {string} が表示される`, (funcName) => {
 Given(`{string} としてログインしている`, (user) => {
     switch (user) {
         case ("利用者"):
-            page = new AppPage()
+            page = new LoginPage()
             page.visit()
             page.login()
             break

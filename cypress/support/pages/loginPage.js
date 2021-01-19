@@ -1,6 +1,6 @@
 import {BasePage} from "../basePage";
 
-export class AppPage extends BasePage {
+export class LoginPage extends BasePage {
     constructor() {
         super();
         this._appId = "app";
