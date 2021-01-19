@@ -29,7 +29,7 @@ public interface ReservationMapper {
             "room_id, user_id)",
             "values (#{reservationId.value,jdbcType=INTEGER}, #{reservedTime.end,jdbcType=TIME}, ",
             "#{reservedTime.start,jdbcType=TIME}, #{reservedDate.value,jdbcType=DATE}, ",
-            "#{roomId,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR})"
+            "#{roomId.value,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR})"
     })
     int insert(Reservation record);
 
@@ -75,7 +75,7 @@ public interface ReservationMapper {
             "set end_time = #{reservedTime.end,jdbcType=TIME},",
             "start_time = #{reservedTime.start,jdbcType=TIME},",
             "reserved_date = #{reservedDate.value,jdbcType=DATE},",
-            "room_id = #{roomId,jdbcType=INTEGER},",
+            "room_id = #{roomId.value,jdbcType=INTEGER},",
             "user_id = #{userId,jdbcType=VARCHAR}",
             "where reservation_id = #{reservationId.value,jdbcType=INTEGER}"
     })
