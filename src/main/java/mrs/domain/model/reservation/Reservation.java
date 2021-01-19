@@ -10,7 +10,7 @@ import java.util.Objects;
  * 予約
  */
 public class Reservation {
-    private Integer reservationId;
+    private ReservationId reservationId;
     private LocalTime startTime;
     private LocalTime endTime;
     private LocalDate reservedDate;
@@ -25,7 +25,7 @@ public class Reservation {
     }
 
     public Reservation(ReservationId reservationId, ReservedDate reservedDate, ReservedTime reservedTime, ReservableRoom room, User user) {
-        this.reservationId = reservationId.value;
+        this.reservationId = reservationId;
         this.reservedDate = reservedDate.value;
         this.startTime = reservedTime.start;
         this.endTime = reservedTime.end;
@@ -55,7 +55,7 @@ public class Reservation {
         return target.endTime.isAfter(startTime) && endTime.isAfter(target.startTime);
     }
 
-    public Integer getReservationId() {
+    public ReservationId reservationId() {
         return reservationId;
     }
 

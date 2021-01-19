@@ -38,7 +38,7 @@ public class ReservationDataSource implements ReservationRepository {
 
     @Override
     public void delete(Reservation reservation) {
-        reservationMapper.deleteByPrimaryKey(reservation.getReservationId());
+        reservationMapper.deleteByPrimaryKey(reservation.reservationId().value());
     }
 
     @Override
@@ -48,6 +48,6 @@ public class ReservationDataSource implements ReservationRepository {
 
     @Override
     public void deleteAll() {
-        reservationMapper.findAll().forEach(i -> reservationMapper.deleteByPrimaryKey(i.getReservationId()));
+        reservationMapper.findAll().forEach(i -> reservationMapper.deleteByPrimaryKey(i.reservationId().value()));
     }
 }

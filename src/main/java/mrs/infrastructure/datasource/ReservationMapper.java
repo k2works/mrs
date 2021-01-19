@@ -27,7 +27,7 @@ public interface ReservationMapper {
             "insert into reservation (reservation_id, end_time, ",
             "start_time, reserved_date, ",
             "room_id, user_id)",
-            "values (#{reservationId,jdbcType=INTEGER}, #{endTime,jdbcType=TIME}, ",
+            "values (#{reservationId.value,jdbcType=INTEGER}, #{endTime,jdbcType=TIME}, ",
             "#{startTime,jdbcType=TIME}, #{reservedDate,jdbcType=DATE}, ",
             "#{roomId,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR})"
     })
@@ -51,7 +51,7 @@ public interface ReservationMapper {
             "select",
             "reservation_id, end_time, start_time, reserved_date, room_id, user_id",
             "from reservation",
-            "where reservation_id = #{reservationId,jdbcType=INTEGER}"
+            "where reservation_id = #{reservationId.value,jdbcType=INTEGER}"
     })
     @ResultMap("mrs.infrastructure.datasource.ReservationMapper.BaseResultMap")
     Reservation selectByPrimaryKey(Integer reservationId);
@@ -77,7 +77,7 @@ public interface ReservationMapper {
             "reserved_date = #{reservedDate,jdbcType=DATE},",
             "room_id = #{roomId,jdbcType=INTEGER},",
             "user_id = #{userId,jdbcType=VARCHAR}",
-            "where reservation_id = #{reservationId,jdbcType=INTEGER}"
+            "where reservation_id = #{reservationId.value,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(Reservation record);
 }
