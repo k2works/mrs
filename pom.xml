@@ -17,6 +17,7 @@
     <properties>
         <java.version>11</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <swagger.version>2.9.2</swagger.version>
     </properties>
 
     <repositories>
@@ -114,6 +115,23 @@
         <dependency>
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-core</artifactId>
+        </dependency>
+        <!-- swagger for api documentation and rest client generation -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${swagger.version}</version>
+        </dependency>
+        <!-- swagger-ui for api documentation web ui -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${swagger.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-data-rest</artifactId>
+            <version>${swagger.version}</version>
         </dependency>
     </dependencies>
 
