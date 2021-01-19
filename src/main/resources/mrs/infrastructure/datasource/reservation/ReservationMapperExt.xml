@@ -5,7 +5,7 @@
         <id column="reservation_id" property="reservationId.value"/>
         <result column="end_time" property="endTime"/>
         <result column="start_time" property="startTime"/>
-        <result column="reserved_date" property="reservedDate"/>
+        <result column="reserved_date" property="reservedDate.value"/>
         <result column="room_id" property="roomId"/>
         <result column="user_id" property="userId"/>
         <association property="reservableRoomId" javaType="mrs.domain.model.reservation.ReservableRoomId">

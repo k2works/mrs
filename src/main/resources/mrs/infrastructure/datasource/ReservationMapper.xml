@@ -9,7 +9,7 @@
     <id column="reservation_id" jdbcType="INTEGER" property="reservationId.value"/>
     <result column="end_time" jdbcType="TIME" property="endTime"/>
     <result column="start_time" jdbcType="TIME" property="startTime"/>
-    <result column="reserved_date" jdbcType="DATE" property="reservedDate"/>
+    <result column="reserved_date" jdbcType="DATE" property="reservedDate.value"/>
     <result column="room_id" jdbcType="INTEGER" property="roomId"/>
     <result column="user_id" jdbcType="VARCHAR" property="userId"/>
   </resultMap>
@@ -57,7 +57,7 @@
         #{startTime,jdbcType=TIME},
       </if>
       <if test="reservedDate != null">
-        #{reservedDate,jdbcType=DATE},
+        #{reservedDate.value,jdbcType=DATE},
       </if>
       <if test="roomId != null">
         #{roomId,jdbcType=INTEGER},
@@ -81,7 +81,7 @@
         start_time = #{startTime,jdbcType=TIME},
       </if>
       <if test="reservedDate != null">
-        reserved_date = #{reservedDate,jdbcType=DATE},
+        reserved_date = #{reservedDate.value,jdbcType=DATE},
       </if>
       <if test="roomId != null">
         room_id = #{roomId,jdbcType=INTEGER},
