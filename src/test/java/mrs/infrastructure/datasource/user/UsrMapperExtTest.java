@@ -2,12 +2,14 @@ package mrs.infrastructure.datasource.user;
 
 import mrs.MrsDBTest;
 import mrs.domain.model.user.*;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.hibernate.validator.internal.util.Contracts.assertNotNull;
 
 @MrsDBTest
+@DisplayName("予約ユーザーマッパー")
 public class UsrMapperExtTest {
     @Autowired
     UsrMapperExt usrMapper;

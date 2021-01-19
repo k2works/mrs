@@ -10,6 +10,7 @@ import mrs.domain.model.room.MeetingRoom;
 import mrs.domain.model.room.RoomId;
 import mrs.domain.model.room.RoomName;
 import mrs.domain.model.user.User;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -23,6 +24,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @MrsDBTest
 @AutoConfigureMockMvc
+@DisplayName("予約データソース")
 public class ReservationDataSourceTest {
     @Autowired
     MeetingRoomRepository meetingRoomRepository;

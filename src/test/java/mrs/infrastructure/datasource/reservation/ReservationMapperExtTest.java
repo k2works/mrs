@@ -9,6 +9,7 @@ import mrs.domain.model.user.*;
 import mrs.infrastructure.datasource.room.MeetingRoomMapperExt;
 import mrs.infrastructure.datasource.user.UsrMapperExt;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -20,6 +21,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 @MrsDBTest
+@DisplayName("予約マッパー")
 public class ReservationMapperExtTest {
     @Autowired
     MeetingRoomMapperExt meetingRoomMapper;

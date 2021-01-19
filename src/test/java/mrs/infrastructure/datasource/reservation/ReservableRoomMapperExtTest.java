@@ -8,6 +8,7 @@ import mrs.domain.model.room.MeetingRoom;
 import mrs.domain.model.room.RoomId;
 import mrs.domain.model.room.RoomName;
 import mrs.infrastructure.datasource.room.MeetingRoomMapperExt;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -17,6 +18,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 @MrsDBTest
+@DisplayName("予約可能会議室マッパー")
 public class ReservableRoomMapperExtTest {
     @Autowired
     ReservationMapperExt reservationMapper;
