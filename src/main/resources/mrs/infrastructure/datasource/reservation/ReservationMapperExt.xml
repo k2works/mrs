@@ -3,8 +3,8 @@
 <mapper namespace="mrs.infrastructure.datasource.reservation.ReservationMapperExt">
     <resultMap id="findReservationResultMap" type="mrs.domain.model.reservation.Reservation">
         <id column="reservation_id" property="reservationId.value"/>
-        <result column="end_time" property="endTime"/>
-        <result column="start_time" property="startTime"/>
+        <result column="end_time" property="reservedTime.end"/>
+        <result column="start_time" property="reservedTime.start"/>
         <result column="reserved_date" property="reservedDate.value"/>
         <result column="room_id" property="roomId"/>
         <result column="user_id" property="userId"/>

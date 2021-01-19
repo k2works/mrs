@@ -30,10 +30,10 @@
       <if test="reservationId != null">
         reservation_id,
       </if>
-      <if test="endTime != null">
+      <if test="reservedTime != null">
         end_time,
       </if>
-      <if test="startTime != null">
+      <if test="reservedTime != null">
         start_time,
       </if>
       <if test="reservedDate != null">
@@ -50,10 +50,10 @@
       <if test="reservationId != null">
         #{reservationId,jdbcType=INTEGER},
       </if>
-      <if test="endTime != null">
+      <if test="reservedTime != null">
         #{reservedTime.end,jdbcType=TIME},
       </if>
-      <if test="startTime != null">
+      <if test="reservedTime != null">
         #{reservedTime.start,jdbcType=TIME},
       </if>
       <if test="reservedDate != null">
@@ -74,10 +74,10 @@
     -->
     update reservation
     <set>
-      <if test="endTime != null">
+      <if test="reservedTime != null">
         end_time = #{reservedTime.end,jdbcType=TIME},
       </if>
-      <if test="startTime != null">
+      <if test="reservedTime != null">
         start_time = #{reservedTime.start,jdbcType=TIME},
       </if>
       <if test="reservedDate != null">

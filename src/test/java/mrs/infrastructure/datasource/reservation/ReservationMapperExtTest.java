@@ -74,7 +74,7 @@ public class ReservationMapperExtTest {
         reservationMapper.updateByPrimaryKey(updateReservation);
         Reservation result = reservationMapper.findById(2);
 
-        assertEquals("11:00", result.getStartTime().toString());
+        assertEquals("11:00", result.startTime().toString());
     }
 
     @Test

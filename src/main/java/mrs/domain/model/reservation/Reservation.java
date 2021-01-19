@@ -12,8 +12,6 @@ public class Reservation {
     private ReservationId reservationId;
     private ReservedDate reservedDate;
     private ReservedTime reservedTime;
-    private LocalTime startTime;
-    private LocalTime endTime;
     private Integer roomId;
     private String userId;
     private ReservableRoomId reservableRoomId;
@@ -28,8 +26,6 @@ public class Reservation {
         this.reservationId = reservationId;
         this.reservedDate = reservedDate;
         this.reservedTime = reservedTime;
-        this.startTime = reservedTime.start;
-        this.endTime = reservedTime.end;
         this.roomId = room.reservableRoomId().roomId().value();
         this.userId = user.userId().value();
         this.reservableRoom = room;
@@ -39,8 +35,6 @@ public class Reservation {
     public Reservation(ReservedDate reservedDate, ReservedTime reservedTime, ReservableRoom room, User user) {
         this.reservedDate = reservedDate;
         this.reservedTime = reservedTime;
-        this.startTime = reservedTime.start;
-        this.endTime = reservedTime.end;
         this.roomId = room.reservableRoomId().roomId().value();
         this.userId = user.userId().value();
         this.reservableRoom = room;
@@ -51,10 +45,10 @@ public class Reservation {
         if (!Objects.equals(reservableRoomId, target.reservableRoom.reservableRoomId())) {
             return false;
         }
-        if (startTime.equals(target.startTime) && endTime.equals(target.endTime)) {
+        if (reservedTime.start.equals(target.reservedTime.start) && reservedTime.end.equals(target.reservedTime.end)) {
             return true;
         }
-        return target.endTime.isAfter(startTime) && endTime.isAfter(target.startTime);
+        return target.reservedTime.end.isAfter(reservedTime.start) && reservedTime.end.isAfter(target.reservedTime.start);
     }
 
     public ReservationId reservationId() {
@@ -69,12 +63,12 @@ public class Reservation {
         return reservedTime;
     }
 
-    public LocalTime getStartTime() {
-        return startTime;
+    public LocalTime startTime() {
+        return reservedTime.start;
     }
 
-    public LocalTime getEndTime() {
-        return endTime;
+    public LocalTime endTime() {
+        return reservedTime.end;
     }
 
     public ReservableRoom reservableRoom() {
