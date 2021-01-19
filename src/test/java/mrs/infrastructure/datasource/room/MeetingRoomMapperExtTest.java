@@ -20,7 +20,7 @@ public class MeetingRoomMapperExtTest {
 
     @BeforeEach
     void clean() {
-        meetingRoomMapper.deleteByPrimaryKey(1);
+        meetingRoomMapper.deleteByPrimaryKey(new RoomId(1));
     }
 
     @Test
@@ -38,7 +38,7 @@ public class MeetingRoomMapperExtTest {
         MeetingRoom record = new MeetingRoom(new RoomId(1), new RoomName("会議室"));
         meetingRoomMapper.insert(record);
         MeetingRoom result = meetingRoomMapper.selectByPrimaryKey(1);
-        meetingRoomMapper.deleteByPrimaryKey(result.roomId().value());
+        meetingRoomMapper.deleteByPrimaryKey(result.roomId());
         result = meetingRoomMapper.selectByPrimaryKey(1);
 
         assertNull(result);

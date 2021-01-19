@@ -21,7 +21,7 @@ public class MeetingRoomDataSource implements MeetingRoomRepository {
 
     @Override
     public void delete(MeetingRoom room) {
-        meetingRoomMapper.deleteByPrimaryKey(room.roomId().value());
+        meetingRoomMapper.deleteByPrimaryKey(room.roomId());
     }
 
     @Override
@@ -36,7 +36,7 @@ public class MeetingRoomDataSource implements MeetingRoomRepository {
 
     @Override
     public void deleteAll() {
-        meetingRoomMapper.selectAll().forEach(i -> meetingRoomMapper.deleteByPrimaryKey(i.roomId().value()));
+        meetingRoomMapper.selectAll().forEach(i -> meetingRoomMapper.deleteByPrimaryKey(i.roomId()));
     }
 
 }

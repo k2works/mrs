@@ -31,6 +31,6 @@ public class MeetingRoom {
         MeetingRoom other = (MeetingRoom) obj;
         if (roomId == null && roomName == null) {
             return other.roomId == null && other.roomName == null;
-        } else return roomId.equals(other.roomId) && roomName.equals(other.roomName);
+        } else return roomId.value.equals(other.roomId.value) && roomName.value.equals(other.roomName.value);
     }
 }
