@@ -50,7 +50,7 @@ public class ReservationMapperExtTest {
         Reservation reservation = new Reservation(id, date, time, room, user);
         reservationMapper.insert(reservation);
 
-        Reservation result = reservationMapper.selectByPrimaryKey(1);
+        Reservation result = reservationMapper.findById(1);
 
         assertEquals(1, result.getReservationId());
     }
@@ -69,10 +69,10 @@ public class ReservationMapperExtTest {
         Reservation reservation = new Reservation(id, date, time, room, user);
         reservationMapper.insert(reservation);
 
-        Reservation update = reservationMapper.selectByPrimaryKey(2);
+        Reservation update = reservationMapper.findById(2);
         Reservation updateReservation = new Reservation(new ReservationId(update.getReservationId()), date, new ReservedTime(LocalTime.of(11, 0), LocalTime.of(12, 0)), room, user);
         reservationMapper.updateByPrimaryKey(updateReservation);
-        Reservation result = reservationMapper.selectByPrimaryKey(2);
+        Reservation result = reservationMapper.findById(2);
 
         assertEquals("11:00", result.getStartTime().toString());
     }
@@ -90,10 +90,10 @@ public class ReservationMapperExtTest {
         usrMapper.insert(user);
         Reservation reservation = new Reservation(id, date, time, room, user);
         reservationMapper.insert(reservation);
-        Reservation delete = reservationMapper.selectByPrimaryKey(3);
+        Reservation delete = reservationMapper.findById(3);
 
         reservationMapper.deleteByPrimaryKey(delete.getReservationId());
-        Reservation result = reservationMapper.selectByPrimaryKey(3);
+        Reservation result = reservationMapper.findById(3);
 
         assertNull(result);
     }

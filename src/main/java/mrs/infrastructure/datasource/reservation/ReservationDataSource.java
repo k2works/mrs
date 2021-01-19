@@ -23,7 +23,7 @@ public class ReservationDataSource implements ReservationRepository {
 
     @Override
     public Reservation getOne(Integer id) {
-        return reservationMapper.selectByPrimaryKey(id);
+        return reservationMapper.findById(id);
     }
 
     @Override

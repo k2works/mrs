@@ -4,6 +4,7 @@ import mrs.application.repository.ReservableRoomRepository;
 import mrs.application.repository.ReservationRepository;
 import mrs.domain.model.reservation.*;
 import org.springframework.security.access.method.P;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -43,9 +44,7 @@ public class ReservationService {
         return reservation;
     }
 
-    //@PreAuthorize("hasRole('ADMIN') or #reservation.user.userId.value == principal.user.userId.value")
-    // TODO MyBatisでEnumを扱えるようにする
-
+    @PreAuthorize("hasRole('ADMIN') or #reservation.user.userId.value == principal.user.userId.value")
     /**
      * 会議室の予約をキャンセルする
      */
