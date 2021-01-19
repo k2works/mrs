@@ -11,7 +11,7 @@ import {ReservationsPage} from "../pages/reservationsPage";
 let page;
 Before(() => {
     page = new ReservationsPage();
-    cy.wait(1000);
+    cy.wait(0);
 });
 
 Given(`選択した会議室を予約する`, () => {

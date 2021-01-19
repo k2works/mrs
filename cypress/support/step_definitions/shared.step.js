@@ -11,7 +11,7 @@ import {RoomsPage} from "../pages/roomsPage";
 // this will get called before each scenario
 let page;
 Before(() => {
-    cy.wait(1000);
+    cy.wait(0);
 });
 
 Given(`{string} ページにアクセスする`, (pageName) => {

@@ -11,7 +11,7 @@ import {LoginPage} from "../pages/loginPage";
 let page;
 Before(() => {
     page = new LoginPage();
-    cy.wait(1000);
+    cy.wait(0);
 });
 
 Then(`{string} が表示される`, (value) => {

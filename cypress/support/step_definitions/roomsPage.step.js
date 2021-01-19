@@ -11,7 +11,7 @@ import {RoomsPage} from "../pages/roomsPage";
 let page;
 Before(() => {
     page = new RoomsPage();
-    cy.wait(1000);
+    cy.wait(0);
 });
 
 Given(`{string} 会議室を選択する`, (room) => {
