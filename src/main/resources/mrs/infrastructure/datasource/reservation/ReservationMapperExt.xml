@@ -14,8 +14,8 @@
         </association>
         <association property="user" javaType="mrs.domain.model.user.User">
             <id property="userId.value" column="user_id"/>
-            <result property="firstName" column="first_name"/>
-            <result property="lastName" column="last_name"/>
+            <result property="name.firstName" column="first_name"/>
+            <result property="name.lastName" column="last_name"/>
             <result property="roleName" column="role_name"/>
         </association>
     </resultMap>

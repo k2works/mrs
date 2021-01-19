@@ -1,20 +1,16 @@
 package mrs.domain.model.user;
 
-import javax.persistence.Id;
 import java.io.Serializable;
 
 /**
  * ユーザー
  */
 public class User implements Serializable {
-    @Id
     private UserId userId;
 
     private Password password;
 
-    private String firstName;
-
-    private String lastName;
+    private Name name;
 
     private RoleName roleName;
 
@@ -24,8 +20,7 @@ public class User implements Serializable {
     public User(UserId userId, Password password, Name name, RoleName roleName) {
         this.userId = userId;
         this.password = password;
-        this.firstName = name.firstName;
-        this.lastName = name.lastName;
+        this.name = name;
         this.roleName = roleName;
     }
 
@@ -42,6 +37,6 @@ public class User implements Serializable {
     }
 
     public Name name() {
-        return new Name(firstName, lastName);
+        return name;
     }
 }

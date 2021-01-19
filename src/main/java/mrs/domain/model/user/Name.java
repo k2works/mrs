@@ -12,6 +12,9 @@ public class Name {
         this.lastName = lastName;
     }
 
+    public Name() {
+    }
+
     public String firstName() {
         return this.firstName;
     }

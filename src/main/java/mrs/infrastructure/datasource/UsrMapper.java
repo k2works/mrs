@@ -28,8 +28,8 @@ public interface UsrMapper {
             "insert into usr (user_id, first_name, ",
             "last_name, password, ",
             "role_name)",
-            "values (#{userId.value,jdbcType=VARCHAR}, #{firstName,jdbcType=VARCHAR}, ",
-            "#{lastName,jdbcType=VARCHAR}, #{password.value,jdbcType=VARCHAR}, ",
+            "values (#{userId.value,jdbcType=VARCHAR}, #{name.firstName,jdbcType=VARCHAR}, ",
+            "#{name.lastName,jdbcType=VARCHAR}, #{password.value,jdbcType=VARCHAR}, ",
             "#{roleName,jdbcType=VARCHAR})"
     })
     int insert(User record);
@@ -73,8 +73,8 @@ public interface UsrMapper {
      */
     @Update({
             "update usr",
-            "set first_name = #{firstName,jdbcType=VARCHAR},",
-            "last_name = #{lastName,jdbcType=VARCHAR},",
+            "set first_name = #{name.firstName,jdbcType=VARCHAR},",
+            "last_name = #{name.lastName,jdbcType=VARCHAR},",
             "password = #{password.value,jdbcType=VARCHAR},",
             "role_name = #{roleName,jdbcType=VARCHAR}",
             "where user_id = #{userId.value,jdbcType=VARCHAR}"
