@@ -14,6 +14,9 @@ public class RoomId {
         return value;
     }
 
+    public RoomId() {
+    }
+
     @Override
     public String toString() {
         return String.valueOf(value);

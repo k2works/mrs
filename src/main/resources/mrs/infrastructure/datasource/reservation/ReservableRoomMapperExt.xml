@@ -9,7 +9,7 @@
         <result property="reservedDate" column="reserved_date"/>
     </association>
     <association property="meetingRoom" javaType="mrs.domain.model.room.MeetingRoom">
-        <id property="roomId" column="room_id"/>
+        <id property="roomId.value" column="room_id"/>
         <result property="roomName.value" column="room_name"/>
     </association>
   </resultMap>

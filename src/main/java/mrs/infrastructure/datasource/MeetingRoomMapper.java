@@ -25,7 +25,7 @@ public interface MeetingRoomMapper {
      */
     @Insert({
         "insert into meeting_room (room_id, room_name)",
-        "values (#{roomId,jdbcType=INTEGER}, #{roomName.value,jdbcType=VARCHAR})"
+        "values (#{roomId.value,jdbcType=INTEGER}, #{roomName.value,jdbcType=VARCHAR})"
     })
     int insert(MeetingRoom record);
 
@@ -69,7 +69,7 @@ public interface MeetingRoomMapper {
     @Update({
             "update meeting_room",
             "set room_name = #{roomName.value,jdbcType=VARCHAR}",
-            "where room_id = #{roomId,jdbcType=INTEGER}"
+            "where room_id = #{roomId.value,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(MeetingRoom record);
 }

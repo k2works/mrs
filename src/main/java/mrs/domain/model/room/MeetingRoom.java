@@ -4,7 +4,7 @@ package mrs.domain.model.room;
  * 会議室
  */
 public class MeetingRoom {
-    private Integer roomId;
+    private RoomId roomId;
 
     private RoomName roomName;
 
@@ -12,12 +12,12 @@ public class MeetingRoom {
     }
 
     public MeetingRoom(RoomId roomId, RoomName roomName) {
-        this.roomId = roomId.value;
+        this.roomId = roomId;
         this.roomName = roomName;
     }
 
     public RoomId roomId() {
-        return new RoomId(roomId);
+        return roomId;
     }
 
     public RoomName roomName() {
