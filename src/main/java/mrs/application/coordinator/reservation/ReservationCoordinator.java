@@ -25,7 +25,7 @@ public class ReservationCoordinator {
      * 会議室を予約する
      */
     public void reserveMeetingRoom(ReservedTime reservedTime, ReservableRoom reservableRoom, ReservationUserDetails userDetails) {
-        ReservedDate reservedDate = new ReservedDate(reservableRoom.reservableRoomId().reservedDate());
+        ReservedDate reservedDate = new ReservedDate(reservableRoom.reservableRoomId().reservedDate().value());
         Reservation reservation = new Reservation(
                 reservedDate,
                 reservedTime,

@@ -33,12 +33,12 @@ public class ReservableRoomDataSource implements ReservableRoomRepository {
 
     @Override
     public void delete(ReservableRoomId id) {
-        reservableRoomMapper.deleteByPrimaryKey(id.reservedDate(), id.roomId());
+        reservableRoomMapper.deleteByPrimaryKey(id.reservedDate().value(), id.roomId().value());
     }
 
     @Override
     public void deleteAll() {
-        reservableRoomMapper.selectAll().forEach(i -> reservableRoomMapper.deleteByPrimaryKey(i.reservableRoomId().reservedDate(), i.reservableRoomId().roomId()));
+        reservableRoomMapper.selectAll().forEach(i -> reservableRoomMapper.deleteByPrimaryKey(i.reservableRoomId().reservedDate().value(), i.reservableRoomId().roomId().value()));
     }
 
     @Override

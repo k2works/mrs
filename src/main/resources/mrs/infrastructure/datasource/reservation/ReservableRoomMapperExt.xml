@@ -5,8 +5,8 @@
     <id column="reserved_date" property="reservedDate" />
     <id column="room_id" property="roomId" />
     <association property="reservableRoomId" javaType="mrs.domain.model.reservation.ReservableRoomId">
-        <id property="roomId" column="room_id"/>
-        <result property="reservedDate" column="reserved_date"/>
+        <id property="roomId.value" column="room_id"/>
+        <result property="reservedDate.value" column="reserved_date"/>
     </association>
     <association property="meetingRoom" javaType="mrs.domain.model.room.MeetingRoom">
         <id property="roomId.value" column="room_id"/>
@@ -14,15 +14,14 @@
     </association>
   </resultMap>
   <select id="selectByPrimaryKey" parameterType="mrs.domain.model.reservation.ReservableRoomId" resultMap="BaseResultMap">
-    SELECT rr.room_id,
-           rr.reserved_date,
-           rm.room_name
-    FROM
-         reservable_room rr
-             LEFT OUTER JOIN meeting_room rm
-                             ON rr.room_id = rm.room_id
-    WHERE rr.room_id = #{roomId}
-      AND reserved_date = #{reservedDate}
+      SELECT rr.room_id,
+             rr.reserved_date,
+             rm.room_name
+      FROM reservable_room rr
+               LEFT OUTER JOIN meeting_room rm
+                               ON rr.room_id = rm.room_id
+      WHERE rr.room_id = #{roomId.value}
+        AND reserved_date = #{reservedDate.value}
   </select>
     <select id="selectAll" resultMap="BaseResultMap">
         SELECT room_id,

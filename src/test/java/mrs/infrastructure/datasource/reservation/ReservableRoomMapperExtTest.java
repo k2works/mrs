@@ -49,7 +49,7 @@ public class ReservableRoomMapperExtTest {
         ReservableRoom room = new ReservableRoom(id);
         reservableRoomMapper.insert(room);
 
-        reservableRoomMapper.deleteByPrimaryKey(id.reservedDate(),id.roomId().intValue());
+        reservableRoomMapper.deleteByPrimaryKey(id.reservedDate().value(), id.roomId().value().intValue());
         ReservableRoom result = reservableRoomMapper.selectByPrimaryKey(id);
 
         assertNull(result);

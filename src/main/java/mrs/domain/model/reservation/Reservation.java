@@ -29,7 +29,7 @@ public class Reservation {
         this.reservedDate = reservedDate.value;
         this.startTime = reservedTime.start;
         this.endTime = reservedTime.end;
-        this.roomId = room.reservableRoomId().roomId();
+        this.roomId = room.reservableRoomId().roomId().value();
         this.userId = user.userId().value();
         this.reservableRoom = room;
         this.user = user;
@@ -39,7 +39,7 @@ public class Reservation {
         this.reservedDate = reservedDate.value;
         this.startTime = reservedTime.start;
         this.endTime = reservedTime.end;
-        this.roomId = room.reservableRoomId().roomId();
+        this.roomId = room.reservableRoomId().roomId().value();
         this.userId = user.userId().value();
         this.reservableRoom = room;
         this.user = user;

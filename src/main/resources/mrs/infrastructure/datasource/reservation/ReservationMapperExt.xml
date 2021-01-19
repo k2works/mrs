@@ -9,8 +9,8 @@
         <result column="room_id" property="roomId"/>
         <result column="user_id" property="userId"/>
         <association property="reservableRoomId" javaType="mrs.domain.model.reservation.ReservableRoomId">
-            <id property="roomId" column="room_id"/>
-            <result property="reservedDate" column="reserved_date"/>
+            <id property="roomId.value" column="room_id"/>
+            <result property="reservedDate.value" column="reserved_date"/>
         </association>
         <association property="user" javaType="mrs.domain.model.user.User">
             <id property="userId.value" column="user_id"/>
@@ -36,8 +36,8 @@
                                  ON r.reserved_date = rr.reserved_date AND r.room_id = rr.room_id
                  LEFT OUTER JOIN usr u
                                  ON r.user_id = u.user_id
-        WHERE rr.reserved_date = #{reservedDate}
-          AND rr.room_id = #{roomId}
+        WHERE rr.reserved_date = #{reservedDate.value}
+          AND rr.room_id = #{roomId.value}
         ORDER BY r.start_time ASC
     </select>
 

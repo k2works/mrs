@@ -22,15 +22,15 @@ public class ReservableRoom implements Serializable {
 
     public ReservableRoom(ReservableRoomId reservableRoomId) {
         this.reservableRoomId = reservableRoomId;
-        this.reservedDate = reservableRoomId.reservedDate();
-        this.roomId = reservableRoomId.roomId();
+        this.reservedDate = reservableRoomId.reservedDate().value;
+        this.roomId = reservableRoomId.roomId().value();
     }
 
     public ReservableRoom(ReservableRoomId reservableRoomId, MeetingRoom meetingRoom) {
         this.reservableRoomId = reservableRoomId;
         this.meetingRoom = meetingRoom;
-        this.reservedDate = reservableRoomId.reservedDate();
-        this.roomId = reservableRoomId.roomId();
+        this.reservedDate = reservableRoomId.reservedDate().value;
+        this.roomId = reservableRoomId.roomId().value();
     }
 
     public MeetingRoom meetingRoom() {

@@ -123,7 +123,7 @@ public class ReservationServiceTest {
     private Reservation 予約を作る(ReservationId id, ReservableRoom room, LocalTime start, LocalTime end) {
         ReservedTime time = new ReservedTime(start, end);
         User user = ユーザーを作る();
-        ReservedDate date = new ReservedDate(room.reservableRoomId().reservedDate());
+        ReservedDate date = new ReservedDate(room.reservableRoomId().reservedDate().value());
         Reservation reservation = new Reservation(id, date, time, room, user);
         return reservation;
     }

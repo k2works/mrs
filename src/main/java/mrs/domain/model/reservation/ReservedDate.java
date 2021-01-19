@@ -12,6 +12,9 @@ public class ReservedDate {
         this.value = value;
     }
 
+    public ReservedDate() {
+    }
+
     public LocalDate value() {
         return value;
     }
