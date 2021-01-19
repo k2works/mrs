@@ -24,21 +24,6 @@ public class Reservation {
     public Reservation() {
     }
 
-    public Reservation(ReservedTime reservedTime, ReservableRoom room, User user) {
-        this.startTime = reservedTime.start;
-        this.endTime = reservedTime.end;
-        this.reservableRoom = room;
-        this.user = user;
-    }
-
-    public Reservation(ReservationId reservationId, ReservedTime reservedTime, ReservableRoom room, User user) {
-        this.reservationId = reservationId.value;
-        this.startTime = reservedTime.start;
-        this.endTime = reservedTime.end;
-        this.reservableRoom = room;
-        this.user = user;
-    }
-
     public Reservation(ReservationId reservationId, ReservedDate reservedDate, ReservedTime reservedTime, ReservableRoom room, User user) {
         this.reservationId = reservationId.value;
         this.reservedDate = reservedDate.value;

@@ -156,9 +156,10 @@ public class ReservationServiceTest {
     }
 
     private Reservation 予約を作る(ReservableRoom reservableRoom) {
+        ReservedDate reservedDate = new ReservedDate(LocalDate.now());
         ReservedTime reservedTime = new ReservedTime(null, null);
-        Reservation reservation = new Reservation(reservedTime, reservableRoom, null);
-        return reservation;
+        User user = ユーザーを作る();
+        return new Reservation(reservedDate, reservedTime, reservableRoom, user);
     }
 
     @Nested
