@@ -14,8 +14,17 @@ Before(() => {
     cy.wait(1000);
 });
 
-Given(`{string} 会議室を選択する`, (name) => {
-    cy.get(':nth-child(1) > a').click();
+Given(`{string} 会議室を選択する`, (room) => {
+    switch (room) {
+        case '新木場':
+            cy.get(':nth-child(1) > a').click();
+            break;
+        case '有楽町':
+            cy.get('ul > :nth-child(2) > a').click();
+            break;
+        default:
+            console.log("該当するページが存在しません");
+    }
 })
 
 Then(`会議室予約一覧に {string} が表示される`, (name) => {

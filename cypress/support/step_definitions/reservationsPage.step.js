@@ -21,3 +21,7 @@ Given(`選択した会議室を予約する`, () => {
 Then(`予約者 {string} が表示される`, (name) => {
     cy.get('table').should('contain', name);
 })
+
+Then(`会議室予約画面に {string} が表示される`, (message) => {
+    cy.get('p').should('contain', message)
+})
