@@ -10,7 +10,7 @@
     <result column="end_time" jdbcType="TIME" property="reservedTime.end"/>
     <result column="start_time" jdbcType="TIME" property="reservedTime.start"/>
     <result column="reserved_date" jdbcType="DATE" property="reservedDate.value"/>
-    <result column="room_id" jdbcType="INTEGER" property="roomId.value"/>
+    <result column="room_id" jdbcType="INTEGER" property="reservableRoom.reservableRoomId.roomId.value"/>
     <result column="user_id" jdbcType="VARCHAR" property="user.userId.value"/>
   </resultMap>
   <sql id="Base_Column_List">
@@ -60,7 +60,7 @@
         #{reservedDate.value,jdbcType=DATE},
       </if>
       <if test="roomId != null">
-        #{roomId.value,jdbcType=INTEGER},
+        #{reservableRoom.reservableRoomId.roomId.value,jdbcType=INTEGER},
       </if>
       <if test="userId != null">
         #{user.userId.value,jdbcType=VARCHAR},
@@ -84,7 +84,7 @@
         reserved_date = #{reservedDate.value,jdbcType=DATE},
       </if>
       <if test="roomId != null">
-        room_id = #{roomId.value,jdbcType=INTEGER},
+        room_id = #{reservableRoom.reservableRoomId.roomId.value,jdbcType=INTEGER},
       </if>
       <if test="userId != null">
         user_id = #{user.userId.value,jdbcType=VARCHAR},

@@ -1,6 +1,5 @@
 package mrs.domain.model.reservation;
 
-import mrs.domain.model.room.RoomId;
 import mrs.domain.model.user.User;
 
 import java.time.LocalTime;
@@ -13,7 +12,6 @@ public class Reservation {
     private ReservationId reservationId;
     private ReservedDate reservedDate;
     private ReservedTime reservedTime;
-    private RoomId roomId;
     private ReservableRoomId reservableRoomId;
     private ReservableRoom reservableRoom;
     private User user;
@@ -26,7 +24,6 @@ public class Reservation {
         this.reservationId = reservationId;
         this.reservedDate = reservedDate;
         this.reservedTime = reservedTime;
-        this.roomId = room.reservableRoomId().roomId();
         this.reservableRoom = room;
         this.user = user;
     }
@@ -34,7 +31,6 @@ public class Reservation {
     public Reservation(ReservedDate reservedDate, ReservedTime reservedTime, ReservableRoom room, User user) {
         this.reservedDate = reservedDate;
         this.reservedTime = reservedTime;
-        this.roomId = room.reservableRoomId().roomId();
         this.reservableRoom = room;
         this.user = user;
     }
