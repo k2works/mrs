@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -50,5 +51,21 @@ public class RoomControllerTest {
 
         mockMvc.perform(get("/api/rooms"))
                 .andExpect(status().isOk());
+    }
+
+    @Disabled("spring.jackson.visibility.field=anyが有効にならない")
+    @Test
+    void 日付を指定して会議室一覧を取得する() throws Exception {
+        ReservableRoom reservableRoom = new ReservableRoom();
+        List<ReservableRoom> list = new ArrayList<>();
+        list.add(reservableRoom);
+        ReservableRooms reservableRooms = new ReservableRooms(list);
+        given(mockReservationCoordinator.searchReservableRooms(any())).willReturn(reservableRooms);
+
+        mockMvc.perform(
+                get("/api/rooms")
+                        .param("date", "20200-01-01")
+                        .accept(MediaType.APPLICATION_JSON)
+        ).andExpect(status().isOk());
     }
 }
