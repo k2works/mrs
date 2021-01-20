@@ -25,7 +25,7 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select().paths(patterns()).build()
                 .apiInfo(apiInfo())
-                .groupName("ccsr")
+                .groupName("mrs")
                 .directModelSubstitute(LocalDateTime.class, java.util.Date.class)
                 .directModelSubstitute(LocalDate.class, java.sql.Date.class)
                 .directModelSubstitute(LocalTime.class, String.class)

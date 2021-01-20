@@ -3,6 +3,7 @@ package mrs.presentation.api.room;
 import mrs.application.coordinator.reservation.ReservationCoordinator;
 import mrs.domain.model.reservation.ReservableRooms;
 import mrs.domain.model.reservation.ReservedDate;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,8 +29,10 @@ public class RoomController {
     }
 
     @GetMapping("{date}")
-    ReservableRooms listRooms(@PathVariable String date) {
-        ReservedDate reservedDate = new ReservedDate(LocalDate.parse(date));
+    ReservableRooms listRooms(
+            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @PathVariable("date") LocalDate date
+    ) {
+        ReservedDate reservedDate = new ReservedDate(date);
         return reservationCoordinator.searchReservableRooms(reservedDate);
     }
 }

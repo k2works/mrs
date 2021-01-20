@@ -1,10 +1,7 @@
 package mrs.presentation.api.room;
 
 import mrs.application.coordinator.reservation.ReservationCoordinator;
-import mrs.domain.model.reservation.ReservableRoom;
-import mrs.domain.model.reservation.ReservableRooms;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -14,9 +11,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
@@ -40,27 +34,17 @@ public class RoomControllerTest {
         this.mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
     }
 
-    @Disabled("spring.jackson.visibility.field=anyが有効にならない")
     @Test
     void 会議室一覧を取得する() throws Exception {
-        ReservableRoom reservableRoom = new ReservableRoom();
-        List<ReservableRoom> list = new ArrayList<>();
-        list.add(reservableRoom);
-        ReservableRooms reservableRooms = new ReservableRooms(list);
-        given(mockReservationCoordinator.searchReservableRooms(any())).willReturn(reservableRooms);
+        given(mockReservationCoordinator.searchReservableRooms(any())).willReturn(null);
 
         mockMvc.perform(get("/api/rooms"))
                 .andExpect(status().isOk());
     }
 
-    @Disabled("spring.jackson.visibility.field=anyが有効にならない")
     @Test
     void 日付を指定して会議室一覧を取得する() throws Exception {
-        ReservableRoom reservableRoom = new ReservableRoom();
-        List<ReservableRoom> list = new ArrayList<>();
-        list.add(reservableRoom);
-        ReservableRooms reservableRooms = new ReservableRooms(list);
-        given(mockReservationCoordinator.searchReservableRooms(any())).willReturn(reservableRooms);
+        given(mockReservationCoordinator.searchReservableRooms(any())).willReturn(null);
 
         mockMvc.perform(
                 get("/api/rooms")
