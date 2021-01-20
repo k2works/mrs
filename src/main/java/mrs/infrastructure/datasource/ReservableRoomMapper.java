@@ -1,12 +1,12 @@
 package mrs.infrastructure.datasource;
 
-import java.time.LocalDate;
-import java.util.Date;
 import mrs.domain.model.reservation.ReservableRoom;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+
+import java.time.LocalDate;
 
 @Mapper
 public interface ReservableRoomMapper {
@@ -31,7 +31,7 @@ public interface ReservableRoomMapper {
      */
     @Insert({
         "insert into reservable_room (reserved_date, room_id)",
-        "values (#{reservedDate,jdbcType=DATE}, #{roomId,jdbcType=INTEGER})"
+            "values (#{reservableRoomId.reservedDate.value,jdbcType=DATE}, #{reservableRoomId.roomId.value,jdbcType=INTEGER})"
     })
     int insert(ReservableRoom record);
 

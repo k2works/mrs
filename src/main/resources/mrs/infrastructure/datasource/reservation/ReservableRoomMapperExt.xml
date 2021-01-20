@@ -2,16 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mrs.infrastructure.datasource.reservation.ReservableRoomMapperExt">
   <resultMap id="BaseResultMap" type="mrs.domain.model.reservation.ReservableRoom">
-    <id column="reserved_date" property="reservedDate" />
-    <id column="room_id" property="roomId" />
-    <association property="reservableRoomId" javaType="mrs.domain.model.reservation.ReservableRoomId">
-        <id property="roomId.value" column="room_id"/>
-        <result property="reservedDate.value" column="reserved_date"/>
-    </association>
-    <association property="meetingRoom" javaType="mrs.domain.model.room.MeetingRoom">
-        <id property="roomId.value" column="room_id"/>
-        <result property="roomName.value" column="room_name"/>
-    </association>
+      <id column="reserved_date" property="reservableRoomId.reservedDate.value"/>
+      <id column="room_id" property="reservableRoomId.roomId.value"/>
+      <association property="reservableRoomId" javaType="mrs.domain.model.reservation.ReservableRoomId">
+          <id property="roomId.value" column="room_id"/>
+          <result property="reservedDate.value" column="reserved_date"/>
+      </association>
+      <association property="meetingRoom" javaType="mrs.domain.model.room.MeetingRoom">
+          <id property="roomId.value" column="room_id"/>
+          <result property="roomName.value" column="room_name"/>
+      </association>
   </resultMap>
   <select id="selectByPrimaryKey" parameterType="mrs.domain.model.reservation.ReservableRoomId" resultMap="BaseResultMap">
       SELECT rr.room_id,
