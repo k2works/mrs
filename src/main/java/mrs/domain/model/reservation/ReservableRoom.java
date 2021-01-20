@@ -2,13 +2,12 @@ package mrs.domain.model.reservation;
 
 import mrs.domain.model.room.MeetingRoom;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
  * 予約可能会議室
  */
-public class ReservableRoom implements Serializable {
+public class ReservableRoom {
     private ReservableRoomId reservableRoomId;
 
     private MeetingRoom meetingRoom;

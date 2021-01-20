@@ -2,12 +2,10 @@ package mrs.domain.model.reservation;
 
 import mrs.domain.model.room.RoomId;
 
-import java.io.Serializable;
-
 /**
  * 予約可能会議室ID
  */
-public class ReservableRoomId implements Serializable {
+public class ReservableRoomId {
 
     private RoomId roomId;
 
