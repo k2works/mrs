@@ -12,9 +12,9 @@ public class Reservation {
     private ReservationId reservationId;
     private ReservedDate reservedDate;
     private ReservedTime reservedTime;
-    private ReservableRoomId reservableRoomId;
     private ReservableRoom reservableRoom;
     private User user;
+    private ReservableRoomId reservableRoomId;
 
     @Deprecated
     public Reservation() {
@@ -26,6 +26,7 @@ public class Reservation {
         this.reservedTime = reservedTime;
         this.reservableRoom = room;
         this.user = user;
+        this.reservableRoomId = room.reservableRoomId();
     }
 
     public Reservation(ReservedDate reservedDate, ReservedTime reservedTime, ReservableRoom room, User user) {
@@ -33,6 +34,7 @@ public class Reservation {
         this.reservedTime = reservedTime;
         this.reservableRoom = room;
         this.user = user;
+        this.reservableRoomId = room.reservableRoomId();
     }
 
     public boolean overlap(Reservation target) {
