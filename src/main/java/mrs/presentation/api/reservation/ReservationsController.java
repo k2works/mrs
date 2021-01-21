@@ -2,10 +2,7 @@ package mrs.presentation.api.reservation;
 
 import mrs.application.coordinator.reservation.ReservationCoordinator;
 import mrs.application.service.user.ReservationUserDetails;
-import mrs.domain.model.reservation.ReservableRoom;
-import mrs.domain.model.reservation.ReservableRoomId;
-import mrs.domain.model.reservation.ReservedDate;
-import mrs.domain.model.reservation.ReservedTime;
+import mrs.domain.model.reservation.*;
 import mrs.domain.model.room.RoomId;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -26,6 +23,9 @@ public class ReservationsController {
         this.reservationCoordinator = reservationCoordinator;
     }
 
+    /**
+     * 予約
+     */
     @PostMapping
     void reserve(
             @AuthenticationPrincipal ReservationUserDetails userDetails,
@@ -37,5 +37,17 @@ public class ReservationsController {
         ReservableRoom reservableRoom = new ReservableRoom(new ReservableRoomId(new RoomId(roomId), new ReservedDate(date)));
         ReservedTime reservedTime = new ReservedTime(start, end);
         reservationCoordinator.reserveMeetingRoom(reservedTime, reservableRoom, userDetails);
+    }
+
+    /**
+     * 取消
+     */
+    @DeleteMapping
+    void cancel(@AuthenticationPrincipal ReservationUserDetails userDetails,
+                @RequestParam("reservationId") Integer reservationId,
+                @PathVariable("roomId") Integer roomId,
+                @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @PathVariable("date") LocalDate date
+    ) {
+        reservationCoordinator.cancelReservedMeetingRoom(new ReservationId(reservationId));
     }
 }
