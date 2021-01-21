@@ -13,6 +13,14 @@ Spring 徹底入門 Spring Framework による Java アプリケーション開�
 
 実装にあたっては [CCSR手法](https://masuda220.hatenablog.com/entry/2020/05/27/103750) を参考にオリジナルをリファクタリングした。
 
+### Quick Start
+
+```bash
+./gradlew bootRun
+```
+
+アプリケーションは、http://localhost:8080 でログイン画面を表示できます。
+
 ### アプリケーションの内容
 
 会議室の予約とキャンセルを行うビジネスユースケース
@@ -21,6 +29,8 @@ Spring 徹底入門 Spring Framework による Java アプリケーション開�
 - Webで会議室の予約をキャンセルする
 
 ![](./docs/img/diagrams/BusinessUseCase.png)
+
+- [ドキュメント](./docs/Requirement.md)
 
 ### 目的
 
@@ -58,17 +68,19 @@ Spring 徹底入門 Spring Framework による Java アプリケーション開�
 
 ### 配置
 
+- [ドキュメント](./docs/Ship.md)
+
 **[⬆ back to top](#構成)**
 
 ### 開発
 
-#### アプリケーションアーキテクチャ
-
-![](./docs/img/jig/architecture.svg)
-
 #### データモデル
 
 ![](./docs/img/erd/jig-erd-detail.png)
+
+#### アプリケーションアーキテクチャ
+
+![](./docs/img/jig/architecture.svg)
 
 #### ドメインオブジェクトのモデル
 
@@ -86,10 +98,12 @@ Spring 徹底入門 Spring Framework による Java アプリケーション開�
 
 ### 運用
 
+- [ドキュメント](./docs/Run.md)
+
 **[⬆ back to top](#構成)**
 
 ## 参照
 
 - [Spring 徹底入門 Spring Framework による Java アプリケーション開発](https://www.amazon.co.jp/dp/B01IEWNLBU/ref=dp-kindle-redirect?_encoding=UTF8&btkr=1)
-- [JIG](https://github.com/dddjava/jig)  
+- [JIG](https://github.com/dddjava/jig)
 - [JIG-ERD](https://github.com/irof/jig-erd)
