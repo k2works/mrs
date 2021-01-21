@@ -16,10 +16,10 @@ import java.time.LocalDate;
  */
 @RestController("会議室一覧API")
 @RequestMapping("/api/rooms")
-public class RoomController {
+public class RoomsController {
     ReservationCoordinator reservationCoordinator;
 
-    public RoomController(ReservationCoordinator reservationCoordinator) {
+    public RoomsController(ReservationCoordinator reservationCoordinator) {
         this.reservationCoordinator = reservationCoordinator;
     }
 

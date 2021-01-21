@@ -370,9 +370,9 @@
             <path fill="none" stroke="black" stroke-width="2"
                   d="M919.953,-830.834C883.919,-802.974 815.109,-749.772 779.253,-722.05"/>
         </g>
-        <!-- mrs.presentation.api.room.RoomController -->
+        <!-- mrs.presentation.api.room.RoomsController -->
         <g id="node17" class="node">
-            <title>mrs.presentation.api.room.RoomController</title>
+            <title>mrs.presentation.api.room.RoomsController</title>
             <g id="a_node17">
                 <a xlink:title="RoomController">
                     <polygon fill="lightgray" stroke="black"
@@ -383,9 +383,9 @@
                 </a>
             </g>
         </g>
-        <!-- mrs.presentation.api.room.RoomController&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchReservableRooms(mrs.domain.model.reservation.ReservedDate) -->
+        <!-- mrs.presentation.api.room.RoomsController&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchReservableRooms(mrs.domain.model.reservation.ReservedDate) -->
         <g id="edge17" class="edge">
-            <title>mrs.presentation.api.room.RoomController&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchReservableRooms(mrs.domain.model.reservation.ReservedDate)</title>
+            <title>mrs.presentation.api.room.RoomsController&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchReservableRooms(mrs.domain.model.reservation.ReservedDate)</title>
             <path fill="none" stroke="black" stroke-dasharray="1,5"
                   d="M787.27,-907.843C780.916,-866.16 765.34,-763.965 758.995,-722.341"/>
         </g>

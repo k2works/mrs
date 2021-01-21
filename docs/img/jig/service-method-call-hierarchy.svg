@@ -525,33 +525,33 @@
             <polygon fill="black" stroke="black"
                      points="237.084,-222.799 247.426,-220.498 237.906,-215.847 237.084,-222.799"/>
         </g>
-        <!-- mrs.presentation.api.room.RoomController.listRooms() -->
+        <!-- mrs.presentation.api.room.RoomsController.listRooms() -->
         <g id="node18" class="node">
-            <title>mrs.presentation.api.room.RoomController.listRooms()</title>
+            <title>mrs.presentation.api.room.RoomsController.listRooms()</title>
             <polygon fill="lightgray" stroke="black" points="127,-137 53,-137 53,-101 127,-101 127,-137"/>
             <text text-anchor="middle" x="90" y="-115.3" font-family="Times New Roman,serif" font-size="14.00">
                 listRooms
             </text>
         </g>
-        <!-- mrs.presentation.api.room.RoomController.listRooms()&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchReservableRooms(mrs.domain.model.reservation.ReservedDate) -->
+        <!-- mrs.presentation.api.room.RoomsController.listRooms()&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchReservableRooms(mrs.domain.model.reservation.ReservedDate) -->
         <g id="edge10" class="edge">
-            <title>mrs.presentation.api.room.RoomController.listRooms()&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchReservableRooms(mrs.domain.model.reservation.ReservedDate)</title>
+            <title>mrs.presentation.api.room.RoomsController.listRooms()&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchReservableRooms(mrs.domain.model.reservation.ReservedDate)</title>
             <path fill="none" stroke="black" stroke-dasharray="5,2"
                   d="M127.087,-133.425C145.494,-142.278 167.084,-155.171 182,-172 191.309,-182.504 183.642,-192.107 194.5,-201 204.502,-209.191 216.201,-215.303 228.513,-219.839"/>
             <polygon fill="black" stroke="black"
                      points="227.436,-223.169 238.029,-223.01 229.648,-216.528 227.436,-223.169"/>
         </g>
-        <!-- mrs.presentation.api.room.RoomController.listRooms(java.time.LocalDate) -->
+        <!-- mrs.presentation.api.room.RoomsController.listRooms(java.time.LocalDate) -->
         <g id="node19" class="node">
-            <title>mrs.presentation.api.room.RoomController.listRooms(java.time.LocalDate)</title>
+            <title>mrs.presentation.api.room.RoomsController.listRooms(java.time.LocalDate)</title>
             <polygon fill="lightgray" stroke="black" points="127,-83 53,-83 53,-47 127,-47 127,-83"/>
             <text text-anchor="middle" x="90" y="-61.3" font-family="Times New Roman,serif" font-size="14.00">
                 listRooms
             </text>
         </g>
-        <!-- mrs.presentation.api.room.RoomController.listRooms(java.time.LocalDate)&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchReservableRooms(mrs.domain.model.reservation.ReservedDate) -->
+        <!-- mrs.presentation.api.room.RoomsController.listRooms(java.time.LocalDate)&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchReservableRooms(mrs.domain.model.reservation.ReservedDate) -->
         <g id="edge11" class="edge">
-            <title>mrs.presentation.api.room.RoomController.listRooms(java.time.LocalDate)&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchReservableRooms(mrs.domain.model.reservation.ReservedDate)</title>
+            <title>mrs.presentation.api.room.RoomsController.listRooms(java.time.LocalDate)&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchReservableRooms(mrs.domain.model.reservation.ReservedDate)</title>
             <path fill="none" stroke="black" stroke-dasharray="5,2"
                   d="M127.239,-66.5125C146.398,-69.3066 168.651,-76.0958 182,-92 213.349,-129.349 161.685,-164.932 194.5,-201 202.567,-209.866 212.542,-216.471 223.435,-221.35"/>
             <polygon fill="black" stroke="black"

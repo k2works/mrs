@@ -19,11 +19,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @ActiveProfiles("test")
 @DisplayName("API 会議室一覧")
-public class RoomControllerTest {
+public class RoomsControllerTest {
     MockMvc mockMvc;
 
     @InjectMocks
-    RoomController controller;
+    RoomsController controller;
 
     @Mock
     ReservationCoordinator mockReservationCoordinator;
