@@ -7,22 +7,13 @@
 
 # MRS (Meeting room reservation system)
 
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/k2works/mrs)
+
 ## 概要
 
 Spring 徹底入門 Spring Framework による Java アプリケーション開発 チュートリアルの実装例
 
 実装にあたっては [CCSR手法](https://masuda220.hatenablog.com/entry/2020/05/27/103750) を参考にオリジナルをリファクタリングした。
-
-### アプリケーションの内容
-
-会議室の予約とキャンセルを行うビジネスユースケース
-
-- Webで会議室の予約を行う
-- Webで会議室の予約をキャンセルする
-
-![](./docs/img/diagrams/BusinessUseCase.png)
-
-- [ドキュメント](./docs/Requirement.md)
 
 ### 目的
 
@@ -47,14 +38,25 @@ Spring 徹底入門 Spring Framework による Java アプリケーション開�
 
 アプリケーションは、http://localhost:8080 でログイン画面を表示できます。
 
+APIドキュメントはログイン後に http://localhost:8080/swagger-ui.html から確認できます。
+
+### アプリケーションの内容
+
+会議室の予約とキャンセルを行うビジネスユースケース
+
+- Webで会議室の予約を行う
+- Webで会議室の予約をキャンセルする
+
+![](./docs/img/diagrams/BusinessUseCase.png)
+
+- [ドキュメント](./docs/Requirement.md)
+
 ## 構成
 
 - [構築](#構築)
 - [配置](#配置)
 - [開発](#開発)
 - [運用](#運用)
-
-## 詳細
 
 ### 構築
 
@@ -91,8 +93,6 @@ Spring 徹底入門 Spring Framework による Java アプリケーション開�
 ![](./docs/img/jig/service-method-call-hierarchy.svg)
 
 - [ドキュメント](./docs/Development.md)
-
-- [APIドキュメント](http://127.0.0.1:8080/swagger-ui.html)
 
 **[⬆ back to top](#構成)**
 
