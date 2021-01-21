@@ -13,14 +13,6 @@ Spring 徹底入門 Spring Framework による Java アプリケーション開�
 
 実装にあたっては [CCSR手法](https://masuda220.hatenablog.com/entry/2020/05/27/103750) を参考にオリジナルをリファクタリングした。
 
-### Quick Start
-
-```bash
-./gradlew bootRun
-```
-
-アプリケーションは、http://localhost:8080 でログイン画面を表示できます。
-
 ### アプリケーションの内容
 
 会議室の予約とキャンセルを行うビジネスユースケース
@@ -46,6 +38,14 @@ Spring 徹底入門 Spring Framework による Java アプリケーション開�
 | java         | 11         |      |
 | SpringBoot   | 2.4.1      |      |
 | Node.js      | 12.16.3    |      |
+
+### Quick Start
+
+```bash
+./gradlew bootRun
+```
+
+アプリケーションは、http://localhost:8080 でログイン画面を表示できます。
 
 ## 構成
 
