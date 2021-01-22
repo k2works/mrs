@@ -15,12 +15,25 @@ import java.time.LocalTime;
  * API 会議室予約
  */
 @RestController("会議室予約API")
-@RequestMapping("api/reservations/{date}/{roomId}")
+@RequestMapping(value = {"api/reservations/{date}/{roomId}"})
 public class ReservationsController {
     ReservationCoordinator reservationCoordinator;
 
     public ReservationsController(ReservationCoordinator reservationCoordinator) {
         this.reservationCoordinator = reservationCoordinator;
+    }
+
+    /**
+     * 予約一覧
+     */
+    @GetMapping
+    Reservations listReservations(
+            @AuthenticationPrincipal ReservationUserDetails userDetails,
+            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @PathVariable("date") LocalDate date,
+            @PathVariable("roomId") Integer roomId
+    ) {
+        ReservableRoomId reservableRoomId = new ReservableRoomId(new RoomId(roomId), new ReservedDate(date));
+        return reservationCoordinator.searchReservations(reservableRoomId);
     }
 
     /**
