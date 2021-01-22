@@ -105,14 +105,14 @@ public class ReservationMapperExtTest {
         ReservedTime time = new ReservedTime(LocalTime.of(10, 0), LocalTime.of(11, 0));
         MeetingRoom meetingRoom = new MeetingRoom(new RoomId(1), new RoomName("会議室"));
         meetingRoomMapper.insert(meetingRoom);
-        ReservableRoom room = new ReservableRoom(new ReservableRoomId(new RoomId(1), date), meetingRoom);
+        ReservableRoomId reservableRoomId = new ReservableRoomId(new RoomId(1), date);
+        ReservableRoom room = new ReservableRoom(reservableRoomId, meetingRoom);
         reservableRoomMapper.insert(room);
         User user = new User(new UserId("Test"), new Password("Password"), new Name("山田", "太郎"), RoleName.USER);
         usrMapper.insert(user);
         Reservation reservation = new Reservation(id, date, time, room, user);
         reservationMapper.insert(reservation);
 
-        ReservableRoomId reservableRoomId = new ReservableRoomId();
         List<Reservation> result = reservationMapper.findByReservableRoom_ReservableRoomIdOrderByStartTimeAsc(reservableRoomId);
 
         assertNotNull(result);
