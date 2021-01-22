@@ -3,6 +3,8 @@ package mrs.application.coordinator.reservation;
 import mrs.application.service.reservation.ReservationService;
 import mrs.application.service.room.RoomService;
 import mrs.application.service.user.ReservationUserDetails;
+import mrs.domain.model.facility.room.MeetingRoom;
+import mrs.domain.model.facility.room.RoomId;
 import mrs.domain.model.reservation.Reservation;
 import mrs.domain.model.reservation.ReservationId;
 import mrs.domain.model.reservation.Reservations;
@@ -12,8 +14,6 @@ import mrs.domain.model.reservation.datetime.ReservedTime;
 import mrs.domain.model.reservation.reservable.room.ReservableRoom;
 import mrs.domain.model.reservation.reservable.room.ReservableRoomId;
 import mrs.domain.model.reservation.reservable.room.ReservableRooms;
-import mrs.domain.model.room.MeetingRoom;
-import mrs.domain.model.room.RoomId;
 import org.springframework.stereotype.Service;
 
 /**

@@ -17,7 +17,7 @@
             <id property="roomId.value" column="room_id"/>
             <result property="reservedDate.value" column="reserved_date"/>
         </association>
-        <association property="reservableRoom.meetingRoom" javaType="mrs.domain.model.room.MeetingRoom">
+        <association property="reservableRoom.meetingRoom" javaType="mrs.domain.model.facility.room.MeetingRoom">
             <id property="roomId.value" column="room_id"/>
             <result property="roomName.value" column="room_name"/>
         </association>

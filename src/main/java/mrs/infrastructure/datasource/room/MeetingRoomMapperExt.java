@@ -1,6 +1,6 @@
 package mrs.infrastructure.datasource.room;
 
-import mrs.domain.model.room.MeetingRoom;
+import mrs.domain.model.facility.room.MeetingRoom;
 import mrs.infrastructure.datasource.MeetingRoomMapper;
 import org.apache.ibatis.annotations.Mapper;
 

@@ -1,7 +1,7 @@
 package mrs.infrastructure.datasource.room;
 
 import mrs.application.repository.MeetingRoomRepository;
-import mrs.domain.model.room.MeetingRoom;
+import mrs.domain.model.facility.room.MeetingRoom;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

@@ -1,6 +1,6 @@
 package mrs.domain.model.reservation.reservable.room;
 
-import mrs.domain.model.room.MeetingRoom;
+import mrs.domain.model.facility.room.MeetingRoom;
 
 /**
  * 予約可能会議室

@@ -1,6 +1,6 @@
 package mrs.application.repository;
 
-import mrs.domain.model.room.MeetingRoom;
+import mrs.domain.model.facility.room.MeetingRoom;
 
 import java.util.List;
 

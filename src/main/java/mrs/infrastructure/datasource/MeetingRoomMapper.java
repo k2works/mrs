@@ -1,7 +1,7 @@
 package mrs.infrastructure.datasource;
 
-import mrs.domain.model.room.MeetingRoom;
-import mrs.domain.model.room.RoomId;
+import mrs.domain.model.facility.room.MeetingRoom;
+import mrs.domain.model.facility.room.RoomId;
 import org.apache.ibatis.annotations.*;
 
 @Mapper

@@ -1,4 +1,4 @@
-package mrs.domain.model.room;
+package mrs.domain.model.facility.room;
 
 /**
  * 会議室

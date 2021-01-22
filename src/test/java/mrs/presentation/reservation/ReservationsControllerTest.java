@@ -1,9 +1,9 @@
 package mrs.presentation.reservation;
 
 import mrs.application.coordinator.reservation.ReservationCoordinator;
+import mrs.domain.model.facility.room.MeetingRoom;
 import mrs.domain.model.reservation.Reservation;
 import mrs.domain.model.reservation.Reservations;
-import mrs.domain.model.room.MeetingRoom;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

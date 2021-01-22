@@ -1,7 +1,7 @@
 package mrs.domain.model.reservation.reservable.room;
 
+import mrs.domain.model.facility.room.RoomId;
 import mrs.domain.model.reservation.datetime.ReservedDate;
-import mrs.domain.model.room.RoomId;
 
 /**
  * 予約可能会議室ID
