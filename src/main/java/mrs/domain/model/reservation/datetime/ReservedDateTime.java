@@ -1,11 +1,11 @@
-package mrs.domain.model.reservation;
+package mrs.domain.model.reservation.datetime;
 
 /**
  * 予約日時
  */
 public class ReservedDateTime {
-    ReservedDate date;
-    ReservedTime time;
+    public ReservedDate date;
+    public ReservedTime time;
 
     public ReservedDateTime() {
     }

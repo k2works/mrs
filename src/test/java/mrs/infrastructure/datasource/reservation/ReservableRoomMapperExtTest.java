@@ -3,7 +3,7 @@ package mrs.infrastructure.datasource.reservation;
 import mrs.MrsDBTest;
 import mrs.domain.model.reservation.ReservableRoom;
 import mrs.domain.model.reservation.ReservableRoomId;
-import mrs.domain.model.reservation.ReservedDate;
+import mrs.domain.model.reservation.datetime.ReservedDate;
 import mrs.domain.model.room.MeetingRoom;
 import mrs.domain.model.room.RoomId;
 import mrs.domain.model.room.RoomName;

@@ -1,5 +1,6 @@
 package mrs.domain.model.reservation;
 
+import mrs.domain.model.reservation.datetime.ReservedDate;
 import mrs.domain.model.room.RoomId;
 
 /**
