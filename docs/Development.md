@@ -50,6 +50,10 @@
 
 ![](./img/jig/package-relation-depth5.svg)
 
+### パッケージ関連図
+
+![](./img/jig/package-relation-depth6.svg)
+
 ### サービスメソッド呼び出し図
 
 ![](./img/jig/service-method-call-hierarchy.svg)
