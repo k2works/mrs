@@ -1,9 +1,9 @@
 package mrs.application.repository;
 
 import mrs.MrsDBTest;
-import mrs.domain.model.room.MeetingRoom;
-import mrs.domain.model.room.RoomId;
-import mrs.domain.model.room.RoomName;
+import mrs.domain.model.facility.room.MeetingRoom;
+import mrs.domain.model.facility.room.RoomId;
+import mrs.domain.model.facility.room.RoomName;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

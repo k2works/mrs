@@ -1,12 +1,12 @@
 package mrs.infrastructure.datasource.reservation;
 
 import mrs.MrsDBTest;
-import mrs.domain.model.reservation.ReservableRoom;
-import mrs.domain.model.reservation.ReservableRoomId;
-import mrs.domain.model.reservation.ReservedDate;
-import mrs.domain.model.room.MeetingRoom;
-import mrs.domain.model.room.RoomId;
-import mrs.domain.model.room.RoomName;
+import mrs.domain.model.facility.room.MeetingRoom;
+import mrs.domain.model.facility.room.RoomId;
+import mrs.domain.model.facility.room.RoomName;
+import mrs.domain.model.reservation.datetime.ReservedDate;
+import mrs.domain.model.reservation.reservable.room.ReservableRoom;
+import mrs.domain.model.reservation.reservable.room.ReservableRoomId;
 import mrs.infrastructure.datasource.room.MeetingRoomMapperExt;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -49,7 +49,7 @@ public class ReservableRoomMapperExtTest {
         ReservableRoom room = new ReservableRoom(id);
         reservableRoomMapper.insert(room);
 
-        reservableRoomMapper.deleteByPrimaryKey(id.reservedDate(),id.roomId().intValue());
+        reservableRoomMapper.deleteByPrimaryKey(id.reservedDate().value(), id.roomId().value().intValue());
         ReservableRoom result = reservableRoomMapper.selectByPrimaryKey(id);
 
         assertNull(result);

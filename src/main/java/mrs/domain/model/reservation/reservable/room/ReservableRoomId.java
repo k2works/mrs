@@ -1,27 +1,23 @@
-package mrs.domain.model.reservation;
+package mrs.domain.model.reservation.reservable.room;
 
-import mrs.domain.model.room.RoomId;
-
-import javax.persistence.Embeddable;
-import java.io.Serializable;
-import java.time.LocalDate;
+import mrs.domain.model.facility.room.RoomId;
+import mrs.domain.model.reservation.datetime.ReservedDate;
 
 /**
  * 予約可能会議室ID
  */
-@Embeddable
-public class ReservableRoomId implements Serializable {
+public class ReservableRoomId {
 
-    private Integer roomId;
+    private RoomId roomId;
 
-    private LocalDate reservedDate;
+    private ReservedDate reservedDate;
 
     public ReservableRoomId() {
     }
 
     public ReservableRoomId(RoomId roomId, ReservedDate reservedDate) {
-        this.roomId = roomId.value();
-        this.reservedDate = reservedDate.value;
+        this.roomId = roomId;
+        this.reservedDate = reservedDate;
     }
 
     @Override
@@ -41,21 +37,21 @@ public class ReservableRoomId implements Serializable {
         ReservableRoomId other = (ReservableRoomId) obj;
         if (reservedDate == null) {
             if (other.reservedDate != null) return false;
-        } else if (!reservedDate.equals(other.reservedDate)) {
+        } else if (!reservedDate.value.equals(other.reservedDate.value)) {
             return false;
         }
         if (roomId == null) {
             if (other.roomId != null) return false;
-        } else if (!roomId.equals(other.roomId))
+        } else if (!roomId.value().equals(other.roomId.value()))
             return false;
         return true;
     }
 
-    public Integer roomId() {
+    public RoomId roomId() {
         return roomId;
     }
 
-    public LocalDate reservedDate() {
+    public ReservedDate reservedDate() {
         return reservedDate;
     }
 }

@@ -1,7 +1,7 @@
 package mrs.infrastructure.datasource.room;
 
 import mrs.application.repository.MeetingRoomRepository;
-import mrs.domain.model.room.MeetingRoom;
+import mrs.domain.model.facility.room.MeetingRoom;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -21,7 +21,7 @@ public class MeetingRoomDataSource implements MeetingRoomRepository {
 
     @Override
     public void delete(MeetingRoom room) {
-        meetingRoomMapper.deleteByPrimaryKey(room.roomId().value());
+        meetingRoomMapper.deleteByPrimaryKey(room.roomId());
     }
 
     @Override
@@ -36,7 +36,7 @@ public class MeetingRoomDataSource implements MeetingRoomRepository {
 
     @Override
     public void deleteAll() {
-        meetingRoomMapper.selectAll().forEach(i -> meetingRoomMapper.deleteByPrimaryKey(i.roomId().value()));
+        meetingRoomMapper.selectAll().forEach(i -> meetingRoomMapper.deleteByPrimaryKey(i.roomId()));
     }
 
 }

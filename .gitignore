@@ -47,3 +47,5 @@ cypress/screenshots
 cypress/videos
 cypress/cucumber-json
 cypress/report
+
+out

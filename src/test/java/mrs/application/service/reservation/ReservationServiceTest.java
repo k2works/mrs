@@ -5,10 +5,16 @@ import mrs.application.repository.MeetingRoomRepository;
 import mrs.application.repository.ReservableRoomRepository;
 import mrs.application.repository.ReservationRepository;
 import mrs.application.repository.UserRepository;
-import mrs.domain.model.reservation.*;
-import mrs.domain.model.room.MeetingRoom;
-import mrs.domain.model.room.RoomId;
-import mrs.domain.model.room.RoomName;
+import mrs.domain.model.facility.room.MeetingRoom;
+import mrs.domain.model.facility.room.RoomId;
+import mrs.domain.model.facility.room.RoomName;
+import mrs.domain.model.reservation.Reservation;
+import mrs.domain.model.reservation.ReservationId;
+import mrs.domain.model.reservation.datetime.ReservedDate;
+import mrs.domain.model.reservation.datetime.ReservedDateTime;
+import mrs.domain.model.reservation.datetime.ReservedTime;
+import mrs.domain.model.reservation.reservable.room.ReservableRoom;
+import mrs.domain.model.reservation.reservable.room.ReservableRoomId;
 import mrs.domain.model.user.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -123,9 +129,9 @@ public class ReservationServiceTest {
     private Reservation 予約を作る(ReservationId id, ReservableRoom room, LocalTime start, LocalTime end) {
         ReservedTime time = new ReservedTime(start, end);
         User user = ユーザーを作る();
-        ReservedDate date = new ReservedDate(room.reservableRoomId().reservedDate());
-        Reservation reservation = new Reservation(id, date, time, room, user);
-        return reservation;
+        ReservedDate date = new ReservedDate(room.reservableRoomId().reservedDate().value());
+        ReservedDateTime dateTime = new ReservedDateTime(date, time);
+        return new Reservation(id, dateTime, room, user);
     }
 
     private ReservableRoom 予約が可能な会議室を作る(MeetingRoom room) {
@@ -159,7 +165,8 @@ public class ReservationServiceTest {
         ReservedDate reservedDate = new ReservedDate(LocalDate.now());
         ReservedTime reservedTime = new ReservedTime(null, null);
         User user = ユーザーを作る();
-        return new Reservation(reservedDate, reservedTime, reservableRoom, user);
+        ReservedDateTime reservedDateTime = new ReservedDateTime(reservedDate, reservedTime);
+        return new Reservation(reservedDateTime, reservableRoom, user);
     }
 
     @Nested

@@ -1,10 +1,16 @@
 package mrs.infrastructure.datasource.reservation;
 
 import mrs.MrsDBTest;
-import mrs.domain.model.reservation.*;
-import mrs.domain.model.room.MeetingRoom;
-import mrs.domain.model.room.RoomId;
-import mrs.domain.model.room.RoomName;
+import mrs.domain.model.facility.room.MeetingRoom;
+import mrs.domain.model.facility.room.RoomId;
+import mrs.domain.model.facility.room.RoomName;
+import mrs.domain.model.reservation.Reservation;
+import mrs.domain.model.reservation.ReservationId;
+import mrs.domain.model.reservation.datetime.ReservedDate;
+import mrs.domain.model.reservation.datetime.ReservedDateTime;
+import mrs.domain.model.reservation.datetime.ReservedTime;
+import mrs.domain.model.reservation.reservable.room.ReservableRoom;
+import mrs.domain.model.reservation.reservable.room.ReservableRoomId;
 import mrs.domain.model.user.*;
 import mrs.infrastructure.datasource.room.MeetingRoomMapperExt;
 import mrs.infrastructure.datasource.user.UsrMapperExt;
@@ -47,12 +53,13 @@ public class ReservationMapperExtTest {
         reservableRoomMapper.insert(room);
         User user = new User(new UserId("Test"), new Password("Password"), new Name("山田", "太郎"), RoleName.USER);
         usrMapper.insert(user);
-        Reservation reservation = new Reservation(id, date, time, room, user);
+        ReservedDateTime dateTime = new ReservedDateTime(date, time);
+        Reservation reservation = new Reservation(id, dateTime, room, user);
         reservationMapper.insert(reservation);
 
         Reservation result = reservationMapper.findById(1);
 
-        assertEquals(1, result.getReservationId());
+        assertEquals(1, result.reservationId().value());
     }
 
     @Test
@@ -66,15 +73,16 @@ public class ReservationMapperExtTest {
         reservableRoomMapper.insert(room);
         User user = new User(new UserId("Test"), new Password("Password"), new Name("山田", "太郎"), RoleName.USER);
         usrMapper.insert(user);
-        Reservation reservation = new Reservation(id, date, time, room, user);
+        ReservedDateTime dateTime = new ReservedDateTime(date, time);
+        Reservation reservation = new Reservation(id, dateTime, room, user);
         reservationMapper.insert(reservation);
 
         Reservation update = reservationMapper.findById(2);
-        Reservation updateReservation = new Reservation(new ReservationId(update.getReservationId()), date, new ReservedTime(LocalTime.of(11, 0), LocalTime.of(12, 0)), room, user);
+        Reservation updateReservation = new Reservation(new ReservationId(update.reservationId().value()), new ReservedDateTime(date, new ReservedTime(LocalTime.of(11, 0), LocalTime.of(12, 0))), room, user);
         reservationMapper.updateByPrimaryKey(updateReservation);
         Reservation result = reservationMapper.findById(2);
 
-        assertEquals("11:00", result.getStartTime().toString());
+        assertEquals("11:00", result.startTime().toString());
     }
 
     @Test
@@ -88,11 +96,12 @@ public class ReservationMapperExtTest {
         reservableRoomMapper.insert(room);
         User user = new User(new UserId("Test"), new Password("Password"), new Name("山田", "太郎"), RoleName.USER);
         usrMapper.insert(user);
-        Reservation reservation = new Reservation(id, date, time, room, user);
+        ReservedDateTime dateTime = new ReservedDateTime(date, time);
+        Reservation reservation = new Reservation(id, dateTime, room, user);
         reservationMapper.insert(reservation);
         Reservation delete = reservationMapper.findById(3);
 
-        reservationMapper.deleteByPrimaryKey(delete.getReservationId());
+        reservationMapper.deleteByPrimaryKey(delete.reservationId().value());
         Reservation result = reservationMapper.findById(3);
 
         assertNull(result);
@@ -105,14 +114,15 @@ public class ReservationMapperExtTest {
         ReservedTime time = new ReservedTime(LocalTime.of(10, 0), LocalTime.of(11, 0));
         MeetingRoom meetingRoom = new MeetingRoom(new RoomId(1), new RoomName("会議室"));
         meetingRoomMapper.insert(meetingRoom);
-        ReservableRoom room = new ReservableRoom(new ReservableRoomId(new RoomId(1), date), meetingRoom);
+        ReservableRoomId reservableRoomId = new ReservableRoomId(new RoomId(1), date);
+        ReservableRoom room = new ReservableRoom(reservableRoomId, meetingRoom);
         reservableRoomMapper.insert(room);
         User user = new User(new UserId("Test"), new Password("Password"), new Name("山田", "太郎"), RoleName.USER);
         usrMapper.insert(user);
-        Reservation reservation = new Reservation(id, date, time, room, user);
+        ReservedDateTime dateTime = new ReservedDateTime(date, time);
+        Reservation reservation = new Reservation(id, dateTime, room, user);
         reservationMapper.insert(reservation);
 
-        ReservableRoomId reservableRoomId = new ReservableRoomId();
         List<Reservation> result = reservationMapper.findByReservableRoom_ReservableRoomIdOrderByStartTimeAsc(reservableRoomId);
 
         assertNotNull(result);

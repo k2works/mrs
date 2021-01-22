@@ -1,10 +1,16 @@
 package mrs.application.repository;
 
 import mrs.MrsDBTest;
-import mrs.domain.model.reservation.*;
-import mrs.domain.model.room.MeetingRoom;
-import mrs.domain.model.room.RoomId;
-import mrs.domain.model.room.RoomName;
+import mrs.domain.model.facility.room.MeetingRoom;
+import mrs.domain.model.facility.room.RoomId;
+import mrs.domain.model.facility.room.RoomName;
+import mrs.domain.model.reservation.Reservation;
+import mrs.domain.model.reservation.ReservationId;
+import mrs.domain.model.reservation.datetime.ReservedDate;
+import mrs.domain.model.reservation.datetime.ReservedDateTime;
+import mrs.domain.model.reservation.datetime.ReservedTime;
+import mrs.domain.model.reservation.reservable.room.ReservableRoom;
+import mrs.domain.model.reservation.reservable.room.ReservableRoomId;
 import mrs.domain.model.user.User;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -47,9 +53,11 @@ public class ReservationRepositoryTest {
                 .map(ReservableRoom::new).forEach(k -> reservableRoomRepository.save(k));
         reservableRoomRepository.findAll().stream().map(i ->
                 new Reservation(
-                        new ReservationId(i.reservableRoomId().roomId()),
-                        new ReservedDate(date),
-                        new ReservedTime(LocalTime.of(10, 0), LocalTime.of(10, 30)),
+                        new ReservationId(i.reservableRoomId().roomId().value()),
+                        new ReservedDateTime(
+                                new ReservedDate(date),
+                                new ReservedTime(LocalTime.of(10, 0), LocalTime.of(10, 30))
+                        ),
                         new ReservableRoom(i.reservableRoomId(), i.meetingRoom()),
                         user
                 )
@@ -79,7 +87,7 @@ public class ReservationRepositoryTest {
         Reservation value = reservation.get();
 
         Assertions.assertNotNull(value);
-        Assertions.assertEquals(1, value.reservableRoomId().roomId());
-        Assertions.assertEquals(LocalDate.now(), value.reservableRoomId().reservedDate());
+        Assertions.assertEquals(1, value.reservableRoom().reservableRoomId().roomId().value());
+        Assertions.assertEquals(LocalDate.now(), value.reservableRoom().reservableRoomId().reservedDate().value());
     }
 }

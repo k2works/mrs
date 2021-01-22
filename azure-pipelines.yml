@@ -41,6 +41,12 @@ stages:
               testResultsFiles: "**/TEST-*.xml"
               goals: "package"
 
+          - task: PublishCodeCoverageResults@1
+            inputs:
+              codeCoverageTool: 'JaCoCo'
+              summaryFileLocation: '$(System.DefaultWorkingDirectory)/target/site/jacoco/jacoco.xml'
+              reportDirectory: '$(System.DefaultWorkingDirectory)/target/site/jacoco'
+
           - task: CopyFiles@2
             displayName: "Copy Files to artifact staging directory"
             inputs:

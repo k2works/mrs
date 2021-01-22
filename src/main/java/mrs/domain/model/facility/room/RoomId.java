@@ -1,4 +1,4 @@
-package mrs.domain.model.room;
+package mrs.domain.model.facility.room;
 
 /**
  * 会議室ID
@@ -12,6 +12,9 @@ public class RoomId {
 
     public Integer value() {
         return value;
+    }
+
+    public RoomId() {
     }
 
     @Override

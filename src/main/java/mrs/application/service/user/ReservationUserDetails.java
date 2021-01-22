@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 
 /**
- * 予約ユーザー詳細
+ * 利用者詳細
  */
 public class ReservationUserDetails implements UserDetails {
     private final User user;

@@ -1,4 +1,4 @@
-package mrs.domain.model.room;
+package mrs.domain.model.facility.room;
 
 /**
  * 会議室名
@@ -8,6 +8,9 @@ public class RoomName {
 
     public RoomName(String value) {
         this.value = value;
+    }
+
+    public RoomName() {
     }
 
     public String value() {

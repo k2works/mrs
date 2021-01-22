@@ -2,25 +2,34 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mrs.infrastructure.datasource.reservation.ReservationMapperExt">
     <resultMap id="findReservationResultMap" type="mrs.domain.model.reservation.Reservation">
-        <id column="reservation_id" property="reservationId"/>
-        <result column="end_time" property="endTime"/>
-        <result column="start_time" property="startTime"/>
-        <result column="reserved_date" property="reservedDate"/>
-        <result column="room_id" property="roomId"/>
-        <result column="user_id" property="userId"/>
-        <association property="reservableRoomId" javaType="mrs.domain.model.reservation.ReservableRoomId">
-            <id property="roomId" column="room_id"/>
-            <result property="reservedDate" column="reserved_date"/>
+        <id column="reservation_id" property="reservationId.value"/>
+        <result column="end_time" property="reservedDateTime.time.end"/>
+        <result column="start_time" property="reservedDateTime.time.start"/>
+        <result column="reserved_date" property="reservedDateTime.date.value"/>
+        <result column="room_id" property="reservableRoom.reservableRoomId.roomId.value"/>
+        <result column="user_id" property="user.userId.value"/>
+        <association property="reservableRoom" javaType="mrs.domain.model.reservation.reservable.room.ReservableRoom">
+            <id property="reservableRoomId.roomId.value" column="room_id"/>
+            <result property="reservableRoomId.reservedDate.value" column="reserved_date"/>
+        </association>
+        <association property="reservableRoom.reservableRoomId"
+                     javaType="mrs.domain.model.reservation.reservable.room.ReservableRoomId">
+            <id property="roomId.value" column="room_id"/>
+            <result property="reservedDate.value" column="reserved_date"/>
+        </association>
+        <association property="reservableRoom.meetingRoom" javaType="mrs.domain.model.facility.room.MeetingRoom">
+            <id property="roomId.value" column="room_id"/>
+            <result property="roomName.value" column="room_name"/>
         </association>
         <association property="user" javaType="mrs.domain.model.user.User">
-            <id property="userId" column="user_id"/>
-            <result property="firstName" column="first_name"/>
-            <result property="lastName" column="last_name"/>
+            <id property="userId.value" column="user_id"/>
+            <result property="name.firstName" column="first_name"/>
+            <result property="name.lastName" column="last_name"/>
             <result property="roleName" column="role_name"/>
         </association>
     </resultMap>
     <select id="findByReservableRoom_ReservableRoomIdOrderByStartTimeAsc"
-            parameterType="mrs.domain.model.reservation.ReservableRoomId"
+            parameterType="mrs.domain.model.reservation.reservable.room.ReservableRoomId"
             resultMap="findReservationResultMap">
         SELECT r.reservation_id,
                r.end_time,
@@ -30,14 +39,17 @@
                r.user_Id,
                u.first_name,
                u.last_name,
-               u.role_name
+               u.role_name,
+               rm.room_name
         FROM Reservation r
                  LEFT OUTER JOIN reservable_room rr
                                  ON r.reserved_date = rr.reserved_date AND r.room_id = rr.room_id
+                 LEFT OUTER JOIN meeting_room rm
+                                 ON r.room_id = rm.room_id
                  LEFT OUTER JOIN usr u
                                  ON r.user_id = u.user_id
-        WHERE rr.reserved_date = #{reservedDate}
-          AND rr.room_id = #{roomId}
+        WHERE rr.reserved_date = #{reservedDate.value}
+          AND rr.room_id = #{roomId.value}
         ORDER BY r.start_time ASC
     </select>
 

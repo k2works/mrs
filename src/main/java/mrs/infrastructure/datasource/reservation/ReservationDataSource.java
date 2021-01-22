@@ -1,8 +1,8 @@
 package mrs.infrastructure.datasource.reservation;
 
 import mrs.application.repository.ReservationRepository;
-import mrs.domain.model.reservation.ReservableRoomId;
 import mrs.domain.model.reservation.Reservation;
+import mrs.domain.model.reservation.reservable.room.ReservableRoomId;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -38,7 +38,7 @@ public class ReservationDataSource implements ReservationRepository {
 
     @Override
     public void delete(Reservation reservation) {
-        reservationMapper.deleteByPrimaryKey(reservation.getReservationId());
+        reservationMapper.deleteByPrimaryKey(reservation.reservationId().value());
     }
 
     @Override
@@ -48,6 +48,6 @@ public class ReservationDataSource implements ReservationRepository {
 
     @Override
     public void deleteAll() {
-        reservationMapper.findAll().forEach(i -> reservationMapper.deleteByPrimaryKey(i.getReservationId()));
+        reservationMapper.findAll().forEach(i -> reservationMapper.deleteByPrimaryKey(i.reservationId().value()));
     }
 }

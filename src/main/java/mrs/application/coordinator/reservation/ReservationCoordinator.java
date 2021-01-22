@@ -3,9 +3,17 @@ package mrs.application.coordinator.reservation;
 import mrs.application.service.reservation.ReservationService;
 import mrs.application.service.room.RoomService;
 import mrs.application.service.user.ReservationUserDetails;
-import mrs.domain.model.reservation.*;
-import mrs.domain.model.room.MeetingRoom;
-import mrs.domain.model.room.RoomId;
+import mrs.domain.model.facility.room.MeetingRoom;
+import mrs.domain.model.facility.room.RoomId;
+import mrs.domain.model.reservation.Reservation;
+import mrs.domain.model.reservation.ReservationId;
+import mrs.domain.model.reservation.Reservations;
+import mrs.domain.model.reservation.datetime.ReservedDate;
+import mrs.domain.model.reservation.datetime.ReservedDateTime;
+import mrs.domain.model.reservation.datetime.ReservedTime;
+import mrs.domain.model.reservation.reservable.room.ReservableRoom;
+import mrs.domain.model.reservation.reservable.room.ReservableRoomId;
+import mrs.domain.model.reservation.reservable.room.ReservableRooms;
 import org.springframework.stereotype.Service;
 
 /**
@@ -25,10 +33,10 @@ public class ReservationCoordinator {
      * 会議室を予約する
      */
     public void reserveMeetingRoom(ReservedTime reservedTime, ReservableRoom reservableRoom, ReservationUserDetails userDetails) {
-        ReservedDate reservedDate = new ReservedDate(reservableRoom.reservableRoomId().reservedDate());
+        ReservedDate reservedDate = new ReservedDate(reservableRoom.reservableRoomId().reservedDate().value());
+        ReservedDateTime reservedDateTime = new ReservedDateTime(reservedDate, reservedTime);
         Reservation reservation = new Reservation(
-                reservedDate,
-                reservedTime,
+                reservedDateTime,
                 reservableRoom,
                 userDetails.getUser()
         );

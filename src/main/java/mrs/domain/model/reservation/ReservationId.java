@@ -10,6 +10,9 @@ public class ReservationId {
         this.value = value;
     }
 
+    public ReservationId() {
+    }
+
     public Integer value() {
         return value;
     }

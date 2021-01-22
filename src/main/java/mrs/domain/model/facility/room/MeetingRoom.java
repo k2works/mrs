@@ -1,27 +1,27 @@
-package mrs.domain.model.room;
+package mrs.domain.model.facility.room;
 
 /**
  * 会議室
  */
 public class MeetingRoom {
-    private Integer roomId;
+    private RoomId roomId;
 
-    private String roomName;
+    private RoomName roomName;
 
     public MeetingRoom() {
     }
 
     public MeetingRoom(RoomId roomId, RoomName roomName) {
-        this.roomId = roomId.value;
-        this.roomName = roomName.value;
+        this.roomId = roomId;
+        this.roomName = roomName;
     }
 
     public RoomId roomId() {
-        return new RoomId(roomId);
+        return roomId;
     }
 
     public RoomName roomName() {
-        return new RoomName(roomName);
+        return roomName;
     }
 
     @Override
@@ -31,6 +31,6 @@ public class MeetingRoom {
         MeetingRoom other = (MeetingRoom) obj;
         if (roomId == null && roomName == null) {
             return other.roomId == null && other.roomName == null;
-        } else return roomId.equals(other.roomId) && roomName.equals(other.roomName);
+        } else return roomId.value.equals(other.roomId.value) && roomName.value.equals(other.roomName.value);
     }
 }

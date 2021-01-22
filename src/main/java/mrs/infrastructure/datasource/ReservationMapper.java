@@ -27,9 +27,9 @@ public interface ReservationMapper {
             "insert into reservation (reservation_id, end_time, ",
             "start_time, reserved_date, ",
             "room_id, user_id)",
-            "values (#{reservationId,jdbcType=INTEGER}, #{endTime,jdbcType=TIME}, ",
-            "#{startTime,jdbcType=TIME}, #{reservedDate,jdbcType=DATE}, ",
-            "#{roomId,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR})"
+            "values (#{reservationId.value,jdbcType=INTEGER}, #{reservedDateTime.time.end,jdbcType=TIME}, ",
+            "#{reservedDateTime.time.start,jdbcType=TIME}, #{reservedDateTime.date.value,jdbcType=DATE}, ",
+            "#{reservableRoom.reservableRoomId.roomId.value,jdbcType=INTEGER}, #{user.userId.value,jdbcType=VARCHAR})"
     })
     int insert(Reservation record);
 
@@ -51,7 +51,7 @@ public interface ReservationMapper {
             "select",
             "reservation_id, end_time, start_time, reserved_date, room_id, user_id",
             "from reservation",
-            "where reservation_id = #{reservationId,jdbcType=INTEGER}"
+            "where reservation_id = #{reservationId.value,jdbcType=INTEGER}"
     })
     @ResultMap("mrs.infrastructure.datasource.ReservationMapper.BaseResultMap")
     Reservation selectByPrimaryKey(Integer reservationId);
@@ -72,12 +72,12 @@ public interface ReservationMapper {
      */
     @Update({
             "update reservation",
-            "set end_time = #{endTime,jdbcType=TIME},",
-            "start_time = #{startTime,jdbcType=TIME},",
-            "reserved_date = #{reservedDate,jdbcType=DATE},",
-            "room_id = #{roomId,jdbcType=INTEGER},",
-            "user_id = #{userId,jdbcType=VARCHAR}",
-            "where reservation_id = #{reservationId,jdbcType=INTEGER}"
+            "set end_time = #{reservedDateTime.time.end,jdbcType=TIME},",
+            "start_time = #{reservedDateTime.time.start,jdbcType=TIME},",
+            "reserved_date = #{reservedDateTime.date.value,jdbcType=DATE},",
+            "room_id = #{reservableRoom.reservableRoomId.roomId.value,jdbcType=INTEGER},",
+            "user_id = #{user.userId.value,jdbcType=VARCHAR}",
+            "where reservation_id = #{reservationId.value,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(Reservation record);
 }

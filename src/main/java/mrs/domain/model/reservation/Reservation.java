@@ -1,8 +1,11 @@
 package mrs.domain.model.reservation;
 
+import mrs.domain.model.reservation.datetime.ReservedDate;
+import mrs.domain.model.reservation.datetime.ReservedDateTime;
+import mrs.domain.model.reservation.datetime.ReservedTime;
+import mrs.domain.model.reservation.reservable.room.ReservableRoom;
 import mrs.domain.model.user.User;
 
-import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Objects;
 
@@ -10,13 +13,8 @@ import java.util.Objects;
  * 予約
  */
 public class Reservation {
-    private Integer reservationId;
-    private LocalTime startTime;
-    private LocalTime endTime;
-    private LocalDate reservedDate;
-    private Integer roomId;
-    private String userId;
-    private ReservableRoomId reservableRoomId;
+    private ReservationId reservationId;
+    private ReservedDateTime reservedDateTime;
     private ReservableRoom reservableRoom;
     private User user;
 
@@ -24,51 +22,47 @@ public class Reservation {
     public Reservation() {
     }
 
-    public Reservation(ReservationId reservationId, ReservedDate reservedDate, ReservedTime reservedTime, ReservableRoom room, User user) {
-        this.reservationId = reservationId.value;
-        this.reservedDate = reservedDate.value;
-        this.startTime = reservedTime.start;
-        this.endTime = reservedTime.end;
-        this.roomId = room.reservableRoomId().roomId();
-        this.userId = user.userId().value();
+    public Reservation(ReservationId reservationId, ReservedDateTime reservedDateTime, ReservableRoom room, User user) {
+        this.reservationId = reservationId;
+        this.reservedDateTime = reservedDateTime;
         this.reservableRoom = room;
         this.user = user;
     }
 
-    public Reservation(ReservedDate reservedDate, ReservedTime reservedTime, ReservableRoom room, User user) {
-        this.reservedDate = reservedDate.value;
-        this.startTime = reservedTime.start;
-        this.endTime = reservedTime.end;
-        this.roomId = room.reservableRoomId().roomId();
-        this.userId = user.userId().value();
+    public Reservation(ReservedDateTime reservedDateTime, ReservableRoom room, User user) {
+        this.reservedDateTime = reservedDateTime;
         this.reservableRoom = room;
         this.user = user;
     }
 
     public boolean overlap(Reservation target) {
-        if (!Objects.equals(reservableRoomId, target.reservableRoom.reservableRoomId())) {
+        if (!Objects.equals(reservableRoom.reservableRoomId(), target.reservableRoom.reservableRoomId())) {
             return false;
         }
-        if (startTime.equals(target.startTime) && endTime.equals(target.endTime)) {
+        if (reservedDateTime.time.start.equals(target.reservedDateTime.time.start) && reservedDateTime.time.end.equals(target.reservedDateTime.time.end)) {
             return true;
         }
-        return target.endTime.isAfter(startTime) && endTime.isAfter(target.startTime);
+        return target.reservedDateTime.time.end.isAfter(reservedDateTime.time.start) && reservedDateTime.time.end.isAfter(target.reservedDateTime.time.start);
     }
 
-    public Integer getReservationId() {
+    public ReservationId reservationId() {
         return reservationId;
     }
 
-    public LocalTime getStartTime() {
-        return startTime;
-    }
-
-    public LocalTime getEndTime() {
-        return endTime;
+    public ReservedDate reservedDate() {
+        return reservedDateTime.date;
     }
 
     public ReservedTime reservedTime() {
-        return new ReservedTime(startTime, endTime);
+        return reservedDateTime.time;
+    }
+
+    public LocalTime startTime() {
+        return reservedDateTime.time.start;
+    }
+
+    public LocalTime endTime() {
+        return reservedDateTime.time.end;
     }
 
     public ReservableRoom reservableRoom() {
@@ -77,9 +71,5 @@ public class Reservation {
 
     public User user() {
         return user;
-    }
-
-    public ReservableRoomId reservableRoomId() {
-        return reservableRoomId;
     }
 }

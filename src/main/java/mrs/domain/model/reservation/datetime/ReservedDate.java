@@ -1,4 +1,4 @@
-package mrs.domain.model.reservation;
+package mrs.domain.model.reservation.datetime;
 
 import java.time.LocalDate;
 
@@ -6,10 +6,13 @@ import java.time.LocalDate;
  * 予約日
  */
 public class ReservedDate {
-    LocalDate value;
+    public LocalDate value;
 
     public ReservedDate(LocalDate value) {
         this.value = value;
+    }
+
+    public ReservedDate() {
     }
 
     public LocalDate value() {

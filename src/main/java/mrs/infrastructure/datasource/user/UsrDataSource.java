@@ -2,6 +2,7 @@ package mrs.infrastructure.datasource.user;
 
 import mrs.application.repository.UserRepository;
 import mrs.domain.model.user.User;
+import mrs.domain.model.user.UserId;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -23,7 +24,7 @@ public class UsrDataSource implements UserRepository {
     }
 
     @Override
-    public void delete(String username) {
-        usrMapper.deleteByPrimaryKey(username);
+    public void delete(UserId userId) {
+        usrMapper.deleteByPrimaryKey(userId);
     }
 }

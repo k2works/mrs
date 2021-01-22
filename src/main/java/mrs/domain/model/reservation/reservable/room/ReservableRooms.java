@@ -1,4 +1,4 @@
-package mrs.domain.model.reservation;
+package mrs.domain.model.reservation.reservable.room;
 
 import java.util.List;
 
