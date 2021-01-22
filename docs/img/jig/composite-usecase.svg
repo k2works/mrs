@@ -196,10 +196,10 @@
             <path fill="none" stroke="black" stroke-dasharray="1,5"
                   d="M1026.1,-924.8C987.01,-889.81 901.59,-813.35 862.81,-778.64"/>
         </g>
-        <!-- mrs.application.coordinator.reservation.ReservationCoordinator.searchMeetingRoom(mrs.domain.model.room.RoomId) -->
+        <!-- mrs.application.coordinator.reservation.ReservationCoordinator.searchMeetingRoom(mrs.domain.model.facility.room.RoomId) -->
         <g id="node14" class="node">
             <title>
-                mrs.application.coordinator.reservation.ReservationCoordinator.searchMeetingRoom(mrs.domain.model.room.RoomId)
+                mrs.application.coordinator.reservation.ReservationCoordinator.searchMeetingRoom(mrs.domain.model.facility.room.RoomId)
             </title>
             <g id="a_node14">
                 <a xlink:href="https://github.com/system-sekkei/library/tree/master/src/main/java/mrs/application/coordinator/reservation/ReservationCoordinator.java"
@@ -211,9 +211,9 @@
                 </a>
             </g>
         </g>
-        <!-- mrs.presentation.reservation.ReservationsController&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchMeetingRoom(mrs.domain.model.room.RoomId) -->
+        <!-- mrs.presentation.reservation.ReservationsController&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchMeetingRoom(mrs.domain.model.facility.room.RoomId) -->
         <g id="edge17" class="edge">
-            <title>mrs.presentation.reservation.ReservationsController&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchMeetingRoom(mrs.domain.model.room.RoomId)</title>
+            <title>mrs.presentation.reservation.ReservationsController&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchMeetingRoom(mrs.domain.model.facility.room.RoomId)</title>
             <path fill="none" stroke="black" stroke-dasharray="1,5"
                   d="M1074.5,-961.12C1120.2,-990.67 1209.86,-1048.65 1253.97,-1077.17"/>
         </g>
@@ -390,9 +390,9 @@
             <path fill="none" stroke="black" stroke-dasharray="1,5"
                   d="M831.24,-778.74C805.37,-818.28 743.57,-912.75 717.55,-952.52"/>
         </g>
-        <!-- mrs.domain.model.room.RoomId -->
+        <!-- mrs.domain.model.facility.room.RoomId -->
         <g id="node16" class="node">
-            <title>mrs.domain.model.room.RoomId</title>
+            <title>mrs.domain.model.facility.room.RoomId</title>
             <g id="a_node16">
                 <a xlink:title="RoomId">
                     <polygon fill="none" stroke="black"
@@ -403,17 +403,17 @@
                 </a>
             </g>
         </g>
-        <!-- mrs.application.coordinator.reservation.ReservationCoordinator.searchMeetingRoom(mrs.domain.model.room.RoomId)&#45;&gt;mrs.domain.model.room.RoomId -->
+        <!-- mrs.application.coordinator.reservation.ReservationCoordinator.searchMeetingRoom(mrs.domain.model.facility.room.RoomId)&#45;&gt;mrs.domain.model.facility.room.RoomId -->
         <g id="edge16" class="edge">
             <title>
-                mrs.application.coordinator.reservation.ReservationCoordinator.searchMeetingRoom(mrs.domain.model.room.RoomId)&#45;&gt;mrs.domain.model.room.RoomId
+                mrs.application.coordinator.reservation.ReservationCoordinator.searchMeetingRoom(mrs.domain.model.facility.room.RoomId)&#45;&gt;mrs.domain.model.facility.room.RoomId
             </title>
             <path fill="none" stroke="black" stroke-dasharray="5,2"
                   d="M1319.03,-1108.34C1349.62,-1119.63 1391.77,-1135.2 1421.78,-1146.28"/>
         </g>
-        <!-- mrs.domain.model.room.MeetingRoom -->
+        <!-- mrs.domain.model.facility.room.MeetingRoom -->
         <g id="node15" class="node">
-            <title>mrs.domain.model.room.MeetingRoom</title>
+            <title>mrs.domain.model.facility.room.MeetingRoom</title>
             <g id="a_node15">
                 <a xlink:title="MeetingRoom">
                     <polygon fill="none" stroke="black"
@@ -424,15 +424,16 @@
                 </a>
             </g>
         </g>
-        <!-- mrs.domain.model.room.MeetingRoom&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchMeetingRoom(mrs.domain.model.room.RoomId) -->
+        <!-- mrs.domain.model.facility.room.MeetingRoom&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchMeetingRoom(mrs.domain.model.facility.room.RoomId) -->
         <g id="edge15" class="edge">
-            <title>mrs.domain.model.room.MeetingRoom&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchMeetingRoom(mrs.domain.model.room.RoomId)</title>
+            <title>mrs.domain.model.facility.room.MeetingRoom&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchMeetingRoom(mrs.domain.model.facility.room.RoomId)</title>
             <path fill="none" stroke="black" stroke-width="2"
                   d="M1395.9,-1206.42C1369.98,-1181.3 1323.5,-1136.25 1297.89,-1111.43"/>
         </g>
-        <!-- mrs.application.service.room.RoomService.findMeetingRoom(mrs.domain.model.room.RoomId) -->
+        <!-- mrs.application.service.room.RoomService.findMeetingRoom(mrs.domain.model.facility.room.RoomId) -->
         <g id="node27" class="node">
-            <title>mrs.application.service.room.RoomService.findMeetingRoom(mrs.domain.model.room.RoomId)</title>
+            <title>mrs.application.service.room.RoomService.findMeetingRoom(mrs.domain.model.facility.room.RoomId)
+            </title>
             <g id="a_node27">
                 <a xlink:href="https://github.com/system-sekkei/library/tree/master/src/main/java/mrs/application/service/room/RoomService.java"
                    xlink:title="RoomService.findMeetingRoom(RoomId)">
@@ -443,9 +444,9 @@
                 </a>
             </g>
         </g>
-        <!-- mrs.domain.model.room.MeetingRoom&#45;&gt;mrs.application.service.room.RoomService.findMeetingRoom(mrs.domain.model.room.RoomId) -->
+        <!-- mrs.domain.model.facility.room.MeetingRoom&#45;&gt;mrs.application.service.room.RoomService.findMeetingRoom(mrs.domain.model.facility.room.RoomId) -->
         <g id="edge34" class="edge">
-            <title>mrs.domain.model.room.MeetingRoom&#45;&gt;mrs.application.service.room.RoomService.findMeetingRoom(mrs.domain.model.room.RoomId)</title>
+            <title>mrs.domain.model.facility.room.MeetingRoom&#45;&gt;mrs.application.service.room.RoomService.findMeetingRoom(mrs.domain.model.facility.room.RoomId)</title>
             <path fill="none" stroke="black" stroke-width="2"
                   d="M1444.42,-1237.29C1469.82,-1248.12 1506.41,-1263.71 1533.37,-1275.2"/>
         </g>
@@ -653,9 +654,9 @@
             <path fill="none" stroke="black" stroke-dasharray="1,5"
                   d="M836.83,-892.3C808.39,-909.29 764.9,-935.28 735.89,-952.61"/>
         </g>
-        <!-- mrs.application.service.room.RoomService.findMeetingRoom(mrs.domain.model.room.RoomId)&#45;&gt;mrs.domain.model.room.RoomId -->
+        <!-- mrs.application.service.room.RoomService.findMeetingRoom(mrs.domain.model.facility.room.RoomId)&#45;&gt;mrs.domain.model.facility.room.RoomId -->
         <g id="edge35" class="edge">
-            <title>mrs.application.service.room.RoomService.findMeetingRoom(mrs.domain.model.room.RoomId)&#45;&gt;mrs.domain.model.room.RoomId</title>
+            <title>mrs.application.service.room.RoomService.findMeetingRoom(mrs.domain.model.facility.room.RoomId)&#45;&gt;mrs.domain.model.facility.room.RoomId</title>
             <path fill="none" stroke="black" stroke-dasharray="5,2"
                   d="M1554.14,-1272.8C1533.23,-1248.05 1495.34,-1203.17 1474.18,-1178.12"/>
         </g>
@@ -706,7 +707,7 @@
             <path fill="none" stroke="black" stroke-dasharray="5,2"
                   d="M989.57,-222.84C989.6,-180.86 989.67,-77.95 989.71,-36.03"/>
         </g>
-<!-- org.springframework.security.core.userdetails.UserDetails -->
+        <!-- org.springframework.security.core.userdetails.UserDetails -->
         <g id="node30" class="node">
             <title>org.springframework.security.core.userdetails.UserDetails</title>
             <g id="a_node30">
@@ -719,7 +720,7 @@
                 </a>
             </g>
         </g>
-<!-- org.springframework.security.core.userdetails.UserDetails&#45;&gt;mrs.application.service.user.ReservationUserDetailsService.loadUserByUsername(java.lang.String) -->
+        <!-- org.springframework.security.core.userdetails.UserDetails&#45;&gt;mrs.application.service.user.ReservationUserDetailsService.loadUserByUsername(java.lang.String) -->
         <g id="edge38" class="edge">
             <title>org.springframework.security.core.userdetails.UserDetails&#45;&gt;mrs.application.service.user.ReservationUserDetailsService.loadUserByUsername(java.lang.String)</title>
             <path fill="none" stroke="black" stroke-width="2"
