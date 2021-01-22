@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mrs.infrastructure.datasource.reservation.ReservableRoomMapperExt">
-  <resultMap id="BaseResultMap" type="mrs.domain.model.reservation.ReservableRoom">
+  <resultMap id="BaseResultMap" type="mrs.domain.model.reservation.reservable.room.ReservableRoom">
       <id column="reserved_date" property="reservableRoomId.reservedDate.value"/>
       <id column="room_id" property="reservableRoomId.roomId.value"/>
-      <association property="reservableRoomId" javaType="mrs.domain.model.reservation.ReservableRoomId">
+      <association property="reservableRoomId" javaType="mrs.domain.model.reservation.reservable.room.ReservableRoomId">
           <id property="roomId.value" column="room_id"/>
           <result property="reservedDate.value" column="reserved_date"/>
       </association>
@@ -13,16 +13,17 @@
           <result property="roomName.value" column="room_name"/>
       </association>
   </resultMap>
-  <select id="selectByPrimaryKey" parameterType="mrs.domain.model.reservation.ReservableRoomId" resultMap="BaseResultMap">
-      SELECT rr.room_id,
-             rr.reserved_date,
-             rm.room_name
-      FROM reservable_room rr
-               LEFT OUTER JOIN meeting_room rm
-                               ON rr.room_id = rm.room_id
-      WHERE rr.room_id = #{roomId.value}
-        AND reserved_date = #{reservedDate.value}
-  </select>
+    <select id="selectByPrimaryKey" parameterType="mrs.domain.model.reservation.reservable.room.ReservableRoomId"
+            resultMap="BaseResultMap">
+        SELECT rr.room_id,
+               rr.reserved_date,
+               rm.room_name
+        FROM reservable_room rr
+                 LEFT OUTER JOIN meeting_room rm
+                                 ON rr.room_id = rm.room_id
+        WHERE rr.room_id = #{roomId.value}
+          AND reserved_date = #{reservedDate.value}
+    </select>
     <select id="selectAll" resultMap="BaseResultMap">
         SELECT room_id,
                reserved_date

@@ -1,6 +1,6 @@
 package mrs.infrastructure.datasource;
 
-import mrs.domain.model.reservation.ReservableRoom;
+import mrs.domain.model.reservation.reservable.room.ReservableRoom;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;

@@ -8,12 +8,12 @@
         <result column="reserved_date" property="reservedDateTime.date.value"/>
         <result column="room_id" property="reservableRoom.reservableRoomId.roomId.value"/>
         <result column="user_id" property="user.userId.value"/>
-        <association property="reservableRoom" javaType="mrs.domain.model.reservation.ReservableRoom">
+        <association property="reservableRoom" javaType="mrs.domain.model.reservation.reservable.room.ReservableRoom">
             <id property="reservableRoomId.roomId.value" column="room_id"/>
             <result property="reservableRoomId.reservedDate.value" column="reserved_date"/>
         </association>
         <association property="reservableRoom.reservableRoomId"
-                     javaType="mrs.domain.model.reservation.ReservableRoomId">
+                     javaType="mrs.domain.model.reservation.reservable.room.ReservableRoomId">
             <id property="roomId.value" column="room_id"/>
             <result property="reservedDate.value" column="reserved_date"/>
         </association>
@@ -29,7 +29,7 @@
         </association>
     </resultMap>
     <select id="findByReservableRoom_ReservableRoomIdOrderByStartTimeAsc"
-            parameterType="mrs.domain.model.reservation.ReservableRoomId"
+            parameterType="mrs.domain.model.reservation.reservable.room.ReservableRoomId"
             resultMap="findReservationResultMap">
         SELECT r.reservation_id,
                r.end_time,

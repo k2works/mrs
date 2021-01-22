@@ -2,9 +2,9 @@ package mrs.application.service.room;
 
 import mrs.application.repository.MeetingRoomRepository;
 import mrs.application.repository.ReservableRoomRepository;
-import mrs.domain.model.reservation.ReservableRoom;
-import mrs.domain.model.reservation.ReservableRooms;
 import mrs.domain.model.reservation.datetime.ReservedDate;
+import mrs.domain.model.reservation.reservable.room.ReservableRoom;
+import mrs.domain.model.reservation.reservable.room.ReservableRooms;
 import mrs.domain.model.room.MeetingRoom;
 import mrs.domain.model.room.RoomId;
 import org.springframework.stereotype.Service;

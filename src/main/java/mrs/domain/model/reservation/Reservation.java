@@ -3,6 +3,7 @@ package mrs.domain.model.reservation;
 import mrs.domain.model.reservation.datetime.ReservedDate;
 import mrs.domain.model.reservation.datetime.ReservedDateTime;
 import mrs.domain.model.reservation.datetime.ReservedTime;
+import mrs.domain.model.reservation.reservable.room.ReservableRoom;
 import mrs.domain.model.user.User;
 
 import java.time.LocalTime;

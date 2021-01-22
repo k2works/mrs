@@ -1,8 +1,8 @@
 package mrs.presentation.api.room;
 
 import mrs.application.coordinator.reservation.ReservationCoordinator;
-import mrs.domain.model.reservation.ReservableRooms;
 import mrs.domain.model.reservation.datetime.ReservedDate;
+import mrs.domain.model.reservation.reservable.room.ReservableRooms;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

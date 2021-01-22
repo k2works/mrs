@@ -1,13 +1,13 @@
 package mrs.infrastructure.datasource.reservation;
 
 import mrs.MrsDBTest;
-import mrs.domain.model.reservation.ReservableRoom;
-import mrs.domain.model.reservation.ReservableRoomId;
 import mrs.domain.model.reservation.Reservation;
 import mrs.domain.model.reservation.ReservationId;
 import mrs.domain.model.reservation.datetime.ReservedDate;
 import mrs.domain.model.reservation.datetime.ReservedDateTime;
 import mrs.domain.model.reservation.datetime.ReservedTime;
+import mrs.domain.model.reservation.reservable.room.ReservableRoom;
+import mrs.domain.model.reservation.reservable.room.ReservableRoomId;
 import mrs.domain.model.room.MeetingRoom;
 import mrs.domain.model.room.RoomId;
 import mrs.domain.model.room.RoomName;
