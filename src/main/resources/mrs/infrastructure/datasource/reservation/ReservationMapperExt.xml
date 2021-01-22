@@ -3,9 +3,9 @@
 <mapper namespace="mrs.infrastructure.datasource.reservation.ReservationMapperExt">
     <resultMap id="findReservationResultMap" type="mrs.domain.model.reservation.Reservation">
         <id column="reservation_id" property="reservationId.value"/>
-        <result column="end_time" property="reservedTime.end"/>
-        <result column="start_time" property="reservedTime.start"/>
-        <result column="reserved_date" property="reservedDate.value"/>
+        <result column="end_time" property="reservedDateTime.time.end"/>
+        <result column="start_time" property="reservedDateTime.time.start"/>
+        <result column="reserved_date" property="reservedDateTime.date.value"/>
         <result column="room_id" property="reservableRoom.reservableRoomId.roomId.value"/>
         <result column="user_id" property="user.userId.value"/>
         <association property="reservableRoom" javaType="mrs.domain.model.reservation.ReservableRoom">

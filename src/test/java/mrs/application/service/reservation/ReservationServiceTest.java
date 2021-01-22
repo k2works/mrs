@@ -125,8 +125,7 @@ public class ReservationServiceTest {
         User user = ユーザーを作る();
         ReservedDate date = new ReservedDate(room.reservableRoomId().reservedDate().value());
         ReservedDateTime dateTime = new ReservedDateTime(date, time);
-        Reservation reservation = new Reservation(id, dateTime, room, user);
-        return reservation;
+        return new Reservation(id, dateTime, room, user);
     }
 
     private ReservableRoom 予約が可能な会議室を作る(MeetingRoom room) {

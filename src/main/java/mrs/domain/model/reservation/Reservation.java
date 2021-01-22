@@ -10,8 +10,6 @@ import java.util.Objects;
  */
 public class Reservation {
     private ReservationId reservationId;
-    private ReservedDate reservedDate;
-    private ReservedTime reservedTime;
     private ReservedDateTime reservedDateTime;
     private ReservableRoom reservableRoom;
     private User user;
@@ -22,15 +20,13 @@ public class Reservation {
 
     public Reservation(ReservationId reservationId, ReservedDateTime reservedDateTime, ReservableRoom room, User user) {
         this.reservationId = reservationId;
-        this.reservedDate = reservedDateTime.date;
-        this.reservedTime = reservedDateTime.time;
+        this.reservedDateTime = reservedDateTime;
         this.reservableRoom = room;
         this.user = user;
     }
 
     public Reservation(ReservedDateTime reservedDateTime, ReservableRoom room, User user) {
-        this.reservedDate = reservedDateTime.date;
-        this.reservedTime = reservedDateTime.time;
+        this.reservedDateTime = reservedDateTime;
         this.reservableRoom = room;
         this.user = user;
     }
@@ -39,10 +35,10 @@ public class Reservation {
         if (!Objects.equals(reservableRoom.reservableRoomId(), target.reservableRoom.reservableRoomId())) {
             return false;
         }
-        if (reservedTime.start.equals(target.reservedTime.start) && reservedTime.end.equals(target.reservedTime.end)) {
+        if (reservedDateTime.time.start.equals(target.reservedDateTime.time.start) && reservedDateTime.time.end.equals(target.reservedDateTime.time.end)) {
             return true;
         }
-        return target.reservedTime.end.isAfter(reservedTime.start) && reservedTime.end.isAfter(target.reservedTime.start);
+        return target.reservedDateTime.time.end.isAfter(reservedDateTime.time.start) && reservedDateTime.time.end.isAfter(target.reservedDateTime.time.start);
     }
 
     public ReservationId reservationId() {
@@ -50,19 +46,19 @@ public class Reservation {
     }
 
     public ReservedDate reservedDate() {
-        return reservedDate;
+        return reservedDateTime.date;
     }
 
     public ReservedTime reservedTime() {
-        return reservedTime;
+        return reservedDateTime.time;
     }
 
     public LocalTime startTime() {
-        return reservedTime.start;
+        return reservedDateTime.time.start;
     }
 
     public LocalTime endTime() {
-        return reservedTime.end;
+        return reservedDateTime.time.end;
     }
 
     public ReservableRoom reservableRoom() {
