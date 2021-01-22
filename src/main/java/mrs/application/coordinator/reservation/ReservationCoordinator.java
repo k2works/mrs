@@ -26,9 +26,9 @@ public class ReservationCoordinator {
      */
     public void reserveMeetingRoom(ReservedTime reservedTime, ReservableRoom reservableRoom, ReservationUserDetails userDetails) {
         ReservedDate reservedDate = new ReservedDate(reservableRoom.reservableRoomId().reservedDate().value());
+        ReservedDateTime reservedDateTime = new ReservedDateTime(reservedDate, reservedTime);
         Reservation reservation = new Reservation(
-                reservedDate,
-                reservedTime,
+                reservedDateTime,
                 reservableRoom,
                 userDetails.getUser()
         );

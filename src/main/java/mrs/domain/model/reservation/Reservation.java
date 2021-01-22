@@ -12,6 +12,7 @@ public class Reservation {
     private ReservationId reservationId;
     private ReservedDate reservedDate;
     private ReservedTime reservedTime;
+    private ReservedDateTime reservedDateTime;
     private ReservableRoom reservableRoom;
     private User user;
 
@@ -19,17 +20,17 @@ public class Reservation {
     public Reservation() {
     }
 
-    public Reservation(ReservationId reservationId, ReservedDate reservedDate, ReservedTime reservedTime, ReservableRoom room, User user) {
+    public Reservation(ReservationId reservationId, ReservedDateTime reservedDateTime, ReservableRoom room, User user) {
         this.reservationId = reservationId;
-        this.reservedDate = reservedDate;
-        this.reservedTime = reservedTime;
+        this.reservedDate = reservedDateTime.date;
+        this.reservedTime = reservedDateTime.time;
         this.reservableRoom = room;
         this.user = user;
     }
 
-    public Reservation(ReservedDate reservedDate, ReservedTime reservedTime, ReservableRoom room, User user) {
-        this.reservedDate = reservedDate;
-        this.reservedTime = reservedTime;
+    public Reservation(ReservedDateTime reservedDateTime, ReservableRoom room, User user) {
+        this.reservedDate = reservedDateTime.date;
+        this.reservedTime = reservedDateTime.time;
         this.reservableRoom = room;
         this.user = user;
     }

@@ -48,8 +48,10 @@ public class ReservationRepositoryTest {
         reservableRoomRepository.findAll().stream().map(i ->
                 new Reservation(
                         new ReservationId(i.reservableRoomId().roomId().value()),
-                        new ReservedDate(date),
-                        new ReservedTime(LocalTime.of(10, 0), LocalTime.of(10, 30)),
+                        new ReservedDateTime(
+                                new ReservedDate(date),
+                                new ReservedTime(LocalTime.of(10, 0), LocalTime.of(10, 30))
+                        ),
                         new ReservableRoom(i.reservableRoomId(), i.meetingRoom()),
                         user
                 )

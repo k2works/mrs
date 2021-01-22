@@ -47,7 +47,8 @@ public class ReservationMapperExtTest {
         reservableRoomMapper.insert(room);
         User user = new User(new UserId("Test"), new Password("Password"), new Name("山田", "太郎"), RoleName.USER);
         usrMapper.insert(user);
-        Reservation reservation = new Reservation(id, date, time, room, user);
+        ReservedDateTime dateTime = new ReservedDateTime(date, time);
+        Reservation reservation = new Reservation(id, dateTime, room, user);
         reservationMapper.insert(reservation);
 
         Reservation result = reservationMapper.findById(1);
@@ -66,11 +67,12 @@ public class ReservationMapperExtTest {
         reservableRoomMapper.insert(room);
         User user = new User(new UserId("Test"), new Password("Password"), new Name("山田", "太郎"), RoleName.USER);
         usrMapper.insert(user);
-        Reservation reservation = new Reservation(id, date, time, room, user);
+        ReservedDateTime dateTime = new ReservedDateTime(date, time);
+        Reservation reservation = new Reservation(id, dateTime, room, user);
         reservationMapper.insert(reservation);
 
         Reservation update = reservationMapper.findById(2);
-        Reservation updateReservation = new Reservation(new ReservationId(update.reservationId().value()), date, new ReservedTime(LocalTime.of(11, 0), LocalTime.of(12, 0)), room, user);
+        Reservation updateReservation = new Reservation(new ReservationId(update.reservationId().value()), new ReservedDateTime(date, new ReservedTime(LocalTime.of(11, 0), LocalTime.of(12, 0))), room, user);
         reservationMapper.updateByPrimaryKey(updateReservation);
         Reservation result = reservationMapper.findById(2);
 
@@ -88,7 +90,8 @@ public class ReservationMapperExtTest {
         reservableRoomMapper.insert(room);
         User user = new User(new UserId("Test"), new Password("Password"), new Name("山田", "太郎"), RoleName.USER);
         usrMapper.insert(user);
-        Reservation reservation = new Reservation(id, date, time, room, user);
+        ReservedDateTime dateTime = new ReservedDateTime(date, time);
+        Reservation reservation = new Reservation(id, dateTime, room, user);
         reservationMapper.insert(reservation);
         Reservation delete = reservationMapper.findById(3);
 
@@ -110,7 +113,8 @@ public class ReservationMapperExtTest {
         reservableRoomMapper.insert(room);
         User user = new User(new UserId("Test"), new Password("Password"), new Name("山田", "太郎"), RoleName.USER);
         usrMapper.insert(user);
-        Reservation reservation = new Reservation(id, date, time, room, user);
+        ReservedDateTime dateTime = new ReservedDateTime(date, time);
+        Reservation reservation = new Reservation(id, dateTime, room, user);
         reservationMapper.insert(reservation);
 
         List<Reservation> result = reservationMapper.findByReservableRoom_ReservableRoomIdOrderByStartTimeAsc(reservableRoomId);

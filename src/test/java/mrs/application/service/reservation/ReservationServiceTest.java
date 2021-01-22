@@ -124,7 +124,8 @@ public class ReservationServiceTest {
         ReservedTime time = new ReservedTime(start, end);
         User user = ユーザーを作る();
         ReservedDate date = new ReservedDate(room.reservableRoomId().reservedDate().value());
-        Reservation reservation = new Reservation(id, date, time, room, user);
+        ReservedDateTime dateTime = new ReservedDateTime(date, time);
+        Reservation reservation = new Reservation(id, dateTime, room, user);
         return reservation;
     }
 
@@ -159,7 +160,8 @@ public class ReservationServiceTest {
         ReservedDate reservedDate = new ReservedDate(LocalDate.now());
         ReservedTime reservedTime = new ReservedTime(null, null);
         User user = ユーザーを作る();
-        return new Reservation(reservedDate, reservedTime, reservableRoom, user);
+        ReservedDateTime reservedDateTime = new ReservedDateTime(reservedDate, reservedTime);
+        return new Reservation(reservedDateTime, reservableRoom, user);
     }
 
     @Nested

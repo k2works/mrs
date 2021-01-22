@@ -51,7 +51,8 @@ public class ReservationDataSourceTest {
         ReservableRoom room = new ReservableRoom(new ReservableRoomId(new RoomId(1), date), meetingRoom);
         reservableRoomRepository.save(room);
         User user = userRepository.findById("test");
-        Reservation reservation = new Reservation(id, date, time, room, user);
+        ReservedDateTime dateTime = new ReservedDateTime(date, time);
+        Reservation reservation = new Reservation(id, dateTime, room, user);
         reservationRepository.save(reservation);
 
         ReservableRoomId reservableRoomId = new ReservableRoomId();
