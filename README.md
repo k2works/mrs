@@ -86,6 +86,8 @@ APIドキュメントはログイン後に http://localhost:8080/swagger-ui.html
 
 #### ドメインオブジェクトのモデル
 
+![](./docs/img/jig/package-relation-depth5.svg)
+
 ![](./docs/img/jig/business-rule-relation.svg)
 
 #### 画面とユースケース

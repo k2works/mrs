@@ -1,11 +1,9 @@
 package mrs.domain.model.user;
 
-import java.io.Serializable;
-
 /**
- * ユーザー
+ * 利用者
  */
-public class User implements Serializable {
+public class User {
     private UserId userId;
 
     private Password password;

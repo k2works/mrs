@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 /**
- * 予約ユーザーサービス
+ * 利用者サービス
  */
 @Service
 public class ReservationUserDetailsService implements UserDetailsService {
@@ -21,7 +21,7 @@ public class ReservationUserDetailsService implements UserDetailsService {
     }
 
     /**
-     * 予約ユーザーを取得する
+     * 利用者を取得する
      */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
