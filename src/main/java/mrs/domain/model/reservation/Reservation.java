@@ -14,7 +14,6 @@ public class Reservation {
     private ReservedTime reservedTime;
     private ReservableRoom reservableRoom;
     private User user;
-    private ReservableRoomId reservableRoomId;
 
     @Deprecated
     public Reservation() {
@@ -26,7 +25,6 @@ public class Reservation {
         this.reservedTime = reservedTime;
         this.reservableRoom = room;
         this.user = user;
-        this.reservableRoomId = room.reservableRoomId();
     }
 
     public Reservation(ReservedDate reservedDate, ReservedTime reservedTime, ReservableRoom room, User user) {
@@ -34,11 +32,10 @@ public class Reservation {
         this.reservedTime = reservedTime;
         this.reservableRoom = room;
         this.user = user;
-        this.reservableRoomId = room.reservableRoomId();
     }
 
     public boolean overlap(Reservation target) {
-        if (!Objects.equals(reservableRoomId, target.reservableRoom.reservableRoomId())) {
+        if (!Objects.equals(reservableRoom.reservableRoomId(), target.reservableRoom.reservableRoomId())) {
             return false;
         }
         if (reservedTime.start.equals(target.reservedTime.start) && reservedTime.end.equals(target.reservedTime.end)) {

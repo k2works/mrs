@@ -8,13 +8,14 @@
         <result column="reserved_date" property="reservedDate.value"/>
         <result column="room_id" property="reservableRoom.reservableRoomId.roomId.value"/>
         <result column="user_id" property="user.userId.value"/>
-        <association property="reservableRoomId" javaType="mrs.domain.model.reservation.ReservableRoomId">
-            <id property="roomId.value" column="room_id"/>
-            <result property="reservedDate.value" column="reserved_date"/>
-        </association>
         <association property="reservableRoom" javaType="mrs.domain.model.reservation.ReservableRoom">
             <id property="reservableRoomId.roomId.value" column="room_id"/>
             <result property="reservableRoomId.reservedDate.value" column="reserved_date"/>
+        </association>
+        <association property="reservableRoom.reservableRoomId"
+                     javaType="mrs.domain.model.reservation.ReservableRoomId">
+            <id property="roomId.value" column="room_id"/>
+            <result property="reservedDate.value" column="reserved_date"/>
         </association>
         <association property="reservableRoom.meetingRoom" javaType="mrs.domain.model.room.MeetingRoom">
             <id property="roomId.value" column="room_id"/>
