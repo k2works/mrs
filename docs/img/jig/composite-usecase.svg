@@ -75,7 +75,7 @@
                 </a>
             </g>
         </g>
-<!-- mrs.domain.model.reservation.Reservation&#45;&gt;mrs.application.service.reservation.ReservationService.findOne(mrs.domain.model.reservation.ReservationId) -->
+        <!-- mrs.domain.model.reservation.Reservation&#45;&gt;mrs.application.service.reservation.ReservationService.findOne(mrs.domain.model.reservation.ReservationId) -->
         <g id="edge27" class="edge">
             <title>mrs.domain.model.reservation.Reservation&#45;&gt;mrs.application.service.reservation.ReservationService.findOne(mrs.domain.model.reservation.ReservationId)</title>
             <path fill="none" stroke="black" stroke-width="2"
@@ -121,10 +121,10 @@
             <path fill="none" stroke="black" stroke-dasharray="1,5"
                   d="M1203.67,-776.41C1229.32,-816.92 1290.7,-913.83 1316.32,-954.29"/>
         </g>
-        <!-- mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.ReservedTime, mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails) -->
+        <!-- mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.datetime.ReservedTime, mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails) -->
         <g id="node6" class="node">
             <title>
-                mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.ReservedTime,
+                mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.datetime.ReservedTime,
                 mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails)
             </title>
             <g id="a_node6">
@@ -137,9 +137,9 @@
                 </a>
             </g>
         </g>
-        <!-- mrs.presentation.api.reservation.ReservationsController&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.ReservedTime, mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails) -->
+        <!-- mrs.presentation.api.reservation.ReservationsController&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.datetime.ReservedTime, mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails) -->
         <g id="edge13" class="edge">
-            <title>mrs.presentation.api.reservation.ReservationsController&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.ReservedTime,
+            <title>mrs.presentation.api.reservation.ReservationsController&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.datetime.ReservedTime,
                 mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails)
             </title>
             <path fill="none" stroke="black" stroke-dasharray="1,5"
@@ -185,9 +185,9 @@
             <path fill="none" stroke="black" stroke-dasharray="1,5"
                   d="M1212.64,-1007.9C1232.33,-1001.85 1254.22,-995.13 1273.58,-989.19"/>
         </g>
-        <!-- mrs.presentation.reservation.ReservationsController&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.ReservedTime, mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails) -->
+        <!-- mrs.presentation.reservation.ReservationsController&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.datetime.ReservedTime, mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails) -->
         <g id="edge14" class="edge">
-            <title>mrs.presentation.reservation.ReservationsController&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.ReservedTime,
+            <title>mrs.presentation.reservation.ReservationsController&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.datetime.ReservedTime,
                 mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails)
             </title>
             <path fill="none" stroke="black" stroke-dasharray="1,5"
@@ -208,28 +208,28 @@
                 </a>
             </g>
         </g>
-<!-- mrs.presentation.reservation.ReservationsController&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchMeetingRoom(mrs.domain.model.room.RoomId) -->
+        <!-- mrs.presentation.reservation.ReservationsController&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchMeetingRoom(mrs.domain.model.room.RoomId) -->
         <g id="edge17" class="edge">
             <title>mrs.presentation.reservation.ReservationsController&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchMeetingRoom(mrs.domain.model.room.RoomId)</title>
             <path fill="none" stroke="black" stroke-dasharray="1,5"
                   d="M1168.15,-1043.83C1201.6,-1087.69 1286.81,-1199.44 1320.04,-1243.02"/>
         </g>
-<!-- mrs.presentation.reservation.ReservationsController&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchReservations(mrs.domain.model.reservation.ReservableRoomId) -->
+        <!-- mrs.presentation.reservation.ReservationsController&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchReservations(mrs.domain.model.reservation.ReservableRoomId) -->
         <g id="edge25" class="edge">
             <title>mrs.presentation.reservation.ReservationsController&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchReservations(mrs.domain.model.reservation.ReservableRoomId)</title>
             <path fill="none" stroke="black" stroke-dasharray="1,5"
                   d="M1135.21,-1007.63C1098.86,-973.21 1020.34,-898.88 984.17,-864.64"/>
         </g>
-<!-- mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.ReservedTime, mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails)&#45;&gt;mrs.domain.model.reservation.Reservation -->
+        <!-- mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.datetime.ReservedTime, mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails)&#45;&gt;mrs.domain.model.reservation.Reservation -->
         <g id="edge8" class="edge">
             <title>
-                mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.ReservedTime,
+                mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.datetime.ReservedTime,
                 mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails)&#45;&gt;mrs.domain.model.reservation.Reservation
             </title>
             <path fill="none" stroke="black" stroke-dasharray="1,5"
                   d="M969.27,-795.32C985.44,-840.4 1027.12,-956.65 1043.24,-1001.6"/>
         </g>
-<!-- mrs.application.service.user.ReservationUserDetails -->
+        <!-- mrs.application.service.user.ReservationUserDetails -->
         <g id="node7" class="node">
             <title>mrs.application.service.user.ReservationUserDetails</title>
             <g id="a_node7">
@@ -242,16 +242,16 @@
                 </a>
             </g>
         </g>
-<!-- mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.ReservedTime, mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails)&#45;&gt;mrs.application.service.user.ReservationUserDetails -->
+        <!-- mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.datetime.ReservedTime, mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails)&#45;&gt;mrs.application.service.user.ReservationUserDetails -->
         <g id="edge5" class="edge">
             <title>
-                mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.ReservedTime,
+                mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.datetime.ReservedTime,
                 mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails)&#45;&gt;mrs.application.service.user.ReservationUserDetails
             </title>
             <path fill="none" stroke="black" stroke-dasharray="5,2"
                   d="M970.49,-759.11C972.28,-754.96 974.19,-750.53 975.99,-746.36"/>
         </g>
-<!-- mrs.domain.model.reservation.ReservableRoom -->
+        <!-- mrs.domain.model.reservation.ReservableRoom -->
         <g id="node8" class="node">
             <title>mrs.domain.model.reservation.ReservableRoom</title>
             <g id="a_node8">
@@ -264,18 +264,18 @@
                 </a>
             </g>
         </g>
-<!-- mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.ReservedTime, mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails)&#45;&gt;mrs.domain.model.reservation.ReservableRoom -->
+        <!-- mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.datetime.ReservedTime, mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails)&#45;&gt;mrs.domain.model.reservation.ReservableRoom -->
         <g id="edge6" class="edge">
             <title>
-                mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.ReservedTime,
+                mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.datetime.ReservedTime,
                 mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails)&#45;&gt;mrs.domain.model.reservation.ReservableRoom
             </title>
             <path fill="none" stroke="black" stroke-dasharray="5,2"
                   d="M957.24,-795.08C944.65,-836.32 913.83,-937.29 901.17,-978.77"/>
         </g>
-<!-- mrs.domain.model.reservation.ReservedTime -->
+        <!-- mrs.domain.model.reservation.datetime.ReservedTime -->
         <g id="node9" class="node">
-            <title>mrs.domain.model.reservation.ReservedTime</title>
+            <title>mrs.domain.model.reservation.datetime.ReservedTime</title>
             <g id="a_node9">
                 <a xlink:title="ReservedTime">
                     <polygon fill="none" stroke="black"
@@ -285,16 +285,16 @@
                 </a>
             </g>
         </g>
-<!-- mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.ReservedTime, mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails)&#45;&gt;mrs.domain.model.reservation.ReservedTime -->
+        <!-- mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.datetime.ReservedTime, mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails)&#45;&gt;mrs.domain.model.reservation.datetime.ReservedTime -->
         <g id="edge7" class="edge">
             <title>
-                mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.ReservedTime,
-                mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails)&#45;&gt;mrs.domain.model.reservation.ReservedTime
+                mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.datetime.ReservedTime,
+                mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails)&#45;&gt;mrs.domain.model.reservation.datetime.ReservedTime
             </title>
             <path fill="none" stroke="black" stroke-dasharray="5,2"
                   d="M957.73,-758.83C946,-716.06 916.86,-609.83 905.19,-567.3"/>
         </g>
-<!-- mrs.domain.model.user.User -->
+        <!-- mrs.domain.model.user.User -->
         <g id="node10" class="node">
             <title>mrs.domain.model.user.User</title>
             <g id="a_node10">
@@ -307,16 +307,16 @@
                 </a>
             </g>
         </g>
-<!-- mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.ReservedTime, mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails)&#45;&gt;mrs.domain.model.user.User -->
+        <!-- mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.datetime.ReservedTime, mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails)&#45;&gt;mrs.domain.model.user.User -->
         <g id="edge9" class="edge">
             <title>
-                mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.ReservedTime,
+                mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.datetime.ReservedTime,
                 mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails)&#45;&gt;mrs.domain.model.user.User
             </title>
             <path fill="none" stroke="black" stroke-dasharray="1,5"
                   d="M974.84,-759.01C1005.82,-712.76 1087.74,-590.48 1118.85,-544.04"/>
         </g>
-<!-- mrs.domain.model.reservation.ReservableRoomId -->
+        <!-- mrs.domain.model.reservation.ReservableRoomId -->
         <g id="node11" class="node">
             <title>mrs.domain.model.reservation.ReservableRoomId</title>
             <g id="a_node11">
@@ -329,18 +329,18 @@
                 </a>
             </g>
         </g>
-<!-- mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.ReservedTime, mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails)&#45;&gt;mrs.domain.model.reservation.ReservableRoomId -->
+        <!-- mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.datetime.ReservedTime, mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails)&#45;&gt;mrs.domain.model.reservation.ReservableRoomId -->
         <g id="edge10" class="edge">
             <title>
-                mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.ReservedTime,
+                mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.datetime.ReservedTime,
                 mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails)&#45;&gt;mrs.domain.model.reservation.ReservableRoomId
             </title>
             <path fill="none" stroke="black" stroke-dasharray="1,5"
                   d="M903.91,-790.19C871.76,-797.35 831.85,-806.24 798.71,-813.62"/>
         </g>
-        <!-- mrs.domain.model.reservation.ReservedDate -->
+        <!-- mrs.domain.model.reservation.datetime.ReservedDate -->
         <g id="node12" class="node">
-            <title>mrs.domain.model.reservation.ReservedDate</title>
+            <title>mrs.domain.model.reservation.datetime.ReservedDate</title>
             <g id="a_node12">
                 <a xlink:title="ReservedDate">
                     <polygon fill="none" stroke="black"
@@ -350,18 +350,18 @@
                 </a>
             </g>
         </g>
-        <!-- mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.ReservedTime, mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails)&#45;&gt;mrs.domain.model.reservation.ReservedDate -->
+        <!-- mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.datetime.ReservedTime, mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails)&#45;&gt;mrs.domain.model.reservation.datetime.ReservedDate -->
         <g id="edge11" class="edge">
             <title>
-                mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.ReservedTime,
-                mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails)&#45;&gt;mrs.domain.model.reservation.ReservedDate
+                mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.datetime.ReservedTime,
+                mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails)&#45;&gt;mrs.domain.model.reservation.datetime.ReservedDate
             </title>
             <path fill="none" stroke="black" stroke-dasharray="1,5"
                   d="M877.49,-776.34C814.14,-775.79 731.45,-775.08 687.93,-774.7"/>
         </g>
-        <!-- mrs.domain.model.reservation.ReservedDateTime -->
+        <!-- mrs.domain.model.reservation.datetime.ReservedDateTime -->
         <g id="node13" class="node">
-            <title>mrs.domain.model.reservation.ReservedDateTime</title>
+            <title>mrs.domain.model.reservation.datetime.ReservedDateTime</title>
             <g id="a_node13">
                 <a xlink:title="ReservedDateTime">
                     <polygon fill="none" stroke="black"
@@ -371,11 +371,11 @@
                 </a>
             </g>
         </g>
-        <!-- mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.ReservedTime, mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails)&#45;&gt;mrs.domain.model.reservation.ReservedDateTime -->
+        <!-- mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.datetime.ReservedTime, mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails)&#45;&gt;mrs.domain.model.reservation.datetime.ReservedDateTime -->
         <g id="edge12" class="edge">
             <title>
-                mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.ReservedTime,
-                mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails)&#45;&gt;mrs.domain.model.reservation.ReservedDateTime
+                mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.datetime.ReservedTime,
+                mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails)&#45;&gt;mrs.domain.model.reservation.datetime.ReservedDateTime
             </title>
             <path fill="none" stroke="black" stroke-dasharray="1,5"
                   d="M967.42,-758.79C978.19,-716.78 1004.6,-613.78 1015.35,-571.82"/>
@@ -401,7 +401,7 @@
             <path fill="none" stroke="black" stroke-dasharray="5,2"
                   d="M1356.64,-1277.95C1387.76,-1301.1 1442.97,-1342.18 1474.8,-1365.86"/>
         </g>
-<!-- mrs.domain.model.room.MeetingRoom -->
+        <!-- mrs.domain.model.room.MeetingRoom -->
         <g id="node15" class="node">
             <title>mrs.domain.model.room.MeetingRoom</title>
             <g id="a_node15">
@@ -414,13 +414,13 @@
                 </a>
             </g>
         </g>
-<!-- mrs.domain.model.room.MeetingRoom&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchMeetingRoom(mrs.domain.model.room.RoomId) -->
+        <!-- mrs.domain.model.room.MeetingRoom&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchMeetingRoom(mrs.domain.model.room.RoomId) -->
         <g id="edge15" class="edge">
             <title>mrs.domain.model.room.MeetingRoom&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchMeetingRoom(mrs.domain.model.room.RoomId)</title>
             <path fill="none" stroke="black" stroke-width="2"
                   d="M1420.34,-1422.9C1401.79,-1388.24 1361.73,-1313.37 1343.28,-1278.88"/>
         </g>
-<!-- mrs.application.service.room.RoomService.findMeetingRoom(mrs.domain.model.room.RoomId) -->
+        <!-- mrs.application.service.room.RoomService.findMeetingRoom(mrs.domain.model.room.RoomId) -->
         <g id="node27" class="node">
             <title>mrs.application.service.room.RoomService.findMeetingRoom(mrs.domain.model.room.RoomId)</title>
             <g id="a_node27">
@@ -433,16 +433,16 @@
                 </a>
             </g>
         </g>
-<!-- mrs.domain.model.room.MeetingRoom&#45;&gt;mrs.application.service.room.RoomService.findMeetingRoom(mrs.domain.model.room.RoomId) -->
+        <!-- mrs.domain.model.room.MeetingRoom&#45;&gt;mrs.application.service.room.RoomService.findMeetingRoom(mrs.domain.model.room.RoomId) -->
         <g id="edge34" class="edge">
             <title>mrs.domain.model.room.MeetingRoom&#45;&gt;mrs.application.service.room.RoomService.findMeetingRoom(mrs.domain.model.room.RoomId)</title>
             <path fill="none" stroke="black" stroke-width="2"
                   d="M1454.52,-1459.32C1482.88,-1480.38 1529.3,-1514.87 1557,-1535.45"/>
         </g>
-<!-- mrs.application.coordinator.reservation.ReservationCoordinator.searchReservableRooms(mrs.domain.model.reservation.ReservedDate) -->
+        <!-- mrs.application.coordinator.reservation.ReservationCoordinator.searchReservableRooms(mrs.domain.model.reservation.datetime.ReservedDate) -->
         <g id="node17" class="node">
             <title>
-                mrs.application.coordinator.reservation.ReservationCoordinator.searchReservableRooms(mrs.domain.model.reservation.ReservedDate)
+                mrs.application.coordinator.reservation.ReservationCoordinator.searchReservableRooms(mrs.domain.model.reservation.datetime.ReservedDate)
             </title>
             <g id="a_node17">
                 <a xlink:href="https://github.com/system-sekkei/library/tree/master/src/main/java/mrs/application/coordinator/reservation/ReservationCoordinator.java"
@@ -454,10 +454,10 @@
                 </a>
             </g>
         </g>
-        <!-- mrs.application.coordinator.reservation.ReservationCoordinator.searchReservableRooms(mrs.domain.model.reservation.ReservedDate)&#45;&gt;mrs.domain.model.reservation.ReservedDate -->
+        <!-- mrs.application.coordinator.reservation.ReservationCoordinator.searchReservableRooms(mrs.domain.model.reservation.datetime.ReservedDate)&#45;&gt;mrs.domain.model.reservation.datetime.ReservedDate -->
         <g id="edge19" class="edge">
             <title>
-                mrs.application.coordinator.reservation.ReservationCoordinator.searchReservableRooms(mrs.domain.model.reservation.ReservedDate)&#45;&gt;mrs.domain.model.reservation.ReservedDate
+                mrs.application.coordinator.reservation.ReservationCoordinator.searchReservableRooms(mrs.domain.model.reservation.datetime.ReservedDate)&#45;&gt;mrs.domain.model.reservation.datetime.ReservedDate
             </title>
             <path fill="none" stroke="black" stroke-dasharray="5,2"
                   d="M411.62,-821.42C480.65,-808.27 579.52,-789.43 628.43,-780.11"/>
@@ -475,16 +475,16 @@
                 </a>
             </g>
         </g>
-        <!-- mrs.domain.model.reservation.ReservableRooms&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchReservableRooms(mrs.domain.model.reservation.ReservedDate) -->
+        <!-- mrs.domain.model.reservation.ReservableRooms&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchReservableRooms(mrs.domain.model.reservation.datetime.ReservedDate) -->
         <g id="edge18" class="edge">
-            <title>mrs.domain.model.reservation.ReservableRooms&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchReservableRooms(mrs.domain.model.reservation.ReservedDate)</title>
+            <title>mrs.domain.model.reservation.ReservableRooms&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchReservableRooms(mrs.domain.model.reservation.datetime.ReservedDate)</title>
             <path fill="none" stroke="black" stroke-width="2"
                   d="M147.45,-679.93C188.26,-713.54 274.67,-784.68 315.02,-817.91"/>
         </g>
-        <!-- mrs.application.service.room.RoomService.findReservableRooms(mrs.domain.model.reservation.ReservedDate) -->
+        <!-- mrs.application.service.room.RoomService.findReservableRooms(mrs.domain.model.reservation.datetime.ReservedDate) -->
         <g id="node28" class="node">
             <title>
-                mrs.application.service.room.RoomService.findReservableRooms(mrs.domain.model.reservation.ReservedDate)
+                mrs.application.service.room.RoomService.findReservableRooms(mrs.domain.model.reservation.datetime.ReservedDate)
             </title>
             <g id="a_node28">
                 <a xlink:href="https://github.com/system-sekkei/library/tree/master/src/main/java/mrs/application/service/room/RoomService.java"
@@ -496,9 +496,9 @@
                 </a>
             </g>
         </g>
-        <!-- mrs.domain.model.reservation.ReservableRooms&#45;&gt;mrs.application.service.room.RoomService.findReservableRooms(mrs.domain.model.reservation.ReservedDate) -->
+        <!-- mrs.domain.model.reservation.ReservableRooms&#45;&gt;mrs.application.service.room.RoomService.findReservableRooms(mrs.domain.model.reservation.datetime.ReservedDate) -->
         <g id="edge36" class="edge">
-            <title>mrs.domain.model.reservation.ReservableRooms&#45;&gt;mrs.application.service.room.RoomService.findReservableRooms(mrs.domain.model.reservation.ReservedDate)</title>
+            <title>mrs.domain.model.reservation.ReservableRooms&#45;&gt;mrs.application.service.room.RoomService.findReservableRooms(mrs.domain.model.reservation.datetime.ReservedDate)</title>
             <path fill="none" stroke="black" stroke-width="2"
                   d="M198.07,-668.65C226.21,-671.36 258.9,-674.51 289.33,-677.45"/>
         </g>
@@ -515,9 +515,9 @@
                 </a>
             </g>
         </g>
-        <!-- mrs.presentation.api.room.RoomsController&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchReservableRooms(mrs.domain.model.reservation.ReservedDate) -->
+        <!-- mrs.presentation.api.room.RoomsController&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchReservableRooms(mrs.domain.model.reservation.datetime.ReservedDate) -->
         <g id="edge20" class="edge">
-            <title>mrs.presentation.api.room.RoomsController&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchReservableRooms(mrs.domain.model.reservation.ReservedDate)</title>
+            <title>mrs.presentation.api.room.RoomsController&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchReservableRooms(mrs.domain.model.reservation.datetime.ReservedDate)</title>
             <path fill="none" stroke="black" stroke-dasharray="1,5"
                   d="M112.86,-848.76C144.48,-846.91 185.01,-844.55 222.86,-842.34"/>
         </g>
@@ -534,9 +534,9 @@
                 </a>
             </g>
         </g>
-        <!-- mrs.presentation.room.RoomsController&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchReservableRooms(mrs.domain.model.reservation.ReservedDate) -->
+        <!-- mrs.presentation.room.RoomsController&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchReservableRooms(mrs.domain.model.reservation.datetime.ReservedDate) -->
         <g id="edge21" class="edge">
-            <title>mrs.presentation.room.RoomsController&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchReservableRooms(mrs.domain.model.reservation.ReservedDate)</title>
+            <title>mrs.presentation.room.RoomsController&#45;&gt;mrs.application.coordinator.reservation.ReservationCoordinator.searchReservableRooms(mrs.domain.model.reservation.datetime.ReservedDate)</title>
             <path fill="none" stroke="black" stroke-dasharray="1,5"
                   d="M132.54,-979.33C177.08,-947.99 267.51,-884.35 311.49,-853.4"/>
         </g>
@@ -581,13 +581,13 @@
                 </a>
             </g>
         </g>
-<!-- mrs.domain.model.reservation.Reservations&#45;&gt;mrs.application.service.reservation.ReservationService.findReservations(mrs.domain.model.reservation.ReservableRoomId) -->
+        <!-- mrs.domain.model.reservation.Reservations&#45;&gt;mrs.application.service.reservation.ReservationService.findReservations(mrs.domain.model.reservation.ReservableRoomId) -->
         <g id="edge29" class="edge">
             <title>mrs.domain.model.reservation.Reservations&#45;&gt;mrs.application.service.reservation.ReservationService.findReservations(mrs.domain.model.reservation.ReservableRoomId)</title>
             <path fill="none" stroke="black" stroke-width="2"
                   d="M741.07,-646.68C711.76,-637.71 670.52,-625.11 637.86,-615.12"/>
         </g>
-<!-- mrs.application.service.reservation.ReservationService.cancel(mrs.domain.model.reservation.Reservation) -->
+        <!-- mrs.application.service.reservation.ReservationService.cancel(mrs.domain.model.reservation.Reservation) -->
         <g id="node23" class="node">
             <title>
                 mrs.application.service.reservation.ReservationService.cancel(mrs.domain.model.reservation.Reservation)
@@ -634,7 +634,7 @@
             <path fill="none" stroke="black" stroke-dasharray="1,5"
                   d="M865.2,-1026.81C869.08,-1023.01 873.18,-1018.99 877.07,-1015.18"/>
         </g>
-<!-- mrs.application.service.reservation.ReservationService.reserve(mrs.domain.model.reservation.Reservation)&#45;&gt;mrs.domain.model.reservation.ReservableRoomId -->
+        <!-- mrs.application.service.reservation.ReservationService.reserve(mrs.domain.model.reservation.Reservation)&#45;&gt;mrs.domain.model.reservation.ReservableRoomId -->
         <g id="edge33" class="edge">
             <title>
                 mrs.application.service.reservation.ReservationService.reserve(mrs.domain.model.reservation.Reservation)&#45;&gt;mrs.domain.model.reservation.ReservableRoomId
@@ -642,21 +642,21 @@
             <path fill="none" stroke="black" stroke-dasharray="1,5"
                   d="M837.64,-1026.42C816.18,-985.71 764.24,-887.2 742.73,-846.39"/>
         </g>
-<!-- mrs.application.service.room.RoomService.findMeetingRoom(mrs.domain.model.room.RoomId)&#45;&gt;mrs.domain.model.room.RoomId -->
+        <!-- mrs.application.service.room.RoomService.findMeetingRoom(mrs.domain.model.room.RoomId)&#45;&gt;mrs.domain.model.room.RoomId -->
         <g id="edge35" class="edge">
             <title>mrs.application.service.room.RoomService.findMeetingRoom(mrs.domain.model.room.RoomId)&#45;&gt;mrs.domain.model.room.RoomId</title>
             <path fill="none" stroke="black" stroke-dasharray="5,2"
                   d="M1571.28,-1534.45C1555.8,-1502.12 1523.47,-1434.62 1507.95,-1402.2"/>
         </g>
-<!-- mrs.application.service.room.RoomService.findReservableRooms(mrs.domain.model.reservation.ReservedDate)&#45;&gt;mrs.domain.model.reservation.ReservedDate -->
+        <!-- mrs.application.service.room.RoomService.findReservableRooms(mrs.domain.model.reservation.datetime.ReservedDate)&#45;&gt;mrs.domain.model.reservation.datetime.ReservedDate -->
         <g id="edge37" class="edge">
             <title>
-                mrs.application.service.room.RoomService.findReservableRooms(mrs.domain.model.reservation.ReservedDate)&#45;&gt;mrs.domain.model.reservation.ReservedDate
+                mrs.application.service.room.RoomService.findReservableRooms(mrs.domain.model.reservation.datetime.ReservedDate)&#45;&gt;mrs.domain.model.reservation.datetime.ReservedDate
             </title>
             <path fill="none" stroke="black" stroke-dasharray="5,2"
                   d="M442.24,-703.81C497.28,-721.82 583.59,-750.05 628.61,-764.77"/>
         </g>
-<!-- mrs.application.service.user.ReservationUserDetailsService.loadUserByUsername(java.lang.String) -->
+        <!-- mrs.application.service.user.ReservationUserDetailsService.loadUserByUsername(java.lang.String) -->
         <g id="node29" class="node">
             <title>mrs.application.service.user.ReservationUserDetailsService.loadUserByUsername(java.lang.String)
             </title>
@@ -670,7 +670,7 @@
                 </a>
             </g>
         </g>
-<!-- mrs.application.service.user.ReservationUserDetailsService.loadUserByUsername(java.lang.String)&#45;&gt;mrs.domain.model.user.User -->
+        <!-- mrs.application.service.user.ReservationUserDetailsService.loadUserByUsername(java.lang.String)&#45;&gt;mrs.domain.model.user.User -->
         <g id="edge40" class="edge">
             <title>mrs.application.service.user.ReservationUserDetailsService.loadUserByUsername(java.lang.String)&#45;&gt;mrs.domain.model.user.User</title>
             <path fill="none" stroke="black" stroke-dasharray="1,5"

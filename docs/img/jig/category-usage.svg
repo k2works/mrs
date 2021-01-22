@@ -15,10 +15,10 @@
             <text text-anchor="middle" x="701.98" y="-285.8" font-family="Times,serif" font-size="14.00">役割</text>
             <text text-anchor="middle" x="701.98" y="-270.8" font-family="Times,serif" font-size="14.00">RoleName</text>
         </g>
-        <!-- mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.ReservedTime, mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails) -->
+        <!-- mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.datetime.ReservedTime, mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails) -->
         <g id="node2" class="node">
             <title>
-                mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.ReservedTime,
+                mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.datetime.ReservedTime,
                 mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails)
             </title>
             <g id="a_node2">
@@ -39,10 +39,10 @@
             <text text-anchor="middle" x="477.98" y="-270.8" font-family="Times,serif" font-size="14.00">Reservation
             </text>
         </g>
-        <!-- mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.ReservedTime, mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails)&#45;&gt;mrs.domain.model.reservation.Reservation -->
+        <!-- mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.datetime.ReservedTime, mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails)&#45;&gt;mrs.domain.model.reservation.Reservation -->
         <g id="edge4" class="edge">
             <title>
-                mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.ReservedTime,
+                mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.datetime.ReservedTime,
                 mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails)&#45;&gt;mrs.domain.model.reservation.Reservation
             </title>
             <path fill="none" stroke="black"
@@ -56,10 +56,10 @@
             <text text-anchor="middle" x="591.48" y="-285.8" font-family="Times,serif" font-size="14.00">ユーザー</text>
             <text text-anchor="middle" x="591.48" y="-270.8" font-family="Times,serif" font-size="14.00">User</text>
         </g>
-        <!-- mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.ReservedTime, mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails)&#45;&gt;mrs.domain.model.user.User -->
+        <!-- mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.datetime.ReservedTime, mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails)&#45;&gt;mrs.domain.model.user.User -->
         <g id="edge5" class="edge">
             <title>
-                mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.ReservedTime,
+                mrs.application.coordinator.reservation.ReservationCoordinator.reserveMeetingRoom(mrs.domain.model.reservation.datetime.ReservedTime,
                 mrs.domain.model.reservation.ReservableRoom, mrs.application.service.user.ReservationUserDetails)&#45;&gt;mrs.domain.model.user.User
             </title>
             <path fill="none" stroke="black"
@@ -105,7 +105,7 @@
                 </a>
             </g>
         </g>
-<!-- mrs.domain.model.reservation.Reservations -->
+        <!-- mrs.domain.model.reservation.Reservations -->
         <g id="node11" class="node">
             <title>mrs.domain.model.reservation.Reservations</title>
             <polygon fill="white" stroke="black" points="401.48,-168 315.48,-168 315.48,-130 401.48,-130 401.48,-168"/>
@@ -113,7 +113,7 @@
             <text text-anchor="middle" x="358.48" y="-137.8" font-family="Times,serif" font-size="14.00">Reservations
             </text>
         </g>
-<!-- mrs.application.coordinator.reservation.ReservationCoordinator.searchReservations(mrs.domain.model.reservation.ReservableRoomId)&#45;&gt;mrs.domain.model.reservation.Reservations -->
+        <!-- mrs.application.coordinator.reservation.ReservationCoordinator.searchReservations(mrs.domain.model.reservation.ReservableRoomId)&#45;&gt;mrs.domain.model.reservation.Reservations -->
         <g id="edge7" class="edge">
             <title>
                 mrs.application.coordinator.reservation.ReservationCoordinator.searchReservations(mrs.domain.model.reservation.ReservableRoomId)&#45;&gt;mrs.domain.model.reservation.Reservations

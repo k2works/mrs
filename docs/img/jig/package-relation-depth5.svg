@@ -1,0 +1,108 @@
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="326px"
+     height="177px" viewBox="0.00 0.00 326.00 177.00" xmlns="http://www.w3.org/2000/svg">
+    <g id="graph0" class="graph" transform="scale(1.0 1.0) rotate(0) translate(4 173)">
+        <title>パッケージ関連図</title>
+        <polygon fill="white" stroke="transparent" points="-4,4 -4,-173 322,-173 322,4 -4,4"/>
+        <text text-anchor="middle" x="159" y="-7.8" font-family="Times,serif" font-size="14.00">パッケージ関連図</text>
+        <g id="clust1" class="cluster">
+            <title>cluster_mrs.domain.model.reservation</title>
+            <polygon fill="lemonchiffon" stroke="#eedd82" stroke-width="2"
+                     points="220,-31 220,-123 310,-123 310,-31 220,-31"/>
+            <text text-anchor="middle" x="265" y="-107.8" font-family="Times,serif" font-size="14.00">予約</text>
+            <text text-anchor="middle" x="265" y="-92.8" font-family="Times,serif" font-size="14.00">reservation</text>
+        </g>
+        <!-- summary -->
+        <g id="node1" class="node">
+            <title>summary</title>
+            <polygon fill="none" stroke="black" points="110,-169 0,-169 0,-131 116,-131 116,-163 110,-169"/>
+            <polyline fill="none" stroke="black" points="110,-169 110,-163 "/>
+            <polyline fill="none" stroke="black" points="116,-163 110,-163 "/>
+            <text text-anchor="start" x="8" y="-153.8" font-family="Times,serif" font-size="14.00">パッケージ数: 5</text>
+            <text text-anchor="start" x="8" y="-138.8" font-family="Times,serif" font-size="14.00">関連数: 3</text>
+        </g>
+        <!-- mrs.domain.model.reservation -->
+        <g id="node2" class="node">
+            <title>mrs.domain.model.reservation</title>
+            <g id="a_node2">
+                <a xlink:href="https://github.com/system-sekkei/library/tree/master/src/main/java/mrs/domain/model/reservation"
+                   xlink:title="予約\nreservation">
+                    <polygon fill="#eedd82" stroke="black"
+                             points="211.5,-169 134.5,-169 134.5,-131 211.5,-131 211.5,-169"/>
+                    <text text-anchor="middle" x="173" y="-153.8" font-family="Times,serif" font-size="14.00">予約</text>
+                    <text text-anchor="middle" x="173" y="-138.8" font-family="Times,serif" font-size="14.00">
+                        reservation
+                    </text>
+                </a>
+            </g>
+        </g>
+        <!-- mrs.domain.model.room -->
+        <g id="node3" class="node">
+            <title>mrs.domain.model.room</title>
+            <g id="a_node3">
+                <a xlink:href="https://github.com/system-sekkei/library/tree/master/src/main/java/mrs/domain/model/room"
+                   xlink:title="会議室\nroom">
+                    <polygon fill="#eedd82" stroke="black" points="117.5,-77 58.5,-77 58.5,-39 117.5,-39 117.5,-77"/>
+                    <text text-anchor="middle" x="88" y="-61.8" font-family="Times,serif" font-size="14.00">会議室</text>
+                    <text text-anchor="middle" x="88" y="-46.8" font-family="Times,serif" font-size="14.00">room</text>
+                </a>
+            </g>
+        </g>
+        <!-- mrs.domain.model.reservation&#45;&gt;mrs.domain.model.room -->
+        <g id="edge1" class="edge">
+            <title>mrs.domain.model.reservation&#45;&gt;mrs.domain.model.room</title>
+            <path fill="none" stroke="black"
+                  d="M136.58,-130.81C133.16,-128.42 129.9,-125.81 127,-123 116.2,-112.54 107.2,-98.49 100.58,-86.21"/>
+            <polygon fill="black" stroke="black" points="103.67,-84.56 95.99,-77.26 97.44,-87.76 103.67,-84.56"/>
+        </g>
+        <!-- mrs.domain.model.user -->
+        <g id="node4" class="node">
+            <title>mrs.domain.model.user</title>
+            <g id="a_node4">
+                <a xlink:href="https://github.com/system-sekkei/library/tree/master/src/main/java/mrs/domain/model/user"
+                   xlink:title="ユーザー\nuser">
+                    <polygon fill="#eedd82" stroke="black" points="210,-77 136,-77 136,-39 210,-39 210,-77"/>
+                    <text text-anchor="middle" x="173" y="-61.8" font-family="Times,serif" font-size="14.00">ユーザー</text>
+                    <text text-anchor="middle" x="173" y="-46.8" font-family="Times,serif" font-size="14.00">user</text>
+                </a>
+            </g>
+        </g>
+        <!-- mrs.domain.model.reservation&#45;&gt;mrs.domain.model.user -->
+        <g id="edge2" class="edge">
+            <title>mrs.domain.model.reservation&#45;&gt;mrs.domain.model.user</title>
+            <path fill="none" stroke="black" d="M173,-130.79C173,-118.34 173,-101.61 173,-87.42"/>
+            <polygon fill="black" stroke="black" points="176.5,-87.19 173,-77.19 169.5,-87.19 176.5,-87.19"/>
+        </g>
+        <!-- mrs.domain.model.reservation.datetime -->
+        <g id="node5" class="node">
+            <title>mrs.domain.model.reservation.datetime</title>
+            <g id="a_node5">
+                <a xlink:href="https://github.com/system-sekkei/library/tree/master/src/main/java/mrs/domain/model/reservation/datetime"
+                   xlink:title="予約日時\ndatetime">
+                    <polygon fill="#eedd82" stroke="black" points="302,-77 228,-77 228,-39 302,-39 302,-77"/>
+                    <text text-anchor="middle" x="265" y="-61.8" font-family="Times,serif" font-size="14.00">予約日時</text>
+                    <text text-anchor="middle" x="265" y="-46.8" font-family="Times,serif" font-size="14.00">datetime
+                    </text>
+                </a>
+            </g>
+        </g>
+        <!-- mrs.domain.model.reservation&#45;&gt;mrs.domain.model.reservation.datetime -->
+        <g id="edge3" class="edge">
+            <title>mrs.domain.model.reservation&#45;&gt;mrs.domain.model.reservation.datetime</title>
+            <path fill="none" stroke="black"
+                  d="M208.74,-130.9C212.36,-128.46 215.86,-125.82 219,-123 230.89,-112.34 241.49,-98.1 249.52,-85.76"/>
+            <polygon fill="black" stroke="black" points="252.54,-87.52 254.89,-77.19 246.61,-83.81 252.54,-87.52"/>
+        </g>
+        <!-- mrs.domain.type.date -->
+        <g id="node6" class="node">
+            <title>mrs.domain.type.date</title>
+            <g id="a_node6">
+                <a xlink:href="https://github.com/system-sekkei/library/tree/master/src/main/java/mrs/domain/type/date"
+                   xlink:title="date">
+                    <polygon fill="#eedd82" stroke="black" points="284,-168 230,-168 230,-132 284,-132 284,-168"/>
+                    <text text-anchor="middle" x="257" y="-146.3" font-family="Times,serif" font-size="14.00">date
+                    </text>
+                </a>
+            </g>
+        </g>
+    </g>
+</svg>
