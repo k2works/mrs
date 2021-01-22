@@ -2,8 +2,6 @@ DROP TABLE IF EXISTS reservation CASCADE;
 DROP TABLE IF EXISTS reservable_room CASCADE;
 DROP TABLE IF EXISTS meeting_room CASCADE;
 DROP TABLE IF EXISTS usr CASCADE;
-DROP TABLE IF EXISTS todo CASCADE;
-
 
 CREATE TABLE meeting_room
 (
@@ -40,11 +38,3 @@ CREATE TABLE reservation
     FOREIGN KEY fk_usr (user_id) REFERENCES usr (user_id)
 ) comment='予約';
 
-CREATE TABLE todo
-(
-    id       INT     NOT NULL AUTO_INCREMENT comment 'ID',
-    title    TEXT    NOT NULL comment 'タイトル',
-    details  TEXT comment '詳細',
-    finished BOOLEAN NOT NULL comment '完了',
-    PRIMARY KEY (id)
-) comment='やること';
