@@ -1,10 +1,9 @@
 [![Azure WebApp](https://img.shields.io/badge/Azure_WebApp-app--mrs-blue)](http://app-mrs.azurewebsites.net/)
 [![Azure DevOps](https://img.shields.io/badge/AzureDevOps-Mrs-blue)](https://dev.azure.com/k2works/Mrs)
-[![Build Status](https://dev.azure.com/k2works/Mrs/_apis/build/status/CI-Mrs?branchName=master)](https://dev.azure.com/k2works/Mrs/_build/latest?definitionId=9&branchName=master)
-[![Build Status](https://dev.azure.com/k2works/Mrs/_apis/build/status/CI-Mrs?branchName=develop)](https://dev.azure.com/k2works/Mrs/_build/latest?definitionId=9&branchName=develop)
+[![Build Status](https://dev.azure.com/k2works/mrs/_apis/build/status/CI-Mrs?branchName=master)](https://dev.azure.com/k2works/mrs/_build/latest?definitionId=17&branchName=master)
+[![Build Status](https://dev.azure.com/k2works/mrs/_apis/build/status/CI-Mrs?branchName=develop)](https://dev.azure.com/k2works/mrs/_build/latest?definitionId=17&branchName=develop)
 [![Java CI with Maven](https://github.com/k2works/mrs/workflows/Java%20CI%20with%20Maven/badge.svg)](https://github.com/k2works/mrs)
-[![Board Status](https://dev.azure.com/k2works/e0cfa8c1-ce91-4a4d-b558-e400d21a87db/b177bb37-c9f8-4987-a7e1-48fec6080f57/_apis/work/boardbadge/f6454edf-e0d2-400b-86a9-af0f740f9d3a)](https://dev.azure.com/k2works/e0cfa8c1-ce91-4a4d-b558-e400d21a87db/_boards/board/t/b177bb37-c9f8-4987-a7e1-48fec6080f57/Microsoft.RequirementCategory/)
-
+[![Board Status](https://dev.azure.com/k2works/3c318163-9bbf-485c-befa-255f12ace93d/8924d8db-611f-47cf-9540-b520ce3eb7d6/_apis/work/boardbadge/e14aba0e-1175-4c3e-bb02-c158561038a2)](https://dev.azure.com/k2works/3c318163-9bbf-485c-befa-255f12ace93d/_boards/board/t/8924d8db-611f-47cf-9540-b520ce3eb7d6/Microsoft.FeatureCategory/)
 # MRS (Meeting room reservation system)
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/k2works/mrs)
