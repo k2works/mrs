@@ -51,3 +51,6 @@ cypress/report
 out
 
 public
+src/main/resources/static/js/index.html
+src/main/resources/static/js/bundle.js
+
