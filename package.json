@@ -7,6 +7,11 @@
     "doc": "docs"
   },
   "scripts": {
+    "start": "nf start -j ./src/main/resources/Procfile",
+    "build": "webpack --config webpack.config.js",
+    "app": "browser-sync start --proxy localhost:9000 --files ./src/main/resources/**",
+    "dev": "webpack serve",
+    "watch": "webpack --watch --config webpack.config.js",
     "e2e": "cypress open",
     "test": "cypress run",
     "report": "npm run report:cucumber",
@@ -23,13 +28,26 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/cli": "^7.12.13",
+    "@babel/core": "^7.12.13",
+    "@babel/preset-env": "^7.12.13",
+    "@babel/register": "^7.12.13",
+    "browser-sync": "^2.26.14",
     "cpx": "^1.5.0",
+    "css-loader": "^5.0.1",
     "cucumber-html-report": "^0.6.5",
     "cypress-cucumber-preprocessor": "^4.0.0",
     "foreman": "^3.0.1",
+    "html-webpack-plugin": "^5.0.0",
+    "jest": "^26.6.3",
     "npm-run-all": "^4.1.5",
     "rimraf": "^3.0.2",
-    "watch": "^1.0.2"
+    "style-loader": "^2.0.0",
+    "watch": "^1.0.2",
+    "webpack": "^5.21.2",
+    "webpack-cli": "^4.5.0",
+    "webpack-dev-server": "^3.11.2",
+    "webpack-serve": "^3.2.0"
   },
   "dependencies": {
     "cucumber-html-reporter": "^5.3.0",

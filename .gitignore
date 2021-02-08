@@ -49,3 +49,5 @@ cypress/cucumber-json
 cypress/report
 
 out
+
+public
