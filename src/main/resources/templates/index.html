@@ -8,8 +8,27 @@
 </head>
 <body>
 <h1>会議室予約システム</h1>
-<main>メイン</main>
-<nav>メニュー</nav>
+<nav>
+    メニュー
+    <ul>
+        <li><a th:href="@{/rooms}">会議室一覧</a></li>
+        <li>
+            <form name="form_logout" type="hidden" method="post" th:action="@{/logout}">
+                <a href="javascript:form_logout.submit()">ログアウト</a>
+            </form>
+        </li>
+    </ul>
+</nav>
+<main>
+    <h2>会議室予約システムへようこそ</h2>
+
+    <p>このシステムは、利用者がインターネット経由で予約できる画期的なシステムです</p>
+
+    お知らせ
+    <ul>
+        <li>会議室予約機能をリリースしました</li>
+    </ul>
+</main>
 <footer>&copy; 2021 k2works</footer>
 </body>
 </html>
