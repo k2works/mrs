@@ -18,6 +18,18 @@ module.exports = {
             template: "./src/main/resources/templates/index.html",
             filename: "index.html",
         }),
+        new HtmlWebpackPlugin({
+            template: "./src/main/resources/templates/login/loginForm.html",
+            filename: "login.html",
+        }),
+        new HtmlWebpackPlugin({
+            template: "./src/main/resources/templates/reservation/reserveForm.html",
+            filename: "reserve.html",
+        }),
+        new HtmlWebpackPlugin({
+            template: "./src/main/resources/templates/room/listRooms.html",
+            filename: "rooms.html",
+        }),
     ],
     module: {
         rules: [
