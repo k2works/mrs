@@ -10,11 +10,11 @@
 <nav>
     メニュー
     <ul>
-        <li><a th:href="@{/}">ホーム</a></li>
-        <li><a th:href="@{/rooms}">会議室一覧</a></li>
+        <li><a id="home" th:href="@{/}">ホーム</a></li>
+        <li><a id="rooms" th:href="@{/rooms}">会議室一覧</a></li>
         <li>
             <form name="form_logout" type="hidden" method="post" th:action="@{/logout}">
-                <a href="javascript:form_logout.submit()">ログアウト</a>
+                <a id="logout" href="javascript:form_logout.submit()">ログアウト</a>
             </form>
         </li>
     </ul>

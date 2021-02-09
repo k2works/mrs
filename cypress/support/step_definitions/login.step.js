@@ -15,5 +15,5 @@ Before(() => {
 });
 
 Then(`{string} が表示される`, (value) => {
-    cy.get('h3').should("contain", value);
+    cy.get('h2').should("contain", value);
 });
