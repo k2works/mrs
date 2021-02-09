@@ -40,7 +40,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 // 認可
-                .antMatchers("/").permitAll()
                 .antMatchers("/js/**", "/css/**").permitAll()
                 .antMatchers("/console/**").permitAll()
                 .antMatchers("/swagger-ui.html").permitAll()
@@ -52,7 +51,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginProcessingUrl("/login")
                 .usernameParameter("username")
                 .passwordParameter("password")
-                .defaultSuccessUrl("/rooms", true)
+                .defaultSuccessUrl("/", true)
                 .failureUrl("/loginForm?error=true").permitAll()
                 // For H2 Console
                 .and()

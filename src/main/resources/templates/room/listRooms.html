@@ -2,22 +2,36 @@
 <html xmlns:th="http://www.thymelef.org">
 <head>
     <meta charset="UTF-8">
+    <link th:href="@{/css/style.css}" rel="stylesheet">
     <title th:text="|${#temporals.format(date, 'yyyy/M/d')}の会議室|">2016/5/20の会議室</title>
 </head>
 <body>
-<h3>会議室</h3>
-<a th:href="@{'/rooms/' + ${date.minusDays(1)}}">&lt; 前日</a>
-<span th:text="|${#temporals.format(date, 'yyyy/M/d')}の会議室|">2016/5/20の会議室</span>
-<a th:href="@{'/rooms/' + ${date.plusDays(1)}}">翌日 &gt;</a>
+<h1>会議室予約システム</h1>
+<nav>
+    メニュー
+    <ul>
+        <li><a th:href="@{/}">ホーム</a></li>
+        <li><a th:href="@{/rooms}">会議室一覧</a></li>
+        <li>
+            <form name="form_logout" type="hidden" method="post" th:action="@{/logout}">
+                <a href="javascript:form_logout.submit()">ログアウト</a>
+            </form>
+        </li>
+    </ul>
+</nav>
+<main>
+    <h3>会議室</h3>
+    <a th:href="@{'/rooms/' + ${date.minusDays(1)}}">&lt; 前日</a>
+    <span th:text="|${#temporals.format(date, 'yyyy/M/d')}の会議室|">2016/5/20の会議室</span>
+    <a th:href="@{'/rooms/' + ${date.plusDays(1)}}">翌日 &gt;</a>
 
-<ul>
-    <li th:each="room: ${rooms}">
-        <a th:href="@{'/reservations/' + ${date} + '/' + ${room.meetingRoom.roomId}}"
-           th:text="${room.meetingRoom.roomName.value}"></a>
-    </li>
-</ul>
-<form method="post" th:action="@{/logout}">
-    <button>ログアウト</button>
-</form>
+    <ul>
+        <li th:each="room: ${rooms}">
+            <a th:href="@{'/reservations/' + ${date} + '/' + ${room.meetingRoom.roomId}}"
+               th:text="${room.meetingRoom.roomName.value}"></a>
+        </li>
+    </ul>
+</main>
+<footer>&copy; 2021 k2works</footer>
 </body>
 </html>
