@@ -108,3 +108,4 @@ APIドキュメントはログイン後に http://localhost:8080/swagger-ui.html
 - [Spring 徹底入門 Spring Framework による Java アプリケーション開発](https://www.amazon.co.jp/dp/B01IEWNLBU/ref=dp-kindle-redirect?_encoding=UTF8&btkr=1)
 - [JIG](https://github.com/dddjava/jig)
 - [JIG-ERD](https://github.com/irof/jig-erd)
+- [最新版TypeScript+webpack5の環境構築まとめ](https://ics.media/entry/16329/)

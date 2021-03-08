@@ -2,7 +2,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-    entry: "./src/main/resources/templates/index.js",
+    entry: "./src/main/resources/static/ts/index.tsx",
     output: {
         filename: "bundle.js",
         path: path.resolve(__dirname, "src/main/resources/static/js"),
@@ -15,20 +15,8 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: "./src/main/resources/templates/index.html",
+            template: "./src/main/resources/templates/app.html",
             filename: "index.html",
-        }),
-        new HtmlWebpackPlugin({
-            template: "./src/main/resources/templates/login/loginForm.html",
-            filename: "login.html",
-        }),
-        new HtmlWebpackPlugin({
-            template: "./src/main/resources/templates/reservation/reserveForm.html",
-            filename: "reserve.html",
-        }),
-        new HtmlWebpackPlugin({
-            template: "./src/main/resources/templates/room/listRooms.html",
-            filename: "rooms.html",
         }),
     ],
     module: {
@@ -43,6 +31,14 @@ module.exports = {
                     },
                 ],
             },
+            {
+                test: /\.tsx?$/,
+                use: "ts-loader"
+            }
         ],
     },
+    resolve: {
+        extensions: [".ts", ".tsx", ".js", ".json"]
+    },
+    target: ["web", "es5"],
 };
