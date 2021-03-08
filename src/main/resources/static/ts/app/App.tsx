@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import {Todo} from './Todo'
 import {Counter} from "./Counter";
+import "../../css/style.css"
 
 interface State {
     counterView: {}
@@ -12,15 +13,13 @@ const initial: State = {
     todoView: {}
 }
 
-const [state, setState] = useState(initial)
-
-const actions = {}
-
-const App: React.FC = () => (
-    <div>
-        <Todo props={state.todoView} actions={actions} />
-        <Counter props={state.counterView} actions={actions} />
-    </div>
-)
-
+const App: React.FC = () =>{
+    const [state] = useState(initial)
+    return (
+            <div>
+                <Todo props={state.todoView} />
+                <Counter props={state.counterView} />
+            </div>
+    )
+}
 export default App

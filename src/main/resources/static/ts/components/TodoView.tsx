@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import React from 'react'
 import AddTodo from '../features/todos/AddTodo'
 import VisibleTodoList from '../features/todos/VisibleTodoList'
 import Footer from '../features/filters/Footer'

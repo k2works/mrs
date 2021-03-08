@@ -5,9 +5,8 @@ import {
 } from '../components/TodoView'
 interface Props {
     props: {}
-    actions: {}
 }
-export const Todo: React.FC<Props> = ({ props, actions }) => {
+export const Todo: React.FC<Props> = ({ props }) => {
     const initial: TodoViewProps = {}
     const [state, setState] = useState(initial)
     useEffect(() => {

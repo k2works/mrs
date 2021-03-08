@@ -5,9 +5,8 @@ import {
 } from '../components/CounterView'
 interface Props {
     props: {}
-    actions: {}
 }
-export const Counter: React.FC<Props> = ({ props, actions }) => {
+export const Counter: React.FC<Props> = ({ props }) => {
     const initial: CounterViewProps = {}
     const [state, setState] = useState(initial)
     useEffect(() => {

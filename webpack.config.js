@@ -5,7 +5,7 @@ module.exports = {
     entry: "./src/main/resources/static/ts/index.tsx",
     output: {
         filename: "bundle.js",
-        path: path.resolve(__dirname, "src/main/resources/static/js"),
+        path: path.resolve(__dirname, "src/main/resources/public"),
     },
     devtool: "inline-source-map",
     devServer: {
@@ -15,7 +15,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: "./src/main/resources/templates/app.html",
+            template: "./src/main/resources/static/ts/index.html",
             filename: "index.html",
         }),
     ],
