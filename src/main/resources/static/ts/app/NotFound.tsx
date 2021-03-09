@@ -3,7 +3,7 @@ import React from 'react';
 import notFoundImage from '../../image/not_found.png';
 
 const NotFound = () => (
-    <div className="row" style={{ textAlign: 'center', height: '100%' }}>
+    <div style={{ textAlign: 'center' }}>
         <br />
         <br />
         <br />
