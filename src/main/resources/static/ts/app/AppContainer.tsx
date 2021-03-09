@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
+import "../../css/style.css"
 import Header from '../components/header/HeaderComponent';
 import TopContainer from './top/TopContainer';
 import LoginContainer from './login/LoginContainer';
