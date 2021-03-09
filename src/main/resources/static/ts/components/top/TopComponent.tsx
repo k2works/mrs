@@ -5,22 +5,19 @@ const TopComponent = () => {
     const history = useHistory();
 
     return (
-        <div style={{ width: '100%' }}>
-            <div className="centerTable">
-                <h2>
-                    トップページ
-                </h2>
-                <div style={{ textAlign: 'center' }}>
-                    <a onClick={() => history.push('/counter')}>カウンターページ</a>
-                </div>
-                <div>
-                    <a onClick={() => history.push('/sample?page=1')}>サンプルページ1</a>
-                    <a onClick={() => history.push('/sample?page=2')}>サンプルページ2</a>
-                </div>
+        <div>
+            <main>
+                <h2>会議室予約システムへようこそ</h2>
 
-            </div>
+                <p>このシステムは、利用者がインターネット経由で予約できる画期的なシステムです</p>
+
+                <h3>お知らせ</h3>
+                <dl>
+                    <dt>会議室予約機能をリリースしました</dt>
+                </dl>
+            </main>
         </div>
-    );
+);
 };
 
 export default TopComponent;

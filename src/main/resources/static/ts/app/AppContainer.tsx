@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import "../../css/style.css"
 import Header from '../components/header/HeaderComponent';
+import Footer from "../components/footer/FooterComponent";
+import Nav from "../components/nav/NavComponent";
 import TopContainer from './top/TopContainer';
 import LoginContainer from './login/LoginContainer';
 import CounterContainer from './counter/CounterContainer';
@@ -14,10 +16,11 @@ const AppContainer = () => {
         console.log('AppContainer:useEffectによる初回処理');
     }, []);
     return (
-        <div>
+        <div className={"container"}>
             <Header />
-            <div id="contents">
-                <Router>
+            <Router>
+                <Nav />
+                <div className={"main"}>
                     <Switch>
                         <Route path="/" exact>
                             <TopContainer />
@@ -39,8 +42,9 @@ const AppContainer = () => {
                         />
                         <Route component={NotFound} />
                     </Switch>
-                </Router>
-            </div>
+                </div>
+            </Router>
+            <Footer />
         </div>
     );
 };
