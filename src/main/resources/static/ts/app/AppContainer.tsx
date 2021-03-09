@@ -8,6 +8,7 @@ import Nav from "../components/nav/NavComponent";
 import TopContainer from './top/TopContainer';
 import LoginContainer from './login/LoginContainer';
 import CounterContainer from './counter/CounterContainer';
+import TodoContainer from "./todo/TodoContainer";
 import SampleContainer from './sample/SampleContainer';
 import NotFound from './NotFound';
 
@@ -34,6 +35,11 @@ const AppContainer = () => {
                             path="/counter"
                             exact
                             render={() => <CounterContainer />}
+                        />
+                        <Route
+                            path="/todo"
+                            exact
+                            render={() => <TodoContainer />}
                         />
                         <Route
                             path="/sample"

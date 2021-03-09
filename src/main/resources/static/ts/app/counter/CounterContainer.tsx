@@ -1,9 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 
 import {
-    CounterView,
-    Props as CounterViewProps
-} from '../../components/CounterView'
+    CounterComponent
+} from '../../components/counter/CounterComponent'
 
 const CounterContainer = () => {
     useEffect(() => {
@@ -13,7 +12,7 @@ const CounterContainer = () => {
     const counterViewProps = {}
     return (
         <div>
-            <CounterView props={counterViewProps} />
+            <CounterComponent props={counterViewProps} />
         </div>
     );
 };
