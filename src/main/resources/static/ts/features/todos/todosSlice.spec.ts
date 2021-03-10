@@ -2,8 +2,7 @@ import todos, { addTodo, toggleTodo } from './todosSlice'
 
 describe('todos reducer', () => {
   it('should handle initial state', () => {
-    // @ts-ignore
-    expect(todos(undefined, null)).toEqual([])
+    expect(todos([], {type: null})).toEqual([])
   })
 
   it('should handle ADD_TODO', () => {
