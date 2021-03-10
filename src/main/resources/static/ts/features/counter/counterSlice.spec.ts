@@ -1,4 +1,4 @@
-import counter, {increment, decrement, incrementByAmount, incrementAsync} from "./counterSlice";
+import counter, {increment, decrement, incrementByAmount} from "./counterSlice";
 
 describe('counter reducer', () => {
     test('カウンターを増やす', () => {
@@ -16,9 +16,9 @@ describe('counter reducer', () => {
 
     test('非同期で指定した値でカウンターを増やす', () => {
         const result = new Promise(resolve => { resolve(incrementByAmount(10))})
-        return result.then(result => {
+        return result.then(data => {
             // @ts-ignore
-            expect(result.payload).toEqual(10)
+            expect(data.payload).toEqual(10)
         })
     })
 })

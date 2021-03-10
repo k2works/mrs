@@ -1,11 +1,18 @@
-import { createSlice } from '@reduxjs/toolkit'
+import {createSlice, PayloadAction} from '@reduxjs/toolkit'
 import {RootState} from "../../reducers";
+import {Dispatch} from "react";
+
+export type State = {
+  value: number
+}
+
+const initialState: State = {
+  value: 0
+}
 
 export const counterSlice = createSlice({
   name: 'counter',
-  initialState: {
-    value: 0
-  },
+  initialState: initialState,
   reducers: {
     increment: state => {
       // Redux Toolkit allows us to write "mutating" logic in reducers. It
@@ -17,7 +24,7 @@ export const counterSlice = createSlice({
     decrement: state => {
       state.value -= 1
     },
-    incrementByAmount: (state, action) => {
+    incrementByAmount: (state, action: PayloadAction<number>) => {
       state.value += action.payload
     }
   }
@@ -29,7 +36,7 @@ export const { increment, decrement, incrementByAmount } = counterSlice.actions
 // can be dispatched like a regular action: `dispatch(incrementAsync(10))`. This
 // will call the thunk with the `dispatch` function as the first argument. Async
 // code can then be executed and other actions can be dispatched
-export const incrementAsync = (amount: any) => (dispatch: any) => {
+export const incrementAsync = (amount: number) => (dispatch: Dispatch<any>) => {
   setTimeout(() => {
     dispatch(incrementByAmount(amount))
   }, 1000)
