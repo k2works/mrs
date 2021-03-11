@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymelef.org">
 <head>
     <meta charset="UTF-8">
-    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <link th:href="@{/css/style_legacy.css}" rel="stylesheet">
     <title th:text="|${#temporals.format(date, 'yyyy/M/d')}の会議室|">2016/5/20の会議室</title>
 </head>
 <body th:with="user=${#authentication.principal.user}">
