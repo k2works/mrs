@@ -15,10 +15,10 @@ import org.springframework.security.test.context.support.WithUserDetails;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @MrsDBTest
-@DisplayName("予約ユーザーサービス")
+@DisplayName("利用者サービス")
 public class ReservationUserDetailsServiceTest {
    @Nested
-   @DisplayName("予約ユーザーを取得する")
+   @DisplayName("利用者を取得する")
    class UserInfo {
       @Autowired
       ReservationUserDetailsService reservationUserDetailsService;
