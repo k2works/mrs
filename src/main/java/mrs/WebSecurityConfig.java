@@ -68,4 +68,12 @@ public class WebSecurityConfig {
             auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
         }
     }
+    @Configuration
+    @Order(2)
+    public static class ApiWebSecurityConfig extends WebSecurityConfigurerAdapter {
+       @Override
+       protected void configure(HttpSecurity http) throws Exception {
+           http.antMatcher("/api/**");
+       }
+    }
 }
