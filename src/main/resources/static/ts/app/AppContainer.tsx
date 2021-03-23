@@ -1,23 +1,25 @@
-import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import React, {useEffect} from 'react';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 import "../../css/style.css"
 import Header from '../components/header/HeaderComponent';
 import Footer from "../components/footer/FooterComponent";
 import Nav from "../components/nav/NavComponent";
 import TopContainer from './top/TopContainer';
-import LoginContainer from './login/LoginContainer';
+import LoginContainer from './auth/LoginContainer';
 import CounterContainer from './counter/CounterContainer';
 import TodoContainer from "./todo/TodoContainer";
 import SampleContainer from './sample/SampleContainer';
 import NotFound from './NotFound';
 import ListRoomsContainer from "./room/ListRoomsContainer";
 import ReservationContainer from "./reservation/ReservationContainer";
+import RegisterContainer from "./auth/RegisterContainer";
 
 const AppContainer = () => {
     useEffect(() => {
         console.log('AppContainer:useEffectによる初回処理');
     }, []);
+
     return (
         <div className={"container"}>
             <Header />
@@ -42,6 +44,11 @@ const AppContainer = () => {
                             path="/reservations"
                             exact
                             render={() => <ReservationContainer />}
+                        />
+                        <Route
+                            path="/register"
+                            exact
+                            component={RegisterContainer}
                         />
                         <Route
                             path="/counter"

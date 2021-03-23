@@ -1,8 +1,15 @@
 import React from 'react';
 import {useHistory} from "react-router";
+import {useSelector} from "react-redux";
+import {currentUser} from "../../features/auth/authSlice";
+import {Redirect} from "react-router-dom";
 
 const ReservationComponent = () => {
     const history = useHistory();
+    const user = useSelector(currentUser);
+    if (!user) {
+        return <Redirect to="/login"/>;
+    }
 
     return (
         <div>

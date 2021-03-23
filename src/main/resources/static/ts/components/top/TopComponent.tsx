@@ -1,13 +1,20 @@
 import React from 'react';
-import { useHistory } from 'react-router';
+import {useHistory} from 'react-router';
+import {useSelector} from "react-redux";
+import {currentUser} from "../../features/auth/authSlice";
+import {Redirect} from "react-router-dom";
 
 const TopComponent = () => {
     const history = useHistory();
+    const user = useSelector(currentUser);
+    if (!user) {
+        return <Redirect to="/login"/>;
+    }
 
     return (
         <div>
             <main>
-                <h2>会議室予約システムへようこそ</h2>
+                <h2>会議室予約システムへようこそ {user.name}さん</h2>
 
                 <p>このシステムは、利用者がインターネット経由で予約できる画期的なシステムです</p>
 

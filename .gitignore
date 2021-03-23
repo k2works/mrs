@@ -55,3 +55,4 @@ src/main/resources/static/js/*.html
 src/main/resources/static/js/bundle.js
 src/main/resources/static/js/bundle.js.LICENSE.txt
 
+.DS_Store
