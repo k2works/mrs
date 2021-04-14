@@ -51,7 +51,7 @@ public class WebSecurityConfig {
                     .antMatchers("/js/**", "/css/**").permitAll()
                     .antMatchers("/console/**").permitAll()
                     .antMatchers("/swagger-ui.html").permitAll()
-                    .antMatchers("/api/auth/**").permitAll()
+                    .antMatchers("/api/**").permitAll()
                     .anyRequest().authenticated()
                     .and()
                     // 認証
