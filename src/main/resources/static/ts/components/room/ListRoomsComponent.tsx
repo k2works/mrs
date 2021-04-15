@@ -33,12 +33,13 @@ const ListRoomComponent = () => {
         dispatch(incrementReservedDate(e.target.value))
         const current = new Date(currentDay)
         const nextDay = new Date(current.setDate(current.getDate() + 1))
-        await dispatch(roomList(new Date(nextDay)))
+        await dispatch(roomList(nextDay))
     }
 
     const handleReservableRoom = (e: any) => {
-        const value = e.target.dataset["value"]
-        history.push(`/reservations?page=${value}`)
+        const reservedDate = e.target.dataset["reserved_date"]
+        const roomId = e.target.dataset["room_id"]
+        history.push(`/reservations?page=${reservedDate}-${roomId}`)
     }
 
     return (
@@ -53,7 +54,9 @@ const ListRoomComponent = () => {
                     {
                         room.reservableRooms.value.map(item => (
                             <li>
-                                <a onClick={handleReservableRoom} data-value={item.reservableRoomId.reservedDate.value}>
+                                <a onClick={handleReservableRoom}
+                                   data-reserved_date={item.reservableRoomId.reservedDate.value}
+                                   data-room_id={item.reservableRoomId.roomId.value}>
                                     {item.meetingRoom.roomName.value}
                                 </a>
                             </li>
