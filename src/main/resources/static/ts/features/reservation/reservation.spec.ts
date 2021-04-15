@@ -21,7 +21,7 @@ describe('reservation reducer', () => {
         let dispatch: Dispatch;
         let getState: () => unknown;
 
-        let arg: { date: string, roomId: number };
+        let arg: { date: Date, roomId: number };
         let result: any;
 
         beforeEach(() => {
@@ -31,7 +31,7 @@ describe('reservation reducer', () => {
             api.list.mockClear();
             api.list.mockResolvedValue(result)
 
-            arg = {date: '2021-04-15', roomId: 1};
+            arg = {date: new Date('2021-04-15'), roomId: 1};
             result = {
                 "value": [
                     {

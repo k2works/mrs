@@ -9,14 +9,14 @@ interface ValidationErrors {
 
 export const reservationList = createAsyncThunk<any,
     {
-        date: string,
+        date: Date,
         roomId: number
     },
     {
         rejectValue: ValidationErrors
     }>(
     'reservation/list',
-    async (params: { date: string, roomId: number }, {rejectWithValue}) => {
+    async (params: { date: Date, roomId: number }, {rejectWithValue}) => {
         try {
             return await ReservationService.list(params)
         } catch (err) {
@@ -69,14 +69,16 @@ interface Reservations {
 
 export type SliceState = {
     reservedDate: Date
-    roomId: number | null
+    roomId: number
+    roomName: string
     reservations: Reservations
     error: string | null | undefined
 }
 
 const initialState: SliceState = {
     reservedDate: new Date(),
-    roomId: null,
+    roomId: 0,
+    roomName: '',
     reservations: {value: []},
     error: null
 }
@@ -84,7 +86,14 @@ const initialState: SliceState = {
 export const reservationSlice = createSlice({
     name: 'reservation',
     initialState: initialState,
-    reducers: {},
+    reducers: {
+        setParams: (state, action) => {
+            const {reservedDate, roomId, roomName} = action.payload
+            state.reservedDate = new Date(reservedDate)
+            state.roomId = roomId
+            state.roomName = roomName
+        },
+    },
     extraReducers: builder => {
         builder.addCase(reservationList.fulfilled, (state, {payload}) => {
             state.reservations = payload.data
@@ -100,5 +109,8 @@ export const reservationSlice = createSlice({
 })
 
 export const reservationState = (state: RootState) => state.reservation
+export const currentReservedDate = (state: RootState) => state.reservation.reservedDate.toLocaleDateString('ja')
+
+export const {setParams} = reservationSlice.actions
 
 export default reservationSlice.reducer

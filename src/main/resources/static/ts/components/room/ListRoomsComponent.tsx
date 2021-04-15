@@ -10,6 +10,7 @@ import {
     roomList,
     roomState
 } from "../../features/room/roomSlice";
+import {setParams} from "../../features/reservation/reservationSlice";
 
 const ListRoomComponent = () => {
     const history = useHistory();
@@ -39,6 +40,8 @@ const ListRoomComponent = () => {
     const handleReservableRoom = (e: any) => {
         const reservedDate = e.target.dataset["reserved_date"]
         const roomId = e.target.dataset["room_id"]
+        const roomName = e.target.dataset["room_name"]
+        dispatch(setParams({reservedDate, roomId, roomName}))
         history.push(`/reservations?page=${reservedDate}-${roomId}`)
     }
 
@@ -56,7 +59,9 @@ const ListRoomComponent = () => {
                             <li>
                                 <a onClick={handleReservableRoom}
                                    data-reserved_date={item.reservableRoomId.reservedDate.value}
-                                   data-room_id={item.reservableRoomId.roomId.value}>
+                                   data-room_id={item.reservableRoomId.roomId.value}
+                                   data-room_name={item.meetingRoom.roomName.value}
+                                >
                                     {item.meetingRoom.roomName.value}
                                 </a>
                             </li>

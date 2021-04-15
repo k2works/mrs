@@ -36,4 +36,4 @@ VALUES ('cccc', 'Ccc', 'Ccc', '$2y$10$aYjdzuGAep5SXGVBxxGrMOnh1b1mL62sJLx5Sj.r4d
 
 -- 予約
 INSERT INTO reservation (end_time, start_time, reserved_date, room_id, user_id)
-VALUES ('9:00', '10:00', CURRENT_DATE, 1, 'taro-yamada');
+VALUES ('10:00', '9:00', CURRENT_DATE, 1, 'taro-yamada');

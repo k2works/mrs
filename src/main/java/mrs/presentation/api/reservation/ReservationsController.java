@@ -19,6 +19,7 @@ import java.time.LocalTime;
 /**
  * API 会議室予約
  */
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController("会議室予約API")
 @RequestMapping(value = {"api/reservations/{date}/{roomId}"})
 public class ReservationsController {
