@@ -8,6 +8,6 @@ export class RoomsPage extends BasePage {
     }
 
     visit() {
-        cy.visit(this._url);
+        cy.get('#rooms').click();
     }
 }

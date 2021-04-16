@@ -96,6 +96,7 @@ const ReservationComponent = () => {
         if (user.name === params.username)
             return (
                 <button
+                    id={"cancel"}
                     onClick={handleCancel}
                     type="submit"
                     data-username={params.username}
@@ -245,7 +246,7 @@ const ReservationComponent = () => {
                         <option value="23:30">23:30</option>
                     </select>
                     <br/>
-                    <button type="submit">予約</button>
+                    <button id="reserve" type="submit">予約</button>
                 </form>
 
                 <table>
