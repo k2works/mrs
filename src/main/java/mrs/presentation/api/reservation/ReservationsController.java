@@ -2,6 +2,7 @@ package mrs.presentation.api.reservation;
 
 import mrs.application.coordinator.reservation.ReservationCoordinator;
 import mrs.application.service.user.ReservationUserDetails;
+import mrs.application.service.user.ReservationUserDetailsService;
 import mrs.domain.model.facility.room.RoomId;
 import mrs.domain.model.reservation.ReservationId;
 import mrs.domain.model.reservation.Reservations;
@@ -23,10 +24,12 @@ import java.time.LocalTime;
 @RestController("会議室予約API")
 @RequestMapping(value = {"api/reservations/{date}/{roomId}"})
 public class ReservationsController {
+    ReservationUserDetailsService reservationUserDetailsService;
     ReservationCoordinator reservationCoordinator;
 
-    public ReservationsController(ReservationCoordinator reservationCoordinator) {
+    public ReservationsController(ReservationCoordinator reservationCoordinator, ReservationUserDetailsService reservationUserDetailsService) {
         this.reservationCoordinator = reservationCoordinator;
+        this.reservationUserDetailsService = reservationUserDetailsService;
     }
 
     /**
@@ -51,10 +54,14 @@ public class ReservationsController {
             @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @PathVariable("date") LocalDate date,
             @PathVariable("roomId") Integer roomId,
             @DateTimeFormat(iso = DateTimeFormat.ISO.TIME) @RequestParam(value = "start", required = true) LocalTime start,
-            @DateTimeFormat(iso = DateTimeFormat.ISO.TIME) @RequestParam(value = "end", required = true) LocalTime end
+            @DateTimeFormat(iso = DateTimeFormat.ISO.TIME) @RequestParam(value = "end", required = true) LocalTime end,
+            @RequestParam(value = "username", required = false) String username
     ) {
         ReservableRoom reservableRoom = new ReservableRoom(new ReservableRoomId(new RoomId(roomId), new ReservedDate(date)));
         ReservedTime reservedTime = new ReservedTime(start, end);
+        if (userDetails == null)
+            userDetails = (ReservationUserDetails) reservationUserDetailsService.loadUserByUsername(username);
+
         reservationCoordinator.reserveMeetingRoom(reservedTime, reservableRoom, userDetails);
     }
 

@@ -3,7 +3,8 @@ import {useHistory} from "react-router";
 import {useDispatch, useSelector} from "react-redux";
 import {currentUser} from "../../features/auth/authSlice";
 import {Redirect} from "react-router-dom";
-import {currentReservedDate, reservationState} from "../../features/reservation/reservationSlice";
+import {currentReservedDate, reservationReserve, reservationState} from "../../features/reservation/reservationSlice";
+import {selectMessage, setMessage} from "../../features/message/messageSlice";
 
 const ReservationComponent = () => {
     const history = useHistory();
@@ -31,18 +32,50 @@ const ReservationComponent = () => {
         setEndTime(value)
     }
 
+    const [successful, setSuccessful] = useState(false);
+    const {message} = useSelector(selectMessage)
+    const handleSubmit = async () => {
+        setSuccessful(false);
+
+        const params = {
+            date: new Date(reservedDate),
+            start: startTime,
+            end: endTime,
+            roomId: state.roomId,
+            username: user.name
+        };
+        const resultAction: any = await dispatch(reservationReserve(params))
+        if (reservationReserve.fulfilled.match(resultAction)) {
+            dispatch(setMessage(resultAction.payload.message))
+            setSuccessful(true);
+        } else {
+            if (resultAction.payload) {
+                dispatch(setMessage(resultAction.payload.message))
+            } else {
+                dispatch(setMessage(resultAction.error.message))
+            }
+            setSuccessful(false);
+        }
+    }
+
+    const showCancelButton = (username: string) => {
+        if (user.name === username) return <button onClick={() => {
+        }} type="submit">取消</button>
+    }
+
     return (
         <div>
             <main>
                 <div>
                     <a onClick={handleRooms}>会議室一覧へ</a>
                 </div>
+                {!successful && (
+                    <p style={{color: 'red'}}>{message}</p>
+                )}
 
                 <form onSubmit={e => {
                     e.preventDefault()
-                    dispatch(() => {
-                        console.log('submit')
-                    })
+                    handleSubmit().then(r => console.log('Done'))
                 }}
                 >
                     会議室: <span>{state.roomName}</span>
@@ -153,32 +186,32 @@ const ReservationComponent = () => {
                         <option value="23:00">23:00</option>
                         <option value="23:30">23:30</option>
                     </select>
-
+                    <br/>
                     <button type="submit">予約</button>
                 </form>
 
-                {
-                    state.reservations.value.map(item => (
-                        <table>
-                            <tbody>
-                            <tr>
-                                <th>時間帯</th>
-                                <th>予約者</th>
-                                <th>操作</th>
-                            </tr>
+                <table>
+                    <tbody>
+                    <tr>
+                        <th>時間帯</th>
+                        <th>予約者</th>
+                        <th>操作</th>
+                    </tr>
+                    {
+                        state.reservations.value.map(item => (
                             <tr>
                                 <td>
                                     <span>{item.reservedDateTime.time.start}</span></td>
                                 <td>
                                     <span>{item.user.userId.value}</span></td>
                                 <td>
-
+                                    {showCancelButton(item.user.userId.value)}
                                 </td>
                             </tr>
-                            </tbody>
-                        </table>
-                    ))
-                }
+                        ))
+                    }
+                    </tbody>
+                </table>
             </main>
         </div>
     );
