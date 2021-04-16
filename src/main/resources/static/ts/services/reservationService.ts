@@ -30,7 +30,7 @@ class ReservationService {
             })
     }
 
-    cancel() {
+    cancel(params: { date: Date, roomId: number, reservationId: number, username: string }) {
         return new Promise(() => {
         })
     }
