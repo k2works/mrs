@@ -3,7 +3,13 @@ import {useHistory} from "react-router";
 import {useDispatch, useSelector} from "react-redux";
 import {currentUser} from "../../features/auth/authSlice";
 import {Redirect} from "react-router-dom";
-import {currentReservedDate, reservationReserve, reservationState} from "../../features/reservation/reservationSlice";
+import {
+    currentReservedDate,
+    reservationCancel,
+    reservationList,
+    reservationReserve,
+    reservationState
+} from "../../features/reservation/reservationSlice";
 import {selectMessage, setMessage} from "../../features/message/messageSlice";
 
 const ReservationComponent = () => {
@@ -48,6 +54,7 @@ const ReservationComponent = () => {
         if (reservationReserve.fulfilled.match(resultAction)) {
             dispatch(setMessage(resultAction.payload.message))
             setSuccessful(true);
+            list()
         } else {
             if (resultAction.payload) {
                 dispatch(setMessage(resultAction.payload.message))
@@ -58,9 +65,60 @@ const ReservationComponent = () => {
         }
     }
 
-    const showCancelButton = (username: string) => {
-        if (user.name === username) return <button onClick={() => {
-        }} type="submit">取消</button>
+    const handleCancel = async (e: any) => {
+        setSuccessful(false);
+
+        const reservationId = e.target.dataset["reservationid"]
+        const username = e.target.dataset["username"]
+
+        const params = {
+            date: new Date(reservedDate),
+            roomId: state.roomId,
+            reservationId: reservationId,
+            username: username
+        };
+        const resultAction: any = await dispatch(reservationCancel(params))
+        if (reservationCancel.fulfilled.match(resultAction)) {
+            dispatch(setMessage(resultAction.payload.message))
+            setSuccessful(true);
+            list()
+        } else {
+            if (resultAction.payload) {
+                dispatch(setMessage(resultAction.payload.message))
+            } else {
+                dispatch(setMessage(resultAction.error.message))
+            }
+            setSuccessful(false);
+        }
+    }
+
+    const showCancelButton = (params: { username: string, reservationId: number }) => {
+        if (user.name === params.username)
+            return (
+                <button
+                    onClick={handleCancel}
+                    type="submit"
+                    data-username={params.username}
+                    data-reservationid={params.reservationId}
+                >取消</button>
+            )
+    }
+
+    const list = async () => {
+        setSuccessful(false);
+
+        const resultAction: any = await dispatch(reservationList({date: state.reservedDate, roomId: state.roomId}))
+        if (reservationList.fulfilled.match(resultAction)) {
+            dispatch(setMessage(resultAction.payload.message))
+            setSuccessful(true);
+        } else {
+            if (resultAction.payload) {
+                dispatch(setMessage(resultAction.payload.message))
+            } else {
+                dispatch(setMessage(resultAction.error.message))
+            }
+            setSuccessful(false);
+        }
     }
 
     return (
@@ -75,7 +133,7 @@ const ReservationComponent = () => {
 
                 <form onSubmit={e => {
                     e.preventDefault()
-                    handleSubmit().then(r => console.log('Done'))
+                    handleSubmit()
                 }}
                 >
                     会議室: <span>{state.roomName}</span>
@@ -205,7 +263,10 @@ const ReservationComponent = () => {
                                 <td>
                                     <span>{item.user.userId.value}</span></td>
                                 <td>
-                                    {showCancelButton(item.user.userId.value)}
+                                    {showCancelButton({
+                                        username: item.user.userId.value,
+                                        reservationId: item.reservationId.value
+                                    })}
                                 </td>
                             </tr>
                         ))
