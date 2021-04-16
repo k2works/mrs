@@ -29,6 +29,27 @@ export const reservationList = createAsyncThunk<any,
     }
 )
 
+export const reservationReserve = createAsyncThunk<any,
+    {
+        date: Date,
+        roomId: number
+    },
+    {
+        rejectValue: ValidationErrors
+    }>(
+    'reservation/Reserve',
+    async (params: { date: Date, roomId: number }, {rejectWithValue}) => {
+        try {
+            return await ReservationService.reserve(params)
+        } catch (err) {
+            let error: AxiosError<ValidationErrors> = err
+            if (!error.response) {
+                throw err
+            }
+            return rejectWithValue(error.response.data)
+        }
+    }
+)
 interface Reservation {
     reservableRoom: {
         meetingRoom: {
@@ -99,6 +120,15 @@ export const reservationSlice = createSlice({
             state.reservations = payload.data
         })
         builder.addCase(reservationList.rejected, (state, action) => {
+            if (action.payload) {
+                state.error = action.payload.message
+            } else {
+                state.error = action.error.message
+            }
+        })
+        builder.addCase(reservationReserve.fulfilled, (state, {payload}) => {
+        })
+        builder.addCase(reservationReserve.rejected, (state, action) => {
             if (action.payload) {
                 state.error = action.payload.message
             } else {

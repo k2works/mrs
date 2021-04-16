@@ -86,10 +86,21 @@
   },
   "jest": {
     "moduleFileExtensions": [
+      "ts",
       "js"
     ],
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    },
+    "globals": {
+      "ts-jest": {
+        "tsConfig": "tsconfig.json"
+      }
+    },
     "testMatch": [
-      "**/**/*.test.js"
+      "**/tests/**/*.test.js",
+      "**/tests/**/*.test.ts",
+      "**/tests/**/*.spec.ts"
     ]
   }
 }

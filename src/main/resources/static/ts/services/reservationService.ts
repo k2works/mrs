@@ -14,7 +14,7 @@ class ReservationService {
         return axios.get(url, {headers: authHeader()});
     }
 
-    reserve() {
+    reserve(params: { date: Date, roomId: number }) {
         return new Promise(() => {
         })
     }
