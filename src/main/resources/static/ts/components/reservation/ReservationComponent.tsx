@@ -48,7 +48,7 @@ const ReservationComponent = () => {
             start: startTime,
             end: endTime,
             roomId: state.roomId,
-            username: user.name
+            userid: user.name
         };
         const resultAction: any = await dispatch(reservationReserve(params))
         if (reservationReserve.fulfilled.match(resultAction)) {

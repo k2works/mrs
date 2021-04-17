@@ -8,7 +8,7 @@ class AuthService {
             .post(API_URL + "signin", {username, password})
             .then((response) => {
                 if (response.data.token) {
-                    localStorage.setItem("user", JSON.stringify(response.data));
+                    localStorage.setItem("session", JSON.stringify(response.data));
                 }
 
                 return response.data;
@@ -19,7 +19,7 @@ class AuthService {
     }
 
     logout() {
-        localStorage.removeItem("user");
+        localStorage.removeItem("session");
     }
 
     register(userId: any, email: any, password: any) {

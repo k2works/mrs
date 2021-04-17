@@ -6,8 +6,6 @@ import {setMessage} from '../message/messageSlice';
 import {AxiosError} from "axios";
 import {RootState} from "../../reducers";
 
-const user = JSON.parse(<string>localStorage.getItem("user"));
-
 export interface User {
     name: string
     password: string
@@ -81,13 +79,15 @@ export const registerAsync = (user: User) => (dispatch: Dispatch<any>) => {
 
 export type SliceState = {
     isLoggedIn: boolean
+    session: { token: string, type: string, userId: string, roles: [] } | {}
     user: User | null
     error: string | null | undefined
 }
 
-const initialState: SliceState = user
-    ? { isLoggedIn: true, user, error: null }
-    : { isLoggedIn: false, user: null, error: null };
+const session = JSON.parse(<string>localStorage.getItem("session"));
+const initialState: SliceState = session
+    ? {isLoggedIn: true, session, user: null, error: null}
+    : {isLoggedIn: false, session: {}, user: null, error: null};
 
 export const authSlice = createSlice({
     name: 'auth',
@@ -116,7 +116,7 @@ export const authSlice = createSlice({
         })
         builder.addCase(authLogin.fulfilled, (state, action) => {
             state.isLoggedIn = true
-            state.user = {name: action.payload.username, password: ''}
+            state.user = {name: action.payload.userid, password: ''}
         })
         builder.addCase(authLogin.rejected, (state, action) => {
             if (action.payload) {
