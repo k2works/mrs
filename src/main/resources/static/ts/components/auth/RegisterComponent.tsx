@@ -130,6 +130,7 @@ const Register = () => {
 
     return (
         <div>
+            <h2>ユーザー登録</h2>
             <div>
                 <Form onSubmit={handleRegister} ref={form}>
                     {!successful && (

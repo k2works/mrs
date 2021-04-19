@@ -97,7 +97,7 @@ const Login = () => {
     return (
         <div>
             <main>
-                <h2>ログインフォーム</h2>
+                <h2>ログイン</h2>
 
                 {message && (
                     <div>

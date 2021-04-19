@@ -1,12 +1,13 @@
+import {RegistPage} from "../pages/registPage";
+import {LoginPage} from "../pages/loginPage";
+import {RoomsPage} from "../pages/roomsPage";
+
 const {
     Before,
     After,
     Given,
     Then,
 } = require("cypress-cucumber-preprocessor/steps");
-
-import {LoginPage} from "../pages/loginPage";
-import {RoomsPage} from "../pages/roomsPage";
 
 // this will get called before each scenario
 let page;
@@ -16,6 +17,9 @@ Before(() => {
 
 Given(`{string} ページにアクセスする`, (pageName) => {
     switch (pageName) {
+        case "ユーザー登録":
+            page = new RegistPage();
+            break;
         case "ログイン":
             page = new LoginPage();
             break;
