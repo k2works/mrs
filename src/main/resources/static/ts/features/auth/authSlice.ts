@@ -12,12 +12,18 @@ export interface User {
     email?: string
 }
 
+export interface AuthUser {
+    userId: { value: string }
+    name: { firstName: string, lastName: string }
+    password: { value: string }
+    roleName: []
+}
+
 interface ValidationErrors {
     message: string
 }
 
-export const authRegister = createAsyncThunk<
-    any,
+export const authRegister = createAsyncThunk<any,
     User,
     {
         rejectValue: ValidationErrors
@@ -79,15 +85,16 @@ export const registerAsync = (user: User) => (dispatch: Dispatch<any>) => {
 
 export type SliceState = {
     isLoggedIn: boolean
-    session: { token: string, type: string, userId: string, roles: [] } | {}
+    session: { token: string, type: string, userId: string, roles: [], user: AuthUser } | {}
     user: User | null
+    authUser: AuthUser | null
     error: string | null | undefined
 }
 
 const session = JSON.parse(<string>localStorage.getItem("session"));
 const initialState: SliceState = session
-    ? {isLoggedIn: true, session, user: null, error: null}
-    : {isLoggedIn: false, session: {}, user: null, error: null};
+    ? {isLoggedIn: true, session, user: null, authUser: null, error: null}
+    : {isLoggedIn: false, session: {}, user: null, authUser: null, error: null};
 
 export const authSlice = createSlice({
     name: 'auth',
@@ -101,6 +108,7 @@ export const authSlice = createSlice({
             authService.logout()
             state.isLoggedIn = false
             state.user = null
+            state.authUser = null
         }
     },
     extraReducers: builder => {
@@ -117,6 +125,7 @@ export const authSlice = createSlice({
         builder.addCase(authLogin.fulfilled, (state, action) => {
             state.isLoggedIn = true
             state.user = {name: action.payload.userid, password: ''}
+            state.authUser = action.payload.user
         })
         builder.addCase(authLogin.rejected, (state, action) => {
             if (action.payload) {
@@ -129,7 +138,7 @@ export const authSlice = createSlice({
     }
 })
 
-export const currentUser = (state: RootState) => state.auth.user
+export const currentUser = (state: RootState) => state.auth.authUser
 
 export const {register, logout} = authSlice.actions
 

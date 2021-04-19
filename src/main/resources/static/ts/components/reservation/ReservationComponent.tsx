@@ -48,7 +48,7 @@ const ReservationComponent = () => {
             start: startTime,
             end: endTime,
             roomId: state.roomId,
-            userid: user.name
+            userid: user.userId.value
         };
         const resultAction: any = await dispatch(reservationReserve(params))
         if (reservationReserve.fulfilled.match(resultAction)) {
@@ -93,7 +93,7 @@ const ReservationComponent = () => {
     }
 
     const showCancelButton = (params: { username: string, reservationId: number }) => {
-        if (user.name === params.username)
+        if (user.userId.value === params.username)
             return (
                 <button
                     id={"cancel"}
@@ -139,7 +139,7 @@ const ReservationComponent = () => {
                 >
                     会議室: <span>{state.roomName}</span>
                     <br/>
-                    予約者名: <span>{user.name}</span>
+                    予約者名: <span>{user.name.firstName} {user.name.lastName}</span>
                     <br/>
                     日付: <span>{reservedDate}</span>
                     <br/>
@@ -262,7 +262,7 @@ const ReservationComponent = () => {
                                 <td>
                                     <span>{item.reservedDateTime.time.start}</span></td>
                                 <td>
-                                    <span>{item.user.userId.value}</span></td>
+                                    <span>{item.user.name.lastName}</span></td>
                                 <td>
                                     {showCancelButton({
                                         username: item.user.userId.value,

@@ -14,7 +14,7 @@ const TopComponent = () => {
     return (
         <div>
             <main>
-                <h2>会議室予約システムへようこそ {user.name}さん</h2>
+                <h2>会議室予約システムへようこそ {user.name.firstName} {user.name.lastName} さん</h2>
 
                 <p>このシステムは、利用者がインターネット経由で予約できる画期的なシステムです</p>
 
