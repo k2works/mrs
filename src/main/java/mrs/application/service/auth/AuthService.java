@@ -7,7 +7,6 @@ import mrs.infrastructure.payload.response.JwtResponse;
 import mrs.infrastructure.security.jwt.JwtUtils;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -16,7 +15,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
- * 認証サービス
+ * 認証・登録サービス
  */
 @Service
 @Transactional
@@ -30,12 +29,10 @@ public class AuthService {
     }
 
     /**
-     * JWTレスポンスを生成する
+     * 認証トークンを生成する
      */
     public JwtResponse createJwtResponse(Authentication authentication) {
-        SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = jwtUtils.generateJwtToken(authentication);
-
         ReservationUserDetails userDetails = (ReservationUserDetails) authentication.getPrincipal();
         List<String> roles = userDetails.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
@@ -45,7 +42,7 @@ public class AuthService {
     }
 
     /**
-     * 利用者を確認する
+     * 利用者の登録を確認する
      */
     public Optional<User> findUserById(String userId) {
         return Optional.ofNullable(userRepository.findById(userId));
