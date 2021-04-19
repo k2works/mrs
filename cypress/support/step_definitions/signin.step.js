@@ -5,12 +5,12 @@ const {
     Then,
 } = require("cypress-cucumber-preprocessor/steps");
 
-import {LoginPage} from "../pages/loginPage";
+import {SigninPage} from "../pages/signinPage";
 
 // this will get called before each scenario
 let page;
 Before(() => {
-    page = new LoginPage();
+    page = new SigninPage();
     cy.wait(0);
 });
 

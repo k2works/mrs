@@ -6,7 +6,7 @@ import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 
-import {authLogin, currentUser} from "../../features/auth/authSlice";
+import {authSignin, currentUser} from "../../features/auth/authSlice";
 import {selectMessage, setMessage} from "../../features/message/messageSlice";
 import {Redirect} from "react-router-dom";
 
@@ -40,7 +40,7 @@ const vpassword = (value: any) => {
     }
 };
 
-const Login = () => {
+const Signin = () => {
     const history = useHistory();
 
     const form = useRef();
@@ -73,8 +73,8 @@ const Login = () => {
 
         // @ts-ignore
         if (checkBtn.current.context._errors.length === 0) {
-            const resultAction: any = await dispatch(authLogin({id: username, password}))
-            if (authLogin.fulfilled.match(resultAction)) {
+            const resultAction: any = await dispatch(authSignin({id: username, password}))
+            if (authSignin.fulfilled.match(resultAction)) {
                 dispatch(setMessage(resultAction.payload.message))
                 setSuccessful(true);
                 history.push('/');
@@ -135,7 +135,7 @@ const Login = () => {
                             <tr>
                                 <td>&nbsp;</td>
                                 <td>
-                                    <button id={"signin"} onClick={handleLogin} type="submit">ログイン</button>
+                                    <button id={"login"} onClick={handleLogin} type="submit">ログイン</button>
                                 </td>
                             </tr>
                         </table>
@@ -148,4 +148,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Signin;

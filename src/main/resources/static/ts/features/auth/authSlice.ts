@@ -16,7 +16,7 @@ export interface SignupUser {
     email?: string
 }
 
-export interface LoginUser {
+export interface SigninUser {
     id: string
     password: string
 }
@@ -59,15 +59,15 @@ export const authSignup = createAsyncThunk<any,
     }
 )
 
-export const authLogin = createAsyncThunk<any,
-    LoginUser,
+export const authSignin = createAsyncThunk<any,
+    SigninUser,
     {
         rejectValue: ValidationErrors
     }>(
     'auth/login',
-    async (user: LoginUser, {rejectWithValue}) => {
+    async (user: SigninUser, {rejectWithValue}) => {
         try {
-            return await AuthService.login(user.id, user.password)
+            return await AuthService.signin(user.id, user.password)
         } catch (err) {
             let error: AxiosError<ValidationErrors> = err
             if (!error.response) {
@@ -78,10 +78,10 @@ export const authLogin = createAsyncThunk<any,
     }
 )
 
-export const registerAsync = (user: SignupUser) => (dispatch: Dispatch<any>) => {
+export const signupAsync = (user: SignupUser) => (dispatch: Dispatch<any>) => {
     return AuthService.signup(user.id, user.email, user.password, user.name.first, user.name.last).then(
         (response) => {
-            dispatch(register(user));
+            dispatch(signup(user));
             dispatch(setMessage(response.data.message));
             return Promise.resolve();
         },
@@ -92,7 +92,7 @@ export const registerAsync = (user: SignupUser) => (dispatch: Dispatch<any>) => 
                     error.response.data.message) ||
                 error.message ||
                 error.toString();
-            dispatch(register(user));
+            dispatch(signup(user));
             dispatch(setMessage(message));
             return Promise.reject();
         }
@@ -115,11 +115,11 @@ export const authSlice = createSlice({
     name: 'auth',
     initialState: initialState,
     reducers: {
-        register: (state, action) => {
+        signup: (state, action) => {
             state.isLoggedIn = false
         },
-        logout: state => {
-            authService.logout()
+        signout: state => {
+            authService.signout()
             state.isLoggedIn = false
             state.session = defaultSession
         }
@@ -135,11 +135,11 @@ export const authSlice = createSlice({
                 state.error = action.error.message
             }
         })
-        builder.addCase(authLogin.fulfilled, (state, action) => {
+        builder.addCase(authSignin.fulfilled, (state, action) => {
             state.isLoggedIn = true
             state.session = action.payload
         })
-        builder.addCase(authLogin.rejected, (state, action) => {
+        builder.addCase(authSignin.rejected, (state, action) => {
             if (action.payload) {
                 state.error = action.payload.message
             } else {
@@ -151,6 +151,6 @@ export const authSlice = createSlice({
 
 export const currentUser = (state: RootState) => state.auth.session.user
 
-export const {register, logout} = authSlice.actions
+export const {signup, signout} = authSlice.actions
 
 export default authSlice.reducer

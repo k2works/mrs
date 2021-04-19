@@ -1,7 +1,7 @@
 import React from 'react';
 import {useHistory} from "react-router";
 import {useDispatch, useSelector} from "react-redux";
-import {currentUser, logout} from "../../features/auth/authSlice";
+import {currentUser, signout} from "../../features/auth/authSlice";
 
 const NavComponent = () => {
     const history = useHistory();
@@ -9,8 +9,8 @@ const NavComponent = () => {
     const user = useSelector(currentUser);
 
     const handleOnClickLogout = () => {
-        dispatch(logout())
-        history.push('/login');
+        dispatch(signout())
+        history.push('/signin');
     };
 
     return (
@@ -27,7 +27,7 @@ const NavComponent = () => {
                     )}
                     {!user && (
                         <div>
-                            <li><a onClick={() => history.push('/login')} id="login">ログイン</a></li>
+                            <li><a onClick={() => history.push('/signin')} id="signin">ログイン</a></li>
                             <li><a onClick={() => history.push('/signup')} id="signup">利用者登録</a></li>
                         </div>
                     )}

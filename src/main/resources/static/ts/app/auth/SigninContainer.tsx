@@ -1,20 +1,20 @@
 import React, {useEffect} from 'react';
 
-import Login from '../../components/auth/LoginComponent';
+import Signin from '../../components/auth/SigninComponent';
 import {clearMessage} from "../../features/message/messageSlice";
 import {useDispatch} from "react-redux";
 
-const LoginContainer = () => {
+const SigninContainer = () => {
     const dispatch = useDispatch();
     useEffect(() => {
-        console.log('LoginContainer:useEffectによる初回処理');
+        console.log('SigninContainer:useEffectによる初回処理');
         dispatch(clearMessage())
     }, []);
     return (
         <div>
-            <Login/>
+            <Signin/>
         </div>
     );
 };
 
-export default LoginContainer;
+export default SigninContainer;

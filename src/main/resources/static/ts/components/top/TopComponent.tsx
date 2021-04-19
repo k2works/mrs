@@ -8,7 +8,7 @@ const TopComponent = () => {
     const history = useHistory();
     const user = useSelector(currentUser);
     if (!user) {
-        return <Redirect to="/login"/>;
+        return <Redirect to="/signin"/>;
     }
 
     return (

@@ -6,7 +6,7 @@ import Header from '../components/header/HeaderComponent';
 import Footer from "../components/footer/FooterComponent";
 import Nav from "../components/nav/NavComponent";
 import TopContainer from './top/TopContainer';
-import LoginContainer from './auth/LoginContainer';
+import SigninContainer from './auth/SigninContainer';
 import CounterContainer from './counter/CounterContainer';
 import TodoContainer from "./todo/TodoContainer";
 import SampleContainer from './sample/SampleContainer';
@@ -28,27 +28,27 @@ const AppContainer = () => {
                 <div className={"main"}>
                     <Switch>
                         <Route path="/" exact>
-                            <TopContainer />
+                            <TopContainer/>
                         </Route>
                         <Route
-                            path="/login"
+                            path="/signup"
                             exact
-                            component={LoginContainer}
+                            component={SignupContainer}
+                        />
+                        <Route
+                            path="/signin"
+                            exact
+                            component={SigninContainer}
                         />
                         <Route
                             path="/rooms"
                             exact
-                            render={() => <ListRoomsContainer />}
+                            render={() => <ListRoomsContainer/>}
                         />
                         <Route
                             path="/reservations"
                             exact
                             render={() => <ReservationContainer />}
-                        />
-                        <Route
-                            path="/signup"
-                            exact
-                            component={SignupContainer}
                         />
                         <Route
                             path="/counter"

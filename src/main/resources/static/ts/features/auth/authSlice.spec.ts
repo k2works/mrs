@@ -1,6 +1,6 @@
 import apiModule from '../../services/authService';
 import {AsyncThunkAction, Dispatch} from "@reduxjs/toolkit";
-import {authLogin, authSignup, LoginUser, register, SignupUser} from "./authSlice";
+import {authSignin, authSignup, SigninUser, signup, SignupUser} from "./authSlice";
 
 jest.mock('../../services/authService')
 
@@ -15,7 +15,7 @@ describe('auth reducer', () => {
         jest.unmock('../../services/authService')
     })
 
-    describe('register', () => {
+    describe('signup', () => {
         let action: AsyncThunkAction<void, SignupUser, {}>
 
         let dispatch: Dispatch;
@@ -48,31 +48,31 @@ describe('auth reducer', () => {
         })
     })
 
-    describe('login', () => {
-        let action: AsyncThunkAction<void, LoginUser, {}>
+    describe('signin', () => {
+        let action: AsyncThunkAction<void, SigninUser, {}>
 
         let dispatch: Dispatch;
         let getState: () => unknown
 
-        let arg: LoginUser;
+        let arg: SigninUser;
         let result: any;
 
         beforeEach(() => {
             dispatch = jest.fn();
             getState = jest.fn();
 
-            api.login.mockClear();
-            api.login.mockResolvedValue(result)
+            api.signin.mockClear();
+            api.signin.mockResolvedValue(result)
 
             arg = {id: 'aaa', password: 'demo'};
             result = {data: {message: 'User registered successfully!'}}
 
-            action = authLogin(arg)
+            action = authSignin(arg)
         })
 
         test('サービスを呼びだす', async () => {
             await action(dispatch, getState, undefined);
-            expect(api.login).toHaveBeenCalledWith('aaa', 'demo');
+            expect(api.signin).toHaveBeenCalledWith('aaa', 'demo');
         })
 
         test('ログインに成功する', async () => {

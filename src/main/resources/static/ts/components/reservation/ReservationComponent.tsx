@@ -16,7 +16,7 @@ const ReservationComponent = () => {
     const history = useHistory();
     const user = useSelector(currentUser);
     if (!user) {
-        return <Redirect to="/login"/>;
+        return <Redirect to="/signin"/>;
     }
     const dispatch = useDispatch()
     const state = useSelector(reservationState)

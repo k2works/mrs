@@ -17,7 +17,7 @@ const ListRoomComponent = () => {
     const dispatch = useDispatch();
     const user = useSelector(currentUser);
     if (!user) {
-        return <Redirect to="/login"/>;
+        return <Redirect to="/signin"/>;
     }
 
     const room = useSelector(roomState)

@@ -5,6 +5,6 @@ export class BasePage {
 
     login() {
         cy.visit(this._url);
-        cy.get('#signin').click()
+        cy.get('#login').click()
     }
 }

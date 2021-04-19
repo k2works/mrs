@@ -1,5 +1,5 @@
 import {SignupPage} from "../pages/signupPage";
-import {LoginPage} from "../pages/loginPage";
+import {SigninPage} from "../pages/signinPage";
 import {RoomsPage} from "../pages/roomsPage";
 
 const {
@@ -21,7 +21,7 @@ Given(`{string} ページにアクセスする`, (pageName) => {
             page = new SignupPage();
             break;
         case "ログイン":
-            page = new LoginPage();
+            page = new SigninPage();
             break;
         case "会議室予約一覧":
             page = new RoomsPage();
@@ -39,7 +39,7 @@ Then(`機能名 {string} が表示される`, (funcName) => {
 Given(`{string} としてログインしている`, (user) => {
     switch (user) {
         case ("利用者"):
-            page = new LoginPage()
+            page = new SigninPage()
             page.visit()
             page.login()
             break
