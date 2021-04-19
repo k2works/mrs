@@ -19,6 +19,14 @@ export interface User {
     roleName: []
 }
 
+interface Session {
+    token: string
+    type: string
+    userId: string
+    roles: []
+    user: User | null
+}
+
 interface ValidationErrors {
     message: string
 }
@@ -43,12 +51,12 @@ export const authRegister = createAsyncThunk<any,
 )
 
 export const authLogin = createAsyncThunk<any,
-    { name: string, password: string },
+    RegistUser,
     {
         rejectValue: ValidationErrors
     }>(
     'auth/login',
-    async (user: { name: string, password: string }, {rejectWithValue}) => {
+    async (user: RegistUser, {rejectWithValue}) => {
         try {
             return await AuthService.login(user.name, user.password)
         } catch (err) {
@@ -84,15 +92,14 @@ export const registerAsync = (user: RegistUser) => (dispatch: Dispatch<any>) => 
 
 export type SliceState = {
     isLoggedIn: boolean
-    session: { token: string, type: string, userId: string, roles: [], user: User } | {}
-    user: User | null
+    session: Session
     error: string | null | undefined
 }
 
 const session = JSON.parse(<string>localStorage.getItem("session"));
 const initialState: SliceState = session
-    ? {isLoggedIn: true, session, user: null, error: null}
-    : {isLoggedIn: false, session: {}, user: null, error: null};
+    ? {isLoggedIn: true, session, error: null}
+    : {isLoggedIn: false, session: {token: '', type: '', userId: '', roles: [], user: null}, error: null};
 
 export const authSlice = createSlice({
     name: 'auth',
@@ -104,8 +111,7 @@ export const authSlice = createSlice({
         logout: state => {
             authService.logout()
             state.isLoggedIn = false
-            state.session = {}
-            state.user = null
+            state.session = {token: '', type: '', userId: '', roles: [], user: null}
         }
     },
     extraReducers: builder => {
@@ -121,7 +127,8 @@ export const authSlice = createSlice({
         })
         builder.addCase(authLogin.fulfilled, (state, action) => {
             state.isLoggedIn = true
-            state.user = action.payload.user
+            console.log(action.payload)
+            state.session = action.payload
         })
         builder.addCase(authLogin.rejected, (state, action) => {
             if (action.payload) {
@@ -129,12 +136,11 @@ export const authSlice = createSlice({
             } else {
                 state.error = action.error.message
             }
-            state.user = null
         })
     }
 })
 
-export const currentUser = (state: RootState) => state.auth.user
+export const currentUser = (state: RootState) => state.auth.session.user
 
 export const {register, logout} = authSlice.actions
 
