@@ -16,14 +16,14 @@ export interface User {
     userId: { value: string }
     name: { firstName: string, lastName: string }
     password: { value: string }
-    roleName: []
+    roleName: string
 }
 
 interface Session {
     token: string
     type: string
     userId: string
-    roles: []
+    roles: string[]
     user: User | null
 }
 
@@ -96,10 +96,11 @@ export type SliceState = {
     error: string | null | undefined
 }
 
+const defaultSession = {token: '', type: '', userId: '', roles: [], user: null};
 const session = JSON.parse(<string>localStorage.getItem("session"));
 const initialState: SliceState = session
     ? {isLoggedIn: true, session, error: null}
-    : {isLoggedIn: false, session: {token: '', type: '', userId: '', roles: [], user: null}, error: null};
+    : {isLoggedIn: false, session: defaultSession, error: null};
 
 export const authSlice = createSlice({
     name: 'auth',
@@ -111,7 +112,7 @@ export const authSlice = createSlice({
         logout: state => {
             authService.logout()
             state.isLoggedIn = false
-            state.session = {token: '', type: '', userId: '', roles: [], user: null}
+            state.session = defaultSession
         }
     },
     extraReducers: builder => {
