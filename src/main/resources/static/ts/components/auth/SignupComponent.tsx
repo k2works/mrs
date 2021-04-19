@@ -6,7 +6,7 @@ import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import validator from "validator";
 
-import {authRegister} from "../../features/auth/authSlice";
+import {authSignup} from "../../features/auth/authSlice";
 import {selectMessage, setMessage} from "../../features/message/messageSlice";
 
 const required = (value: any) => {
@@ -59,7 +59,7 @@ const vpassword = (value: any) => {
     }
 };
 
-const Register = () => {
+const Signup = () => {
     const form = useRef();
     const checkBtn = useRef();
 
@@ -108,17 +108,17 @@ const Register = () => {
 
         // @ts-ignore
         if (checkBtn.current.context._errors.length === 0) {
-            const resultAction: any = await dispatch(authRegister({
+            const resultAction: any = await dispatch(authSignup({
                 id: userid,
                 password,
                 email,
                 name: {first: usernameFirst, last: usernameLast}
             }))
-            if (authRegister.fulfilled.match(resultAction)) {
+            if (authSignup.fulfilled.match(resultAction)) {
                 dispatch(setMessage(resultAction.payload.message))
                 setSuccessful(true);
             } else {
-                if(resultAction.payload) {
+                if (resultAction.payload) {
                     dispatch(setMessage(resultAction.payload.message))
                 } else {
                     dispatch(setMessage(resultAction.error.message))
@@ -130,7 +130,7 @@ const Register = () => {
 
     return (
         <div>
-            <h2>ユーザー登録</h2>
+            <h2>利用者登録</h2>
             <div>
                 <Form onSubmit={handleRegister} ref={form}>
                     {!successful && (
@@ -215,5 +215,5 @@ const Register = () => {
     );
 };
 
-export default Register;
+export default Signup;
 

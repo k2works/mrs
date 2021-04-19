@@ -5,12 +5,12 @@ const {
     Then,
 } = require("cypress-cucumber-preprocessor/steps");
 
-import {LoginPage} from "../pages/loginPage";
+import {SignupPage} from "../pages/signupPage";
 
 // this will get called before each scenario
 let page;
 Before(() => {
-    page = new LoginPage();
+    page = new SignupPage();
     cy.wait(0);
 });
 
@@ -23,6 +23,6 @@ Given(`利用者を登録する`, () => {
     cy.get(':nth-child(6) > button').click()
 })
 
-Then(`ユーザー登録画面に {string} が表示される`, (value) => {
+Then(`利用者登録画面に {string} が表示される`, (value) => {
     cy.get('.alert').should("contain", value);
 });

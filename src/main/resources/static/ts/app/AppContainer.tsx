@@ -13,7 +13,7 @@ import SampleContainer from './sample/SampleContainer';
 import NotFound from './NotFound';
 import ListRoomsContainer from "./room/ListRoomsContainer";
 import ReservationContainer from "./reservation/ReservationContainer";
-import RegisterContainer from "./auth/RegisterContainer";
+import SignupContainer from "./auth/SignupContainer";
 
 const AppContainer = () => {
     useEffect(() => {
@@ -46,9 +46,9 @@ const AppContainer = () => {
                             render={() => <ReservationContainer />}
                         />
                         <Route
-                            path="/register"
+                            path="/signup"
                             exact
-                            component={RegisterContainer}
+                            component={SignupContainer}
                         />
                         <Route
                             path="/counter"

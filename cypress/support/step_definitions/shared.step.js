@@ -1,4 +1,4 @@
-import {RegistPage} from "../pages/registPage";
+import {SignupPage} from "../pages/signupPage";
 import {LoginPage} from "../pages/loginPage";
 import {RoomsPage} from "../pages/roomsPage";
 
@@ -17,8 +17,8 @@ Before(() => {
 
 Given(`{string} ページにアクセスする`, (pageName) => {
     switch (pageName) {
-        case "ユーザー登録":
-            page = new RegistPage();
+        case "利用者登録":
+            page = new SignupPage();
             break;
         case "ログイン":
             page = new LoginPage();

@@ -1,6 +1,6 @@
 import {BasePage} from "../basePage";
 
-export class RegistPage extends BasePage {
+export class SignupPage extends BasePage {
     constructor() {
         super();
         this._appId = "register";
@@ -8,6 +8,6 @@ export class RegistPage extends BasePage {
     }
 
     visit() {
-        cy.get('#register').click();
+        cy.get('#signup').click();
     }
 }

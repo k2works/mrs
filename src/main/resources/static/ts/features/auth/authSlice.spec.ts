@@ -1,6 +1,6 @@
 import apiModule from '../../services/authService';
 import {AsyncThunkAction, Dispatch} from "@reduxjs/toolkit";
-import {authLogin, authRegister, LoginUser, register, RegistUser} from "./authSlice";
+import {authLogin, authSignup, LoginUser, register, SignupUser} from "./authSlice";
 
 jest.mock('../../services/authService')
 
@@ -16,30 +16,30 @@ describe('auth reducer', () => {
     })
 
     describe('register', () => {
-        let action: AsyncThunkAction<void, RegistUser, {}>
+        let action: AsyncThunkAction<void, SignupUser, {}>
 
         let dispatch: Dispatch;
         let getState: () => unknown;
 
-        let arg: RegistUser;
+        let arg: SignupUser;
         let result: any;
 
         beforeEach(() => {
             dispatch = jest.fn();
             getState = jest.fn();
 
-            api.register.mockClear();
-            api.register.mockResolvedValue(result)
+            api.signup.mockClear();
+            api.signup.mockResolvedValue(result)
 
             arg = {id: 'aaa', password: 'demo', email: 'aaa@example.com', name: {first: 'Aaaa', last: 'Aaaa'}};
             result = {data: {message: 'User registered successfully!'}}
 
-            action = authRegister(arg)
+            action = authSignup(arg)
         })
 
         test('サービスを呼びだす', async () => {
             await action(dispatch, getState, undefined);
-            expect(api.register).toHaveBeenCalledWith('aaa', 'aaa@example.com', 'demo');
+            expect(api.signup).toHaveBeenCalledWith('aaa', 'aaa@example.com', 'demo');
         })
 
         test('登録に成功する', async () => {

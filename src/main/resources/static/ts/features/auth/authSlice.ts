@@ -6,7 +6,7 @@ import {setMessage} from '../message/messageSlice';
 import {AxiosError} from "axios";
 import {RootState} from "../../reducers";
 
-export interface RegistUser {
+export interface SignupUser {
     id: string
     password: string
     name: {
@@ -40,15 +40,15 @@ interface ValidationErrors {
     message: string
 }
 
-export const authRegister = createAsyncThunk<any,
-    RegistUser,
+export const authSignup = createAsyncThunk<any,
+    SignupUser,
     {
         rejectValue: ValidationErrors
     }>(
-    'auth/register',
-    async (user: RegistUser, {rejectWithValue}) => {
+    'auth/signup',
+    async (user: SignupUser, {rejectWithValue}) => {
         try {
-            return await AuthService.register(user.id, user.email, user.password, user.name.first, user.name.last)
+            return await AuthService.signup(user.id, user.email, user.password, user.name.first, user.name.last)
         } catch (err) {
             let error: AxiosError<ValidationErrors> = err
             if (!error.response) {
@@ -78,8 +78,8 @@ export const authLogin = createAsyncThunk<any,
     }
 )
 
-export const registerAsync = (user: RegistUser) => (dispatch: Dispatch<any>) => {
-    return AuthService.register(user.id, user.email, user.password, user.name.first, user.name.last).then(
+export const registerAsync = (user: SignupUser) => (dispatch: Dispatch<any>) => {
+    return AuthService.signup(user.id, user.email, user.password, user.name.first, user.name.last).then(
         (response) => {
             dispatch(register(user));
             dispatch(setMessage(response.data.message));
@@ -125,10 +125,10 @@ export const authSlice = createSlice({
         }
     },
     extraReducers: builder => {
-        builder.addCase(authRegister.fulfilled, (state,{ payload }) => {
+        builder.addCase(authSignup.fulfilled, (state, {payload}) => {
             state.isLoggedIn = false
         })
-        builder.addCase(authRegister.rejected, (state, action) => {
+        builder.addCase(authSignup.rejected, (state, action) => {
             if (action.payload) {
                 state.error = action.payload.message
             } else {

@@ -28,7 +28,7 @@ const NavComponent = () => {
                     {!user && (
                         <div>
                             <li><a onClick={() => history.push('/login')} id="login">ログイン</a></li>
-                            <li><a onClick={() => history.push('/register')} id="register">ユーザー登録</a></li>
+                            <li><a onClick={() => history.push('/signup')} id="signup">利用者登録</a></li>
                         </div>
                     )}
                 </ul>
