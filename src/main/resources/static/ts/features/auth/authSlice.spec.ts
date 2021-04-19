@@ -1,6 +1,6 @@
 import apiModule from '../../services/authService';
 import {AsyncThunkAction, Dispatch} from "@reduxjs/toolkit";
-import {authLogin, authRegister, register, User} from "./authSlice";
+import {authLogin, authRegister, register, RegistUser} from "./authSlice";
 
 jest.mock('../../services/authService')
 
@@ -16,12 +16,12 @@ describe('auth reducer', () => {
     })
 
     describe('register', () => {
-        let action: AsyncThunkAction<void, User, {}>
+        let action: AsyncThunkAction<void, RegistUser, {}>
 
         let dispatch: Dispatch;
         let getState: () => unknown;
 
-        let arg: User;
+        let arg: RegistUser;
         let result: any;
 
         beforeEach(() => {
@@ -49,12 +49,12 @@ describe('auth reducer', () => {
     })
 
     describe('login', () => {
-        let action: AsyncThunkAction<void, User, {}>
+        let action: AsyncThunkAction<void, { name: string, password: string }, {}>
 
         let dispatch: Dispatch;
         let getState: () => unknown
 
-        let arg: User;
+        let arg: { name: string, password: string };
         let result: any;
 
         beforeEach(() => {

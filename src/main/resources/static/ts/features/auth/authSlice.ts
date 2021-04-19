@@ -6,13 +6,13 @@ import {setMessage} from '../message/messageSlice';
 import {AxiosError} from "axios";
 import {RootState} from "../../reducers";
 
-export interface User {
+export interface RegistUser {
     name: string
     password: string
     email?: string
 }
 
-export interface AuthUser {
+export interface User {
     userId: { value: string }
     name: { firstName: string, lastName: string }
     password: { value: string }
@@ -24,15 +24,14 @@ interface ValidationErrors {
 }
 
 export const authRegister = createAsyncThunk<any,
-    User,
+    RegistUser,
     {
         rejectValue: ValidationErrors
-    }
-    >(
+    }>(
     'auth/register',
-    async (user:User, { rejectWithValue }) => {
+    async (user: RegistUser, {rejectWithValue}) => {
         try {
-             return await AuthService.register(user.name, user.email, user.password)
+            return await AuthService.register(user.name, user.email, user.password)
         } catch (err) {
             let error: AxiosError<ValidationErrors> = err
             if (!error.response) {
@@ -44,12 +43,12 @@ export const authRegister = createAsyncThunk<any,
 )
 
 export const authLogin = createAsyncThunk<any,
-    User,
+    { name: string, password: string },
     {
         rejectValue: ValidationErrors
     }>(
     'auth/login',
-    async (user: User, {rejectWithValue}) => {
+    async (user: { name: string, password: string }, {rejectWithValue}) => {
         try {
             return await AuthService.login(user.name, user.password)
         } catch (err) {
@@ -62,7 +61,7 @@ export const authLogin = createAsyncThunk<any,
     }
 )
 
-export const registerAsync = (user: User) => (dispatch: Dispatch<any>) => {
+export const registerAsync = (user: RegistUser) => (dispatch: Dispatch<any>) => {
     return AuthService.register(user.name, user.email, user.password).then(
         (response) => {
             dispatch(register(user));
@@ -85,16 +84,15 @@ export const registerAsync = (user: User) => (dispatch: Dispatch<any>) => {
 
 export type SliceState = {
     isLoggedIn: boolean
-    session: { token: string, type: string, userId: string, roles: [], user: AuthUser } | {}
+    session: { token: string, type: string, userId: string, roles: [], user: User } | {}
     user: User | null
-    authUser: AuthUser | null
     error: string | null | undefined
 }
 
 const session = JSON.parse(<string>localStorage.getItem("session"));
 const initialState: SliceState = session
-    ? {isLoggedIn: true, session, user: null, authUser: null, error: null}
-    : {isLoggedIn: false, session: {}, user: null, authUser: null, error: null};
+    ? {isLoggedIn: true, session, user: null, error: null}
+    : {isLoggedIn: false, session: {}, user: null, error: null};
 
 export const authSlice = createSlice({
     name: 'auth',
@@ -102,13 +100,12 @@ export const authSlice = createSlice({
     reducers: {
         register: (state, action) => {
             state.isLoggedIn = false
-            state.user = action.payload.user
         },
         logout: state => {
             authService.logout()
             state.isLoggedIn = false
+            state.session = {}
             state.user = null
-            state.authUser = null
         }
     },
     extraReducers: builder => {
@@ -124,8 +121,7 @@ export const authSlice = createSlice({
         })
         builder.addCase(authLogin.fulfilled, (state, action) => {
             state.isLoggedIn = true
-            state.user = {name: action.payload.userid, password: ''}
-            state.authUser = action.payload.user
+            state.user = action.payload.user
         })
         builder.addCase(authLogin.rejected, (state, action) => {
             if (action.payload) {
@@ -138,7 +134,7 @@ export const authSlice = createSlice({
     }
 })
 
-export const currentUser = (state: RootState) => state.auth.authUser
+export const currentUser = (state: RootState) => state.auth.user
 
 export const {register, logout} = authSlice.actions
 
