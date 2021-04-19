@@ -1,5 +1,7 @@
 package mrs.infrastructure.payload.response;
 
+import mrs.domain.model.user.User;
+
 import java.util.List;
 
 public class JwtResponse {
@@ -7,11 +9,13 @@ public class JwtResponse {
     private String type = "Bearer";
     private final List<String> roles;
     private String userid;
+    private final User user;
 
-    public JwtResponse(String accessToken, String userid, List<String> roles) {
+    public JwtResponse(String accessToken, String userid, List<String> roles, User user) {
         this.token = accessToken;
         this.userid = userid;
         this.roles = roles;
+        this.user = user;
     }
 
     public String getAccessToken() {
