@@ -7,7 +7,7 @@ import {AxiosError} from "axios";
 import {RootState} from "../../reducers";
 
 export interface RegistUser {
-    name: string
+    id: string
     password: string
     email?: string
 }
@@ -39,7 +39,7 @@ export const authRegister = createAsyncThunk<any,
     'auth/register',
     async (user: RegistUser, {rejectWithValue}) => {
         try {
-            return await AuthService.register(user.name, user.email, user.password)
+            return await AuthService.register(user.id, user.email, user.password)
         } catch (err) {
             let error: AxiosError<ValidationErrors> = err
             if (!error.response) {
@@ -58,7 +58,7 @@ export const authLogin = createAsyncThunk<any,
     'auth/login',
     async (user: RegistUser, {rejectWithValue}) => {
         try {
-            return await AuthService.login(user.name, user.password)
+            return await AuthService.login(user.id, user.password)
         } catch (err) {
             let error: AxiosError<ValidationErrors> = err
             if (!error.response) {
@@ -70,7 +70,7 @@ export const authLogin = createAsyncThunk<any,
 )
 
 export const registerAsync = (user: RegistUser) => (dispatch: Dispatch<any>) => {
-    return AuthService.register(user.name, user.email, user.password).then(
+    return AuthService.register(user.id, user.email, user.password).then(
         (response) => {
             dispatch(register(user));
             dispatch(setMessage(response.data.message));

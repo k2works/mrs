@@ -31,7 +31,7 @@ describe('auth reducer', () => {
             api.register.mockClear();
             api.register.mockResolvedValue(result)
 
-            arg = {name: 'aaa', password: 'demo', email: 'aaa@example.com'};
+            arg = {id: 'aaa', password: 'demo', email: 'aaa@example.com'};
             result = {data: {message: 'User registered successfully!'}}
 
             action = authRegister(arg)
@@ -49,12 +49,12 @@ describe('auth reducer', () => {
     })
 
     describe('login', () => {
-        let action: AsyncThunkAction<void, { name: string, password: string }, {}>
+        let action: AsyncThunkAction<void, RegistUser, {}>
 
         let dispatch: Dispatch;
         let getState: () => unknown
 
-        let arg: { name: string, password: string };
+        let arg: RegistUser;
         let result: any;
 
         beforeEach(() => {
@@ -64,7 +64,7 @@ describe('auth reducer', () => {
             api.login.mockClear();
             api.login.mockResolvedValue(result)
 
-            arg = {name: 'aaa', password: 'demo'};
+            arg = {id: 'aaa', password: 'demo'};
             result = {data: {message: 'User registered successfully!'}}
 
             action = authLogin(arg)

@@ -1,5 +1,5 @@
-import React, { useState, useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, {useRef, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
 
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
@@ -87,7 +87,7 @@ const Register = () => {
         // @ts-ignore
         if (checkBtn.current.context._errors.length === 0) {
             // TODO 型エラーになる
-            const resultAction: any = await dispatch(authRegister({name: username, password, email}))
+            const resultAction: any = await dispatch(authRegister({id: username, password, email}))
             if (authRegister.fulfilled.match(resultAction)) {
                 dispatch(setMessage(resultAction.payload.message))
                 setSuccessful(true);
