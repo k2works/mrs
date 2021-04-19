@@ -29,11 +29,21 @@ const validEmail = (value: any) => {
     }
 };
 
-const vusername = (value: any) => {
-    if (value.length < 3 || value.length > 20) {
+const vuserid = (value: any) => {
+    if (value.length < 4 || value.length > 20) {
         return (
             <div className="alert alert-danger" role="alert">
-                The username must be between 3 and 20 characters.
+                The userid must be between 4 and 20 characters.
+            </div>
+        );
+    }
+};
+
+const vusername = (value: any) => {
+    if (value.length < 1 || value.length > 20) {
+        return (
+            <div className="alert alert-danger" role="alert">
+                The username must be between 1 and 20 characters.
             </div>
         );
     }
@@ -53,17 +63,29 @@ const Register = () => {
     const form = useRef();
     const checkBtn = useRef();
 
-    const [username, setUsername] = useState("");
+    const [userid, setUserid] = useState("");
+    const [usernameFirst, setUsernameFirst] = useState("");
+    const [usernameLast, setUsernameLast] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [successful, setSuccessful] = useState(false);
 
-    const { message } = useSelector(selectMessage);
+    const {message} = useSelector(selectMessage);
     const dispatch = useDispatch();
 
-    const onChangeUsername = (e: any) => {
+    const onChangeUserid = (e: any) => {
+        const userid = e.target.value;
+        setUserid(userid);
+    };
+
+    const onChangeUsernameFirst = (e: any) => {
         const username = e.target.value;
-        setUsername(username);
+        setUsernameFirst(username);
+    };
+
+    const onChangeUsernameLast = (e: any) => {
+        const username = e.target.value;
+        setUsernameLast(username);
     };
 
     const onChangeEmail = (e: any) => {
@@ -86,7 +108,12 @@ const Register = () => {
 
         // @ts-ignore
         if (checkBtn.current.context._errors.length === 0) {
-            const resultAction: any = await dispatch(authRegister({id: username, password, email}))
+            const resultAction: any = await dispatch(authRegister({
+                id: userid,
+                password,
+                email,
+                name: {first: usernameFirst, last: usernameLast}
+            }))
             if (authRegister.fulfilled.match(resultAction)) {
                 dispatch(setMessage(resultAction.payload.message))
                 setSuccessful(true);
@@ -108,13 +135,37 @@ const Register = () => {
                     {!successful && (
                         <div>
                             <div>
-                                <label htmlFor="username">User</label>
+                                <label htmlFor="userid">ID</label>
                                 <Input
                                     type="text"
                                     className=""
-                                    name="username"
-                                    value={username}
-                                    onChange={onChangeUsername}
+                                    name="userid"
+                                    value={userid}
+                                    onChange={onChangeUserid}
+                                    validations={[required, vuserid]}
+                                />
+                            </div>
+
+                            <div>
+                                <label htmlFor="usernamefirst">姓</label>
+                                <Input
+                                    type="text"
+                                    className=""
+                                    name="usernamefirst"
+                                    value={usernameFirst}
+                                    onChange={onChangeUsernameFirst}
+                                    validations={[required, vusername]}
+                                />
+                            </div>
+
+                            <div>
+                                <label htmlFor="usernamelast">名</label>
+                                <Input
+                                    type="text"
+                                    className=""
+                                    name="usernamelast"
+                                    value={usernameLast}
+                                    onChange={onChangeUsernameLast}
                                     validations={[required, vusername]}
                                 />
                             </div>
@@ -132,7 +183,7 @@ const Register = () => {
                             </div>
 
                             <div className="form-group">
-                                <label htmlFor="password">Password</label>
+                                <label htmlFor="password">パスワード</label>
                                 <Input
                                     type="password"
                                     className=""

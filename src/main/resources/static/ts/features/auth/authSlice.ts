@@ -9,7 +9,16 @@ import {RootState} from "../../reducers";
 export interface RegistUser {
     id: string
     password: string
+    name: {
+        first: string
+        last: string
+    }
     email?: string
+}
+
+export interface LoginUser {
+    id: string
+    password: string
 }
 
 export interface User {
@@ -39,7 +48,7 @@ export const authRegister = createAsyncThunk<any,
     'auth/register',
     async (user: RegistUser, {rejectWithValue}) => {
         try {
-            return await AuthService.register(user.id, user.email, user.password)
+            return await AuthService.register(user.id, user.email, user.password, user.name.first, user.name.last)
         } catch (err) {
             let error: AxiosError<ValidationErrors> = err
             if (!error.response) {
@@ -51,12 +60,12 @@ export const authRegister = createAsyncThunk<any,
 )
 
 export const authLogin = createAsyncThunk<any,
-    RegistUser,
+    LoginUser,
     {
         rejectValue: ValidationErrors
     }>(
     'auth/login',
-    async (user: RegistUser, {rejectWithValue}) => {
+    async (user: LoginUser, {rejectWithValue}) => {
         try {
             return await AuthService.login(user.id, user.password)
         } catch (err) {
@@ -70,7 +79,7 @@ export const authLogin = createAsyncThunk<any,
 )
 
 export const registerAsync = (user: RegistUser) => (dispatch: Dispatch<any>) => {
-    return AuthService.register(user.id, user.email, user.password).then(
+    return AuthService.register(user.id, user.email, user.password, user.name.first, user.name.last).then(
         (response) => {
             dispatch(register(user));
             dispatch(setMessage(response.data.message));
@@ -128,7 +137,6 @@ export const authSlice = createSlice({
         })
         builder.addCase(authLogin.fulfilled, (state, action) => {
             state.isLoggedIn = true
-            console.log(action.payload)
             state.session = action.payload
         })
         builder.addCase(authLogin.rejected, (state, action) => {

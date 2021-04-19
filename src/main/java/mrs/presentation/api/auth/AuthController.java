@@ -68,7 +68,7 @@ public class AuthController {
         //Create new user's account
         UserId userId = new UserId(signupRequest.getUserId());
         Password password = new Password(encoder.encode(signupRequest.getPassword()));
-        Name name = new Name(signupRequest.getUserId(),signupRequest.getUserId());
+        Name name = new Name(signupRequest.getFirstName(), signupRequest.getLastName());
         String role = signupRequest.getRole();
         RoleName roleName;
         if (role == null) {
@@ -76,7 +76,7 @@ public class AuthController {
         } else {
             roleName = RoleName.valueOf(role);
         }
-        User newUser = new User(userId,password,name, roleName);
+        User newUser = new User(userId, password, name, roleName);
         userRepository.save(newUser);
 
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
