@@ -86,7 +86,6 @@ const Register = () => {
 
         // @ts-ignore
         if (checkBtn.current.context._errors.length === 0) {
-            // TODO 型エラーになる
             const resultAction: any = await dispatch(authRegister({id: username, password, email}))
             if (authRegister.fulfilled.match(resultAction)) {
                 dispatch(setMessage(resultAction.payload.message))

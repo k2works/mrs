@@ -65,10 +65,11 @@ public class ReservationsController {
      * 取消
      */
     @DeleteMapping
-    void cancel(@AuthenticationPrincipal ReservationUserDetails userDetails,
-                @RequestParam("reservationId") Integer reservationId,
-                @PathVariable("roomId") Integer roomId,
-                @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @PathVariable("date") LocalDate date
+    void cancel(
+            @AuthenticationPrincipal ReservationUserDetails userDetails,
+            @RequestParam("reservationId") Integer reservationId,
+            @PathVariable("roomId") Integer roomId,
+            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @PathVariable("date") LocalDate date
     ) {
         reservationCoordinator.cancelReservedMeetingRoom(new ReservationId(reservationId));
     }

@@ -73,7 +73,6 @@ const Login = () => {
 
         // @ts-ignore
         if (checkBtn.current.context._errors.length === 0) {
-            // TODO 型エラーになる
             const resultAction: any = await dispatch(authLogin({id: username, password}))
             if (authLogin.fulfilled.match(resultAction)) {
                 dispatch(setMessage(resultAction.payload.message))

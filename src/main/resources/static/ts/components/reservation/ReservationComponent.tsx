@@ -14,7 +14,6 @@ import {selectMessage, setMessage} from "../../features/message/messageSlice";
 
 const ReservationComponent = () => {
     const history = useHistory();
-    //TODO ユーザーIDを名前として使っているためサーバーサイドと不整合が発生
     const user = useSelector(currentUser);
     if (!user) {
         return <Redirect to="/login"/>;
