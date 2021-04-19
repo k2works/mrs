@@ -92,7 +92,7 @@ const ReservationComponent = () => {
     }
 
     const showCancelButton = (params: { username: string, reservationId: number }) => {
-        if (user.userId.value === params.username)
+        if (user.userId.value === params.username || user.roleName === "ADMIN")
             return (
                 <button
                     id={"cancel"}
