@@ -54,14 +54,10 @@ public class ReservationsController {
             @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @PathVariable("date") LocalDate date,
             @PathVariable("roomId") Integer roomId,
             @DateTimeFormat(iso = DateTimeFormat.ISO.TIME) @RequestParam(value = "start", required = true) LocalTime start,
-            @DateTimeFormat(iso = DateTimeFormat.ISO.TIME) @RequestParam(value = "end", required = true) LocalTime end,
-            @RequestParam(value = "username", required = false) String username
+            @DateTimeFormat(iso = DateTimeFormat.ISO.TIME) @RequestParam(value = "end", required = true) LocalTime end
     ) {
         ReservableRoom reservableRoom = new ReservableRoom(new ReservableRoomId(new RoomId(roomId), new ReservedDate(date)));
         ReservedTime reservedTime = new ReservedTime(start, end);
-        if (userDetails == null)
-            userDetails = (ReservationUserDetails) reservationUserDetailsService.loadUserByUsername(username);
-
         reservationCoordinator.reserveMeetingRoom(reservedTime, reservableRoom, userDetails);
     }
 

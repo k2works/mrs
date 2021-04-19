@@ -2,6 +2,7 @@ import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import ReservationService from "../../services/reservationService"
 import {AxiosError} from "axios";
 import {RootState} from "../../reducers";
+import {User} from "../auth/authSlice";
 
 interface ValidationErrors {
     message: string
@@ -34,14 +35,13 @@ export const reservationReserve = createAsyncThunk<any,
         date: Date,
         start: string,
         end: string,
-        roomId: number,
-        userid: string
+        roomId: number
     },
     {
         rejectValue: ValidationErrors
     }>(
     'reservation/Reserve',
-    async (params: { date: Date, start: string, end: string, roomId: number, userid: string }, {rejectWithValue}) => {
+    async (params: { date: Date, start: string, end: string, roomId: number }, {rejectWithValue}) => {
         try {
             return await ReservationService.reserve(params)
         } catch (err) {
@@ -99,17 +99,7 @@ interface Reservation {
             end: string
         }
     }
-    user: {
-        name: {
-            firstName: string
-            lastName: string
-        }
-        password: {
-            value: string
-        }
-        roleName: []
-        userId: { value: string }
-    }
+    user: User
 }
 
 interface Reservations {
