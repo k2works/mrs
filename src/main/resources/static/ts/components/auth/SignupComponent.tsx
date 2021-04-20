@@ -1,13 +1,11 @@
 import React, {useRef, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-
+import {selectMessage} from "../../features/message/messageSlice";
+import {signup} from "../../app/auth/SignupContainer";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import validator from "validator";
-
-import {authSignup} from "../../features/auth/authSlice";
-import {selectMessage, setMessage} from "../../features/message/messageSlice";
 
 const required = (value: any) => {
     if (!value) {
@@ -100,31 +98,12 @@ const Signup = () => {
 
     const handleRegister = async (e: any) => {
         e.preventDefault();
-
         setSuccessful(false);
-
         // @ts-ignore
         form.current.validateAll();
-
         // @ts-ignore
         if (checkBtn.current.context._errors.length === 0) {
-            const resultAction: any = await dispatch(authSignup({
-                id: userid,
-                password,
-                email,
-                name: {first: usernameFirst, last: usernameLast}
-            }))
-            if (authSignup.fulfilled.match(resultAction)) {
-                dispatch(setMessage(resultAction.payload.message))
-                setSuccessful(true);
-            } else {
-                if (resultAction.payload) {
-                    dispatch(setMessage(resultAction.payload.message))
-                } else {
-                    dispatch(setMessage(resultAction.error.message))
-                }
-                setSuccessful(false);
-            }
+            await signup(dispatch, userid, password, email, usernameFirst, usernameLast, setSuccessful);
         }
     };
 

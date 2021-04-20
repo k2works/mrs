@@ -6,9 +6,10 @@ import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 
-import {authSignin, currentUser} from "../../features/auth/authSlice";
-import {selectMessage, setMessage} from "../../features/message/messageSlice";
+import {currentUser} from "../../features/auth/authSlice";
+import {selectMessage} from "../../features/message/messageSlice";
 import {Redirect} from "react-router-dom";
+import {signin} from "../../app/auth/SigninContainer";
 
 const required = (value: any) => {
     if (!value) {
@@ -65,27 +66,12 @@ const Signin = () => {
 
     const handleLogin = async (e: any) => {
         e.preventDefault();
-
         setSuccessful(false);
-
         // @ts-ignore
         form.current.validateAll();
-
         // @ts-ignore
         if (checkBtn.current.context._errors.length === 0) {
-            const resultAction: any = await dispatch(authSignin({id: username, password}))
-            if (authSignin.fulfilled.match(resultAction)) {
-                dispatch(setMessage(resultAction.payload.message))
-                setSuccessful(true);
-                history.push('/');
-            } else {
-                if (resultAction.payload) {
-                    dispatch(setMessage(resultAction.payload.message))
-                } else {
-                    dispatch(setMessage(resultAction.error.message))
-                }
-                setSuccessful(false);
-            }
+            await signin(dispatch, username, password, setSuccessful, history);
         }
     };
 
