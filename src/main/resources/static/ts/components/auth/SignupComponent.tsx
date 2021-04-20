@@ -96,7 +96,7 @@ const Signup = () => {
         setPassword(password);
     };
 
-    const handleRegister = async (e: any) => {
+    const handleSignup = async (e: any) => {
         e.preventDefault();
         setSuccessful(false);
         // @ts-ignore
@@ -111,7 +111,7 @@ const Signup = () => {
         <div>
             <h2>利用者登録</h2>
             <div>
-                <Form onSubmit={handleRegister} ref={form}>
+                <Form onSubmit={handleSignup} ref={form}>
                     {!successful && (
                         <div>
                             <div>
