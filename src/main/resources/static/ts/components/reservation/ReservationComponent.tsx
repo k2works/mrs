@@ -6,11 +6,11 @@ import {Redirect} from "react-router-dom";
 import {
     currentReservedDate,
     reservationCancel,
-    reservationList,
     reservationReserve,
     reservationState
 } from "../../features/reservation/reservationSlice";
 import {selectMessage, setMessage} from "../../features/message/messageSlice";
+import {listReservations} from "../../app/reservation/ReservationContainer";
 
 const ReservationComponent = () => {
     const history = useHistory();
@@ -53,7 +53,7 @@ const ReservationComponent = () => {
         if (reservationReserve.fulfilled.match(resultAction)) {
             dispatch(setMessage(resultAction.payload.message))
             setSuccessful(true);
-            list()
+            await listReservations(setSuccessful, dispatch, state);
             dispatch(setMessage('会議室を予約しました。'))
         } else {
             if (resultAction.payload) {
@@ -81,7 +81,7 @@ const ReservationComponent = () => {
         if (reservationCancel.fulfilled.match(resultAction)) {
             dispatch(setMessage(resultAction.payload.message))
             setSuccessful(true);
-            list()
+            await listReservations(setSuccessful, dispatch, state);
             dispatch(setMessage('会議室の予約をキャンセルしました。'))
         } else {
             if (resultAction.payload) {
@@ -104,22 +104,6 @@ const ReservationComponent = () => {
                     data-reservationid={params.reservationId}
                 >取消</button>
             )
-    }
-
-    const list = async () => {
-        setSuccessful(false);
-
-        const resultAction: any = await dispatch(reservationList({date: state.reservedDate, roomId: state.roomId}))
-        if (reservationList.fulfilled.match(resultAction)) {
-            setSuccessful(true);
-        } else {
-            if (resultAction.payload) {
-                dispatch(setMessage(resultAction.payload.message))
-            } else {
-                dispatch(setMessage(resultAction.error.message))
-            }
-            setSuccessful(false);
-        }
     }
 
     return (

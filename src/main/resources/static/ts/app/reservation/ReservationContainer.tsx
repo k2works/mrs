@@ -6,11 +6,28 @@ import NotFound from "../NotFound";
 import {clearMessage, selectMessage, setMessage} from "../../features/message/messageSlice";
 import {useDispatch, useSelector} from "react-redux";
 import {reservationList, reservationState} from "../../features/reservation/reservationSlice";
+import {Dispatch} from "@reduxjs/toolkit";
 
 const useQuery = () => {
     const location = useLocation();
     return new URLSearchParams(location.search);
 };
+
+export const listReservations = async (setSuccessful: (value: (((prevState: boolean) => boolean) | boolean)) => void, dispatch: Dispatch<any>, state: any) => {
+    setSuccessful(false);
+
+    const resultAction: any = await dispatch(reservationList({date: state.reservedDate, roomId: state.roomId}))
+    if (reservationList.fulfilled.match(resultAction)) {
+        setSuccessful(true);
+    } else {
+        if (resultAction.payload) {
+            dispatch(setMessage(resultAction.payload.message))
+        } else {
+            dispatch(setMessage(resultAction.error.message))
+        }
+        setSuccessful(false);
+    }
+}
 
 const ReservationContainer = () => {
     const dispatch = useDispatch();
@@ -23,21 +40,7 @@ const ReservationContainer = () => {
     }, []);
 
     const list = async () => {
-        setSuccessful(false);
-
-
-        const resultAction: any = await dispatch(reservationList({date: state.reservedDate, roomId: state.roomId}))
-        if (reservationList.fulfilled.match(resultAction)) {
-            dispatch(setMessage(resultAction.payload.message))
-            setSuccessful(true);
-        } else {
-            if (resultAction.payload) {
-                dispatch(setMessage(resultAction.payload.message))
-            } else {
-                dispatch(setMessage(resultAction.error.message))
-            }
-            setSuccessful(false);
-        }
+        await listReservations(setSuccessful, dispatch, state);
     }
 
     const query = useQuery();
