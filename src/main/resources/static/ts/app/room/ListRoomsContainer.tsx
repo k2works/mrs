@@ -5,6 +5,8 @@ import {roomList} from "../../features/room/roomSlice";
 import {useDispatch, useSelector} from "react-redux";
 import {Dispatch} from "@reduxjs/toolkit";
 import {initialContainer} from "../../utils/containerUtils";
+import {currentUser} from "../../features/auth/authSlice";
+import {Redirect} from "react-router-dom";
 
 export const listRooms = async (setSuccessful: (value: (((prevState: boolean) => boolean) | boolean)) => void, dispatch: Dispatch<any>) => {
     setSuccessful(false);
@@ -38,9 +40,14 @@ const ListRoomsContainer = () => {
     }
 
     const {message} = useSelector(selectMessage)
+
+    const user = useSelector(currentUser);
+    if (!user) {
+        return <Redirect to="/signin"/>;
+    }
     return (
         <div>
-            {successful ? (<ListRooms/>) : (message)}
+            {successful ? (<ListRooms user={user}/>) : (message)}
         </div>
     )
 }

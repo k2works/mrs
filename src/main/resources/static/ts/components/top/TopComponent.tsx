@@ -1,20 +1,18 @@
 import React from 'react';
 import {useHistory} from 'react-router';
-import {useSelector} from "react-redux";
-import {currentUser} from "../../features/auth/authSlice";
-import {Redirect} from "react-router-dom";
+import {User} from "../../features/auth/authSlice";
 
-const TopComponent = () => {
+type Props = {
+    user: User
+}
+
+const TopComponent: React.FC<Props> = (props: Props) => {
     const history = useHistory();
-    const user = useSelector(currentUser);
-    if (!user) {
-        return <Redirect to="/signin"/>;
-    }
 
     return (
         <div>
             <main>
-                <h2>会議室予約システムへようこそ {user.name.firstName} {user.name.lastName} さん</h2>
+                <h2>会議室予約システムへようこそ {props.user.name.firstName} {props.user.name.lastName} さん</h2>
 
                 <p>このシステムは、利用者がインターネット経由で予約できる画期的なシステムです</p>
 

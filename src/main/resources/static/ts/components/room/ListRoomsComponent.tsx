@@ -1,8 +1,7 @@
 import React from 'react';
 import {useHistory} from "react-router";
 import {useDispatch, useSelector} from "react-redux";
-import {currentUser} from "../../features/auth/authSlice";
-import {Redirect} from "react-router-dom";
+import {User} from "../../features/auth/authSlice";
 import {
     currentReservedDate,
     decrementReservedDate,
@@ -12,14 +11,13 @@ import {
 } from "../../features/room/roomSlice";
 import {setParams} from "../../features/reservation/reservationSlice";
 
-const ListRoomComponent = () => {
+type Props = {
+    user: User
+}
+
+const ListRoomComponent: React.FC<Props> = (props: Props) => {
     const history = useHistory();
     const dispatch = useDispatch();
-    const user = useSelector(currentUser);
-    if (!user) {
-        return <Redirect to="/signin"/>;
-    }
-
     const room = useSelector(roomState)
     const currentDay = useSelector(currentReservedDate)
 

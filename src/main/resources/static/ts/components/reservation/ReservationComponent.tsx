@@ -1,23 +1,17 @@
 import React, {useState} from 'react';
 import {useHistory} from "react-router";
 import {useDispatch, useSelector} from "react-redux";
-import {currentUser} from "../../features/auth/authSlice";
-import {Redirect} from "react-router-dom";
-import {
-    currentReservedDate,
-    reservationCancel,
-    reservationReserve,
-    reservationState
-} from "../../features/reservation/reservationSlice";
-import {selectMessage, setMessage} from "../../features/message/messageSlice";
-import {listReservations} from "../../app/reservation/ReservationContainer";
+import {User} from "../../features/auth/authSlice";
+import {currentReservedDate, reservationState} from "../../features/reservation/reservationSlice";
+import {selectMessage} from "../../features/message/messageSlice";
+import {cancel, reserve} from "../../app/reservation/ReservationContainer";
 
-const ReservationComponent = () => {
+type Props = {
+    user: User
+}
+
+const ReservationComponent: React.FC<Props> = (props: Props) => {
     const history = useHistory();
-    const user = useSelector(currentUser);
-    if (!user) {
-        return <Redirect to="/signin"/>;
-    }
     const dispatch = useDispatch()
     const state = useSelector(reservationState)
     const reservedDate = useSelector(currentReservedDate)
@@ -47,22 +41,9 @@ const ReservationComponent = () => {
             start: startTime,
             end: endTime,
             roomId: state.roomId,
-            userid: user.userId.value
+            userid: props.user.userId.value
         };
-        const resultAction: any = await dispatch(reservationReserve(params))
-        if (reservationReserve.fulfilled.match(resultAction)) {
-            dispatch(setMessage(resultAction.payload.message))
-            setSuccessful(true);
-            await listReservations(setSuccessful, dispatch, state);
-            dispatch(setMessage('会議室を予約しました。'))
-        } else {
-            if (resultAction.payload) {
-                dispatch(setMessage(resultAction.payload.message))
-            } else {
-                dispatch(setMessage(resultAction.error.message))
-            }
-            setSuccessful(false);
-        }
+        await reserve(dispatch, params, setSuccessful, state);
     }
 
     const handleCancel = async (e: any) => {
@@ -77,24 +58,11 @@ const ReservationComponent = () => {
             reservationId: reservationId,
             username: username
         };
-        const resultAction: any = await dispatch(reservationCancel(params))
-        if (reservationCancel.fulfilled.match(resultAction)) {
-            dispatch(setMessage(resultAction.payload.message))
-            setSuccessful(true);
-            await listReservations(setSuccessful, dispatch, state);
-            dispatch(setMessage('会議室の予約をキャンセルしました。'))
-        } else {
-            if (resultAction.payload) {
-                dispatch(setMessage(resultAction.payload.message))
-            } else {
-                dispatch(setMessage(resultAction.error.message))
-            }
-            setSuccessful(false);
-        }
+        await cancel(dispatch, params, setSuccessful, state);
     }
 
     const showCancelButton = (params: { username: string, reservationId: number }) => {
-        if (user.userId.value === params.username || user.roleName === "ADMIN")
+        if (props.user.userId.value === params.username || props.user.roleName === "ADMIN")
             return (
                 <button
                     id={"cancel"}
@@ -125,7 +93,7 @@ const ReservationComponent = () => {
                 >
                     会議室: <span>{state.roomName}</span>
                     <br/>
-                    予約者名: <span>{user.name.firstName} {user.name.lastName}</span>
+                    予約者名: <span>{props.user.name.firstName} {props.user.name.lastName}</span>
                     <br/>
                     日付: <span>{reservedDate}</span>
                     <br/>
