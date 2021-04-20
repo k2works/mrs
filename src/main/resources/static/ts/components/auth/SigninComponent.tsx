@@ -1,15 +1,11 @@
 import React, {useRef, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useHistory} from 'react-router';
-
+import {selectMessage} from "../../features/message/messageSlice";
+import {signin} from "../../app/auth/SigninContainer";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
-
-import {currentUser} from "../../features/auth/authSlice";
-import {selectMessage} from "../../features/message/messageSlice";
-import {Redirect} from "react-router-dom";
-import {signin} from "../../app/auth/SigninContainer";
 
 const required = (value: any) => {
     if (!value) {
@@ -74,11 +70,6 @@ const Signin = () => {
             await signin(dispatch, username, password, setSuccessful, history);
         }
     };
-
-    const user = useSelector(currentUser);
-    if (user) {
-        return <Redirect to="/"/>;
-    }
 
     return (
         <div>
