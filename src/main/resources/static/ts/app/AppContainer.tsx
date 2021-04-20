@@ -14,17 +14,21 @@ import NotFound from './NotFound';
 import ListRoomsContainer from "./room/ListRoomsContainer";
 import ReservationContainer from "./reservation/ReservationContainer";
 import SignupContainer from "./auth/SignupContainer";
+import {useSelector} from "react-redux";
+import {currentUser} from "../features/auth/authSlice";
 
 const AppContainer = () => {
     useEffect(() => {
         console.log('AppContainer:useEffectによる初回処理');
     }, []);
 
+    const user = useSelector(currentUser);
+
     return (
         <div className={"container"}>
-            <Header />
+            <Header/>
             <Router>
-                <Nav />
+                <Nav user={user}/>
                 <div className={"main"}>
                     <Switch>
                         <Route path="/" exact>
