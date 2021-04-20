@@ -39,7 +39,7 @@ describe('auth reducer', () => {
 
         test('サービスを呼びだす', async () => {
             await action(dispatch, getState, undefined);
-            expect(api.signup).toHaveBeenCalledWith('aaa', 'aaa@example.com', 'demo');
+            expect(api.signup).toHaveBeenCalledWith('aaa', 'aaa@example.com', 'demo', 'Aaaa', 'Aaaa');
         })
 
         test('登録に成功する', async () => {
