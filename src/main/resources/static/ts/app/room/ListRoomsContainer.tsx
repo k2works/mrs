@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import ListRooms from '../../components/room/ListRoomsComponent';
-import {clearMessage, selectMessage, setMessage} from "../../features/message/messageSlice";
+import {selectMessage, setMessage} from "../../features/message/messageSlice";
 import {roomList} from "../../features/room/roomSlice";
 import {useDispatch, useSelector} from "react-redux";
 import {Dispatch} from "@reduxjs/toolkit";
+import {initialContainer} from "../../utils/containerUtils";
 
 export const listRooms = async (setSuccessful: (value: (((prevState: boolean) => boolean) | boolean)) => void, dispatch: Dispatch<any>) => {
     setSuccessful(false);
@@ -28,7 +29,7 @@ const ListRoomsContainer = () => {
 
     useEffect(() => {
         console.log('ListRoomsContainer:useEffectによる初回処理');
-        dispatch(clearMessage())
+        initialContainer(dispatch);
         list()
     }, []);
 

@@ -3,10 +3,11 @@ import React, {useEffect, useState} from 'react';
 import Reservation from "../../components/reservation/ReservationComponent";
 import {useLocation} from "react-router-dom";
 import NotFound from "../NotFound";
-import {clearMessage, selectMessage, setMessage} from "../../features/message/messageSlice";
+import {selectMessage, setMessage} from "../../features/message/messageSlice";
 import {useDispatch, useSelector} from "react-redux";
 import {reservationList, reservationState} from "../../features/reservation/reservationSlice";
 import {Dispatch} from "@reduxjs/toolkit";
+import {initialContainer} from "../../utils/containerUtils";
 
 const useQuery = () => {
     const location = useLocation();
@@ -35,7 +36,7 @@ const ReservationContainer = () => {
     const state = useSelector(reservationState)
     useEffect(() => {
         console.log('ReservationContainer:useEffectによる初回処理');
-        dispatch(clearMessage())
+        initialContainer(dispatch);
         list()
     }, []);
 
