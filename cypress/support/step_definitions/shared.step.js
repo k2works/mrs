@@ -41,7 +41,12 @@ Given(`{string} としてログインしている`, (user) => {
         case ("利用者"):
             page = new SigninPage()
             page.visit()
-            page.login()
+            page.login('aaaa', 'demo')
+            break
+        case ("管理者"):
+            page = new SigninPage()
+            page.visit()
+            page.login('cccc', 'demo')
             break
         default:
             throw new Error('該当するページが存在しません')

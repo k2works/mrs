@@ -3,8 +3,12 @@ export class BasePage {
         this._url = url;
     }
 
-    login() {
+    login(username, password) {
         cy.visit(this._url);
-        cy.get('#login').click()
+        cy.get('#username').clear();
+        cy.get('#password').clear();
+        cy.get('#username').type(username);
+        cy.get('#password').type(password);
+        cy.get('#login').click();
     }
 }

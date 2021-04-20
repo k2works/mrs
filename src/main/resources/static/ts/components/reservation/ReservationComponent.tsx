@@ -54,6 +54,7 @@ const ReservationComponent = () => {
             dispatch(setMessage(resultAction.payload.message))
             setSuccessful(true);
             list()
+            dispatch(setMessage('会議室を予約しました。'))
         } else {
             if (resultAction.payload) {
                 dispatch(setMessage(resultAction.payload.message))
@@ -81,6 +82,7 @@ const ReservationComponent = () => {
             dispatch(setMessage(resultAction.payload.message))
             setSuccessful(true);
             list()
+            dispatch(setMessage('会議室の予約をキャンセルしました。'))
         } else {
             if (resultAction.payload) {
                 dispatch(setMessage(resultAction.payload.message))
@@ -109,7 +111,6 @@ const ReservationComponent = () => {
 
         const resultAction: any = await dispatch(reservationList({date: state.reservedDate, roomId: state.roomId}))
         if (reservationList.fulfilled.match(resultAction)) {
-            dispatch(setMessage(resultAction.payload.message))
             setSuccessful(true);
         } else {
             if (resultAction.payload) {
@@ -127,9 +128,11 @@ const ReservationComponent = () => {
                 <div>
                     <a onClick={handleRooms}>会議室一覧へ</a>
                 </div>
-                {!successful && (
-                    <p style={{color: 'red'}}>{message}</p>
-                )}
+                {!successful ? (
+                        <p style={{color: 'red'}}>{message}</p>
+                    ) :
+                    <p>{message}</p>
+                }
 
                 <form onSubmit={e => {
                     e.preventDefault()

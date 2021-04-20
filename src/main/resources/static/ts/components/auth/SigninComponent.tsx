@@ -113,6 +113,7 @@ const Signin = () => {
                             <tr>
                                 <td><label htmlFor="username">User</label></td>
                                 <td><Input
+                                    id={"username"}
                                     type="text"
                                     className=""
                                     name="username"
@@ -124,6 +125,7 @@ const Signin = () => {
                             <tr>
                                 <td><label htmlFor="password">Password</label></td>
                                 <td><Input
+                                    id={"password"}
                                     type="password"
                                     className=""
                                     name="password"
