@@ -15,6 +15,7 @@
     "e2e": "cypress open",
     "test": "npm-run-all test:unit test:e2e",
     "test:e2e": "cypress run",
+    "test:e2e:record": "cypress run --record --key e323c5f8-26f1-45f9-a406-43e7fbd6e51d",
     "test:unit": "jest",
     "report": "npm run report:cucumber",
     "report:cucumber": "npm-run-all report:cucumber:clean test:e2e report:cucumber:generate report:cucumber:report",
