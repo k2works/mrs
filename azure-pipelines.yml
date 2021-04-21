@@ -20,6 +20,8 @@ variables:
   # Agent VM image name
   vmImageName: "ubuntu-latest"
 
+  node_version: 12.x
+
 stages:
   - stage: Build
     displayName: Build stage
@@ -28,12 +30,6 @@ stages:
         displayName: Maven Package and Publish Artifacts
         pool:
           vmImage: $(vmImageName)
-        strategy:
-          matrix:
-            node_12_x:
-              node_version: 12.x
-            node_13_x:
-              node_version: 13.x
 
         steps:
           - task: NodeTool@0
