@@ -1,4 +1,4 @@
-[![Azure WebApp](https://img.shields.io/badge/Azure_WebApp-app--mrs-blue)](http://app-mrs.azurewebsites.net/)
+[![Azure WebApp](https://img.shields.io/badge/Azure_WebApp-app--mrs-blue)](https://app-mrs.azurewebsites.net/)
 [![Azure DevOps](https://img.shields.io/badge/AzureDevOps-Mrs-blue)](https://dev.azure.com/k2works/Mrs)
 [![Build Status](https://dev.azure.com/k2works/mrs/_apis/build/status/CI-Mrs?branchName=master)](https://dev.azure.com/k2works/mrs/_build/latest?definitionId=17&branchName=master)
 [![Build Status](https://dev.azure.com/k2works/mrs/_apis/build/status/CI-Mrs?branchName=develop)](https://dev.azure.com/k2works/mrs/_build/latest?definitionId=17&branchName=develop)

@@ -1,4 +1,5 @@
 const path = require("path");
+const webpack = require('webpack')
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
@@ -18,6 +19,9 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: "./src/main/resources/static/ts/index.html",
             filename: "index.html",
+        }),
+        new webpack.ProvidePlugin({
+            process: 'process/browser',
         }),
     ],
     module: {

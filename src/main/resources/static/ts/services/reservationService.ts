@@ -1,7 +1,8 @@
 import axios from "axios";
 import authHeader from "./auth-header";
+import {reservationConst} from "../utils/serviceUtils";
 
-const API_URL = "http://localhost:8080/api/reservations";
+const API_URL = reservationConst.API_URL
 
 class ReservationService {
     list(params: { date: Date, roomId: number }) {
