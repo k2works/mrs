@@ -2,7 +2,6 @@ package mrs.presentation.login;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -32,7 +31,6 @@ public class LoginControllerTest {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(context).apply(springSecurity()).build();
     }
 
-    @Test
     public void フォーム認証のテスト() throws Exception {
         mockMvc.perform(formLogin().user("aaaa").password("demo"))
                 .andExpect(authenticated())
@@ -41,7 +39,6 @@ public class LoginControllerTest {
                 .andExpect(authenticated().withRoles("USER"));
     }
 
-    @Test
     public void ログアウトのテスト() throws Exception {
         mockMvc.perform(logout())
                 .andExpect(status().isFound()).andExpect(redirectedUrl("/loginForm?logout"))
