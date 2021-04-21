@@ -28,8 +28,21 @@ stages:
         displayName: Maven Package and Publish Artifacts
         pool:
           vmImage: $(vmImageName)
+        strategy:
+          matrix:
+            node_12_x:
+              node_version: 12.x
+            node_13_x:
+              node_version: 13.x
 
         steps:
+          - task: NodeTool@0
+            inputs:
+              versionSpec: $(node_version)
+
+          - script: npm install
+          - script: npm run build:prd
+
           - task: Maven@3
             inputs:
               mavenPomFile: "pom.xml"
