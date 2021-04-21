@@ -1,8 +1,6 @@
 let BASE_API_URL = "http://localhost:8080/api";
-if (process) {
-    if (process.env.NODENV === 'production') {
-        BASE_API_URL = "https://app-mrs.azurewebsites.net/api";
-    }
+if (process.env.NODE_ENV === 'production') {
+    BASE_API_URL = "https://app-mrs.azurewebsites.net/api";
 }
 
 export namespace authConst {

@@ -3,6 +3,7 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
+    mode: "development",
     entry: "./src/main/resources/static/ts/index.tsx",
     output: {
         filename: "bundle.js",
@@ -23,6 +24,9 @@ module.exports = {
         new webpack.ProvidePlugin({
             process: 'process/browser',
         }),
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV ? process.env.NODE_ENV : "development")
+        }),
     ],
     module: {
         rules: [
@@ -32,7 +36,7 @@ module.exports = {
                     "style-loader",
                     {
                         loader: "css-loader",
-                        options: { url: false },
+                        options: {url: false},
                     },
                 ],
             },
