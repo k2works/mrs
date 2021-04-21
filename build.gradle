@@ -181,3 +181,9 @@ jacocoTestReport {
         html.destination file("${buildDir}/jacocoHtml")
     }
 }
+
+// Node
+task buildReact(type: NpmTask) {
+    args = ['run', 'build:prd']
+}
+build.dependsOn buildReact

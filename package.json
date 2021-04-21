@@ -8,7 +8,8 @@
   },
   "scripts": {
     "start": "nf start -j ./src/main/resources/Procfile",
-    "build": "cross-env NODE_ENV=production webpack --config webpack.config.js",
+    "build:dev": "cross-env NODE_ENV=development webpack --config webpack.config.js",
+    "build:prd": "cross-env NODE_ENV=production webpack --config webpack.config.js",
     "app": "browser-sync start --proxy localhost:9000 --files ./src/main/resources/**",
     "dev": "cross-env NODE_ENV=development webpack serve",
     "watch": "webpack --watch --config webpack.config.js",
