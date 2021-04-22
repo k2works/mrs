@@ -7,9 +7,6 @@ import Footer from "../components/footer/FooterComponent";
 import Nav from "../components/nav/NavComponent";
 import TopContainer from './top/TopContainer';
 import SigninContainer from './auth/SigninContainer';
-import CounterContainer from './counter/CounterContainer';
-import TodoContainer from "./todo/TodoContainer";
-import SampleContainer from './sample/SampleContainer';
 import NotFound from './NotFound';
 import ListRoomsContainer from "./room/ListRoomsContainer";
 import ReservationContainer from "./reservation/ReservationContainer";
@@ -53,21 +50,6 @@ const AppContainer = () => {
                             path="/reservations"
                             exact
                             render={() => <ReservationContainer />}
-                        />
-                        <Route
-                            path="/counter"
-                            exact
-                            render={() => <CounterContainer />}
-                        />
-                        <Route
-                            path="/todo"
-                            exact
-                            render={() => <TodoContainer />}
-                        />
-                        <Route
-                            path="/sample"
-                            exact
-                            render={() => <SampleContainer />}
                         />
                         <Route component={NotFound} />
                     </Switch>
