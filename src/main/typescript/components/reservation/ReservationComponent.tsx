@@ -211,8 +211,8 @@ const ReservationComponent: React.FC<Props> = (props: Props) => {
                         <th>操作</th>
                     </tr>
                     {
-                        state.reservations.value.map(item => (
-                            <tr>
+                        state.reservations.value.map((item, key) => (
+                            <tr key={key}>
                                 <td>
                                     <span>{item.reservedDateTime.time.start}</span></td>
                                 <td>
