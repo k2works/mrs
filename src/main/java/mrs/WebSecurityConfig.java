@@ -52,16 +52,8 @@ public class WebSecurityConfig {
                     .antMatchers("/console/**").permitAll()
                     .antMatchers("/swagger-ui.html").permitAll()
                     .antMatchers("/api/**").permitAll()
+                    .antMatchers("/**").permitAll()
                     .anyRequest().authenticated()
-                    .and()
-                    // 認証
-                    .formLogin()
-                    .loginPage("/loginForm")
-                    .loginProcessingUrl("/login")
-                    .usernameParameter("username")
-                    .passwordParameter("password")
-                    .defaultSuccessUrl("/", true)
-                    .failureUrl("/loginForm?error=true").permitAll()
                     // For H2 Console
                     .and()
                     .headers().frameOptions().disable()
