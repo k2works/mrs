@@ -23,7 +23,9 @@
     "report:cucumber": "npm-run-all report:cucumber:clean test:e2e report:cucumber:generate report:cucumber:report",
     "report:cucumber:generate": "node cypress/scripts/cucumber_generate.js",
     "report:cucumber:report": "node cypress/scripts/cucumber_report.js",
-    "report:cucumber:clean": "rimraf cypress/report && rimraf cypress/cucumber-json"
+    "report:cucumber:clean": "rimraf cypress/report && rimraf cypress/cucumber-json",
+    "deploy:local": "vercel dev",
+    "deploy": "vercel"
   },
   "repository": {
     "type": "git",
@@ -79,7 +81,8 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-validation": "^3.0.7",
-    "validator": "^13.5.2"
+    "validator": "^13.5.2",
+    "vercel": "^22.0.0"
   },
   "cypress-cucumber-preprocessor": {
     "step_definitions": "cypress/support/step_definitions/",
