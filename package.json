@@ -8,11 +8,12 @@
   },
   "scripts": {
     "start": "nf start -j ./src/main/typescript/Procfile",
-    "build:dev": "cross-env NODE_ENV=development webpack --config webpack.config.js",
-    "build:prd": "cross-env NODE_ENV=production webpack --config webpack.config.js",
+    "build": "cross-env NODE_ENV=production webpack --config webpack.common.js",
+    "build:dev": "cross-env NODE_ENV=development webpack --config webpack.dev.js",
+    "build:prd": "cross-env NODE_ENV=production webpack --config webpack.prod.js",
     "app": "browser-sync start --proxy localhost:9000 --files ./src/main/typescript/**",
     "dev": "cross-env NODE_ENV=development webpack serve",
-    "watch": "webpack --watch --config webpack.config.js",
+    "watch": "webpack --watch --config webpack.dev.js",
     "e2e": "cypress open",
     "test": "npm-run-all test:unit test:e2e",
     "test:e2e": "cypress run",
@@ -63,6 +64,7 @@
     "webpack": "^5.21.2",
     "webpack-cli": "^4.5.0",
     "webpack-dev-server": "^3.11.2",
+    "webpack-merge": "^5.7.3",
     "webpack-serve": "^3.2.0"
   },
   "dependencies": {

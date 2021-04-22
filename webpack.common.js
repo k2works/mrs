@@ -3,18 +3,10 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-    mode: "development",
     entry: "./src/main/typescript/index.tsx",
     output: {
         filename: "bundle.js",
-        path: path.resolve(__dirname, "src/main/resources/public"),
-    },
-    devtool: "inline-source-map",
-    devServer: {
-        historyApiFallback: true,
-        contentBase: path.join(__dirname, 'dist'),
-        compress: true,
-        port: 9000,
+        path: path.resolve(__dirname, "public"),
     },
     plugins: [
         new HtmlWebpackPlugin({
