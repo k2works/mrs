@@ -12,7 +12,7 @@
     "build:dev": "cross-env NODE_ENV=development webpack --config webpack.dev.js",
     "build:prd": "cross-env NODE_ENV=production webpack --config webpack.prod.js",
     "app": "browser-sync start --proxy localhost:9000 --files ./src/main/typescript/**",
-    "dev": "cross-env NODE_ENV=development webpack serve",
+    "dev": "cross-env NODE_ENV=development webpack serve --config webpack.dev.js",
     "watch": "webpack --watch --config webpack.dev.js",
     "e2e": "cypress open",
     "test": "npm-run-all test:unit test:e2e",
