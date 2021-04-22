@@ -2,6 +2,7 @@ package mrs.presentation.api.reservation;
 
 import mrs.application.coordinator.reservation.ReservationCoordinator;
 import mrs.application.service.user.ReservationUserDetails;
+import mrs.application.service.user.ReservationUserDetailsService;
 import mrs.domain.model.facility.room.RoomId;
 import mrs.domain.model.reservation.ReservationId;
 import mrs.domain.model.reservation.Reservations;
@@ -19,13 +20,16 @@ import java.time.LocalTime;
 /**
  * API 会議室予約
  */
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController("会議室予約API")
 @RequestMapping(value = {"api/reservations/{date}/{roomId}"})
 public class ReservationsController {
+    ReservationUserDetailsService reservationUserDetailsService;
     ReservationCoordinator reservationCoordinator;
 
-    public ReservationsController(ReservationCoordinator reservationCoordinator) {
+    public ReservationsController(ReservationCoordinator reservationCoordinator, ReservationUserDetailsService reservationUserDetailsService) {
         this.reservationCoordinator = reservationCoordinator;
+        this.reservationUserDetailsService = reservationUserDetailsService;
     }
 
     /**
@@ -61,10 +65,11 @@ public class ReservationsController {
      * 取消
      */
     @DeleteMapping
-    void cancel(@AuthenticationPrincipal ReservationUserDetails userDetails,
-                @RequestParam("reservationId") Integer reservationId,
-                @PathVariable("roomId") Integer roomId,
-                @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @PathVariable("date") LocalDate date
+    void cancel(
+            @AuthenticationPrincipal ReservationUserDetails userDetails,
+            @RequestParam("reservationId") Integer reservationId,
+            @PathVariable("roomId") Integer roomId,
+            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @PathVariable("date") LocalDate date
     ) {
         reservationCoordinator.cancelReservedMeetingRoom(new ReservationId(reservationId));
     }

@@ -1,12 +1,13 @@
+import {SignupPage} from "../pages/signupPage";
+import {SigninPage} from "../pages/signinPage";
+import {RoomsPage} from "../pages/roomsPage";
+
 const {
     Before,
     After,
     Given,
     Then,
 } = require("cypress-cucumber-preprocessor/steps");
-
-import {LoginPage} from "../pages/loginPage";
-import {RoomsPage} from "../pages/roomsPage";
 
 // this will get called before each scenario
 let page;
@@ -16,8 +17,11 @@ Before(() => {
 
 Given(`{string} ページにアクセスする`, (pageName) => {
     switch (pageName) {
+        case "利用者登録":
+            page = new SignupPage();
+            break;
         case "ログイン":
-            page = new LoginPage();
+            page = new SigninPage();
             break;
         case "会議室予約一覧":
             page = new RoomsPage();
@@ -35,9 +39,14 @@ Then(`機能名 {string} が表示される`, (funcName) => {
 Given(`{string} としてログインしている`, (user) => {
     switch (user) {
         case ("利用者"):
-            page = new LoginPage()
+            page = new SigninPage()
             page.visit()
-            page.login()
+            page.login('aaaa', 'demo')
+            break
+        case ("管理者"):
+            page = new SigninPage()
+            page.visit()
+            page.login('cccc', 'demo')
             break
         default:
             throw new Error('該当するページが存在しません')

@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import static org.hibernate.validator.internal.util.Contracts.assertNotNull;
 
 @MrsDBTest
-@DisplayName("予約ユーザーマッパー")
+@DisplayName("利用者マッパー")
 public class UsrMapperExtTest {
     @Autowired
     UsrMapperExt usrMapper;

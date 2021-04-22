@@ -4,16 +4,14 @@ import mrs.application.coordinator.reservation.ReservationCoordinator;
 import mrs.domain.model.reservation.datetime.ReservedDate;
 import mrs.domain.model.reservation.reservable.room.ReservableRooms;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 
 /**
  * API 会議室一覧
  */
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController("会議室一覧API")
 @RequestMapping("/api/rooms")
 public class RoomsController {

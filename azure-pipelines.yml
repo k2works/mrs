@@ -20,6 +20,8 @@ variables:
   # Agent VM image name
   vmImageName: "ubuntu-latest"
 
+  node_version: 12.x
+
 stages:
   - stage: Build
     displayName: Build stage
@@ -30,6 +32,14 @@ stages:
           vmImage: $(vmImageName)
 
         steps:
+          - task: NodeTool@0
+            inputs:
+              versionSpec: $(node_version)
+
+          - script: npm install
+          - script: npm run test:unit
+          - script: npm run build:prd
+
           - task: Maven@3
             inputs:
               mavenPomFile: "pom.xml"

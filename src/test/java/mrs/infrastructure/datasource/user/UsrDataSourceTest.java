@@ -9,13 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @MrsDBTest
-@DisplayName("予約ユーザーデータソース")
+@DisplayName("利用者データソース")
 public class UsrDataSourceTest {
     @Autowired
     UsrDataSource usrDataSource;
 
     @Test
-    void 予約ユーザーを取得する() {
+    void 利用者を取得する() {
         User result = usrDataSource.findById("test");
         assertNotNull(result);
     }

@@ -15,7 +15,17 @@ Before(() => {
 });
 
 Given(`選択した会議室を予約する`, () => {
-    cy.get('button').click();
+    cy.get('#reserve').click();
+})
+
+Given(`選択した会議室を {string} から {string} で予約する`, (from, to) => {
+    cy.get('#startTime').select(from)
+    cy.get('#endTime').select(from)
+    cy.get('#reserve').click();
+})
+
+Given(`選択した会議室の予約をキャンセルする`, () => {
+    cy.get('#cancel').click();
 })
 
 Then(`予約者 {string} が表示される`, (name) => {

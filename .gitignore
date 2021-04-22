@@ -49,3 +49,12 @@ cypress/cucumber-json
 cypress/report
 
 out
+
+src/main/resources/public
+src/main/resources/static/js/*.html
+src/main/resources/static/js/bundle.js
+src/main/resources/static/js/bundle.js.LICENSE.txt
+
+.DS_Store
+public
+dist
