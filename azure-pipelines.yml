@@ -37,6 +37,7 @@ stages:
               versionSpec: $(node_version)
 
           - script: npm install
+          - script: npm run test:unit
           - script: npm run build:prd
 
           - task: Maven@3

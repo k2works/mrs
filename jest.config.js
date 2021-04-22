@@ -1,6 +1,6 @@
 module.exports = {
     "roots": [
-        "src/main/resources/static/ts"
+        "src/main/typescript"
     ],
     "testMatch": [
         "**/__tests__/**/*.+(ts|tsx|js)",
