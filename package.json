@@ -7,10 +7,10 @@
     "doc": "docs"
   },
   "scripts": {
-    "start": "nf start -j ./src/main/resources/Procfile",
+    "start": "nf start -j ./src/main/typescript/Procfile",
     "build:dev": "cross-env NODE_ENV=development webpack --config webpack.config.js",
     "build:prd": "cross-env NODE_ENV=production webpack --config webpack.config.js",
-    "app": "browser-sync start --proxy localhost:9000 --files ./src/main/resources/**",
+    "app": "browser-sync start --proxy localhost:9000 --files ./src/main/typescript/**",
     "dev": "cross-env NODE_ENV=development webpack serve",
     "watch": "webpack --watch --config webpack.config.js",
     "e2e": "cypress open",
