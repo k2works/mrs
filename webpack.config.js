@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
     mode: "development",
-    entry: "./src/main/resources/static/ts/index.tsx",
+    entry: "./src/main/typescript/index.tsx",
     output: {
         filename: "bundle.js",
         path: path.resolve(__dirname, "src/main/resources/public"),
@@ -18,7 +18,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: "./src/main/resources/static/ts/index.html",
+            template: "./src/main/typescript/index.html",
             filename: "index.html",
         }),
         new webpack.ProvidePlugin({
