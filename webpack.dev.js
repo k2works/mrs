@@ -1,9 +1,10 @@
 const path = require("path");
 const {merge} = require('webpack-merge');
 const common = require('./webpack.common.js');
+const MODE = "development";
 
 module.exports = merge(common, {
-    mode: 'development',
+    mode: MODE,
     devtool: "inline-source-map",
     devServer: {
         historyApiFallback: true,

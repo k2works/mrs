@@ -1,8 +1,11 @@
 const path = require("path");
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MODE = "development";
+const enabledSourceMap = MODE === "development";
 
 module.exports = {
+    mode: MODE,
     entry: "./src/main/typescript/index.tsx",
     output: {
         filename: "bundle.js",
@@ -23,23 +26,42 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.css/,
+                test: /\.scss/,
                 use: [
                     "style-loader",
                     {
                         loader: "css-loader",
-                        options: {url: false},
+                        options: {
+                            url: false,
+                            sourceMap: enabledSourceMap
+                        },
                     },
+                    {
+                        loader: "postcss-loader",
+                        options: {
+                            postcssOptions: {
+                                plugins: [
+                                    ["autoprefixer", {grid: true}],
+                                ],
+                            },
+                        },
+                    },
+                    {
+                        loader: "sass-loader",
+                        options: {
+                            sourceMap: enabledSourceMap
+                        }
+                    }
                 ],
+            },
+            {
+                test: /\.(gif|png|jpg|eot|wof|woff|ttf|svg)$/,
+                type: "asset/inline",
             },
             {
                 test: /\.tsx?$/,
                 use: "ts-loader"
             },
-            {
-                test: /\.(jpg|png)$/,
-                loader: 'url-loader'
-            }
         ],
     },
     resolveLoader: {

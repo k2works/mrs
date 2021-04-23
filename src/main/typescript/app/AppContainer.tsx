@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
-import "../assets/css/style.css"
+import "../assets/css/style.scss"
 import Header from '../components/header/HeaderComponent';
 import Footer from "../components/footer/FooterComponent";
 import Nav from "../components/nav/NavComponent";
