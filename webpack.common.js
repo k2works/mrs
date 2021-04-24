@@ -32,7 +32,6 @@ module.exports = {
                     {
                         loader: "css-loader",
                         options: {
-                            url: false,
                             sourceMap: enabledSourceMap
                         },
                     },
@@ -45,6 +44,9 @@ module.exports = {
                                 ],
                             },
                         },
+                    },
+                    {
+                        loader: "resolve-url-loader"
                     },
                     {
                         loader: "sass-loader",
