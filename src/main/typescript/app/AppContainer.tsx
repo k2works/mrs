@@ -23,39 +23,65 @@ const AppContainer = () => {
 
     return (
         <div className={"container"}>
-            <Header/>
+            <div className={"row header"}>
+                <div className={"col"}/>
+                <div className={"col col-md-auto"}>
+                    <Header/>
+                </div>
+                <div className={"col"}/>
+            </div>
+
             <Router>
-                <Nav user={user}/>
-                <div className={"main"}>
-                    <Switch>
-                        <Route path="/" exact>
-                            <TopContainer/>
-                        </Route>
-                        <Route
-                            path="/signup"
-                            exact
-                            component={SignupContainer}
-                        />
-                        <Route
-                            path="/signin"
-                            exact
-                            component={SigninContainer}
-                        />
-                        <Route
-                            path="/rooms"
-                            exact
-                            render={() => <ListRoomsContainer/>}
-                        />
-                        <Route
-                            path="/reservations"
-                            exact
-                            render={() => <ReservationContainer />}
-                        />
-                        <Route component={NotFound} />
-                    </Switch>
+                <div className={"row nav"}>
+                    <div className={"col"}>
+                        <Nav user={user}/>
+                    </div>
+                </div>
+
+                <div className={"row main"}>
+                    <div>
+                        <div className={"col"}>
+                            <Switch>
+                                <Route path="/" exact>
+                                    <TopContainer/>
+                                </Route>
+                                <Route
+                                    path="/signup"
+                                    exact
+                                    component={SignupContainer}
+                                />
+                                <Route
+                                    path="/signin"
+                                    exact
+                                    component={SigninContainer}
+                                />
+                                <Route
+                                    path="/rooms"
+                                    exact
+                                    render={() => <ListRoomsContainer/>}
+                                />
+                                <Route
+                                    path="/reservations"
+                                    exact
+                                    render={() => <ReservationContainer/>}
+                                />
+                                <Route component={NotFound}/>
+                            </Switch>
+                        </div>
+
+                        <div className={"col"}/>
+                        <div className={"col"}/>
+                    </div>
                 </div>
             </Router>
-            <Footer />
+
+            <div className={"row footer"}>
+                <div className={"col"}/>
+                <div className={"col col-md-auto"}>
+                    <Footer/>
+                </div>
+                <div className={"col"}/>
+            </div>
         </div>
     );
 };

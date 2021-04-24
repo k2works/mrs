@@ -17,21 +17,25 @@ const NavComponent: React.FC<Props> = (props: Props) => {
     };
 
     return (
-        <div className={"nav"}>
+        <div>
             <nav>
                 <h3>メニュー</h3>
-                <ul>
+                <ul className={"list-inline"}>
                     {props.user && (
                         <div>
-                            <li><a onClick={() => history.push('/')} id="home">ホーム</a></li>
-                            <li><a onClick={() => history.push('/rooms')} id="rooms">会議室一覧</a></li>
-                            <li><a onClick={handleOnClickLogout}>ログアウト</a></li>
+                            <li className={"list-inline-item"}><a onClick={() => history.push('/')} id="home">ホーム</a>
+                            </li>
+                            <li className={"list-inline-item"}><a onClick={() => history.push('/rooms')}
+                                                                  id="rooms">会議室一覧</a></li>
+                            <li className={"list-inline-item"}><a onClick={handleOnClickLogout}>ログアウト</a></li>
                         </div>
                     )}
                     {!props.user && (
                         <div>
-                            <li><a onClick={() => history.push('/signin')} id="signin">ログイン</a></li>
-                            <li><a onClick={() => history.push('/signup')} id="signup">利用者登録</a></li>
+                            <li className={"list-inline-item"}><a onClick={() => history.push('/signin')}
+                                                                  id="signin">ログイン</a></li>
+                            <li className={"list-inline-item"}><a onClick={() => history.push('/signup')}
+                                                                  id="signup">利用者登録</a></li>
                         </div>
                     )}
                 </ul>
