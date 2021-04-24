@@ -1,6 +1,6 @@
 import React from 'react';
 
-import notFoundImage from '../assets/image/not_found.png';
+import notFoundImage from '../assets/img/not_found.png';
 
 const NotFound = () => (
     <div style={{ textAlign: 'center' }}>
