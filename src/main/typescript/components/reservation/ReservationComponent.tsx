@@ -6,6 +6,9 @@ import {currentReservedDate, reservationState} from "../../features/reservation/
 import {selectMessage} from "../../features/message/messageSlice";
 import {cancel, reserve} from "../../app/reservation/ReservationContainer";
 
+import drudgesirenImg from '../../assets/img/test/drudgesiren.gif';
+import mchammerImg from '../../assets/img/test/mchammer.gif';
+
 type Props = {
     user: User
 }
@@ -65,6 +68,7 @@ const ReservationComponent: React.FC<Props> = (props: Props) => {
         if (props.user.userId.value === params.username || props.user.roleName === "ADMIN")
             return (
                 <button
+                    className={"btn btn-primary"}
                     id={"cancel"}
                     onClick={handleCancel}
                     type="submit"
@@ -81,9 +85,17 @@ const ReservationComponent: React.FC<Props> = (props: Props) => {
                     <a onClick={handleRooms}>会議室一覧へ</a>
                 </div>
                 {!successful ? (
-                        <p style={{color: 'red'}}>{message}</p>
+                        <div className={"alert alert-block"}>
+                            <img className={"pull-left"} src={drudgesirenImg}/>
+                            <h4 className={"alert-heading"}>残念</h4>
+                            <p>{message}</p>
+                        </div>
                     ) :
-                    <p>{message}</p>
+                    <div className={"alert alert-success"}>
+                        <img className={"pull-left"} src={mchammerImg}/>
+                        <h4 className={"alert-heading"}>やったね</h4>
+                        <p>{message}</p>
+                    </div>
                 }
 
                 <form onSubmit={e => {
@@ -200,7 +212,7 @@ const ReservationComponent: React.FC<Props> = (props: Props) => {
                         <option value="23:30">23:30</option>
                     </select>
                     <br/>
-                    <button id="reserve" type="submit">予約</button>
+                    <button className={"btn btn-primary"} id="reserve" type="submit">予約</button>
                 </form>
 
                 <table>

@@ -19,26 +19,33 @@ const NavComponent: React.FC<Props> = (props: Props) => {
     return (
         <div>
             <nav>
-                <h3>メニュー</h3>
-                <ul className={"list-inline"}>
-                    {props.user && (
-                        <div>
-                            <li className={"list-inline-item"}><a onClick={() => history.push('/')} id="home">ホーム</a>
-                            </li>
-                            <li className={"list-inline-item"}><a onClick={() => history.push('/rooms')}
-                                                                  id="rooms">会議室一覧</a></li>
-                            <li className={"list-inline-item"}><a onClick={handleOnClickLogout}>ログアウト</a></li>
+                <div className={"navbar"}>
+                    <div className={"navbar-inner"}>
+                        <div className={"container"}>
+                            <a className={"brand"}>メニュー</a>
+
+                            <div className={"nav-collapse"}>
+                                {props.user && (
+                                    <ul className={"nav"}>
+                                        <li><a onClick={() => history.push('/')} id="home">ホーム</a>
+                                        </li>
+                                        <li><a onClick={() => history.push('/rooms')}
+                                               id="rooms">会議室一覧</a></li>
+                                        <li><a onClick={handleOnClickLogout}>ログアウト</a></li>
+                                    </ul>
+                                )}
+                                {!props.user && (
+                                    <ul className={"nav"}>
+                                        <li><a onClick={() => history.push('/signin')}
+                                               id="signin">ログイン</a></li>
+                                        <li><a onClick={() => history.push('/signup')}
+                                               id="signup">利用者登録</a></li>
+                                    </ul>
+                                )}
+                            </div>
                         </div>
-                    )}
-                    {!props.user && (
-                        <div>
-                            <li className={"list-inline-item"}><a onClick={() => history.push('/signin')}
-                                                                  id="signin">ログイン</a></li>
-                            <li className={"list-inline-item"}><a onClick={() => history.push('/signup')}
-                                                                  id="signup">利用者登録</a></li>
-                        </div>
-                    )}
-                </ul>
+                    </div>
+                </div>
             </nav>
         </div>
     );

@@ -175,7 +175,7 @@ const Signup = () => {
                             </div>
 
                             <div>
-                                <button>登録</button>
+                                <button className={"btn btn-primary"}>登録</button>
                             </div>
                         </div>
                     )}
