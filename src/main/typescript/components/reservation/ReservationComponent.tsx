@@ -3,7 +3,7 @@ import {useHistory} from "react-router";
 import {useDispatch, useSelector} from "react-redux";
 import {User} from "../../features/auth/authSlice";
 import {currentReservedDate, reservationState} from "../../features/reservation/reservationSlice";
-import {selectMessage} from "../../features/message/messageSlice";
+import {selectMessage, setMessage} from "../../features/message/messageSlice";
 import {cancel, reserve} from "../../app/reservation/ReservationContainer";
 
 import drudgesirenImg from '../../assets/img/test/drudgesiren.gif';
@@ -78,29 +78,41 @@ const ReservationComponent: React.FC<Props> = (props: Props) => {
             )
     }
 
-    return (
-        <div>
-            <main>
-                <div>
-                    <a onClick={handleRooms}>会議室一覧へ</a>
-                </div>
-                {!successful ? (
-                        <div className={"alert alert-block"}>
-                            <img className={"pull-left"} src={drudgesirenImg}/>
-                            <h4 className={"alert-heading"}>残念</h4>
-                            <p>{message}</p>
-                        </div>
-                    ) :
+    const messageBox = () => {
+        if (message !== "")
+            if (!successful) {
+                return (
+                    <div className={"alert alert-block"}>
+                        <img className={"pull-left"} src={drudgesirenImg}/>
+                        <h4 className={"alert-heading"}>残念</h4>
+                        <p>{message}</p>
+                    </div>
+                )
+            } else {
+                return (
                     <div className={"alert alert-success"}>
                         <img className={"pull-left"} src={mchammerImg}/>
                         <h4 className={"alert-heading"}>やったね</h4>
                         <p>{message}</p>
                     </div>
-                }
+                )
+            }
+    }
+
+    return (
+        <div>
+            <main>
+                <div>
+                    {messageBox()}
+                </div>
 
                 <form onSubmit={e => {
                     e.preventDefault()
-                    handleSubmit()
+                    handleSubmit().then(data => {
+                        if (data === undefined) {
+                            dispatch(setMessage("予約できませんでした。"))
+                        }
+                    })
                 }}
                 >
                     会議室: <span>{state.roomName}</span>
