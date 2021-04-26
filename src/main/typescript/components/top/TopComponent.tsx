@@ -18,6 +18,15 @@ type Props = {
 const TopComponent: React.FC<Props> = (props: Props) => {
     const history = useHistory();
 
+    const mchammers = (count: number) => (
+        Array.from(Array(count).keys()).map(i =>
+            <img
+                src={mchammerImg}
+                alt="uzeee"
+            />
+        )
+    )
+
     return (
         <div>
             <main>
@@ -30,9 +39,7 @@ const TopComponent: React.FC<Props> = (props: Props) => {
                 </div>
 
                 <center>
-                    <img src={mchammerImg}/>
-                    <img src={mchammerImg}/>
-                    <img src={mchammerImg}/>
+                    {mchammers(10)}
                 </center>
 
 

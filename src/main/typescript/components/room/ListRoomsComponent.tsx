@@ -10,6 +10,7 @@ import {
     roomState
 } from "../../features/room/roomSlice";
 import {setParams} from "../../features/reservation/reservationSlice";
+import dividerImg from '../../assets/img/test/divider4.gif';
 
 type Props = {
     user: User
@@ -66,6 +67,8 @@ const ListRoomComponent: React.FC<Props> = (props: Props) => {
                         ))
                     }
                 </ul>
+
+                <img src={dividerImg}/>
             </main>
         </div>
     );

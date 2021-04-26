@@ -108,10 +108,8 @@ const ReservationComponent: React.FC<Props> = (props: Props) => {
 
                 <form onSubmit={e => {
                     e.preventDefault()
-                    handleSubmit().then(data => {
-                        if (data === undefined) {
-                            dispatch(setMessage("予約できませんでした。"))
-                        }
+                    handleSubmit().catch(error => {
+                        dispatch(setMessage("予約できませんでした。"))
                     })
                 }}
                 >
