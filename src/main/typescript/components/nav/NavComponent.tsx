@@ -3,6 +3,8 @@ import {useHistory} from "react-router";
 import {useDispatch} from "react-redux";
 import {signout, User} from "../../features/auth/authSlice";
 
+import newImg from '../../assets/img/test/new.gif';
+
 type Props = {
     user: User | null
 }
@@ -31,6 +33,11 @@ const NavComponent: React.FC<Props> = (props: Props) => {
                                         </li>
                                         <li><a onClick={() => history.push('/rooms')}
                                                id="rooms">会議室一覧</a></li>
+                                        <li><a onClick={() => history.push('/bbs')} id="rooms">
+                                            <img className="pull-left" src={newImg}/>
+                                            掲示板
+                                        </a>
+                                        </li>
                                         <li><a onClick={handleOnClickLogout}>ログアウト</a></li>
                                     </ul>
                                 )}

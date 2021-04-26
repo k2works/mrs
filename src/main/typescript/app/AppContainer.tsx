@@ -13,6 +13,7 @@ import ReservationContainer from "./reservation/ReservationContainer";
 import SignupContainer from "./auth/SignupContainer";
 import {useSelector} from "react-redux";
 import {currentUser} from "../features/auth/authSlice";
+import BBSContainer from "./bbs/BBSContainer";
 
 const AppContainer = () => {
     useEffect(() => {
@@ -58,12 +59,17 @@ const AppContainer = () => {
                                 <Route
                                     path="/rooms"
                                     exact
-                                    render={() => <ListRoomsContainer/>}
+                                    component={ListRoomsContainer}
                                 />
                                 <Route
                                     path="/reservations"
                                     exact
-                                    render={() => <ReservationContainer/>}
+                                    component={ReservationContainer}
+                                />
+                                <Route
+                                    path="/bbs"
+                                    exact
+                                    component={BBSContainer}
                                 />
                                 <Route component={NotFound}/>
                             </Switch>
