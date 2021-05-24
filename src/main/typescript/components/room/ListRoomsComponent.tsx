@@ -57,6 +57,7 @@ const ListRoomComponent: React.FC<Props> = (props: Props) => {
                         room.reservableRooms.value.map((item, key) => (
                             <li key={key}>
                                 <a onClick={handleReservableRoom}
+                                   id={"room-" + key.toString()}
                                    data-reserved_date={item.reservableRoomId.reservedDate.value}
                                    data-room_id={item.reservableRoomId.roomId.value}
                                    data-room_name={item.meetingRoom.roomName.value}
