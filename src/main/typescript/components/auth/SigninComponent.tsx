@@ -114,7 +114,9 @@ const Signin = () => {
                             <tr>
                                 <td>&nbsp;</td>
                                 <td>
-                                    <button id={"login"} onClick={handleLogin} type="submit">ログイン</button>
+                                    <button className={"btn btn-primary"} id={"login"} onClick={handleLogin}
+                                            type="submit">ログイン
+                                    </button>
                                 </td>
                             </tr>
                         </table>

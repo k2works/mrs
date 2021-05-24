@@ -10,6 +10,7 @@ import {
     roomState
 } from "../../features/room/roomSlice";
 import {setParams} from "../../features/reservation/reservationSlice";
+import dividerImg from '../../assets/img/test/divider4.gif';
 
 type Props = {
     user: User
@@ -56,6 +57,7 @@ const ListRoomComponent: React.FC<Props> = (props: Props) => {
                         room.reservableRooms.value.map((item, key) => (
                             <li key={key}>
                                 <a onClick={handleReservableRoom}
+                                   id={"room-" + key.toString()}
                                    data-reserved_date={item.reservableRoomId.reservedDate.value}
                                    data-room_id={item.reservableRoomId.roomId.value}
                                    data-room_name={item.meetingRoom.roomName.value}
@@ -66,6 +68,8 @@ const ListRoomComponent: React.FC<Props> = (props: Props) => {
                         ))
                     }
                 </ul>
+
+                <img src={dividerImg}/>
             </main>
         </div>
     );

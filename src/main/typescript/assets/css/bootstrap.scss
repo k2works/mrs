@@ -1,0 +1,40 @@
+.header {
+  padding: 1px;
+  text-align: center;
+  background: green;
+  border-radius: 10px 10px 0 0;
+  font-size: xxx-large;
+  color: whitesmoke;
+  -webkit-text-stroke: 2px #000;
+}
+
+.nav {
+  padding: 1em 0;
+  background: yellow;
+}
+
+.nav a {
+  text-decoration: none;
+  color: black;
+}
+
+.nav a:hover {
+  text-decoration: underline;
+}
+
+.main {
+  padding: 1em;
+  min-height: 50vh;
+  background: black;
+  color: limegreen;
+}
+
+.footer {
+  padding: 1px;
+  background: green;
+  border-radius: 0 0 10px 10px;
+  text-align: center;
+  font-size: small;
+  color: whitesmoke;
+}
+
