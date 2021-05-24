@@ -52,3 +52,7 @@ Given(`{string} としてログインしている`, (user) => {
             throw new Error('該当するページが存在しません')
     }
 })
+
+Given(`読み込みが完了するまで待つ`, (user) => {
+    cy.wait(10000);
+})
