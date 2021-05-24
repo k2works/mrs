@@ -48,7 +48,7 @@
     "cpx": "^1.5.0",
     "css-loader": "^5.2.4",
     "cucumber-html-report": "^0.6.5",
-    "cypress": "^7.1.0",
+    "cypress": "^7.3.0",
     "cypress-cucumber-preprocessor": "^4.0.0",
     "foreman": "^3.0.1",
     "html-webpack-plugin": "^5.0.0",

@@ -102,7 +102,7 @@
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
         <dependency>
-            <groupId>irof</groupId>
+            <groupId>com.github.irof</groupId>
             <artifactId>jig-erd</artifactId>
             <version>[0.0.5,)</version>
             <scope>test</scope>
