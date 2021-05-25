@@ -63,3 +63,5 @@ dist
 
 id_rsa
 id_rsa.pub
+
+!ops/build

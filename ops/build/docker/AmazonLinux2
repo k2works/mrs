@@ -1,0 +1,23 @@
+# AmazonLinuxの最新イメージを使う
+FROM amazonlinux
+
+# OpenSSH サーバをインストールする
+RUN yum -y install openssh-server
+
+# sshでログインできるようにする
+RUN sed -ri 's/^#PermitRootLogin yes/PermitRootLogin yes/' /etc/ssh/sshd_config
+
+# root のパスワードを 設定
+RUN echo 'root:rootpass' | chpasswd
+
+# 使わないにしてもここに公開鍵を登録しておかないとログインできない
+RUN ssh-keygen -t rsa -N "" -f /etc/ssh/ssh_host_rsa_key
+
+# ホスト側にある公開鍵をイメージ側に登録します
+COPY ../../config/ssh/id_rsa.pub /root/.ssh/authorized_keys
+
+# sshd の使うポートを公開する
+EXPOSE 22
+
+# sshd を起動する
+CMD ["/usr/sbin/sshd", "-D"]
