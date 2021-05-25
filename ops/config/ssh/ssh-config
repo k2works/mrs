@@ -1,0 +1,4 @@
+Host dev.web
+    HostName localhost
+    User root
+    IdentityFile ~/.ssh/id_rsa

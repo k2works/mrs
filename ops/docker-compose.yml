@@ -1,0 +1,10 @@
+version: '3'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: ./build/docker/Dockerfile
+    ports:
+      - "22:22"
+    volumes:
+      - ./:/srv/ops
