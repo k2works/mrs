@@ -4,6 +4,7 @@ services:
     build:
       context: .
       dockerfile: build/docker/AmazonLinux2
+    container_name: dev-web
     ports:
       - "22:22"
     volumes:
