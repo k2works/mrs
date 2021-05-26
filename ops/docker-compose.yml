@@ -6,6 +6,6 @@ services:
       dockerfile: build/docker/AmazonLinux2
     container_name: dev-web
     ports:
-      - "22:22"
+      - "20022:22"
     volumes:
       - ./:/srv/ops
