@@ -1,6 +1,9 @@
 # AmazonLinuxの最新イメージを使う
 FROM amazonlinux
 
+# 必要なをインストールする
+RUN yum -y install which procps
+
 # OpenSSH サーバをインストールする
 RUN yum -y install openssh-server
 

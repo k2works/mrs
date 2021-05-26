@@ -2,3 +2,4 @@
 - hosts: docker
   roles:
     - setup_amazonlinux-2
+    - setup_java

@@ -1,3 +1,4 @@
 ---
 user: "root"
 home: "/home"
+java_ver_amazon: "java-11-amazon-corretto-headless"
