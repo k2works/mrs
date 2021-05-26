@@ -36,11 +36,6 @@
   become: '{{ sdkman_user != ansible_user_id }}'
   become_user: '{{ sdkman_user }}'
 
-- name: Cleanup SDKMAN script
-  file:
-    path: '{{ sdkman_tmp_dir }}/sdkman_script'
-    state: absent
-
 - name: Install SDK candidates/versions
   shell: >-
     . {{ sdkman_dir }}/bin/sdkman-init.sh &&
