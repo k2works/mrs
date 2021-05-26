@@ -20,7 +20,7 @@ RUN ssh-keygen -t rsa -N "" -f /etc/ssh/ssh_host_rsa_key
 RUN sed -i 's/#Port 22/Port 20022/' /etc/ssh/sshd_config
 
 # ホスト側にある公開鍵をイメージ側に登録します
-COPY ../../config/ssh/id_rsa.pub /root/.ssh/authorized_keys
+COPY ../../../config/ssh/id_rsa.pub /root/.ssh/authorized_keys
 
 # sshd の使うポートを公開する
 EXPOSE 20022
