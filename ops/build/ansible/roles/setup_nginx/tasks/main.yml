@@ -1,0 +1,20 @@
+- name: Get Nginx package list from local
+  yum:
+    disablerepo: "*"
+    list: nginx
+  register: installed_pkgs
+
+- name: Enable amzn2extra-nginx repository if nginx is not installed
+  shell: amazon-linux-extras enable {{ nginx_ver_amazon }}
+  when: ansible_distribution == 'Amazon' and installed_pkgs.results | length == 0
+
+- name: Install Nginx packages from amazon-linux-extras
+  yum:
+    name: nginx
+    state: present
+  when: ansible_distribution == 'Amazon'
+
+- name: start nginx
+  service:
+    name: nginx
+    state: started
