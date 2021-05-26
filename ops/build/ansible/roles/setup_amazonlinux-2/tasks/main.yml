@@ -4,6 +4,15 @@
     state: latest
     use_backend: yum
 
+- name: install packages
+  yum:
+    name: '{{packages}}'
+    update_cache: yes
+  vars:
+    packages:
+      - zip
+      - unzip
+
 - name: install amazon_linux_extras
   shell: amazon-linux-extras install epel -y
 
