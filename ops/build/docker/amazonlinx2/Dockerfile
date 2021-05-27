@@ -2,7 +2,7 @@
 FROM amazonlinux
 
 # 必要なをインストールする
-RUN yum -y install which procps
+RUN yum -y install which procps sudo
 
 # OpenSSH サーバをインストールする
 RUN yum -y install openssh-server

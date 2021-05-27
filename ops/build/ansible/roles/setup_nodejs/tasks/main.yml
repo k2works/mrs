@@ -1,0 +1,28 @@
+# Install Node.js if not uninstalled
+- name: Check for Node.js installation
+  stat:
+    path: 'user/bin/node'
+  register: nodejs_init
+
+- name: Download Node.js
+  get_url:
+    url: https://rpm.nodesource.com/setup_{{ nodejs_ver }}
+    dest: '{{ home }}/nodejs_script'
+    owner: '{{ user }}'
+    group: '{{ group }}'
+    validate_certs: true
+
+- name: Run Node.js script
+  command: /bin/bash {{ home }}/nodejs_script
+  when: not nodejs_init.stat.exists
+
+- name: install packages
+  yum:
+    name: '{{packages}}'
+    update_cache: yes
+  vars:
+    packages:
+      - nodejs
+
+- name: Install Yarn
+  shell: npm install -g yarn

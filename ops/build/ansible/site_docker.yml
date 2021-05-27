@@ -3,6 +3,7 @@
   roles:
     - setup_amazonlinux-2
     - setup_java
+    - setup_nodejs
     - setup_nginx
     - configure_app
     - configure_service

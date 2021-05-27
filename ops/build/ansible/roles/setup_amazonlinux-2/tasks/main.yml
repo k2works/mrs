@@ -12,6 +12,7 @@
     packages:
       - zip
       - unzip
+      - git
 
 - name: install amazon_linux_extras
   shell: amazon-linux-extras install epel -y
