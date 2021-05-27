@@ -1,0 +1,22 @@
+- name: Setup sample app
+  shell: >-
+    . {{ sdkman_dir }}/bin/sdkman-init.sh &&
+    spring init --build=gradle --dependencies=web --name=hello hello-world
+  args:
+    chdir: /srv
+    executable: /bin/bash
+    creates: /srv/hello-world
+
+- name: Template a file to /src/hello-world
+  ansible.builtin.template:
+    src: ./templates/HelloApplication.java
+    dest: /srv/hello-world/src/main/java/com/example/helloworld/HelloApplication.java
+    owner: "{{ user }}"
+    group: "{{ group }}"
+
+- name: Build a Jar File with Gradle
+  shell: >-
+    ./gradlew build
+  args:
+    chdir: /srv/hello-world
+    executable: /bin/bash

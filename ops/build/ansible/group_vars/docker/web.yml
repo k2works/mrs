@@ -1,5 +1,6 @@
 ---
 user: "root"
+group: "root"
 home: "/root"
 java_ver_amazon: "java-11-amazon-corretto-headless"
 nginx_ver_amazon: "nginx1.12"

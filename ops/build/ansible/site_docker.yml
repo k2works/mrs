@@ -1,6 +1,8 @@
 ---
 - hosts: docker
   roles:
-    - setup_amazonlinux-2
-    - setup_java
-    - setup_nginx
+    #    - setup_amazonlinux-2
+    #    - setup_java
+    #    - setup_nginx
+    - configure_app
+
