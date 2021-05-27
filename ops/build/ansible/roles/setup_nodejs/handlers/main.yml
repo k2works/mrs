@@ -1,0 +1,5 @@
+- name: Cleanup Node.js script
+  file:
+    path: '{{ home }}/nodejs_script'
+    state: absent
+

@@ -15,6 +15,7 @@
 - name: Run Node.js script
   command: /bin/bash {{ home }}/nodejs_script
   when: not nodejs_init.stat.exists
+  notify: Cleanup Node.js script
 
 - name: install packages
   yum:
