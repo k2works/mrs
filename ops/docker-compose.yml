@@ -9,6 +9,6 @@ services:
       - "20022:20022"
       - "20080:80"
     volumes:
-      - ../src:/srv/mrs/src
+      - ../:/srv/mrs
     privileged: true
     command: /sbin/init
