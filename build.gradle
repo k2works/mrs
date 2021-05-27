@@ -20,9 +20,7 @@ sourceCompatibility = '11'
 repositories {
     jcenter()
     mavenLocal()
-    maven {
-        url "https://dl.bintray.com/jignite/maven/"
-    }
+    mavenCentral()
 }
 
 dependencies {
@@ -42,7 +40,7 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test:2.4.1") {
         exclude(group: 'org.junit.vintage')
     }
-    testImplementation 'irof:jig-erd:latest.release'
+    testImplementation 'com.github.irof:jig-erd:latest.release'
     compile "org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.3"
     compile "org.flywaydb:flyway-core:7.5.0"
     implementation ("io.springfox:springfox-swagger2:2.9.2")
