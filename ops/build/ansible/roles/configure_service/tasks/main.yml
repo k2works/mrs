@@ -1,0 +1,17 @@
+- name: Create SpringBoot HelloWorld Service
+  ansible.builtin.template:
+    src: ./templates/helloworld.service
+    dest: /etc/systemd/system/helloworld.service
+    owner: "{{ user }}"
+    group: "{{ group }}"
+
+- name: start helloworld.service
+  service:
+    name: helloworld.service
+    state: started
+
+- name: Restart nginx
+  service:
+    name: nginx
+    state: restarted
+

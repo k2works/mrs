@@ -5,4 +5,5 @@
     - setup_java
     - setup_nginx
     - configure_app
+    - configure_service
 

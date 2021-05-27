@@ -1,0 +1,16 @@
+[Unit]
+Description=Spring Boot HelloWorld
+After=syslog.target
+After=network.target[Service]
+User={{ user }}
+Type=simple
+
+[Service]
+ExecStart=/usr/bin/java -jar /srv/hello-world/build/libs/hello-world-0.0.1-SNAPSHOT.jar
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=helloworld
+
+[Install]
+WantedBy=multi-user.target
