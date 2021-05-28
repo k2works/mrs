@@ -52,7 +52,6 @@ dependencies {
 group = 'mrs'
 version = '0.1.0-SNAPSHOT'
 description = 'mrs'
-java.sourceCompatibility = JavaVersion.VERSION_1_8
 
 publishing {
     publications {
