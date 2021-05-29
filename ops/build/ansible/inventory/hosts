@@ -1,3 +1,6 @@
+[wsl]
+localhost ansible_connection=local
+
 [docker]
 dev.web ansible_connection=docker ansible_host=dev-web
 dev.web ansible_python_interpreter=/usr/bin/python

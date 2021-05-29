@@ -1,0 +1,3 @@
+---
+- import_playbook: site_wsl.yml
+- import_playbook: site_docker.yml

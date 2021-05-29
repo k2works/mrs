@@ -1,0 +1,9 @@
+- name: Add yum repository
+  shell: yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
+  when: ansible_distribution == 'Amazon'
+
+- name: Install package.
+  yum:
+    name: terraform
+    state: present
+  when: ansible_distribution == 'Amazon'

@@ -1,0 +1,15 @@
+- name: Update packages
+  apt:
+    name: '*'
+    state: latest
+
+- name: install packages
+  apt:
+    name: '{{packages}}'
+    update_cache: yes
+  vars:
+    packages:
+      - zip
+      - unzip
+      - curl
+      - build-essential

@@ -1,0 +1,19 @@
+---
+user: "root"
+group: "root"
+home: "/{{ user }}"
+nodejs_ver: "14.x"
+java_ver_amazon: "java-11-amazon-corretto-headless"
+nginx_ver_amazon: "nginx1.12"
+sdkman_tmp_dir: "{{ home }}"
+sdkman_user: "{{ user }}"
+sdkman_group: "{{ user }}"
+sdkman_validate_ssl: true
+sdkman_dir: "{{ home }}/.sdkman"
+sdkman_install_packages:
+  - { candidate: springboot, version: 2.5.0 }
+  - { candidate: gradle, version: 6.8.3 }
+  - { candidate: maven, version: 3.8.1 }
+sdkman_defaults:
+  gradle: '6.8.3'
+  maven: '3.8.1'

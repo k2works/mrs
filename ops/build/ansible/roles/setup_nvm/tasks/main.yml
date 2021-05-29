@@ -1,0 +1,10 @@
+- name: install nvm
+  git: repo=https://github.com/nvm-sh/nvm.git
+    dest={{ home }}/.nvm
+    version=master
+- name: add nvm path to bash_profile
+  copy: src=../files/nvm.sh dest=/etc/profile.d/nvm.sh
+  become_user: '{{ user }}'
+- name: change ~/.nvm owner to {{ user }}
+  file: path={{ home }}/.nvm state=directory owner={{ user }} group={{ user }} recurse=yes
+  become_user: '{{ user }}'

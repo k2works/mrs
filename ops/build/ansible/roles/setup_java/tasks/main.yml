@@ -49,6 +49,8 @@
   failed_when: >-
     sdk_install.rc != 0 and
     'is already installed.' not in sdk_install.stdout
+  become: '{{ sdkman_user != ansible_user_id }}'
+  become_user: '{{ sdkman_user }}'
 
 - name: Get SDK defaults
   shell: . {{ sdkman_dir }}/bin/sdkman-init.sh && sdk current {{ item }}
@@ -58,6 +60,8 @@
   changed_when: false
   loop: >-
     {{ sdkman_install_packages | map(attribute="candidate") | unique | list }}
+  become: '{{ sdkman_user != ansible_user_id }}'
+  become_user: '{{ sdkman_user }}'
 
 - name: Set SDK defaults
   shell: >-
@@ -71,3 +75,5 @@
     (get_sdk_defaults.results |
      selectattr('item', 'equalto', item.key) |
      first).stdout
+  become: '{{ sdkman_user != ansible_user_id }}'
+  become_user: '{{ sdkman_user }}'
