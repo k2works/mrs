@@ -22,7 +22,6 @@
 WSL環境構築に関しては以下を参照
 
 - [環境構築から始めるテスト駆動開発 ~プログラミング環境の共通基盤を構築する~](https://k2works.github.io/2020/04/07/2020-04-08-1/)
-- [環境構築から始めるテスト駆動開発 ~Ruby開発環境を構築する(WSL版)~](https://k2works.github.io/2020/04/07/2020-04-08-3/)
 
 [web.yml](ops/build/ansible/group_vars/docker.yml) の `user:` をWSLアカウントユーザーにする
 
