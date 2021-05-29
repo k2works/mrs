@@ -1,6 +1,6 @@
 ---
-user: "wsl"
-group: "wsl"
+user: "ubuntu"
+group: "ubuntu"
 home: "/home/{{ user }}"
 sdkman_tmp_dir: "{{ home }}"
 sdkman_user: "{{ user }}"

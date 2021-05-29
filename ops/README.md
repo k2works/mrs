@@ -26,11 +26,7 @@ WSL環境構築に関しては以下を参照
 [web.yml](ops/build/ansible/group_vars/docker.yml) の `user:` をWSLアカウントユーザーにする
 
 ```
-sudo apt update
-sudo apt install software-properties-common -y
-sudo apt-add-repository --yes --update ppa:ansible/ansible 
-sudo apt-get install ansible -y
-sudo ansible-playbook -v -i ./ops/build/ansible/inventory/hosts ./ops/build/ansible/site_wsl.yml
+./setup_wsl.sh
 ```
 
 ## 配置

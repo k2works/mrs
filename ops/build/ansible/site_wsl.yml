@@ -4,7 +4,6 @@
   roles:
     - setup_ubuntu
     - setup_java
-    - setup_nvm
     - setup_chrome
     - setup_awscli
     - setup_terraform
