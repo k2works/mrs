@@ -7,3 +7,13 @@
     name: terraform
     state: present
   when: ansible_distribution == 'Amazon'
+
+- name: Add apt repository
+  shell: curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+  when: ansible_distribution == 'Ubuntu'
+
+- name: Install package.
+  apt:
+    name: terraform
+    state: present
+  when: ansible_distribution == 'Ubuntu'
