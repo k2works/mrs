@@ -13,3 +13,56 @@ services:
       - ../:/srv/mrs
     privileged: true
     command: /sbin/init
+
+  db_mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: appdb
+      MYSQL_USER: docker
+      MYSQL_PASSWORD: docker
+      TZ: 'Asia/Tokyo'
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    hostname: mysql
+    volumes:
+      - ./build/docker/mysql/data:/var/lib/mysql
+      - ./build/docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./build/docker/mysql/init:/docker-entrypoint-initdb.d
+    ports:
+      - 3306:3306
+
+  db_phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOSTS=mysql
+      - PMA_USER=root
+      - PMA_PASSWORD=root
+    ports:
+      - 20081:80
+
+  db_postgresql:
+    image: postgres:10.5
+    ports:
+      - 5432:5432
+    volumes:
+      - ./build/docker/postgres/init:/docker-entrypoint-initdb.d
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_INITDB_ARGS: "--encoding=UTF-8"
+    hostname: postgres
+    restart: always
+    user: root
+
+  db_pgadmin4:
+    image: dpage/pgadmin4:3.3
+    ports:
+      - 20082:80
+    volumes:
+      - ./config/pgadmin:/var/lib/pgadmin/storage
+    environment:
+      PGADMIN_DEFAULT_EMAIL: root
+      PGADMIN_DEFAULT_PASSWORD: root
+    hostname: pgadmin4
+    restart: always

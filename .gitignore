@@ -40,7 +40,7 @@ build/
 .gradle
 bin
 
-docker/mysql/data
+ops/build/docker/mysql/data
 
 node_modules
 cypress/screenshots
