@@ -29,6 +29,15 @@ WSL環境構築に関しては以下を参照
 ./setup_wsl.sh
 ```
 
+## セットアップ(AWS)
+
+```
+aws configure --profile k2works
+aws s3 mb s3://mrs-org-mrs-production-tfstate --profile k2works
+cd build/terraform
+terraform init
+```
+
 ## 配置
 
 ## 運用
