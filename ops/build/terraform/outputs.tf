@@ -12,6 +12,10 @@ output "iam_user_2_key_secret" {
   value = module.app_security_iam.iam_user_2_key_secret
 }
 
+output "kms_key_name" {
+  value = module.app_security_kms.kms_key_alias_name
+}
+
 output "vpc_id" {
   value = module.app_network.vpc_id
 }
