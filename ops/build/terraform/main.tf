@@ -22,6 +22,14 @@ terraform {
   }
 }
 
-module "app_security" {
+module "app_security_iam" {
   source = "./modules/security/iam"
+}
+
+module "app_security_kms" {
+  source = "./modules/security/kms"
+
+  ops_user_arn = module.app_security_iam.iam_user_1_arn
+  dev_user_arn = module.app_security_iam.iam_user_2_arn
+  ec2_role_arn = module.app_security_iam.iam_role_ec2_arn
 }
