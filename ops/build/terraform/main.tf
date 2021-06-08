@@ -41,3 +41,12 @@ module "app_network" {
   vpc_name = var.vpc_name
   app_name = var.app_name
 }
+
+module "app_compute_security" {
+  source = "./modules/compute/security_group"
+
+  org_name = var.org_name
+  vpc_name = var.vpc_name
+  app_name = var.app_name
+  vpc_id = module.app_network.vpc_id
+}
