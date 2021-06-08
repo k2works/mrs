@@ -33,3 +33,11 @@ module "app_security_kms" {
   dev_user_arn = module.app_security_iam.iam_user_2_arn
   ec2_role_arn = module.app_security_iam.iam_role_ec2_arn
 }
+
+module "app_network" {
+  source = "./modules/network/vpc"
+
+  org_name = var.org_name
+  vpc_name = var.vpc_name
+  app_name = var.app_name
+}
