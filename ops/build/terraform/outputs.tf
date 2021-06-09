@@ -39,3 +39,15 @@ output "ec2_security_group_id" {
 output "ec2_ssh_key_name" {
   value = module.app_compute_ec2.ssh_key_name
 }
+
+output "ec2_instance_id" {
+  value = module.app_compute_ec2.instance_id
+}
+
+output "ec2_instance_public_ip" {
+  value = module.app_compute_ec2.public_ip
+}
+
+output "ec2_instance_private_ip" {
+  value = module.app_compute_ec2.private_ip
+}

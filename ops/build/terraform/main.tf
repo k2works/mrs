@@ -57,4 +57,16 @@ module "app_compute_ec2" {
   source = "./modules/compute/ec2"
 
   ssh_key_name = "${lower(var.org_name)}-${lower(var.vpc_name)}-${lower(var.app_name)}-key"
+  vpc_id = module.app_network.vpc_id
+  ami_image = var.images.ap-northeast-1
+  security_group_id = module.app_compute_security.security_group_id
+  subnet_id = module.app_network.vpc_subnet_public-a_id
+  instance_name = var.instance_name
+  instance_key_name = "${lower(var.org_name)}-${lower(var.vpc_name)}-${lower(var.app_name)}-key"
+  instance_type = "t2.micro"
+  instance_volume_type = "gp2"
+  instance_volume_size = "10"
+  public = "true"
+  environment = "production"
+  iam_instance_profile = module.app_security_iam.iam_instance_profile_ec2
 }

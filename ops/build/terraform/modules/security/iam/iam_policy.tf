@@ -24,3 +24,13 @@ resource "aws_iam_policy_attachment" "ec2-s3-attach" {
     aws_iam_role.ec2_role.name]
   policy_arn = aws_iam_policy.s3.arn
 }
+
+resource "aws_iam_role_policy_attachment" "ec2-ssm-core-attach" {
+  role = aws_iam_role.ec2_role.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
+}
+
+resource "aws_iam_role_policy_attachment" "ec2-ssm-patch-attach" {
+  role = aws_iam_role.ec2_role.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonSSMPatchAssociation"
+}

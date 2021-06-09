@@ -3,3 +3,8 @@ Host dev.web
     User root
     port 20022
     IdentityFile ~/.ssh/id_rsa
+
+Host prd.web
+    HostName 13.231.213.151
+    User ec2-user
+    IdentityFile ~/.ssh/mrsorg-vpc-mrsproduction-key.pem
