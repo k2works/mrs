@@ -32,7 +32,10 @@ output "vpc_subnet_private_id" {
   value = module.app_network.vpc_subnet_private-c_id
 }
 
-output "security_group_id" {
+output "ec2_security_group_id" {
   value = module.app_compute_security.security_group_id
 }
 
+output "ec2_ssh_key_name" {
+  value = module.app_compute_ec2.ssh_key_name
+}

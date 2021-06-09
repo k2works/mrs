@@ -52,3 +52,9 @@ module "app_compute_security" {
   app_name = var.app_name
   vpc_id = module.app_network.vpc_id
 }
+
+module "app_compute_ec2" {
+  source = "./modules/compute/ec2"
+
+  ssh_key_name = "${lower(var.org_name)}-${lower(var.vpc_name)}-${lower(var.app_name)}-key"
+}
