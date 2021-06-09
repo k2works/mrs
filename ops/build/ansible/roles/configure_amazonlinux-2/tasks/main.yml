@@ -1,0 +1,8 @@
+- name: create group
+  group: name={{usergroup.group.name}} gid={{usergroup.group.gid}}
+
+- name: user join to other group
+  user: name={{usergroup.user.name}} append=yes groups={{usergroup.group.name}}
+
+- name: Change application deploy permission
+  file: dest=/srv owner=root group={{ usergroup.group.name }} mode=0775 recurse=yes

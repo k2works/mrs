@@ -17,3 +17,4 @@ sdkman_install_packages:
 sdkman_defaults:
   gradle: '6.8.3'
   maven: '3.8.1'
+app_server_name: "localhost"
