@@ -1,5 +1,3 @@
-variable "ssh_key_name" {}
-
 resource "tls_private_key" "this" {
   algorithm = "RSA"
 }
@@ -27,8 +25,4 @@ resource "aws_key_pair" "ssh_key" {
   provisioner "local-exec" {
     command = "chmod 600 ../../config/ssh/${var.ssh_key_name}.pub.pem"
   }
-}
-
-output "ssh_key_name" {
-  value = var.ssh_key_name
 }
