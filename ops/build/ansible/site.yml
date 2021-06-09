@@ -1,3 +1,4 @@
 ---
 - import_playbook: site_wsl.yml
 - import_playbook: site_docker.yml
+- import_playbook: site_ec2.yml

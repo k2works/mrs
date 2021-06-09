@@ -6,6 +6,7 @@
     chdir: /srv
     executable: /bin/bash
     creates: /srv/hello-world
+  become_user: '{{ sdkman_user }}'
 
 - name: Change Application
   ansible.builtin.template:
