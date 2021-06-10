@@ -104,3 +104,5 @@ override.tf.json
 terraform.rc
 
 *.pem
+*.key
+*.crt

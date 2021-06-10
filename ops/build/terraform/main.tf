@@ -36,6 +36,12 @@ module "app_security_kms" {
   ec2_role_arn = module.app_security_iam.iam_role_ec2_arn
 }
 
+module "app_security_tls" {
+  source = "./modules/security/tls"
+
+  tls_key_name = "${lower(var.org_name)}-${lower(var.vpc_name)}-${lower(var.app_name)}"
+}
+
 module "app_network" {
   source = "./modules/network/vpc"
 
