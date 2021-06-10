@@ -22,9 +22,26 @@
     chdir: /srv/hello-world
     executable: /bin/bash
 
-- name: Create Nginx config
+- name: Create Nginx config http
   ansible.builtin.template:
-    src: ./templates/helloworld.conf
-    dest: /etc/nginx/conf.d/helloworld.conf
+    src: ./templates/http.conf
+    dest: /etc/nginx/conf.d/http.conf
     owner: "{{ user }}"
     group: "{{ group }}"
+
+- name: Create Nginx config https
+  ansible.builtin.template:
+    src: ./templates/https.conf
+    dest: /etc/nginx/conf.d/https.conf
+    owner: "{{ user }}"
+    group: "{{ group }}"
+
+- name: Copy Cert key for https
+  copy: src={{ tls_cert_key }}
+    dest=/etc/nginx/cert.crt
+
+- name: Copy Cert key for https
+  copy: src={{ tls_private_key }}
+    dest=/etc/nginx/cert.key
+
+

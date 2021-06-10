@@ -18,3 +18,5 @@ sdkman_defaults:
   gradle: '6.8.3'
   maven: '3.8.1'
 app_server_name: "localhost"
+tls_cert_key: "../../config/tls/mrsorg-vpc-mrsproduction.crt"
+tls_private_key: "../../config/tls/mrsorg-vpc-mrsproduction.key"

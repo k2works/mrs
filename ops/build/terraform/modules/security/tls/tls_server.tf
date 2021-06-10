@@ -7,11 +7,11 @@ resource "tls_cert_request" "https" {
   private_key_pem = tls_private_key.https.private_key_pem
 
   subject {
-    common_name = "*.ap-northeast-1.elb.amazonaws.com"
+    common_name = "*.ap-northeast-1.compute.amazonaws.com"
   }
 
   dns_names = [
-    "*.ap-northeast-1.elb.amazonaws.com",
+    "*.ap-northeast-1.compute.amazonaws.com",
   ]
 }
 
