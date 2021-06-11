@@ -75,3 +75,18 @@ module "app_compute_ec2" {
   environment = "production"
   iam_instance_profile = module.app_security_iam.iam_instance_profile_ec2
 }
+
+module "app_compute_elastic_beanstalk" {
+  source = "./modules/compute/elastic_beanstalk"
+
+  app_name = "${var.org_name}${var.vpc_name}${var.app_name}"
+  app_description = "Elastic Beanstalk Application"
+  service_role = module.app_security_iam.iam_role_ec2_arn
+  solution_stack_name = "64bit Amazon Linux 2 v3.2.0 running Corretto 11"
+  app_env = "blue"
+  cname_prefix = "mrs"
+  ssh_key_name = "${lower(var.org_name)}-${lower(var.vpc_name)}-${lower(var.app_name)}-key"
+  iam_instance_profile = module.app_security_iam.iam_instance_profile_ec2
+  vpc_id = module.app_network.vpc_id
+  subnet_id = module.app_network.vpc_subnet_public-a_id
+}

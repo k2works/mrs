@@ -34,3 +34,13 @@ resource "aws_iam_role_policy_attachment" "ec2-ssm-patch-attach" {
   role = aws_iam_role.ec2_role.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonSSMPatchAssociation"
 }
+
+resource "aws_iam_role_policy_attachment" "elastic-beanstalk-web-tier-attach" {
+  role = aws_iam_role.ec2_role.name
+  policy_arn = "arn:aws:iam::aws:policy/AWSElasticBeanstalkWebTier"
+}
+
+resource "aws_iam_role_policy_attachment" "elastic-beanstalk-multicontainer-docker-attach" {
+  role = aws_iam_role.ec2_role.name
+  policy_arn = "arn:aws:iam::aws:policy/AWSElasticBeanstalkMulticontainerDocker"
+}
