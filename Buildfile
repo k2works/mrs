@@ -1,1 +1,1 @@
-build: mvn package
+build: gradle build
