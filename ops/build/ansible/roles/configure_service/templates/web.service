@@ -1,0 +1,21 @@
+[Unit]
+Description=Application Service
+After=syslog.target
+After=network.target[Service]
+User={{ user }}
+Type=simple
+
+[Service]
+ExecStart={{ web_service_exec }}
+ExecStartPost=/bin/sh -c "systemctl show -p MainPID web.service | cut -d= -f2 > /var/pids/web.pid"
+ExecStopPost=/bin/sh -c "rm -f /var/pids/web.pid"
+ExecStopPost=/bin/sh -c ""
+Restart=always
+EnvironmentFile=/srv/env
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier={{ web_service_name }}
+WorkingDirectory={{ web_service_work_dir }}
+
+[Install]
+WantedBy=multi-user.target
