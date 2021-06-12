@@ -18,6 +18,12 @@ resource "aws_elastic_beanstalk_environment" "app_production" {
   }
 
   setting {
+    namespace = "aws:autoscaling:launchconfiguration"
+    name = "InstanceType"
+    value = var.instance_type
+  }
+
+  setting {
     namespace = "aws:ec2:vpc"
     name = "VPCId"
     value = var.vpc_id

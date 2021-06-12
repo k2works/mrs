@@ -30,3 +30,5 @@ usergroup:
 app_server_name: "*.ap-northeast-1.compute.amazonaws.com"
 tls_cert_key: "../../config/tls/mrsorg-vpc-mrsproduction.crt"
 tls_private_key: "../../config/tls/mrsorg-vpc-mrsproduction.key"
+swap_file_path: "swapfile"
+swap_file_size_mb: "1024"

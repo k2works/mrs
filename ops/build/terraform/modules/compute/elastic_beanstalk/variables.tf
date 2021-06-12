@@ -8,4 +8,5 @@ variable "ssh_key_name" {}
 variable "vpc_id" {}
 variable "subnet_id" {}
 variable "iam_instance_profile" {}
+variable "instance_type" {}
 
