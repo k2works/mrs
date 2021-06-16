@@ -7,3 +7,4 @@
     - setup_chrome
     - setup_awscli
     - setup_terraform
+    - setup_packer
