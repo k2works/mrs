@@ -1,6 +1,10 @@
 resource "aws_elastic_beanstalk_application" "app" {
   name = var.app_name
   description = var.app_description
+  tags = {
+    Name = "${var.app_name}-${var.app_name}",
+    Env = var.environment
+  }
 
   appversion_lifecycle {
     service_role = var.service_role

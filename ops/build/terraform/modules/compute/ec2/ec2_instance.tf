@@ -14,7 +14,8 @@ resource "aws_instance" "app_server" {
   iam_instance_profile = var.iam_instance_profile
 
   tags = {
-    Name = "${var.instance_name}-${var.environment}"
+    Name = "${var.instance_name}-${var.environment}",
+    Env = var.environment
   }
 }
 

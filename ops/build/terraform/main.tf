@@ -64,7 +64,7 @@ module "app_compute_ec2" {
 
   ssh_key_name = "${lower(var.org_name)}-${lower(var.vpc_name)}-${lower(var.app_name)}-key"
   vpc_id = module.app_network.vpc_id
-  ami_image = var.images.ap-northeast-1
+  ami_image = var.images.custom
   security_group_id = module.app_compute_security.security_group_id
   subnet_id = module.app_network.vpc_subnet_public-a_id
   instance_name = var.instance_name
@@ -90,4 +90,11 @@ module "app_compute_elastic_beanstalk" {
   instance_type = "t2.micro"
   vpc_id = module.app_network.vpc_id
   subnet_id = module.app_network.vpc_subnet_public-a_id
+  environment = "production"
+}
+
+module "app_management_group" {
+  source = "./modules/management/resource_groups"
+  group_name = "${lower(var.org_name)}-${lower(var.vpc_name)}-${lower(var.app_name)}-group"
+  environment = "production"
 }

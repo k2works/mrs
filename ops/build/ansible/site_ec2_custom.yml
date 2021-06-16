@@ -1,0 +1,8 @@
+---
+- hosts: ec2
+  remote_user: "{{ user }}"
+  become: yes
+  roles:
+    - configure_app
+    - configure_service
+

@@ -39,5 +39,6 @@ variable "images" {
     ap-southeast-2 = "ami-fd9cecc7"
     ap-northeast-1 = "ami-0ca38c7440de1749a"
     sa-east-1 = "ami-b52890a8"
+    custom = "ami-0661c819b0a4bb2b2"
   }
 }
