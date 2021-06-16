@@ -15,34 +15,38 @@ locals {
 # source blocks are generated from your builders; a source can be referenced in
 # build blocks. A build block runs provisioners and post-processors on a
 # source.
-source "amazon-ebs" "example" {
+source "amazon-ebs" "application-server" {
   profile = var.profile
-  ami_name = "learn-terraform-packer-${local.timestamp}"
+  ami_name = "amazon-linux-2-${local.timestamp}"
   instance_type = "t2.micro"
   region = var.region
   source_ami_filter {
     filters = {
-      name = "ubuntu/images/*ubuntu-xenial-16.04-amd64-server-*"
+      name = "amzn2-ami-hvm-*-x86_64-gp2"
       root-device-type = "ebs"
       virtualization-type = "hvm"
     }
     most_recent = true
     owners = [
-      "099720109477"]
+      "137112412989"]
   }
-  ssh_username = "ubuntu"
+  ssh_username = "ec2-user"
+  ssh_timeout = "5m"
 }
 
 # a build block invokes sources and runs provisioning steps on them.
 build {
   sources = [
-    "source.amazon-ebs.example"]
-
-  provisioner "file" {
-    source = "../../../config/ssh/tf-packer.pub"
-    destination = "/tmp/tf-packer.pub"
-  }
+    "source.amazon-ebs.application-server"]
   provisioner "shell" {
-    script = "../scripts/setup.sh"
+    inline = [
+      "sudo yum -y update",
+      "sudo amazon-linux-extras install epel -y",
+      "sudo yum -y install ansible"
+    ]
+  }
+
+  provisioner "ansible-local" {
+    playbook_file = "../scripts/playbook.yml"
   }
 }
