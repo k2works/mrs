@@ -1,3 +1,4 @@
+variable "app_name" {}
 variable "ssh_key_name" {}
 variable "vpc_id" {}
 variable "ami_image" {}

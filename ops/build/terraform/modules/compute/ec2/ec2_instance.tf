@@ -12,5 +12,10 @@ resource "aws_instance" "app_server" {
     volume_size = var.instance_volume_size
   }
   iam_instance_profile = var.iam_instance_profile
+  user_data = file("./files/user_data.sh")
+  tags = {
+    Name = var.app_name
+    Role = "web"
+  }
 }
 

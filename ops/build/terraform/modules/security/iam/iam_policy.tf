@@ -18,6 +18,34 @@ resource "aws_iam_policy" "s3" {
 EOF
 }
 
+resource "aws_iam_role_policy" "codedeploy_policy" {
+  name = "codedeploy_policy"
+  role = aws_iam_role.codedeploy_role.id
+  policy = <<EOF
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "autoscaling:CompleteLifecycleAction",
+                "autoscaling:DeleteLifecycleHook",
+                "autoscaling:DescribeAutoScalingGroups",
+                "autoscaling:DescribeLifecycleHooks",
+                "autoscaling:PutLifecycleHook",
+                "autoscaling:RecordLifecycleActionHeartbeat",
+                "ec2:DescribeInstances",
+                "ec2:DescribeInstanceStatus",
+                "tag:GetTags",
+                "tag:GetResources"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+EOF
+}
+
 resource "aws_iam_policy_attachment" "ec2-s3-attach" {
   name = "ec2-s3-attachment"
   roles = [

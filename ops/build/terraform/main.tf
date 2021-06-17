@@ -4,7 +4,6 @@ provider "aws" {
   default_tags {
     tags = {
       Environment = var.environment
-      Name = "${var.org_name}${var.vpc_name}${var.app_name}"
     }
   }
 }
@@ -68,6 +67,7 @@ module "app_compute_security" {
 module "app_compute_ec2" {
   source = "./modules/compute/ec2"
 
+  app_name = "${var.org_name}${var.vpc_name}${var.app_name}"
   ssh_key_name = "${lower(var.org_name)}-${lower(var.vpc_name)}-${lower(var.app_name)}-key"
   vpc_id = module.app_network.vpc_id
   ami_image = var.images.custom
@@ -103,4 +103,16 @@ module "app_management_group" {
   source = "./modules/management/resource_groups"
   group_name = "${lower(var.org_name)}-${lower(var.vpc_name)}-${lower(var.app_name)}-group"
   environment = var.environment
+}
+
+module "app_compute_s3" {
+  source = "./modules/compute/s3"
+
+  deploy_bucket_name = "${lower(var.org_name)}-${lower(var.vpc_name)}-${lower(var.app_name)}-deploy-bucket"
+}
+
+module "app_management_codedeploy" {
+  source = "./modules/management/codedeploy"
+
+  service_role_arn = module.app_security_iam.iam_role_codedploy_arn
 }

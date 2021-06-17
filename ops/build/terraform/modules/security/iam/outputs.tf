@@ -25,3 +25,7 @@ output "iam_role_ec2_arn" {
 output "iam_instance_profile_ec2" {
   value = aws_iam_instance_profile.ec2_profile.name
 }
+
+output "iam_role_codedploy_arn" {
+  value = aws_iam_role.codedeploy_role.arn
+}
