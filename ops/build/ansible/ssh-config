@@ -5,6 +5,6 @@ Host dev.web
     IdentityFile ~/.ssh/id_rsa
 
 Host prd.web
-    HostName 13.112.184.42
+    HostName 3.112.190.62
     User ec2-user
     IdentityFile ~/.ssh/mrsorg-vpc-mrsproduction-key.pem

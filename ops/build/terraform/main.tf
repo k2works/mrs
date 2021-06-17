@@ -1,6 +1,12 @@
 provider "aws" {
   profile = "k2works"
   region = "ap-northeast-1"
+  default_tags {
+    tags = {
+      Environment = var.environment
+      Name = "${var.org_name}${var.vpc_name}${var.app_name}"
+    }
+  }
 }
 
 terraform {
@@ -72,7 +78,7 @@ module "app_compute_ec2" {
   instance_volume_type = "gp2"
   instance_volume_size = "10"
   public = "true"
-  environment = "production"
+  environment = var.environment
   iam_instance_profile = module.app_security_iam.iam_instance_profile_ec2
 }
 
@@ -90,11 +96,11 @@ module "app_compute_elastic_beanstalk" {
   instance_type = "t2.micro"
   vpc_id = module.app_network.vpc_id
   subnet_id = module.app_network.vpc_subnet_public-a_id
-  environment = "production"
+  environment = var.environment
 }
 
 module "app_management_group" {
   source = "./modules/management/resource_groups"
   group_name = "${lower(var.org_name)}-${lower(var.vpc_name)}-${lower(var.app_name)}-group"
-  environment = "production"
+  environment = var.environment
 }

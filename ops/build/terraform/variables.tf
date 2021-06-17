@@ -42,3 +42,9 @@ variable "images" {
     custom = "ami-0661c819b0a4bb2b2"
   }
 }
+
+variable "environment" {
+  description = "Application environment"
+  type = string
+  default = "Production"
+}

@@ -12,10 +12,5 @@ resource "aws_instance" "app_server" {
     volume_size = var.instance_volume_size
   }
   iam_instance_profile = var.iam_instance_profile
-
-  tags = {
-    Name = "${var.instance_name}-${var.environment}",
-    Env = var.environment
-  }
 }
 

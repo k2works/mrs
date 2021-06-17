@@ -12,7 +12,7 @@ resource "aws_resourcegroups_group" "Production" {
   ],
   "TagFilters": [
     {
-      "Key": "Env",
+      "Key": "Environment",
       "Values": ["${var.environment}"]
     }
   ]
