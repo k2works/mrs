@@ -1,0 +1,22 @@
+[Unit]
+Description=Application Service
+After=syslog.target
+After=network.target[Service]
+User=root
+Type=simple
+
+[Service]
+ExecStart=/usr/bin/java -jar /srv/mrs/mrs-0.1.0-SNAPSHOT.jar -Xms256m --spring.profiles.active=prod
+ExecStartPost=/bin/sh -c "systemctl show -p MainPID web.service | cut -d= -f2 > /var/pids/web.pid"
+ExecStopPost=/bin/sh -c "rm -f /var/pids/web.pid"
+ExecStopPost=/bin/sh -c ""
+Restart=always
+EnvironmentFile=/srv/mrs/env
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=mrs-service
+WorkingDirectory=/srv/mrs
+
+
+[Install]
+WantedBy=multi-user.target

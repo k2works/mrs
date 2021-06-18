@@ -106,3 +106,5 @@ terraform.rc
 *.pem
 *.key
 *.crt
+
+ops/ship/codedeploy/*.jar

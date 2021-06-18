@@ -114,5 +114,7 @@ module "app_compute_s3" {
 module "app_management_codedeploy" {
   source = "./modules/management/codedeploy"
 
+  app_name = "${var.org_name}${var.vpc_name}${var.app_name}"
+  app_group_name = "${lower(var.org_name)}-${lower(var.vpc_name)}-${lower(var.app_name)}-group"
   service_role_arn = module.app_security_iam.iam_role_codedploy_arn
 }

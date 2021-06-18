@@ -40,4 +40,14 @@ terraform init
 
 ## 配置
 
+```
+aws deploy push \
+--application-name MrsOrgVPCMrsProduction \
+--s3-location s3://mrsorg-vpc-mrsproduction-deploy-bucket/app-mrs.zip \
+--source ./ops/ship/codedeploy \
+--ignore-hidden-files \
+--profile k2works \
+--region ap-northeast-1
+```
+
 ## 運用
