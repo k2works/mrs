@@ -1,0 +1,28 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto11
+  pre_build:
+    commands:
+      - echo Nothing to do in the pre_build phase...
+  build:
+    commands:
+      - echo Build started on `date`
+      - gradle build
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - cp build/libs/mrs-0.1.0-SNAPSHOT.jar .
+      - cp ops/ship/codedeploy/appspec.yml .
+      - cp -r ops/ship/codedeploy/nginx .
+      - cp -r ops/ship/codedeploy/scripts .
+      - cp -r ops/ship/codedeploy/service .
+artifacts:
+  files:
+    - mrs-0.1.0-SNAPSHOT.jar
+    - appspec.yml
+    - nginx/**
+    - scripts/**
+    - service/**

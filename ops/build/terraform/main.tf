@@ -118,3 +118,15 @@ module "app_management_codedeploy" {
   app_group_name = "${lower(var.org_name)}-${lower(var.vpc_name)}-${lower(var.app_name)}-group"
   service_role_arn = module.app_security_iam.iam_role_codedploy_arn
 }
+
+module "app_management_codebuild" {
+  source = "./modules/management/codebuild"
+
+  vpc_id = module.app_network.vpc_id
+  public_subnet_arn = module.app_network.vpc_subnet_public-a_arn
+  public_subnet_id = module.app_network.vpc_subnet_public-a_id
+  private_subnet_arn = module.app_network.vpc_subnet_private-c_arn
+  private_subnet_id = module.app_network.vpc_subnet_private-c_id
+  security_group_id = module.app_compute_security.security_group_id
+  region = "ap-northeast-1"
+}
