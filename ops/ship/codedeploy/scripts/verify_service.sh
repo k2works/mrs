@@ -4,4 +4,5 @@
 # our deploy_hooks directory.
 . $(dirname $0)/common_variables.sh
 
+sleep 1m
 curl -s http://localhost:5000
