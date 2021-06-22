@@ -1,7 +1,8 @@
 [Unit]
 Description=Application Service
 After=syslog.target
-After=network.target[Service]
+After=network.target
+[Service]
 User=root
 Type=simple
 
