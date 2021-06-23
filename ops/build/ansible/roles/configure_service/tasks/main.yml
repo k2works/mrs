@@ -7,15 +7,18 @@
 
 - name: Create SpringBoot Web Service EnvironmentFile
   ansible.builtin.template:
-    src: ./templates/web.service
-    dest: /srv/env
+    src: ./templates/env
+    dest: "{{ web_service_work_dir }}/env"
     owner: "{{ user }}"
     group: "{{ group }}"
 
 - name: Creates Pid directory
   file:
-    path: /var/pids
+    path: /srv/pids
     state: directory
+    owner: "{{ user }}"
+    group: "{{ group }}"
+    mode: 0775
 
 - name: start web.service
   service:

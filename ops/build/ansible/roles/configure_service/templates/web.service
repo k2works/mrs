@@ -8,11 +8,11 @@ Type=simple
 
 [Service]
 ExecStart={{ web_service_exec }}
-ExecStartPost=/bin/sh -c "systemctl show -p MainPID web.service | cut -d= -f2 > /var/pids/web.pid"
-ExecStopPost=/bin/sh -c "rm -f /var/pids/web.pid"
+ExecStartPost=/bin/sh -c "systemctl show -p MainPID web.service | cut -d= -f2 > /srv/pids/web.pid"
+ExecStopPost=/bin/sh -c "rm -f /srv/pids/web.pid"
 ExecStopPost=/bin/sh -c ""
 Restart=always
-EnvironmentFile=/srv/env
+EnvironmentFile={{ web_service_work_dir }}/env
 StandardOutput=syslog
 StandardError=syslog
 SyslogIdentifier={{ web_service_name }}

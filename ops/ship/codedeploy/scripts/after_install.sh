@@ -8,6 +8,9 @@ cp /srv/mrs/nginx/cert.key /etc/nginx
 cp /srv/mrs/service/env /srv/mrs
 cp /srv/mrs/service/web.service /etc/systemd/system
 
-if [ ! -d /var/pids ]; then
-  mkdir /var/pids
+if [ ! -d /srv/pids ]; then
+  mkdir /srv/pids
 fi
+
+chown -hR ec2-user:ec2-user /srv/mrs
+chown -hR ec2-user:ec2-user /srv/pids
