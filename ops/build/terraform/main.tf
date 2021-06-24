@@ -140,3 +140,7 @@ module "app_management_codebuild" {
   source_location = "https://github.com/k2works/mrs.git"
   source_version = "develop"
 }
+
+module "app_management_codepipeline" {
+  source = "./modules/management/codepipeline"
+}
