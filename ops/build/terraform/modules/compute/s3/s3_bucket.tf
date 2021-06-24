@@ -10,3 +10,7 @@ resource "aws_s3_bucket" "deploy_bucket" {
     enabled = true
   }
 }
+
+output "deploy_bucket_arn" {
+  value = aws_s3_bucket.deploy_bucket.arn
+}

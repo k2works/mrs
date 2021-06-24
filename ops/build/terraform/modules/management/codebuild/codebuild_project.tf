@@ -1,3 +1,12 @@
+variable "deploy_bucket_arn" {}
+variable "deploy_bucket_name" {}
+variable "cert_bucket_arn" {}
+variable "project_name" {}
+variable "project_description" {}
+variable "source_type" {}
+variable "source_location" {}
+variable "source_version" {}
+
 data "aws_caller_identity" "iam" {}
 variable "region" {}
 variable "vpc_id" {}
@@ -7,13 +16,13 @@ variable "private_subnet_arn" {}
 variable "private_subnet_id" {}
 variable "security_group_id" {}
 
-resource "aws_s3_bucket" "example" {
-  bucket = "mrs-example"
+resource "aws_s3_bucket" "cache_bucket" {
+  bucket = "${var.deploy_bucket_name}-cache"
   acl = "private"
 }
 
-resource "aws_iam_role" "example" {
-  name = "example"
+resource "aws_iam_role" "app_role" {
+  name = "codebuild_app_role"
 
   assume_role_policy = <<EOF
 {
@@ -31,8 +40,8 @@ resource "aws_iam_role" "example" {
 EOF
 }
 
-resource "aws_iam_role_policy" "example" {
-  role = aws_iam_role.example.name
+resource "aws_iam_role_policy" "app_role_policy" {
+  role = aws_iam_role.app_role.name
 
   policy = <<POLICY
 {
@@ -86,8 +95,12 @@ resource "aws_iam_role_policy" "example" {
         "s3:*"
       ],
       "Resource": [
-        "${aws_s3_bucket.example.arn}",
-        "${aws_s3_bucket.example.arn}/*"
+        "${var.deploy_bucket_arn}",
+        "${var.deploy_bucket_arn}/*",
+        "${var.cert_bucket_arn}",
+        "${var.cert_bucket_arn}/*",
+        "${aws_s3_bucket.cache_bucket.arn}",
+        "${aws_s3_bucket.cache_bucket.arn}/*"
       ]
     },
     {
@@ -105,22 +118,22 @@ resource "aws_iam_role_policy" "example" {
 POLICY
 }
 
-resource "aws_codebuild_project" "example" {
-  name = "test-project"
-  description = "test_codebuild_project"
+resource "aws_codebuild_project" "app" {
+  name = var.project_name
+  description = var.deploy_bucket_name
   build_timeout = "10"
-  service_role = aws_iam_role.example.arn
+  service_role = aws_iam_role.app_role.arn
 
   artifacts {
     type = "S3"
-    name = "app-mrs.zip"
+    name = "app.zip"
     packaging = "ZIP"
-    location = "mrsorg-vpc-mrsproduction-deploy-bucket"
+    location = var.deploy_bucket_name
   }
 
   cache {
     type = "S3"
-    location = aws_s3_bucket.example.bucket
+    location = aws_s3_bucket.cache_bucket.bucket
   }
 
   environment {
@@ -143,13 +156,13 @@ resource "aws_codebuild_project" "example" {
 
     s3_logs {
       status = "ENABLED"
-      location = "${aws_s3_bucket.example.id}/build-log"
+      location = "${aws_s3_bucket.cache_bucket.id}/build-log"
     }
   }
 
   source {
-    type = "GITHUB"
-    location = "https://github.com/k2works/mrs.git"
+    type = var.source_type
+    location = var.source_location
     git_clone_depth = 1
 
     git_submodules_config {
@@ -157,43 +170,5 @@ resource "aws_codebuild_project" "example" {
     }
   }
 
-  source_version = "develop"
-}
-
-resource "aws_codebuild_project" "project-with-cache" {
-  name = "test-project-cache"
-  description = "test_codebuild_project_cache"
-  build_timeout = "5"
-  queued_timeout = "5"
-
-  service_role = aws_iam_role.example.arn
-
-  artifacts {
-    type = "NO_ARTIFACTS"
-  }
-
-  cache {
-    type = "LOCAL"
-    modes = [
-      "LOCAL_DOCKER_LAYER_CACHE",
-      "LOCAL_SOURCE_CACHE"]
-  }
-
-  environment {
-    compute_type = "BUILD_GENERAL1_SMALL"
-    image = "aws/codebuild/standard:5.0"
-    type = "LINUX_CONTAINER"
-    image_pull_credentials_type = "CODEBUILD"
-
-    environment_variable {
-      name = "SOME_KEY1"
-      value = "SOME_VALUE1"
-    }
-  }
-
-  source {
-    type = "GITHUB"
-    location = "https://github.com/k2works/mrs.git"
-    git_clone_depth = 1
-  }
+  source_version = var.source_version
 }

@@ -6,7 +6,9 @@ phases:
       java: corretto11
   pre_build:
     commands:
-      - echo Nothing to do in the pre_build phase...
+      - echo Copy Certfile form S3
+      - aws s3 cp s3://mrsorg-vpc-mrsproduction-cert-bucket/mrsorg-vpc-mrsproduction.crt ops/ship/codedeploy/nginx/cert.crt
+      - aws s3 cp s3://mrsorg-vpc-mrsproduction-cert-bucket/mrsorg-vpc-mrsproduction.key ops/ship/codedeploy/nginx/cert.key
   build:
     commands:
       - echo Build started on `date`
