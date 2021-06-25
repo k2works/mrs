@@ -1,13 +1,17 @@
-variable "aws_codestarconnections_connection_arn" {
-  default = ""
-}
+variable "name" {}
+variable "deploy_bucket_name" {}
+variable "full_repository_id" {}
+variable "blanch_name" {}
+variable "code_build_project_name" {}
+variable "code_deploy_application_name" {}
+variable "code_deploy_application_group_name" {}
 
 resource "aws_codepipeline" "codepipeline" {
-  name     = "tf-test-pipeline"
+  name     = var.name
   role_arn = aws_iam_role.codepipeline_role.arn
 
   artifact_store {
-    location = "mrsorg-vpc-mrsproduction-deploy-bucket"
+    location = var.deploy_bucket_name
     type     = "S3"
 
     encryption_key {
@@ -28,9 +32,9 @@ resource "aws_codepipeline" "codepipeline" {
       output_artifacts = ["source_output"]
 
       configuration = {
-        ConnectionArn    = var.aws_codestarconnections_connection_arn
-        FullRepositoryId = "k2works/mrs"
-        BranchName       = "develop"
+        ConnectionArn    = aws_codestarconnections_connection.app_connection.arn
+        FullRepositoryId = var.full_repository_id
+        BranchName       = var.blanch_name
       }
     }
   }
@@ -48,7 +52,7 @@ resource "aws_codepipeline" "codepipeline" {
       version          = "1"
 
       configuration = {
-        ProjectName = "mrsorg-vpc-mrsproduction-project"
+        ProjectName = var.code_build_project_name
       }
     }
   }
@@ -65,8 +69,8 @@ resource "aws_codepipeline" "codepipeline" {
       version         = "1"
 
       configuration = {
-        ApplicationName     = "MrsOrgVPCMrsProduction"
-        DeploymentGroupName = "mrsorg-vpc-mrsproduction-group"
+        ApplicationName     = var.code_deploy_application_name
+        DeploymentGroupName = var.code_deploy_application_group_name
       }
     }
   }
@@ -78,7 +82,7 @@ resource "aws_codestarconnections_connection" "app_connection" {
 }
 
 resource "aws_iam_role" "codepipeline_role" {
-  name = "test-role"
+  name = "app-codepipeline-role"
 
   assume_role_policy = <<EOF
 {
@@ -97,7 +101,7 @@ EOF
 }
 
 resource "aws_iam_role_policy" "codepipeline_policy" {
-  name = "codepipeline_policy"
+  name = "app-codepipeline-policy"
   role = aws_iam_role.codepipeline_role.id
 
   policy = <<EOF
@@ -137,13 +141,19 @@ resource "aws_iam_role_policy" "codepipeline_policy" {
       "Action": [
         "codestar-connections:UseConnection"
       ],
-      "Resource": "${var.aws_codestarconnections_connection_arn}"
+      "Resource": "${aws_codestarconnections_connection.app_connection.arn}"
     },
     {
       "Effect": "Allow",
       "Action": [
         "codebuild:BatchGetBuilds",
-        "codebuild:StartBuild"
+        "codebuild:StartBuild",
+        "codedeploy:CreateDeployment",
+        "codedeploy:GetApplicationRevision",
+        "codedeploy:GetApplication",
+        "codedeploy:GetDeployment",
+        "codedeploy:GetDeploymentConfig",
+        "codedeploy:RegisterApplicationRevision"
       ],
       "Resource": "*"
     }
@@ -153,5 +163,5 @@ EOF
 }
 
 data "aws_kms_alias" "s3kmskey" {
-  name = "alias/mrsorg-mrsproduction"
+  name = "alias/aws/s3"
 }

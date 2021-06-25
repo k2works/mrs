@@ -143,4 +143,12 @@ module "app_management_codebuild" {
 
 module "app_management_codepipeline" {
   source = "./modules/management/codepipeline"
+
+  name = "${lower(var.org_name)}-${lower(var.vpc_name)}-${lower(var.app_name)}-pipeline"
+  deploy_bucket_name = "${lower(var.org_name)}-${lower(var.vpc_name)}-${lower(var.app_name)}-deploy-bucket"
+  full_repository_id = "k2works/mrs"
+  blanch_name = "develop"
+  code_build_project_name = "${lower(var.org_name)}-${lower(var.vpc_name)}-${lower(var.app_name)}-project"
+  code_deploy_application_name = "${var.org_name}${var.vpc_name}${var.app_name}"
+  code_deploy_application_group_name = "${lower(var.org_name)}-${lower(var.vpc_name)}-${lower(var.app_name)}-group"
 }
