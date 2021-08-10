@@ -33,6 +33,11 @@ public class ReservationDataSource implements ReservationRepository {
 
     @Override
     public void save(Reservation reservation) {
+        reservationMapper.insertSelective(reservation);
+    }
+
+    @Override
+    public void saveById(Reservation reservation) {
         reservationMapper.insert(reservation);
     }
 

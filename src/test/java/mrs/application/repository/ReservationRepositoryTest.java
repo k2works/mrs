@@ -61,7 +61,7 @@ public class ReservationRepositoryTest {
                         new ReservableRoom(i.reservableRoomId(), i.meetingRoom()),
                         user
                 )
-        ).forEach(k -> reservationRepository.save(k));
+        ).forEach(k -> reservationRepository.saveById(k));
     }
 
     @Test

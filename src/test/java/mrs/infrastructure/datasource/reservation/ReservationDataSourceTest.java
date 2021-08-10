@@ -49,7 +49,6 @@ public class ReservationDataSourceTest {
 
     @Test
     void 開始時間順に予約可能会議室集合を取得できる() {
-        ReservationId id = new ReservationId(1);
         ReservedDate date = new ReservedDate(LocalDate.now());
         ReservedTime time = new ReservedTime(LocalTime.of(10, 0), LocalTime.of(11, 0));
         MeetingRoom meetingRoom = new MeetingRoom(new RoomId(1), new RoomName("会議室"));
@@ -58,7 +57,7 @@ public class ReservationDataSourceTest {
         reservableRoomRepository.save(room);
         User user = userRepository.findById("test");
         ReservedDateTime dateTime = new ReservedDateTime(date, time);
-        Reservation reservation = new Reservation(id, dateTime, room, user);
+        Reservation reservation = new Reservation(dateTime, room, user);
         reservationRepository.save(reservation);
 
         ReservableRoomId reservableRoomId = new ReservableRoomId();

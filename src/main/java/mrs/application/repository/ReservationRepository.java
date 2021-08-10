@@ -18,6 +18,8 @@ public interface ReservationRepository {
 
     void save(Reservation reservation);
 
+    void saveById(Reservation reservation);
+
     void delete(Reservation reservation);
 
     Optional<Reservation> findById(int i);
