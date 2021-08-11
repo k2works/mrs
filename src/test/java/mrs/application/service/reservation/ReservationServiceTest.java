@@ -9,7 +9,6 @@ import mrs.domain.model.facility.room.MeetingRoom;
 import mrs.domain.model.facility.room.RoomId;
 import mrs.domain.model.facility.room.RoomName;
 import mrs.domain.model.reservation.Reservation;
-import mrs.domain.model.reservation.ReservationId;
 import mrs.domain.model.reservation.datetime.ReservedDate;
 import mrs.domain.model.reservation.datetime.ReservedDateTime;
 import mrs.domain.model.reservation.datetime.ReservedTime;
@@ -62,7 +61,7 @@ public class ReservationServiceTest {
             Reservation reservation = 予約を作る(reservableRoom, LocalTime.of(9, 0), LocalTime.of(10, 0));
             予約する(reservationService, reservation);
 
-            mrs.domain.model.reservation.Reservation result = 予約を検索する(6, reservationRepository);
+            mrs.domain.model.reservation.Reservation result = 予約を検索する(reservationRepository);
             assertNotNull(result);
         }
 
@@ -200,10 +199,11 @@ public class ReservationServiceTest {
             Reservation reservation = 予約を作る(reservableRoom, LocalTime.of(9, 0), LocalTime.of(10, 0));
             予約する(reservationService, reservation);
 
-            Reservation cancelReservation = reservationRepository.getOne(3);
+            List<Reservation> result = 予約を全件検索する(reservationRepository);
+            Reservation cancelReservation = result.get(0);
             キャンセルする(reservationService, cancelReservation);
 
-            List<Reservation> result = 予約を全件検索する(reservationRepository);
+            result = 予約を全件検索する(reservationRepository);
             assertEquals(0, result.size());
         }
     }
@@ -222,8 +222,8 @@ public class ReservationServiceTest {
         repository.save(ユーザーを作る());
     }
 
-    private Reservation 予約を検索する(Integer id, ReservationRepository repository) {
-        return repository.getOne(id);
+    private Reservation 予約を検索する(ReservationRepository repository) {
+        return repository.findAll().get(0);
     }
 
     private List<Reservation> 予約を全件検索する(ReservationRepository repository) {
