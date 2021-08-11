@@ -64,6 +64,26 @@ module "app_compute_security" {
   vpc_id = module.app_network.vpc_id
 }
 
+module "app_database" {
+  source = "./modules/database/rds"
+
+  app_name = var.app_name
+  app_env_name ="${lower(var.app_name)}-${lower(var.environment)}"
+  subnet_id_1 = module.app_network.vpc_subnet_private-a_id
+  subnet_id_2 = module.app_network.vpc_subnet_private-c_id
+  vpc_id = module.app_network.vpc_id
+  security_group_id = module.app_compute_security.db_security_group_id
+  identifier = "mrs"
+  instance_class = "db.t2.small"
+  allocated_storage = "5"
+  engine = "mysql"
+  engine_version = "5.7.16"
+  db_name = "appdb"
+  username = var.db_username
+  db_password = var.db_password
+  db_parameter_group_family = "mysql5.7"
+}
+
 module "app_compute_ec2" {
   source = "./modules/compute/ec2"
 
@@ -71,7 +91,7 @@ module "app_compute_ec2" {
   ssh_key_name = "${lower(var.org_name)}-${lower(var.vpc_name)}-${lower(var.app_name)}-key"
   vpc_id = module.app_network.vpc_id
   ami_image = var.images.custom
-  security_group_id = module.app_compute_security.security_group_id
+  security_group_id = module.app_compute_security.app_security_group_id
   subnet_id = module.app_network.vpc_subnet_public-a_id
   instance_name = var.instance_name
   instance_type = "t2.micro"
@@ -88,7 +108,7 @@ module "app_compute_elastic_beanstalk" {
   app_name = "${var.org_name}${var.vpc_name}${var.app_name}"
   app_description = "Elastic Beanstalk Application"
   service_role = module.app_security_iam.iam_role_ec2_arn
-  solution_stack_name = "64bit Amazon Linux 2 v3.2.1 running Corretto 11"
+  solution_stack_name = "64bit Amazon Linux 2 v3.2.4 running Corretto 11"
   app_env = "blue"
   cname_prefix = "app-mrs"
   ssh_key_name = "${lower(var.org_name)}-${lower(var.vpc_name)}-${lower(var.app_name)}-key"
@@ -97,6 +117,22 @@ module "app_compute_elastic_beanstalk" {
   vpc_id = module.app_network.vpc_id
   subnet_id = module.app_network.vpc_subnet_public-a_id
   environment = var.environment
+  environment_variables = {
+    RDS_DB_NAME = module.app_database.rds_dbname
+    RDS_USERNAME = module.app_database.rds_username
+    RDS_PASSWORD = module.app_database.rds_password
+    RDS_HOSTNAME = module.app_database.rds_hostname
+    RDS_PORT = module.app_database.rds_port
+    RDS_URL = "jdbc:mysql://${module.app_database.rds_hostname}:${module.app_database.rds_port}/${module.app_database.rds_dbname}"
+  }
+  environment_variable_keys = {
+    RDS_DB_NAME = "SPRING_FLYWAY_SCHEMAS"
+    RDS_USERNAME = "SPRING_DATASOURCE_USERNAME"
+    RDS_PASSWORD = "SPRING_DATASOURCE_PASSWORD"
+    RDS_HOSTNAME = "PRD_RDS_HOSTNAME"
+    RDS_PORT = "PRD_RDS_PORT"
+    RDS_URL = "SPRING_DATASOURCE_URL"
+  }
 }
 
 module "app_management_group" {
@@ -131,7 +167,7 @@ module "app_management_codebuild" {
   public_subnet_id = module.app_network.vpc_subnet_public-a_id
   private_subnet_arn = module.app_network.vpc_subnet_private-c_arn
   private_subnet_id = module.app_network.vpc_subnet_private-c_id
-  security_group_id = module.app_compute_security.security_group_id
+  security_group_id = module.app_compute_security.app_security_group_id
   region = "ap-northeast-1"
   deploy_bucket_name = "${lower(var.org_name)}-${lower(var.vpc_name)}-${lower(var.app_name)}-deploy-bucket"
   deploy_bucket_arn = module.app_compute_s3.deploy_bucket_arn

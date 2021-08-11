@@ -10,3 +10,5 @@ variable "subnet_id" {}
 variable "iam_instance_profile" {}
 variable "instance_type" {}
 variable "environment" {}
+variable "environment_variables" {}
+variable "environment_variable_keys" {}

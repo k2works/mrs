@@ -48,3 +48,6 @@ variable "environment" {
   type = string
   default = "Production"
 }
+
+variable "db_username" {}
+variable "db_password" {}

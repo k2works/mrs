@@ -40,4 +40,39 @@ resource "aws_elastic_beanstalk_environment" "app_production" {
     name = "AssociatePublicIpAddress"
     value = true
   }
+  setting {
+    namespace = "aws:elasticbeanstalk:application:environment"
+    name = var.environment_variable_keys.RDS_DB_NAME
+    value = var.environment_variables.RDS_DB_NAME
+  }
+
+  setting {
+    namespace = "aws:elasticbeanstalk:application:environment"
+    name = var.environment_variable_keys.RDS_USERNAME
+    value = var.environment_variables.RDS_USERNAME
+  }
+
+  setting {
+    namespace = "aws:elasticbeanstalk:application:environment"
+    name = var.environment_variable_keys.RDS_PASSWORD
+    value = var.environment_variables.RDS_PASSWORD
+  }
+
+  setting {
+    namespace = "aws:elasticbeanstalk:application:environment"
+    name = var.environment_variable_keys.RDS_HOSTNAME
+    value = var.environment_variables.RDS_HOSTNAME
+  }
+
+  setting {
+    namespace = "aws:elasticbeanstalk:application:environment"
+    name = var.environment_variable_keys.RDS_PORT
+    value = var.environment_variables.RDS_PORT
+  }
+
+  setting {
+    namespace = "aws:elasticbeanstalk:application:environment"
+    name = var.environment_variable_keys.RDS_URL
+    value = var.environment_variables.RDS_URL
+  }
 }

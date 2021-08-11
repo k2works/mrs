@@ -36,6 +36,8 @@ aws configure --profile k2works
 aws s3 mb s3://mrs-org-mrs-production-tfstate --profile k2works
 cd build/terraform
 terraform init
+terraform plan -var-file="secret.tfvars"
+terraform apply -var-file="secret.tfvars"
 ```
 
 ## 配置
