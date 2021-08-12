@@ -64,15 +64,15 @@ module "app_compute_security" {
   vpc_id = module.app_network.vpc_id
 }
 
-module "app_database" {
-  source = "./modules/database/rds"
+module "app_database_mysql" {
+  source = "./modules/database/rds/mysql"
 
   app_name = var.app_name
   app_env_name ="${lower(var.app_name)}-${lower(var.environment)}"
   subnet_id_1 = module.app_network.vpc_subnet_private-a_id
   subnet_id_2 = module.app_network.vpc_subnet_private-c_id
   vpc_id = module.app_network.vpc_id
-  security_group_id = module.app_compute_security.db_security_group_id
+  security_group_id = module.app_database_mysql.security_group_id
   identifier = "mrs"
   instance_class = "db.t2.small"
   allocated_storage = "5"
@@ -118,12 +118,12 @@ module "app_compute_elastic_beanstalk" {
   subnet_id = module.app_network.vpc_subnet_public-a_id
   environment = var.environment
   environment_variables = {
-    RDS_DB_NAME = module.app_database.rds_dbname
-    RDS_USERNAME = module.app_database.rds_username
-    RDS_PASSWORD = module.app_database.rds_password
-    RDS_HOSTNAME = module.app_database.rds_hostname
-    RDS_PORT = module.app_database.rds_port
-    RDS_URL = "jdbc:mysql://${module.app_database.rds_hostname}:${module.app_database.rds_port}/${module.app_database.rds_dbname}"
+    RDS_DB_NAME = module.app_database_mysql.rds_dbname
+    RDS_USERNAME = module.app_database_mysql.rds_username
+    RDS_PASSWORD = module.app_database_mysql.rds_password
+    RDS_HOSTNAME = module.app_database_mysql.rds_hostname
+    RDS_PORT = module.app_database_mysql.rds_port
+    RDS_URL = "jdbc:mysql://${module.app_database_mysql.rds_hostname}:${module.app_database_mysql.rds_port}/${module.app_database_mysql.rds_dbname}"
   }
   environment_variable_keys = {
     RDS_DB_NAME = "SPRING_FLYWAY_SCHEMAS"

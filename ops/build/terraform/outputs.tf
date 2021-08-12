@@ -41,7 +41,7 @@ output "vpc_subnet_private_c_id" {
 }
 
 output "rds_security_group_id" {
-  value = module.app_compute_security.db_security_group_id
+  value = module.app_database_mysql.security_group_id
 }
 
 output "ec2_security_group_id" {
@@ -67,5 +67,5 @@ output "app_cname" {
   value = "http://${module.app_compute_elastic_beanstalk.app_cname}"
 }
 output "db_connect" {
-  value = "mysql -u ${module.app_database.rds_username} -h ${module.app_database.rds_hostname} -P ${module.app_database.rds_port} ${module.app_database.rds_dbname}"
+  value = "mysql -u ${module.app_database_mysql.rds_username} -h ${module.app_database_mysql.rds_hostname} -P ${module.app_database_mysql.rds_port} ${module.app_database_mysql.rds_dbname}"
 }

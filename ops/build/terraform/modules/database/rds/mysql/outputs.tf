@@ -22,3 +22,8 @@ output "rds_password" {
   description = "RDS instance root password"
   value       = aws_db_instance.db.password
 }
+
+output "security_group_id" {
+  value = aws_security_group.db_security.id
+}
+
