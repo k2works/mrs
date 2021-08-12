@@ -41,7 +41,7 @@
                u.last_name,
                u.role_name,
                rm.room_name
-        FROM Reservation r
+        FROM reservation r
                  LEFT OUTER JOIN reservable_room rr
                                  ON r.reserved_date = rr.reserved_date AND r.room_id = rr.room_id
                  LEFT OUTER JOIN meeting_room rm
@@ -63,7 +63,7 @@
                u.first_name,
                u.last_name,
                u.role_name
-        FROM Reservation r
+        FROM reservation r
                  LEFT OUTER JOIN reservable_room rr
                                  ON r.reserved_date = rr.reserved_date AND r.room_id = rr.room_id
                  LEFT OUTER JOIN usr u
@@ -80,7 +80,7 @@
                u.first_name,
                u.last_name,
                u.role_name
-        FROM Reservation r
+        FROM reservation r
                  LEFT OUTER JOIN reservable_room rr
                                  ON r.reserved_date = rr.reserved_date AND r.room_id = rr.room_id
                  LEFT OUTER JOIN usr u
