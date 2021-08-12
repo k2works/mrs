@@ -9,7 +9,9 @@
   "scripts": {
     "start": "nf start -j ./src/main/typescript/Procfile",
     "build": "cross-env NODE_ENV=production webpack --config webpack.common.js",
+    "build:clean": "rimraf src/main/resources/public",
     "build:dev": "cross-env NODE_ENV=development webpack --config webpack.dev.js",
+    "build:stg": "cross-env NODE_ENV=staging webpack --config webpack.stg.js",
     "build:prd": "cross-env NODE_ENV=production webpack --config webpack.prod.js",
     "app": "browser-sync start --proxy localhost:9000 --files ./src/main/typescript/**",
     "dev": "cross-env NODE_ENV=development webpack serve --config webpack.dev.js",

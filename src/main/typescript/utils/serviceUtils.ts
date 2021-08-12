@@ -1,5 +1,7 @@
 let BASE_API_URL = "http://localhost:8080/api";
 if (process.env.NODE_ENV === 'production') {
+    BASE_API_URL = "http://app-mrs-blue.ap-northeast-1.elasticbeanstalk.com/api";
+} else if (process.env.NODE_ENV === 'staging') {
     BASE_API_URL = "https://app-mrs.azurewebsites.net/api";
 }
 

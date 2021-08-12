@@ -181,7 +181,16 @@ jacocoTestReport {
 
 // Node
 task buildReact(type: NpmTask) {
-    args = ['run', 'build:prd']
+    args = ['run', 'build:clean']
+    if (project.hasProperty('env')) {
+        if ("$env" == 'production') {
+            args = ['run', 'build:prd']
+        } else if ("$env" == 'staging') {
+            args = ['run', 'build:stg']
+        }
+    } else {
+        args = ['run', 'build:dev']
+    }
 }
 
 buildReact.dependsOn npm_install

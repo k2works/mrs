@@ -38,7 +38,7 @@ stages:
 
           - script: npm install
           - script: npm run test:unit
-          - script: npm run build:prd
+          - script: npm run build:stg
 
           - task: Maven@3
             inputs:
