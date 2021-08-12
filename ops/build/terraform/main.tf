@@ -73,7 +73,7 @@ module "app_database_mysql" {
   subnet_id_2 = module.app_network.vpc_subnet_private-c_id
   vpc_id = module.app_network.vpc_id
   security_group_id = module.app_database_mysql.security_group_id
-  identifier = "mrs"
+  identifier = "mrsmysql"
   instance_class = "db.t2.small"
   allocated_storage = "5"
   engine = "mysql"
@@ -82,6 +82,26 @@ module "app_database_mysql" {
   username = var.db_username
   db_password = var.db_password
   db_parameter_group_family = "mysql5.7"
+}
+
+module "app_database_postgres" {
+  source = "./modules/database/rds/postgres"
+
+  app_name = var.app_name
+  app_env_name ="${lower(var.app_name)}-${lower(var.environment)}"
+  subnet_id_1 = module.app_network.vpc_subnet_private-a_id
+  subnet_id_2 = module.app_network.vpc_subnet_private-c_id
+  vpc_id = module.app_network.vpc_id
+  security_group_id = module.app_database_postgres.security_group_id
+  identifier = "mrspostgres"
+  instance_class = "db.t2.small"
+  allocated_storage = "5"
+  engine = "postgres"
+  engine_version = "10.5"
+  db_name = "appdb"
+  username = var.db_username
+  db_password = var.db_password
+  db_parameter_group_family = "postgres10"
 }
 
 module "app_compute_ec2" {
@@ -118,12 +138,12 @@ module "app_compute_elastic_beanstalk" {
   subnet_id = module.app_network.vpc_subnet_public-a_id
   environment = var.environment
   environment_variables = {
-    RDS_DB_NAME = module.app_database_mysql.rds_dbname
-    RDS_USERNAME = module.app_database_mysql.rds_username
-    RDS_PASSWORD = module.app_database_mysql.rds_password
-    RDS_HOSTNAME = module.app_database_mysql.rds_hostname
-    RDS_PORT = module.app_database_mysql.rds_port
-    RDS_URL = "jdbc:mysql://${module.app_database_mysql.rds_hostname}:${module.app_database_mysql.rds_port}/${module.app_database_mysql.rds_dbname}"
+    RDS_DB_NAME = module.app_database_postgres.rds_dbname
+    RDS_USERNAME = module.app_database_postgres.rds_username
+    RDS_PASSWORD = module.app_database_postgres.rds_password
+    RDS_HOSTNAME = module.app_database_postgres.rds_hostname
+    RDS_PORT = module.app_database_postgres.rds_port
+    RDS_URL = "jdbc:postgresql://${module.app_database_postgres.rds_hostname}:${module.app_database_postgres.rds_port}/${module.app_database_postgres.rds_dbname}"
   }
   environment_variable_keys = {
     RDS_DB_NAME = "SPRING_FLYWAY_SCHEMAS"

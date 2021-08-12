@@ -1,5 +1,5 @@
-resource "aws_security_group" "db_security" {
-  name   = "mss_rds"
+resource "aws_security_group" "mysql_db_security" {
+  name   = "mss_rds_mysql"
   vpc_id = var.vpc_id
 
   ingress {

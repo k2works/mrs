@@ -1,5 +1,5 @@
-resource "aws_db_subnet_group" "db" {
-  name       = "${var.app_env_name}-db"
+resource "aws_db_subnet_group" "mysql" {
+  name       = "${var.app_env_name}-mysql-db"
   subnet_ids = [var.subnet_id_1, var.subnet_id_2]
 
   tags = {
@@ -7,8 +7,8 @@ resource "aws_db_subnet_group" "db" {
   }
 }
 
-resource "aws_db_parameter_group" "db" {
-  name   = var.app_env_name
+resource "aws_db_parameter_group" "mysql" {
+  name   = "${var.app_env_name}-mysql"
   family = var.db_parameter_group_family
 
   parameter {
@@ -54,7 +54,7 @@ resource "aws_db_parameter_group" "db" {
   }
 }
 
-resource "aws_db_instance" "db" {
+resource "aws_db_instance" "mysql" {
   identifier             = var.identifier
   instance_class         = var.instance_class
   allocated_storage      = var.allocated_storage
@@ -63,9 +63,9 @@ resource "aws_db_instance" "db" {
   name                   = var.db_name
   username               = var.username
   password               = var.db_password
-  db_subnet_group_name   = aws_db_subnet_group.db.name
+  db_subnet_group_name   = aws_db_subnet_group.mysql.name
   vpc_security_group_ids = [var.security_group_id]
-  parameter_group_name   = aws_db_parameter_group.db.name
+  parameter_group_name   = aws_db_parameter_group.mysql.name
   publicly_accessible    = true
   skip_final_snapshot    = true
 }
