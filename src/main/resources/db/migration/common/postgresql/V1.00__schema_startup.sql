@@ -1,4 +1,4 @@
-CREATE TABLE meeting_room
+CREATE TABLE public.meeting_room
 (
     room_id   SERIAL       NOT NULL,
     room_name VARCHAR(255) NOT NULL,
@@ -11,7 +11,7 @@ on column public.meeting_room.room_id is '会議室ID';
 comment
 on column public.meeting_room.room_name is '会議室名';
 
-CREATE TABLE reservable_room
+CREATE TABLE public.reservable_room
 (
     reserved_date DATE NOT NULL,
     room_id       INT4 NOT NULL,
@@ -25,7 +25,7 @@ on column public.reservable_room.reserved_date is '予約日';
 comment
 on column public.reservable_room.room_id is '会議室ID';
 
-CREATE TABLE usr
+CREATE TABLE public.usr
 (
     user_id    VARCHAR(255) NOT NULL,
     first_name VARCHAR(255) NOT NULL,
@@ -47,7 +47,7 @@ on column public.usr.password is 'パスワード';
 comment
 on column public.usr.role_name is '役割';
 
-CREATE TABLE reservation
+CREATE TABLE public.reservation
 (
     reservation_id SERIAL       NOT NULL,
     end_time       TIME         NOT NULL,
