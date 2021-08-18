@@ -49,5 +49,5 @@ variable "environment" {
   default = "Production"
 }
 
-variable "db_username" {}
-variable "db_password" {}
+variable "db_mysql_username" {}
+variable "db_postgres_username" {}

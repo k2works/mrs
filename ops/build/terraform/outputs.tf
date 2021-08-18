@@ -67,9 +67,9 @@ output "app_cname" {
   value = "http://${module.app_compute_elastic_beanstalk.app_cname}"
 }
 output "db_connect_mysql" {
-  value = "mysql -u ${var.db_username} -h ${module.app_database_mysql.rds_hostname} -P ${module.app_database_mysql.rds_port} ${module.app_database_mysql.rds_dbname}"
+  value = "mysql -u ${var.db_mysql_username} -h ${module.app_database_mysql.rds_hostname} -P ${module.app_database_mysql.rds_port} ${module.app_database_mysql.rds_dbname}"
 }
 
 output "db_connect_postgres" {
-  value = "psql -U ${var.db_username} -h ${module.app_database_postgres.rds_hostname} -p ${module.app_database_postgres.rds_port} -d ${module.app_database_postgres.rds_dbname}"
+  value = "psql -U ${var.db_postgres_username} -h ${module.app_database_postgres.rds_hostname} -p ${module.app_database_postgres.rds_port} -d ${module.app_database_postgres.rds_dbname}"
 }

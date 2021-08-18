@@ -29,8 +29,8 @@ terraform {
 
 module "app_management_secrets" {
   source = "./modules/management/secretsmanager"
-  db_password = var.db_password
-  db_username = var.db_username
+  db_mysql_username = var.db_mysql_username
+  db_postgres_username = var.db_postgres_username
 }
 
 module "app_management_group" {
@@ -91,8 +91,8 @@ module "app_database_mysql" {
   engine = "mysql"
   engine_version = "5.7.16"
   db_name = "appdb"
-  username = module.app_management_secrets.db_username
-  db_password = module.app_management_secrets.db_password
+  username = module.app_management_secrets.db_mysql_username
+  db_password = module.app_management_secrets.db_mysql_password
   db_parameter_group_family = "mysql5.7"
 }
 
@@ -111,8 +111,8 @@ module "app_database_postgres" {
   engine = "postgres"
   engine_version = "10.5"
   db_name = "appdb"
-  username = module.app_management_secrets.db_username
-  db_password = module.app_management_secrets.db_password
+  username = module.app_management_secrets.db_postgres_username
+  db_password = module.app_management_secrets.db_postgres_password
   db_parameter_group_family = "postgres10"
 }
 
