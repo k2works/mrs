@@ -7,7 +7,7 @@ User=ec2-user
 Type=simple
 
 [Service]
-ExecStart=/usr/bin/java -jar /srv/mrs/mrs-0.1.0-SNAPSHOT.jar -Xms256m --spring.profiles.active=prod
+ExecStart=/usr/bin/java -jar /srv/mrs/mrs-0.1.0-SNAPSHOT.jar -Xms256m --spring.profiles.active=aws-mysql
 ExecStartPost=/bin/sh -c "systemctl show -p MainPID web.service | cut -d= -f2 > /srv/pids/web.pid"
 ExecStopPost=/bin/sh -c "rm -f /srv/pids/web.pid"
 ExecStopPost=/bin/sh -c ""

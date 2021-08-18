@@ -37,12 +37,12 @@ module "app_management_ssm_parameter" {
   source = "./modules/management/ssm_parameter"
   environment = upper(var.environment)
   environment_variables = {
-    SPRING_FLYWAY_SCHEMAS = module.app_database_postgres.rds_dbname
-    SPRING_DATASOURCE_USERNAME = module.app_database_postgres.rds_username
-    SPRING_DATASOURCE_PASSWORD = module.app_database_postgres.rds_password
+    SPRING_FLYWAY_SCHEMAS = module.app_database_mysql.rds_dbname
+    SPRING_DATASOURCE_USERNAME = module.app_database_mysql.rds_username
+    SPRING_DATASOURCE_PASSWORD = module.app_database_mysql.rds_password
     SPRING_DATASOURCE_URL = "jdbc:mysql://${module.app_database_mysql.rds_hostname}:${module.app_database_mysql.rds_port}/${module.app_database_mysql.rds_dbname}"
-    RDS_HOSTNAME = module.app_database_postgres.rds_hostname
-    RDS_PORT = module.app_database_postgres.rds_port
+    RDS_HOSTNAME = module.app_database_mysql.rds_hostname
+    RDS_PORT = module.app_database_mysql.rds_port
   }
 }
 
