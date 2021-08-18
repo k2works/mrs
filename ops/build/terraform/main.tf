@@ -27,6 +27,18 @@ terraform {
   }
 }
 
+module "app_management_secrets" {
+  source = "./modules/management/secretsmanager"
+  db_password = var.db_password
+  db_username = var.db_username
+}
+
+module "app_management_group" {
+  source = "./modules/management/resource_groups"
+  group_name = "${lower(var.org_name)}-${lower(var.vpc_name)}-${lower(var.app_name)}-group"
+  environment = var.environment
+}
+
 module "app_security_iam" {
   source = "./modules/security/iam"
 }
@@ -79,8 +91,8 @@ module "app_database_mysql" {
   engine = "mysql"
   engine_version = "5.7.16"
   db_name = "appdb"
-  username = var.db_username
-  db_password = var.db_password
+  username = module.app_management_secrets.db_username
+  db_password = module.app_management_secrets.db_password
   db_parameter_group_family = "mysql5.7"
 }
 
@@ -99,8 +111,8 @@ module "app_database_postgres" {
   engine = "postgres"
   engine_version = "10.5"
   db_name = "appdb"
-  username = var.db_username
-  db_password = var.db_password
+  username = module.app_management_secrets.db_username
+  db_password = module.app_management_secrets.db_password
   db_parameter_group_family = "postgres10"
 }
 
@@ -153,12 +165,6 @@ module "app_compute_elastic_beanstalk" {
     RDS_PORT = "PRD_RDS_PORT"
     RDS_URL = "SPRING_DATASOURCE_URL"
   }
-}
-
-module "app_management_group" {
-  source = "./modules/management/resource_groups"
-  group_name = "${lower(var.org_name)}-${lower(var.vpc_name)}-${lower(var.app_name)}-group"
-  environment = var.environment
 }
 
 module "app_compute_s3" {
