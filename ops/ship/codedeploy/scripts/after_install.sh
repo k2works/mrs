@@ -1,6 +1,6 @@
 #!/bin/bash
 . $(dirname $0)/common_variables.sh
-. $(dirname $0)/paramstore.sh > /srv/mrs/env
+. $(dirname $0)/paramstore.sh > /srv/mrs/service/env
 
 cp /srv/mrs/nginx/https.conf /etc/nginx/conf.d
 cp /srv/mrs/nginx/http.conf /etc/nginx/conf.d
