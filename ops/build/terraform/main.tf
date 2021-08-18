@@ -33,6 +33,19 @@ module "app_management_secrets" {
   db_postgres_username = var.db_postgres_username
 }
 
+module "app_management_ssm_parameter" {
+  source = "./modules/management/ssm_parameter"
+  environment = upper(var.environment)
+  environment_variables = {
+    SPRING_FLYWAY_SCHEMAS = module.app_database_postgres.rds_dbname
+    SPRING_DATASOURCE_USERNAME = module.app_database_postgres.rds_username
+    SPRING_DATASOURCE_PASSWORD = module.app_database_postgres.rds_password
+    SPRING_DATASOURCE_URL = "jdbc:mysql://${module.app_database_mysql.rds_hostname}:${module.app_database_mysql.rds_port}/${module.app_database_mysql.rds_dbname}"
+    RDS_HOSTNAME = module.app_database_postgres.rds_hostname
+    RDS_PORT = module.app_database_postgres.rds_port
+  }
+}
+
 module "app_management_group" {
   source = "./modules/management/resource_groups"
   group_name = "${lower(var.org_name)}-${lower(var.vpc_name)}-${lower(var.app_name)}-group"
