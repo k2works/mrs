@@ -73,3 +73,7 @@ output "db_connect_mysql" {
 output "db_connect_postgres" {
   value = "psql -U ${var.db_postgres_username} -h ${module.app_database_postgres.rds_hostname} -p ${module.app_database_postgres.rds_port} -d ${module.app_database_postgres.rds_dbname}"
 }
+
+output "docker_push" {
+  value = module.app_compute_apprunner.docker_push
+}
