@@ -27,29 +27,10 @@ terraform {
   }
 }
 
-module "app_management_secrets" {
-  source = "./modules/management/secretsmanager"
-  db_mysql_username = var.db_mysql_username
-  db_postgres_username = var.db_postgres_username
-}
-
-module "app_management_ssm_parameter" {
-  source = "./modules/management/ssm_parameter"
-  environment = upper(var.environment)
-  environment_variables = {
-    SPRING_FLYWAY_SCHEMAS = module.app_database_mysql.rds_dbname
-    SPRING_DATASOURCE_USERNAME = module.app_database_mysql.rds_username
-    SPRING_DATASOURCE_PASSWORD = module.app_database_mysql.rds_password
-    SPRING_DATASOURCE_URL = "jdbc:mysql://${module.app_database_mysql.rds_hostname}:${module.app_database_mysql.rds_port}/${module.app_database_mysql.rds_dbname}"
-    RDS_HOSTNAME = module.app_database_mysql.rds_hostname
-    RDS_PORT = module.app_database_mysql.rds_port
-  }
-}
-
-module "app_management_group" {
-  source = "./modules/management/resource_groups"
-  group_name = "${lower(var.org_name)}-${lower(var.vpc_name)}-${lower(var.app_name)}-group"
-  environment = var.environment
+resource "random_password" "password" {
+  length           = 16
+  special          = true
+  override_special = "_%@"
 }
 
 module "app_security_iam" {
@@ -104,8 +85,8 @@ module "app_database_mysql" {
   engine = "mysql"
   engine_version = "5.7.16"
   db_name = "appdb"
-  username = module.app_management_secrets.db_mysql_username
-  db_password = module.app_management_secrets.db_mysql_password
+  username = var.db_mysql_username
+  db_password = random_password.password.result
   db_parameter_group_family = "mysql5.7"
 }
 
@@ -124,8 +105,8 @@ module "app_database_postgres" {
   engine = "postgres"
   engine_version = "10.5"
   db_name = "appdb"
-  username = module.app_management_secrets.db_postgres_username
-  db_password = module.app_management_secrets.db_postgres_password
+  username = var.db_postgres_username
+  db_password = random_password.password.result
   db_parameter_group_family = "postgres10"
 }
 
@@ -178,6 +159,25 @@ module "app_compute_elastic_beanstalk" {
     RDS_PORT = "PRD_RDS_PORT"
     RDS_URL = "SPRING_DATASOURCE_URL"
   }
+}
+
+module "app_management_ssm_parameter" {
+  source = "./modules/management/ssm_parameter"
+  environment = upper(var.environment)
+  environment_variables = {
+    SPRING_FLYWAY_SCHEMAS = module.app_database_mysql.rds_dbname
+    SPRING_DATASOURCE_USERNAME = module.app_database_mysql.rds_username
+    SPRING_DATASOURCE_PASSWORD = module.app_database_mysql.rds_password
+    SPRING_DATASOURCE_URL = "jdbc:mysql://${module.app_database_mysql.rds_hostname}:${module.app_database_mysql.rds_port}/${module.app_database_mysql.rds_dbname}"
+    RDS_HOSTNAME = module.app_database_mysql.rds_hostname
+    RDS_PORT = module.app_database_mysql.rds_port
+  }
+}
+
+module "app_management_group" {
+  source = "./modules/management/resource_groups"
+  group_name = "${lower(var.org_name)}-${lower(var.vpc_name)}-${lower(var.app_name)}-group"
+  environment = var.environment
 }
 
 module "app_compute_s3" {
