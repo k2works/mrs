@@ -20,7 +20,8 @@ module.exports = {
             process: 'process/browser',
         }),
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV ? process.env.NODE_ENV : "development")
+            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV ? process.env.NODE_ENV : "development"),
+            'process.env.API_URL': JSON.stringify(process.env.API_URL ? process.env.API_URL : "http://127.0.0.1:8080/api")
         }),
     ],
     module: {

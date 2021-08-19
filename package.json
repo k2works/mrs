@@ -6,13 +6,17 @@
   "directories": {
     "doc": "docs"
   },
+  "config": {
+    "staging_api_url": "https://app-mrs.azurewebsites.net/api",
+    "production_api_url": "http://app-mrs-blue.ap-northeast-1.elasticbeanstalk.com/api"
+  },
   "scripts": {
     "start": "nf start -j ./src/main/typescript/Procfile",
     "build": "cross-env NODE_ENV=production webpack --config webpack.common.js",
     "build:clean": "rimraf src/main/resources/public",
     "build:dev": "cross-env NODE_ENV=development webpack --config webpack.dev.js",
-    "build:stg": "cross-env NODE_ENV=staging webpack --config webpack.stg.js",
-    "build:prd": "cross-env NODE_ENV=production webpack --config webpack.prod.js",
+    "build:stg": "cross-env NODE_ENV=staging API_URL=$npm_package_config_staging_api_url webpack --config webpack.stg.js",
+    "build:prd": "cross-env NODE_ENV=production API_URL=$npm_package_config_production_api_url webpack --config webpack.prod.js",
     "app": "browser-sync start --proxy localhost:9000 --files ./src/main/typescript/**",
     "dev": "cross-env NODE_ENV=development webpack serve --config webpack.dev.js",
     "watch": "webpack --watch --config webpack.dev.js",
