@@ -77,3 +77,7 @@ output "db_connect_postgres" {
 output "docker_push" {
   value = module.app_compute_apprunner.docker_push
 }
+
+output "apprunner_service_url" {
+  value = module.app_compute_apprunner.service_url
+}

@@ -243,3 +243,11 @@ module "app_compute_apprunner" {
     SPRING_DATASOURCE_URL      = "jdbc:h2:mem:db;DB_CLOSE_DELAY=-1"
   }
 }
+
+module "app_mobile_amplify" {
+  source ="./modules/mobile/amplify"
+  app_api_url = "https://${module.app_compute_apprunner.service_url}/api"
+  app_name = var.app_name
+  app_repository = "https://github.com/k2works/mrs"
+  access_token = var.github_personal_access_token
+}

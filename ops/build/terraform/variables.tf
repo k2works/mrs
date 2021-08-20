@@ -51,3 +51,4 @@ variable "environment" {
 
 variable "db_mysql_username" {}
 variable "db_postgres_username" {}
+variable "github_personal_access_token" {}

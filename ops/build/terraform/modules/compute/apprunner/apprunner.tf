@@ -63,6 +63,9 @@ resource "aws_apprunner_service" "app" {
   }
 }
 
+output "service_url" {
+  value = aws_apprunner_service.app.service_url
+}
 ######################################################################
 # IAM Role for App Runner                                            #
 ######################################################################
