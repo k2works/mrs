@@ -180,6 +180,22 @@ jacocoTestReport {
 }
 
 // Node
+task setNpmConfig(type: NpmTask) {
+    if (project.hasProperty('api')) {
+        if (project.hasProperty('env')) {
+            if ("$env" == 'production') {
+                args = ['config', 'set', 'Mrs:production_api_url', "$api"]
+            } else if ("$env" == 'staging') {
+                args = ['config', 'set', 'Mrs:staging_api_url', "$api"]
+            } else {
+                args = ['config', 'set', 'Mrs:development_api_url', "http://127.0.0.1:8080/api"]
+            }
+        }
+    } else {
+        args = ['config', 'set', 'Mrs:development_api_url', "http://127.0.0.1:8080/api"]
+    }
+}
+
 task buildReact(type: NpmTask) {
     args = ['run', 'build:clean']
     if (project.hasProperty('env')) {
@@ -194,4 +210,5 @@ task buildReact(type: NpmTask) {
 }
 
 buildReact.dependsOn npm_install
+buildReact.dependsOn setNpmConfig
 compileJava.dependsOn buildReact

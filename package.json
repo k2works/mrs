@@ -7,8 +7,9 @@
     "doc": "docs"
   },
   "config": {
+    "development_api_url": "http://127.0.0.1:8080/api",
     "staging_api_url": "https://app-mrs.azurewebsites.net/api",
-    "production_api_url": "http://app-mrs-blue.ap-northeast-1.elasticbeanstalk.com/api"
+    "production_api_url": "https://app-mrs.azurewebsites.net/api"
   },
   "scripts": {
     "start": "nf start -j ./src/main/typescript/Procfile",
