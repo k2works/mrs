@@ -79,5 +79,5 @@ output "docker_push" {
 }
 
 output "apprunner_service_url" {
-  value = module.app_compute_apprunner.service_url
+  value = "https://${module.app_compute_apprunner.service_url}"
 }
