@@ -251,3 +251,21 @@ module "app_mobile_amplify" {
   app_repository = "https://github.com/k2works/mrs"
   access_token = var.github_personal_access_token
 }
+
+module "app_container" {
+  source = "./modules/container"
+  certificate_arn = var.acm_certificate_arn
+  subnet_public_a_id = module.app_network.vpc_subnet_public-a_id
+  subnet_public_c_id = module.app_network.vpc_subnet_public-c_id
+  vpc_id = module.app_network.vpc_id
+  subnet_private_a_id = module.app_network.vpc_subnet_private-a_id
+  subnet_private_c_id = module.app_network.vpc_subnet_private-c_id
+  cidr_block = module.app_network.vpc_cidr
+  environment_variables = {
+    SPRING_PROFILES_ACTIVE     = "prod"
+    SPRING_FLYWAY_SCHEMAS      = ""
+    SPRING_DATASOURCE_USERNAME = "sa"
+    SPRING_DATASOURCE_PASSWORD = "sa"
+    SPRING_DATASOURCE_URL      = "jdbc:h2:mem:db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE"
+  }
+}

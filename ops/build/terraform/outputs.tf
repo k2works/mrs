@@ -81,3 +81,7 @@ output "docker_push" {
 output "apprunner_service_url" {
   value = "https://${module.app_compute_apprunner.service_url}"
 }
+
+output "alb_dns_name" {
+  value = "http://${module.app_container.alb_dns_name}"
+}
