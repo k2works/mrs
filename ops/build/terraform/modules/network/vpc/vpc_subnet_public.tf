@@ -11,7 +11,7 @@ resource "aws_subnet" "public-a" {
 resource "aws_subnet" "public-c" {
   vpc_id = aws_vpc.app_vpc.id
   cidr_block = "10.0.1.0/24"
-  availability_zone = var.az_1
+  availability_zone = var.az_2
 
   tags = {
     Name = "${var.app_name}-Public-c"
