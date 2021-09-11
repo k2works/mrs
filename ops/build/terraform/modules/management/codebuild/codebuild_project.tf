@@ -14,7 +14,6 @@ variable "public_subnet_arn" {}
 variable "public_subnet_id" {}
 variable "private_subnet_arn" {}
 variable "private_subnet_id" {}
-variable "security_group_id" {}
 
 resource "aws_s3_bucket" "cache_bucket" {
   bucket = "${var.deploy_bucket_name}-cache"

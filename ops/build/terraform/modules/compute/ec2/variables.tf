@@ -3,6 +3,7 @@ variable "ssh_key_name" {}
 variable "vpc_id" {}
 variable "ami_image" {}
 variable "security_group_id" {}
+variable "security_group_ids" {}
 variable "subnet_id" {}
 variable "instance_name" {}
 variable "instance_type" {}

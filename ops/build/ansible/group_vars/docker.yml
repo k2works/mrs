@@ -18,8 +18,8 @@ sdkman_defaults:
   gradle: '6.8.3'
   maven: '3.8.1'
 app_server_name: "localhost"
-tls_cert_key: "../../config/tls/mrsorg-vpc-mrsproduction.crt"
-tls_private_key: "../../config/tls/mrsorg-vpc-mrsproduction.key"
+tls_cert_key: "../../config/tls/mrsorg-mrsnetwork-mrsapplication.crt"
+tls_private_key: "../../config/tls/mrsorg-mrsnetwork-mrsapplication.key"
 web_service_name: "hello-world"
 web_service_exec: "/usr/bin/java -jar /srv/hello-world/build/libs/hello-world-0.0.1-SNAPSHOT.jar"
 web_service_work_dir: "/srv/hello-world"

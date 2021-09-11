@@ -10,19 +10,19 @@ resource "aws_key_pair" "ssh_key" {
     command = "echo '${tls_private_key.this.private_key_pem}' > ./${var.ssh_key_name}.pem"
   }
   provisioner "local-exec" {
-    command = "mv  ./${var.ssh_key_name}.pem ../../config/ssh/${var.ssh_key_name}.pem"
+    command = "mv  ./${var.ssh_key_name}.pem ../../../config/ssh/${var.ssh_key_name}.pem"
   }
   provisioner "local-exec" {
-    command = "chmod 600 ../../config/ssh/${var.ssh_key_name}.pem"
+    command = "chmod 600 ../../../config/ssh/${var.ssh_key_name}.pem"
   }
 
   provisioner "local-exec" {
     command = "echo '${tls_private_key.this.public_key_pem}' > ./${var.ssh_key_name}.pub.pem"
   }
   provisioner "local-exec" {
-    command = "mv  ./${var.ssh_key_name}.pub.pem ../../config/ssh/${var.ssh_key_name}.pub.pem"
+    command = "mv  ./${var.ssh_key_name}.pub.pem ../../../config/ssh/${var.ssh_key_name}.pub.pem"
   }
   provisioner "local-exec" {
-    command = "chmod 600 ../../config/ssh/${var.ssh_key_name}.pub.pem"
+    command = "chmod 600 ../../../config/ssh/${var.ssh_key_name}.pub.pem"
   }
 }

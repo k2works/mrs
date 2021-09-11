@@ -1,5 +1,8 @@
 version: 0.2
 
+env:
+  parameter-store:
+    api_url: "/PRODUCTION/API_URL"
 phases:
   install:
     runtime-versions:
@@ -7,12 +10,12 @@ phases:
   pre_build:
     commands:
       - echo Copy Certfile form S3
-      - aws s3 cp s3://mrsorg-vpc-mrsproduction-cert-bucket/mrsorg-vpc-mrsproduction.crt ops/ship/codedeploy/nginx/cert.crt
-      - aws s3 cp s3://mrsorg-vpc-mrsproduction-cert-bucket/mrsorg-vpc-mrsproduction.key ops/ship/codedeploy/nginx/cert.key
+      - aws s3 cp s3://mrsorg-mrsnetwork-mrsapplication-cert-bucket/mrsorg-mrsnetwork-mrsapplication.crt ops/ship/codedeploy/nginx/cert.crt
+      - aws s3 cp s3://mrsorg-mrsnetwork-mrsapplication-cert-bucket/mrsorg-mrsnetwork-mrsapplication.key ops/ship/codedeploy/nginx/cert.key
   build:
     commands:
       - echo Build started on `date`
-      - gradle build
+      - gradle build -Penv=production -Papi=${api_url}
   post_build:
     commands:
       - echo Build completed on `date`

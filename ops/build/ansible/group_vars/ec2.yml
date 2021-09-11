@@ -28,8 +28,8 @@ usergroup:
     name: application
     gid: 1919
 app_server_name: "*.ap-northeast-1.compute.amazonaws.com"
-tls_cert_key: "../../config/tls/mrsorg-vpc-mrsproduction.crt"
-tls_private_key: "../../config/tls/mrsorg-vpc-mrsproduction.key"
+tls_cert_key: "../../config/tls/mrsorg-mrsnetwork-mrsapplication.crt"
+tls_private_key: "../../config/tls/mrsorg-mrsnetwork-mrsapplication.key"
 swap_file_path: "swapfile"
 swap_file_size_mb: "1024"
 web_service_name: "hello-world"

@@ -9,7 +9,7 @@
 
 APPLICATION_NAME="MrsApp"
 DEPLOY_GROUP="web-group"
-BUCKET="mrsorg-vpc-mrsproduction-deploy-bucket"
+BUCKET="mrsorg-mrsnetwork-mrsapplication-deploy-bucket"
 BUNDLE_PATH="web-mrs.zip"
 
 DESTINATION_PATH="/srv/mrs"

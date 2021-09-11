@@ -28,3 +28,15 @@ output "vpc_subnet_private-c_arn" {
 output "vpc_subnet_private-c_id" {
   value = aws_subnet.private-c.id
 }
+output "vpc_subnet_public-a" {
+  value = aws_subnet.public-a
+}
+output "vpc_subnet_public-c" {
+  value = aws_subnet.public-c
+}
+output "vpc_subnet_private-a" {
+  value = aws_subnet.private-a
+}
+output "vpc_subnet_private-c" {
+  value = aws_subnet.private-c
+}

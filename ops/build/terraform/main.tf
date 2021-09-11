@@ -126,6 +126,7 @@ module "app_compute_ec2" {
   public               = "true"
   environment          = var.environment
   iam_instance_profile = module.app_security_iam.iam_instance_profile_ec2
+  security_group_ids = ""
 }
 
 module "app_compute_elastic_beanstalk" {
