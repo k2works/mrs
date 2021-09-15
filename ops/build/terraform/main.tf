@@ -160,6 +160,7 @@ module "app_compute_elastic_beanstalk" {
     RDS_PORT     = "PRD_RDS_PORT"
     RDS_URL      = "SPRING_DATASOURCE_URL"
   }
+  acm_certificate_arn = ""
 }
 
 module "app_management_ssm_parameter" {
