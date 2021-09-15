@@ -106,17 +106,17 @@ module "app_network_vpc" {
 }
 
 module "app_network_cert" {
-  source = "../modules/network/cert"
-  domain      = var.domain
-  sub_domain  = local.subdomain_name
+  source     = "../modules/network/cert"
+  domain     = var.domain
+  sub_domain = local.subdomain_name
 }
 
 module "app_network_dns" {
-  source      = "../modules/network/dns"
-  domain      = var.domain
-  sub_domain  = local.subdomain_name
-  dns_name    = module.app_compute_elastic_beanstalk.app_cname
-  alb_zone_id = module.app_compute_elastic_beanstalk.zone_id
+  source                    = "../modules/network/dns"
+  domain                    = var.domain
+  sub_domain                = local.subdomain_name
+  dns_name                  = module.app_compute_elastic_beanstalk.app_cname
+  alb_zone_id               = module.app_compute_elastic_beanstalk.zone_id
   domain_validation_options = module.app_network_cert.domain_validation_options
 }
 
@@ -180,3 +180,13 @@ module "app_management_group" {
   environment = var.environment
 }
 
+module "app_management_ci" {
+  source                       = "./ci"
+  name                         = "${lower(var.org_name)}-${lower(var.vpc_name)}-${lower(var.app_name)}-pipeline"
+  deploy_bucket_name           = "${lower(var.org_name)}-${lower(var.vpc_name)}-${lower(var.app_name)}-deploy-bucket"
+  full_repository_id           = "k2works/mrs"
+  blanch_name                  = "develop"
+  code_build_project_name      = "${lower(var.org_name)}-${lower(var.vpc_name)}-${lower(var.app_name)}-project"
+  code_deploy_application_name = module.app_compute_elastic_beanstalk.app_name
+  code_deploy_environment_name = module.app_compute_elastic_beanstalk.app_env_name
+}
