@@ -105,6 +105,21 @@ module "app_network_vpc" {
   app_name = var.app_name
 }
 
+module "app_network_cert" {
+  source = "../modules/network/cert"
+  domain      = var.domain
+  sub_domain  = local.subdomain_name
+}
+
+module "app_network_dns" {
+  source      = "../modules/network/dns"
+  domain      = var.domain
+  sub_domain  = local.subdomain_name
+  dns_name    = module.app_compute_elastic_beanstalk.app_cname
+  alb_zone_id = module.app_compute_elastic_beanstalk.zone_id
+  domain_validation_options = module.app_network_cert.domain_validation_options
+}
+
 module "app_database_postgres" {
   source = "../modules/database/rds/postgres"
 
@@ -136,7 +151,7 @@ module "app_compute_elastic_beanstalk" {
   cname_prefix         = "app-mrs"
   ssh_key_name         = "${lower(var.org_name)}-${lower(var.vpc_name)}-${lower(var.app_name)}-key"
   iam_instance_profile = aws_iam_instance_profile.ec2_profile.name
-  instance_type        = "t2.micro"
+  instance_type        = "t2.small"
   vpc_id               = module.app_network_vpc.vpc_id
   subnet_id            = module.app_network_vpc.vpc_subnet_public-a_id
   environment          = var.environment
@@ -156,6 +171,7 @@ module "app_compute_elastic_beanstalk" {
     RDS_PORT     = "PRD_RDS_PORT"
     RDS_URL      = "SPRING_DATASOURCE_URL"
   }
+  acm_certificate_arn = module.app_network_cert.acm_certificate_arn
 }
 
 module "app_management_group" {
@@ -163,3 +179,4 @@ module "app_management_group" {
   group_name  = local.group_name
   environment = var.environment
 }
+

@@ -40,6 +40,31 @@ resource "aws_elastic_beanstalk_environment" "app_production" {
     name = "AssociatePublicIpAddress"
     value = true
   }
+
+  setting {
+    namespace = "aws:elb:listener:443"
+    name = "ListenerProtocol"
+    value = "HTTPS"
+  }
+
+  setting {
+    namespace = "aws:elb:listener:443"
+    name = "InstanceProtocol"
+    value = "HTTP"
+  }
+
+  setting {
+    namespace = "aws:elb:listener:443"
+    name = "InstancePort"
+    value = "80"
+  }
+
+  setting {
+    namespace = "aws:elb:listener:443"
+    name = "SSLCertificateId"
+    value = var.acm_certificate_arn
+  }
+
   setting {
     namespace = "aws:elasticbeanstalk:application:environment"
     name = var.environment_variable_keys.RDS_DB_NAME

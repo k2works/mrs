@@ -138,12 +138,19 @@ module "app_network_vpc" {
   app_name = var.app_name
 }
 
+module "app_network_cert" {
+  source = "../modules/network/cert"
+  domain      = var.domain
+  sub_domain  = local.subdomain_name
+}
+
 module "app_network_dns" {
   source      = "../modules/network/dns"
   domain      = var.domain
   sub_domain  = local.subdomain_name
   dns_name    = module.app_network_loadbalancer.alb_dns_name
   alb_zone_id = module.app_network_loadbalancer.alb_zone_id
+  domain_validation_options = module.app_network_cert.domain_validation_options
 }
 
 module "app_security_group_ssh" {
@@ -187,7 +194,7 @@ module "app_network_loadbalancer" {
   http_sg             = module.app_security_group_http
   https_sg            = module.app_security_group_https
   http_redirect_sg    = module.app_security_group_http_redirect
-  acm_certificate_arn = module.app_network_dns.acm_certificate_arn
+  acm_certificate_arn = module.app_network_cert.acm_certificate_arn
   vpc_id              = module.app_network_vpc.vpc_id
   target_id           = module.app_compute_ec2.private_ip
 }
