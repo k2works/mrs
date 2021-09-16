@@ -120,19 +120,17 @@ module "app_network_dns" {
   domain_validation_options = module.app_network_cert.domain_validation_options
 }
 
-module "app_database_postgres" {
-  source = "../modules/database/rds/postgres"
+module "app_database_serverless_postgres" {
+  source = "../modules/database/rds/aurora/postgres"
 
   app_name                  = var.app_name
   app_env_name              = "${lower(var.app_name)}-${lower(var.environment)}"
   subnet_id_1               = module.app_network_vpc.vpc_subnet_private-a_id
   subnet_id_2               = module.app_network_vpc.vpc_subnet_private-c_id
   vpc_id                    = module.app_network_vpc.vpc_id
-  security_group_id         = module.app_database_postgres.security_group_id
+  security_group_id         = module.app_database_serverless_postgres.security_group_id
   identifier                = "mrspostgres"
-  instance_class            = "db.t2.small"
-  allocated_storage         = "5"
-  engine                    = "postgres"
+  engine                    = "aurora-postgresql"
   engine_version            = "10.5"
   db_name                   = "appdb"
   username                  = var.db_postgres_username
@@ -156,12 +154,12 @@ module "app_compute_elastic_beanstalk" {
   subnet_id            = module.app_network_vpc.vpc_subnet_public-a_id
   environment          = var.environment
   environment_variables = {
-    RDS_DB_NAME  = module.app_database_postgres.rds_dbname
-    RDS_USERNAME = module.app_database_postgres.rds_username
-    RDS_PASSWORD = module.app_database_postgres.rds_password
-    RDS_HOSTNAME = module.app_database_postgres.rds_hostname
-    RDS_PORT     = module.app_database_postgres.rds_port
-    RDS_URL      = "jdbc:postgresql://${module.app_database_postgres.rds_hostname}:${module.app_database_postgres.rds_port}/${module.app_database_postgres.rds_dbname}"
+    RDS_DB_NAME  = module.app_database_serverless_postgres.rds_dbname
+    RDS_USERNAME = module.app_database_serverless_postgres.rds_username
+    RDS_PASSWORD = module.app_database_serverless_postgres.rds_password
+    RDS_HOSTNAME = module.app_database_serverless_postgres.rds_hostname
+    RDS_PORT     = module.app_database_serverless_postgres.rds_port
+    RDS_URL      = "jdbc:postgresql://${module.app_database_serverless_postgres.rds_hostname}:${module.app_database_serverless_postgres.rds_port}/${module.app_database_serverless_postgres.rds_dbname}"
   }
   environment_variable_keys = {
     RDS_DB_NAME  = "SPRING_FLYWAY_SCHEMAS"
