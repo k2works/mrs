@@ -21,7 +21,7 @@ resource "aws_amplify_app" "app" {
             - npm ci
         build:
           commands:
-            - npm config set Mrs:production_api_url ${var.app_api_url}
+            - npm config set Mrs:production_api_url $PRD_API_URL
             - npm run build:prd
       artifacts:
         baseDirectory: src/main/resources/public
@@ -44,7 +44,7 @@ resource "aws_amplify_app" "app" {
             - npm install wait-on
             - npm install pm2
             - npm install mocha mochawesome mochawesome-merge mochawesome-report-generator
-            - npm config set Mrs:development_api_url ${var.app_api_url}
+            - npm config set Mrs:development_api_url $DEV_API_URL
             - npx pm2 start npm -- start
             - 'npx wait-on http://localhost:3000'
         test:
@@ -73,7 +73,8 @@ resource "aws_amplify_branch" "develop" {
   stage     = "PRODUCTION"
 
   environment_variables = {
-    API_URL = var.app_api_url
+    PRD_API_URL = var.app_api_url,
+    DEV_API_URL = var.app_api_url
   }
 }
 
