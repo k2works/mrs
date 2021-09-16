@@ -11,6 +11,7 @@ provider "aws" {
   region  = var.provider_config.regions
   default_tags {
     tags = {
+      Name        = local.name
       Environment = var.environment
     }
   }
