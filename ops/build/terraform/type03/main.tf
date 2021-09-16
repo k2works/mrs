@@ -4,6 +4,7 @@ locals {
   subdomain_name = lower(var.app_name)
   group_name     = "${lower(var.org_name)}-${lower(var.vpc_name)}-${lower(var.app_name)}-group"
   api_url        = "https://${local.subdomain_name}.${var.domain}/api"
+  app_domain     = "app-runner.${var.domain}"
 }
 
 provider "aws" {
@@ -76,6 +77,7 @@ module "app_compute_apprunner" {
   iam_policy_name = "apprunner_iam_policy"
   iam_role_name   = "apprunner_iam_role"
   domain = var.domain
+  app_domain = local.app_domain
   environment_variables = {
     SPRING_PROFILES_ACTIVE     = "aws-postgres"
     SPRING_FLYWAY_SCHEMAS      = module.app_database_postgres.rds_dbname
