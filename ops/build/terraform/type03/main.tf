@@ -75,6 +75,7 @@ module "app_compute_apprunner" {
   app_name        = lower(var.app_name)
   iam_policy_name = "apprunner_iam_policy"
   iam_role_name   = "apprunner_iam_role"
+  domain = var.domain
   environment_variables = {
     SPRING_PROFILES_ACTIVE     = "aws-postgres"
     SPRING_FLYWAY_SCHEMAS      = module.app_database_postgres.rds_dbname
@@ -90,6 +91,7 @@ module "app_mobile_amplify" {
   app_name       = var.app_name
   app_repository = "https://github.com/k2works/mrs"
   access_token   = var.github_personal_access_token
+  domain = var.domain
 }
 
 module "app_management_group" {

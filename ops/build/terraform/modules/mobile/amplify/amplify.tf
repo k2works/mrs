@@ -2,6 +2,7 @@ variable "app_name" {}
 variable "app_repository" {}
 variable "app_api_url" {}
 variable "access_token" {}
+variable "domain" {}
 
 resource "aws_amplify_app" "app" {
   name       = var.app_name
@@ -73,5 +74,20 @@ resource "aws_amplify_branch" "develop" {
 
   environment_variables = {
     API_URL = var.app_api_url
+  }
+}
+
+resource "aws_amplify_domain_association" "domain" {
+  app_id      = aws_amplify_app.app.id
+  domain_name = var.domain
+
+  sub_domain {
+    branch_name = aws_amplify_branch.develop.branch_name
+    prefix      = ""
+  }
+
+  sub_domain {
+    branch_name = aws_amplify_branch.develop.branch_name
+    prefix      = "www"
   }
 }

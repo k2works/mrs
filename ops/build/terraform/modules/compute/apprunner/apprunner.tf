@@ -3,6 +3,7 @@ variable "app_name" {}
 variable "iam_role_name" {}
 variable "iam_policy_name" {}
 variable "environment_variables" {}
+variable "domain" {}
 
 ################################################################################
 # ECR                                                                          #
@@ -117,4 +118,10 @@ data "aws_iam_policy_document" "apprunner_custom" {
       "*",
     ]
   }
+}
+
+# Custom Domain
+resource "aws_apprunner_custom_domain_association" "domain" {
+  domain_name = "app-runner.${var.domain}"
+  service_arn = aws_apprunner_service.app.arn
 }
