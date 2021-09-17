@@ -92,3 +92,7 @@ resource "aws_amplify_domain_association" "domain" {
     prefix      = "www"
   }
 }
+
+output "amplify_service_url" {
+  value = aws_amplify_domain_association.domain.domain_name
+}
