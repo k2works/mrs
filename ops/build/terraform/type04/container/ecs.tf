@@ -11,12 +11,33 @@ resource "aws_ecs_cluster" "app_container" {
 
 resource "aws_ecs_task_definition" "app_container_task" {
   family                   = var.name
-  cpu                      = "256"
-  memory                   = "512"
+  cpu                      = 256
+  memory                   = 512
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
-  container_definitions    = file("./container/container_definitions.json")
   execution_role_arn       = var.ecs_task_execution_role.iam_role_arn
+
+  container_definitions = jsonencode([
+    {
+      "name" : "${var.name}",
+      "image" : "nginx:latest",
+      "essential" : true,
+      "logConfiguration" : {
+        "logDriver" : "awslogs",
+        "options" : {
+          "awslogs-region" : "ap-northeast-1",
+          "awslogs-stream-prefix" : "nginx",
+          "awslogs-group" : "/ecs/${var.name}"
+        }
+      },
+      "portMappings" : [
+        {
+          "protocol" : "tcp",
+          "containerPort" : 80
+        }
+      ]
+    }
+  ])
 }
 
 resource "aws_ecs_service" "app_container_service" {
@@ -50,7 +71,7 @@ resource "aws_ecs_service" "app_container_service" {
 }
 
 resource "aws_cloudwatch_log_group" "for_ecs" {
-  name = "/ecs/${var.name}"
+  name              = "/ecs/${var.name}"
   retention_in_days = 180
 }
 
