@@ -184,6 +184,7 @@ module "app_container_service" {
   lb_target_group         = module.app_network_loadbalancer.alb_target_group
   nginx_sg                = module.nginx_sg
   ecs_task_execution_role = module.ecs_task_execution_role
+  api_url                 = local.api_url
 }
 
 module "app_database_serverless_mysql" {

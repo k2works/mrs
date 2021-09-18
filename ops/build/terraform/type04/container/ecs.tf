@@ -1,10 +1,3 @@
-variable "name" {}
-variable "nginx_sg" {}
-variable "subnet_private_a" {}
-variable "subnet_private_c" {}
-variable "lb_target_group" {}
-variable "ecs_task_execution_role" {}
-
 resource "aws_ecs_cluster" "app_container" {
   name = var.name
 }
