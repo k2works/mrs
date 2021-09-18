@@ -131,7 +131,7 @@ module "app_database_serverless_postgres" {
   security_group_id         = module.app_database_serverless_postgres.security_group_id
   identifier                = "mrspostgres"
   engine                    = "aurora-postgresql"
-  engine_version            = "10.5"
+  engine_version            = "10.14"
   db_name                   = "appdb"
   username                  = var.db_postgres_username
   db_password               = random_password.password.result

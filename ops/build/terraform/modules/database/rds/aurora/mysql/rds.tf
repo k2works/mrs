@@ -7,8 +7,8 @@ resource "aws_db_subnet_group" "mysql" {
   }
 }
 
-resource "aws_db_parameter_group" "mysql" {
-  name   = "${var.app_env_name}-mysql"
+resource "aws_rds_cluster_parameter_group" "mysql" {
+  name   = "${var.app_env_name}-mysql-serverless"
   family = var.db_parameter_group_family
 
   parameter {
@@ -65,6 +65,8 @@ resource "aws_rds_cluster" "aurora_serverless" {
   db_subnet_group_name   = aws_db_subnet_group.mysql.name
   skip_final_snapshot    = true
   vpc_security_group_ids = [var.security_group_id]
+  db_cluster_parameter_group_name = aws_rds_cluster_parameter_group.mysql.name
+  enable_http_endpoint = true
 
   scaling_configuration {
     auto_pause               = true

@@ -1,12 +1,18 @@
 locals {
   name                = "${var.org_name}${var.vpc_name}${var.app_name}"
   service_name        = "${lower(var.org_name)}_${lower(var.vpc_name)}_${lower(var.app_name)}"
+  ecr_repository_name = "${lower(var.org_name)}_${lower(var.vpc_name)}_${lower(var.app_name)}"
+  ecr_repository_url  = "${var.ecr_url}/${lower(var.org_name)}_${lower(var.vpc_name)}_${lower(var.app_name)}"
   lb_name             = lower(var.app_name)
   subdomain_name      = lower(var.app_name)
   group_name          = "${lower(var.org_name)}-${lower(var.vpc_name)}-${lower(var.app_name)}-group"
   alb_log_bucket_name = "${lower(var.org_name)}-${lower(var.vpc_name)}-${lower(var.app_name)}-alb-log"
   deploy_bucket_name  = "${lower(var.org_name)}-${lower(var.vpc_name)}-${lower(var.app_name)}-deploy"
+  artifact_bucket_name  = "${lower(var.org_name)}-${lower(var.vpc_name)}-${lower(var.app_name)}-artifact"
   api_url             = "https://${local.subdomain_name}.${var.domain}/api"
+  environment_upper   = upper(var.environment)
+  codebuild_name      = "${lower(var.org_name)}_${lower(var.vpc_name)}_${lower(var.app_name)}-build"
+  codepipeline_name   = "${lower(var.org_name)}_${lower(var.vpc_name)}_${lower(var.app_name)}-pipline"
 }
 
 provider "aws" {
@@ -66,31 +72,99 @@ module "ecs_task_execution_role" {
   policy     = data.aws_iam_policy_document.ecs_task_execution.json
 }
 
-data "aws_iam_policy_document" "codedeploy_role" {
+data "aws_iam_policy_document" "codebuild" {
   statement {
-    effect = "Allow"
-    actions = [
-      "autoscaling:CompleteLifecycleAction",
-      "autoscaling:DeleteLifecycleHook",
-      "autoscaling:DescribeAutoScalingGroups",
-      "autoscaling:DescribeLifecycleHooks",
-      "autoscaling:PutLifecycleHook",
-      "autoscaling:RecordLifecycleActionHeartbeat",
-      "ec2:DescribeInstances",
-      "ec2:DescribeInstanceStatus",
-      "tag:GetTags",
-      "tag:GetResources",
-    ]
-
+    effect    = "Allow"
     resources = ["*"]
+
+    actions = [
+      "s3:PutObject",
+      "s3:GetObject",
+      "s3:GetObjectVersion",
+      "logs:CreateLogGroup",
+      "logs:CreateLogStream",
+      "logs:PutLogEvents",
+      "ecr:GetAuthorizationToken",
+      "ecr:BatchCheckLayerAvailability",
+      "ecr:GetDownloadUrlForLayer",
+      "ecr:GetRepositoryPolicy",
+      "ecr:DescribeRepositories",
+      "ecr:ListImages",
+      "ecr:DescribeImages",
+      "ecr:BatchGetImage",
+      "ecr:InitiateLayerUpload",
+      "ecr:UploadLayerPart",
+      "ecr:CompleteLayerUpload",
+      "ecr:PutImage",
+      "ssm:GetParameters",
+      "ssm:GetParameter",
+    ]
   }
 }
 
-module "codedeploy_role" {
+module "codebuild_role" {
   source     = "./iam_role"
-  name       = "codedeploy_role"
-  identifier = "codedeploy.amazonaws.com"
-  policy     = data.aws_iam_policy_document.codedeploy_role.json
+  name       = "codebuild"
+  identifier = "codebuild.amazonaws.com"
+  policy     = data.aws_iam_policy_document.codebuild.json
+}
+
+data "aws_iam_policy_document" "codepipeline" {
+  statement {
+    effect    = "Allow"
+    resources = ["*"]
+
+    actions = [
+      "s3:PutObject",
+      "s3:GetObject",
+      "s3:GetObjectVersion",
+      "s3:GetBucketVersioning",
+      "s3:PutObjectAcl",
+      "codebuild:BatchGetBuilds",
+      "codebuild:StartBuild",
+      "ecs:DescribeServices",
+      "ecs:DescribeTaskDefinition",
+      "ecs:DescribeTasks",
+      "ecs:ListTasks",
+      "ecs:RegisterTaskDefinition",
+      "ecs:UpdateService",
+      "iam:PassRole",
+      "codestar-connections:UseConnection",
+    ]
+  }
+}
+
+module "codepipeline_role" {
+  source     = "./iam_role"
+  name       = "codepipeline"
+  identifier = "codepipeline.amazonaws.com"
+  policy     = data.aws_iam_policy_document.codepipeline.json
+}
+
+module "app_management_group" {
+  source      = "../modules/management/resource_groups"
+  group_name  = local.group_name
+  environment = var.environment
+}
+
+module "app_management_ssm_parameter" {
+  source      = "../modules/management/ssm_parameter"
+  environment = local.environment_upper
+  environment_variables = {
+    SPRING_PROFILES_ACTIVE     = "aws-mysql"
+    SPRING_FLYWAY_SCHEMAS      = module.app_database_serverless_mysql.rds_dbname
+    SPRING_DATASOURCE_USERNAME = module.app_database_serverless_mysql.rds_username
+    SPRING_DATASOURCE_PASSWORD = module.app_database_serverless_mysql.rds_password
+    SPRING_DATASOURCE_URL      = "jdbc:mysql://${module.app_database_serverless_mysql.rds_hostname}:${module.app_database_serverless_mysql.rds_port}/${module.app_database_serverless_mysql.rds_dbname}?useSSL=false"
+    RDS_HOSTNAME               = module.app_database_serverless_mysql.rds_hostname
+    RDS_PORT                   = module.app_database_serverless_mysql.rds_port
+    API_URL                    = local.api_url
+    ECR_REPOSITORY_NAME        = local.ecr_repository_name
+    ECR_REPOSITORY_URL         = local.ecr_repository_url
+    AWS_DEFAULT_REGION         = var.provider_config.regions
+    DOCKERHUB_USER             = var.dockerhub_user
+    DOCKERHUB_PASS             = var.dockerhub_pass
+  }
 }
 
 module "app_storage" {
@@ -98,6 +172,7 @@ module "app_storage" {
   domain             = var.domain
   log_bucket_name    = local.alb_log_bucket_name
   deploy_bucket_name = local.deploy_bucket_name
+  artifact_bucket_name = local.artifact_bucket_name
 }
 
 module "app_network_vpc" {
@@ -108,13 +183,13 @@ module "app_network_vpc" {
 }
 
 module "app_network_cert" {
-  source     = "../modules/network/cert"
+  source     = "./network/cert"
   domain     = var.domain
   sub_domain = local.subdomain_name
 }
 
 module "app_network_dns" {
-  source                    = "../modules/network/dns"
+  source                    = "./network/dns"
   domain                    = var.domain
   sub_domain                = local.subdomain_name
   dns_name                  = module.app_network_loadbalancer.alb_dns_name
@@ -154,8 +229,16 @@ module "app_security_group_http_redirect" {
   cidr_blocks = ["0.0.0.0/0"]
 }
 
+module "app_security_group_app_service" {
+  source      = "./security_group"
+  name        = "app-service-sg"
+  vpc_id      = module.app_network_vpc.vpc_id
+  port        = 5000
+  cidr_blocks = ["0.0.0.0/0"]
+}
+
 module "app_network_loadbalancer" {
-  source              = "../modules/network/lb"
+  source              = "./network/lb"
   name                = local.lb_name
   subnet_public_a     = module.app_network_vpc.vpc_subnet_public-a
   subnet_public_c     = module.app_network_vpc.vpc_subnet_public-c
@@ -163,17 +246,9 @@ module "app_network_loadbalancer" {
   http_sg             = module.app_security_group_http
   https_sg            = module.app_security_group_https
   http_redirect_sg    = module.app_security_group_http_redirect
+  app_service_sg      = module.app_security_group_app_service
   acm_certificate_arn = module.app_network_cert.acm_certificate_arn
   vpc_id              = module.app_network_vpc.vpc_id
-  target_id           = "10.0.0.10"
-}
-
-module "nginx_sg" {
-  source      = "./security_group"
-  name        = "nginx-sg"
-  vpc_id      = module.app_network_vpc.vpc_id
-  port        = 80
-  cidr_blocks = [module.app_network_vpc.vpc_cidr]
 }
 
 module "app_container_service" {
@@ -182,14 +257,20 @@ module "app_container_service" {
   subnet_private_a        = module.app_network_vpc.vpc_subnet_private-a
   subnet_private_c        = module.app_network_vpc.vpc_subnet_private-c
   lb_target_group         = module.app_network_loadbalancer.alb_target_group
-  nginx_sg                = module.nginx_sg
+  app_service_sg          = module.app_security_group_app_service
   ecs_task_execution_role = module.ecs_task_execution_role
   api_url                 = local.api_url
+  environment_variables = {
+    SPRING_PROFILES_ACTIVE     = "/${local.environment_upper}/SPRING_PROFILES_ACTIVE"
+    SPRING_FLYWAY_SCHEMAS      = "/${local.environment_upper}/SPRING_FLYWAY_SCHEMAS"
+    SPRING_DATASOURCE_USERNAME = "/${local.environment_upper}/SPRING_DATASOURCE_USERNAME"
+    SPRING_DATASOURCE_PASSWORD = "/${local.environment_upper}/SPRING_DATASOURCE_PASSWORD"
+    SPRING_DATASOURCE_URL      = "/${local.environment_upper}/SPRING_DATASOURCE_URL"
+  }
 }
 
 module "app_database_serverless_mysql" {
-  source = "../modules/database/rds/aurora/mysql"
-
+  source                    = "../modules/database/rds/aurora/mysql"
   app_name                  = var.app_name
   app_env_name              = "${lower(var.app_name)}-${lower(var.environment)}"
   subnet_id_1               = module.app_network_vpc.vpc_subnet_private-a_id
@@ -202,60 +283,24 @@ module "app_database_serverless_mysql" {
   db_name                   = "appdb"
   username                  = var.db_mysql_username
   db_password               = random_password.password.result
-  db_parameter_group_family = "mysql5.7"
+  db_parameter_group_family = "aurora-mysql5.7"
 }
 
-module "app_management_ssm_parameter" {
-  source      = "../modules/management/ssm_parameter"
-  environment = upper(var.environment)
-  environment_variables = {
-    SPRING_FLYWAY_SCHEMAS      = module.app_database_serverless_mysql.rds_dbname
-    SPRING_DATASOURCE_USERNAME = module.app_database_serverless_mysql.rds_username
-    SPRING_DATASOURCE_PASSWORD = module.app_database_serverless_mysql.rds_password
-    SPRING_DATASOURCE_URL      = "jdbc:mysql://${module.app_database_serverless_mysql.rds_hostname}:${module.app_database_serverless_mysql.rds_port}/${module.app_database_serverless_mysql.rds_dbname}"
-    RDS_HOSTNAME               = module.app_database_serverless_mysql.rds_hostname
-    RDS_PORT                   = module.app_database_serverless_mysql.rds_port
-    API_URL                    = local.api_url
-  }
+module "app_ci_codebuild" {
+  source       = "./ci/codebuild"
+  name         = local.codebuild_name
+  iam_role_arn = module.codebuild_role.iam_role_arn
+  buildspec    = "buildspec-ecs.yml"
 }
 
-module "app_management_group" {
-  source      = "../modules/management/resource_groups"
-  group_name  = local.group_name
-  environment = var.environment
-}
-
-module "app_management_codedeploy" {
-  source           = "./ci/codedeploy"
-  app_name         = "${var.org_name}${var.vpc_name}${var.app_name}"
-  app_group_name   = "${lower(var.org_name)}-${lower(var.vpc_name)}-${lower(var.app_name)}-group"
-  service_role_arn = module.codedeploy_role.iam_role_arn
-}
-
-module "app_management_codebuild" {
-  source              = "./ci/codebuild"
-  project_name        = "${lower(var.org_name)}-${lower(var.vpc_name)}-${lower(var.app_name)}-project"
-  project_description = "CodeBuildProject"
-  vpc_id              = module.app_network_vpc.vpc_id
-  public_subnet_arn   = module.app_network_vpc.vpc_subnet_public-a_arn
-  public_subnet_id    = module.app_network_vpc.vpc_subnet_public-a_id
-  private_subnet_arn  = module.app_network_vpc.vpc_subnet_private-c_arn
-  private_subnet_id   = module.app_network_vpc.vpc_subnet_private-c_id
-  region              = "ap-northeast-1"
-  deploy_bucket_name  = local.deploy_bucket_name
-  deploy_bucket_arn   = module.app_storage.deploy_bucket_arn
-  source_type         = "GITHUB"
-  source_location     = "https://github.com/k2works/mrs.git"
-  source_version      = "develop"
-}
-
-module "app_management_codepipeline" {
-  source                             = "./ci/codepipeline"
-  name                               = "${lower(var.org_name)}-${lower(var.vpc_name)}-${lower(var.app_name)}-pipeline"
-  deploy_bucket_name                 = local.deploy_bucket_name
-  full_repository_id                 = "k2works/mrs"
-  blanch_name                        = "develop"
-  code_build_project_name            = "${lower(var.org_name)}-${lower(var.vpc_name)}-${lower(var.app_name)}-project"
-  code_deploy_application_name       = "${var.org_name}${var.vpc_name}${var.app_name}"
-  code_deploy_application_group_name = "${lower(var.org_name)}-${lower(var.vpc_name)}-${lower(var.app_name)}-group"
+module "app_ci_codepipeline" {
+  source                 = "./ci/codepipeline"
+  name                   = local.codepipeline_name
+  codebuild_project_name = module.app_ci_codebuild.project_id
+  deploy_bucket_name     = local.artifact_bucket_name
+  ecs_cluster_name       = module.app_container_service.ecs_cluster_name
+  ecs_service_name       = module.app_container_service.ecs_service_name
+  full_repository_id     = "k2works/mrs"
+  blanch_name            = "develop"
+  role_arn               = module.codepipeline_role.iam_role_arn
 }
