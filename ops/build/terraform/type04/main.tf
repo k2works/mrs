@@ -8,7 +8,6 @@ locals {
   group_name          = "${lower(var.org_name)}-${lower(var.vpc_name)}-${lower(var.app_name)}-group"
   alb_log_bucket_name = "${lower(var.org_name)}-${lower(var.vpc_name)}-${lower(var.app_name)}-alb-log"
   deploy_bucket_name  = "${lower(var.org_name)}-${lower(var.vpc_name)}-${lower(var.app_name)}-deploy"
-  artifact_bucket_name  = "${lower(var.org_name)}-${lower(var.vpc_name)}-${lower(var.app_name)}-artifact"
   api_url             = "https://${local.subdomain_name}.${var.domain}/api"
   environment_upper   = upper(var.environment)
   codebuild_name      = "${lower(var.org_name)}_${lower(var.vpc_name)}_${lower(var.app_name)}-build"
@@ -172,7 +171,6 @@ module "app_storage" {
   domain             = var.domain
   log_bucket_name    = local.alb_log_bucket_name
   deploy_bucket_name = local.deploy_bucket_name
-  artifact_bucket_name = local.artifact_bucket_name
 }
 
 module "app_network_vpc" {
@@ -297,7 +295,7 @@ module "app_ci_codepipeline" {
   source                 = "./ci/codepipeline"
   name                   = local.codepipeline_name
   codebuild_project_name = module.app_ci_codebuild.project_id
-  deploy_bucket_name     = local.artifact_bucket_name
+  deploy_bucket_name     = local.deploy_bucket_name
   ecs_cluster_name       = module.app_container_service.ecs_cluster_name
   ecs_service_name       = module.app_container_service.ecs_service_name
   full_repository_id     = "k2works/mrs"
