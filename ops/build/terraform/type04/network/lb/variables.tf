@@ -5,6 +5,5 @@ variable "alb_log_bucket" {}
 variable "http_sg" {}
 variable "https_sg" {}
 variable "http_redirect_sg" {}
-variable "app_service_sg" {}
 variable "acm_certificate_arn" {}
 variable "vpc_id" {}

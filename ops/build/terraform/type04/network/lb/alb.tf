@@ -19,7 +19,6 @@ resource "aws_lb" "default" {
     var.http_sg.security_group_id,
     var.https_sg.security_group_id,
     var.http_redirect_sg.security_group_id,
-    var.app_service_sg.security_group_id,
   ]
 }
 

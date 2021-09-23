@@ -244,7 +244,6 @@ module "app_network_loadbalancer" {
   http_sg             = module.app_security_group_http
   https_sg            = module.app_security_group_https
   http_redirect_sg    = module.app_security_group_http_redirect
-  app_service_sg      = module.app_security_group_app_service
   acm_certificate_arn = module.app_network_cert.acm_certificate_arn
   vpc_id              = module.app_network_vpc.vpc_id
 }
