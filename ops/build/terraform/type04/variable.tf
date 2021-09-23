@@ -46,13 +46,7 @@ variable "images" {
   }
 }
 
-variable "instance_name" {
-  type    = string
-  default = "MrsProduction"
-}
-
 variable "db_mysql_username" {}
-variable "github_personal_access_token" {}
 variable "ecr_url" {}
 variable "dockerhub_user" {}
 variable "dockerhub_pass" {}
