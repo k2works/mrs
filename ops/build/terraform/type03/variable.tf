@@ -46,5 +46,8 @@ variable "images" {
   }
 }
 
-variable "db_postgres_username" {}
-variable "github_personal_access_token" {}
+variable "db_mysql_username" {}
+variable "ecr_url" {}
+variable "dockerhub_user" {}
+variable "dockerhub_pass" {}
+
