@@ -1,23 +1,3 @@
-locals {
-  name                        = "${var.org_name}${var.vpc_name}${var.app_name}"
-  environment_upper           = upper(var.environment)
-  group_name                  = "${lower(var.org_name)}-${lower(var.vpc_name)}-${lower(var.app_name)}-group"
-  api_url                     = "https://${local.subdomain_name}.${var.domain}/api"
-  ecr_repository_name         = "${lower(var.org_name)}_${lower(var.vpc_name)}_${lower(var.app_name)}"
-  ecr_repository_url          = "${var.ecr_url}/${lower(var.org_name)}_${lower(var.vpc_name)}_${lower(var.app_name)}"
-  alb_log_bucket_name         = "${lower(var.org_name)}-${lower(var.vpc_name)}-${lower(var.app_name)}-alb-log"
-  deploy_bucket_name          = "${lower(var.org_name)}-${lower(var.vpc_name)}-${lower(var.app_name)}-deploy"
-  operation_bucket_name       = "${lower(var.org_name)}-${lower(var.vpc_name)}-${lower(var.app_name)}-operation"
-  cloudwatch_logs_bucket_name = "${lower(var.org_name)}-${lower(var.vpc_name)}-${lower(var.app_name)}-cloudwathc-logs"
-  subdomain_name              = lower(var.app_name)
-  lb_name                     = lower(var.app_name)
-  service_name                = "${lower(var.org_name)}_${lower(var.vpc_name)}_${lower(var.app_name)}"
-  codebuild_name              = "${lower(var.org_name)}_${lower(var.vpc_name)}_${lower(var.app_name)}_build"
-  codepipeline_name           = "${lower(var.org_name)}_${lower(var.vpc_name)}_${lower(var.app_name)}_pipline"
-  stream_name                 = "${lower(var.org_name)}_${lower(var.vpc_name)}_${lower(var.app_name)}_stream"
-  log_filter_name             = "${lower(var.org_name)}_${lower(var.vpc_name)}_${lower(var.app_name)}_log_filter"
-}
-
 provider "aws" {
   profile = var.provider_config.profile
   region  = var.provider_config.regions
@@ -48,13 +28,33 @@ terraform {
   }
 }
 
+locals {
+  name                        = "${var.org_name}${var.vpc_name}${var.app_name}"
+  environment_upper           = upper(var.environment)
+  group_name                  = "${lower(var.org_name)}-${lower(var.vpc_name)}-${lower(var.app_name)}-group"
+  api_url                     = "https://${local.subdomain_name}.${var.domain}/api"
+  ecr_repository_name         = "${lower(var.org_name)}_${lower(var.vpc_name)}_${lower(var.app_name)}"
+  ecr_repository_url          = "${var.ecr_url}/${lower(var.org_name)}_${lower(var.vpc_name)}_${lower(var.app_name)}"
+  alb_log_bucket_name         = "${lower(var.org_name)}-${lower(var.vpc_name)}-${lower(var.app_name)}-alb-log"
+  deploy_bucket_name          = "${lower(var.org_name)}-${lower(var.vpc_name)}-${lower(var.app_name)}-deploy"
+  operation_bucket_name       = "${lower(var.org_name)}-${lower(var.vpc_name)}-${lower(var.app_name)}-operation"
+  cloudwatch_logs_bucket_name = "${lower(var.org_name)}-${lower(var.vpc_name)}-${lower(var.app_name)}-cloudwathc-logs"
+  subdomain_name              = lower(var.app_name)
+  lb_name                     = lower(var.app_name)
+  service_name                = "${lower(var.org_name)}_${lower(var.vpc_name)}_${lower(var.app_name)}"
+  codebuild_name              = "${lower(var.org_name)}_${lower(var.vpc_name)}_${lower(var.app_name)}_build"
+  codepipeline_name           = "${lower(var.org_name)}_${lower(var.vpc_name)}_${lower(var.app_name)}_pipline"
+  stream_name                 = "${lower(var.org_name)}_${lower(var.vpc_name)}_${lower(var.app_name)}_stream"
+  log_filter_name             = "${lower(var.org_name)}_${lower(var.vpc_name)}_${lower(var.app_name)}_log_filter"
+}
+
+# 管理
 resource "random_password" "password" {
   length           = 16
   special          = true
   override_special = "_%-"
 }
 
-# 管理
 data "aws_iam_policy" "ec2_for_ssm" {
   arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
 }
