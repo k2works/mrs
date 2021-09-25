@@ -42,14 +42,50 @@ terraform apply -var-file="secret.tfvars"
 
 ## 配置
 
+### Type1
+
 ```
-aws deploy push \
---application-name MrsOrgVPCMrsProduction \
---s3-location s3://mrsorg-vpc-mrsproduction-deploy-bucket/app.zip \
---source ./ops/ship/codedeploy \
---ignore-hidden-files \
---profile k2works \
---region ap-northeast-1
+cd build/terraform/type01
+terraform init
+terraform apply -var-file="secret.tfvars"
 ```
 
+![](./build/terraform/type01/arctecture.png)
+
+### Type2
+
+```
+cd build/terraform/type02
+terraform init
+terraform apply -var-file="secret.tfvars"
+```
+
+![](./build/terraform/type02/arctecture.png)
+
+### Type3
+
+```
+cd build/terraform/type03
+terraform init
+terraform apply -var-file="secret.tfvars"
+```
+
+![](./build/terraform/type03/arctecture.png)
+
+### Type4
+
+```
+cd build/terraform/type04
+terraform init
+terraform apply -var-file="secret.tfvars"
+```
+
+![](./build/terraform/type04/arctecture.png)
+
 ## 運用
+
+### 環境を削除する
+
+```
+terraform destroy
+```
