@@ -1,0 +1,13 @@
+---
+- hosts: ec2
+  remote_user: "{{ user }}"
+  become: yes
+  roles:
+    - setup_amazonlinux-2
+    - setup_java
+    - setup_nodejs
+    - setup_nginx
+    - configure_amazonlinux-2
+    - configure_app
+    - configure_service
+

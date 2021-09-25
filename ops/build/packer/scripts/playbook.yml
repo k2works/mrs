@@ -1,0 +1,248 @@
+---
+- name: packer
+  hosts: 127.0.0.1
+  connection: local
+  become: yes
+  vars:
+    user: "ec2-user"
+    group: "ec2-user"
+    home: "/home/{{ user }}"
+    nodejs_ver: "14.x"
+    java_ver_amazon: "java-11-amazon-corretto-headless"
+    nginx_ver_amazon: "nginx1.12"
+    sdkman_tmp_dir: "{{ home }}"
+    sdkman_user: "{{ user }}"
+    sdkman_group: "{{ user }}"
+    sdkman_validate_ssl: true
+    sdkman_dir: "{{ home }}/.sdkman"
+    sdkman_install_packages:
+      - { candidate: springboot, version: 2.5.0 }
+      - { candidate: gradle, version: 6.8.3 }
+      - { candidate: maven, version: 3.8.1 }
+    sdkman_defaults:
+      gradle: '6.8.3'
+      maven: '3.8.1'
+    usergroup:
+      user:
+        name: "{{ user }}"
+        group: "{{ group }}"
+        uid: 1000
+        gid: 1000
+      group:
+        name: application
+        gid: 1919
+    swap_file_path: "swapfile"
+    swap_file_size_mb: "1024"
+  handlers:
+    - name: Cleanup SDKMAN script
+      file:
+        path: '{{ sdkman_tmp_dir }}/sdkman_script'
+        state: absent
+    - name: Cleanup Node.js script
+      file:
+        path: '{{ home }}/nodejs_script'
+        state: absent
+  tasks:
+    # Setup
+    - name: Update packages
+      yum:
+        name: '*'
+        state: latest
+        use_backend: yum
+
+    - name: install packages
+      yum:
+        name: '{{packages}}'
+        update_cache: yes
+      vars:
+        packages:
+          - zip
+          - unzip
+          - git
+
+    - name: install amazon_linux_extras
+      shell: amazon-linux-extras install epel -y
+
+    - name: Install python3.
+      yum:
+        name: python3
+        state: present
+
+    - name: check pip
+      stat:
+        path: /usr/local/bin/pip3
+      register: chk_pip3
+    - name: upgrade pip
+      shell: pip3 install --upgrade pip
+      when: chk_pip3.stat.exists == false
+
+    - name: check java
+      stat:
+        path: /usr/bin/java
+      register: chk_java
+
+    - name: Install package.
+      yum:
+        name: "{{ java_ver_amazon }}"
+        state: present
+      when: ansible_distribution == 'Amazon' and chk_java.stat.exists == false
+
+    - name: Check for SDKMAN installation
+      stat:
+        path: '{{ sdkman_dir }}/bin/sdkman-init.sh'
+      register: sdkman_init
+
+    - block:
+        - name: Download SDKMAN
+          get_url:
+            url: https://get.sdkman.io
+            dest: '{{ sdkman_tmp_dir }}/sdkman_script'
+            owner: '{{ sdkman_user }}'
+            group: '{{ sdkman_group }}'
+            validate_certs: '{{ sdkman_validate_ssl }}'
+
+        - name: Run SDKMAN script
+          environment:
+            SDKMAN_DIR: '{{ sdkman_dir }}'
+          command: /bin/bash {{ sdkman_tmp_dir }}/sdkman_script
+          args:
+            creates: '{{ sdkman_dir }}/bin/sdkman-init.sh'
+          notify: Cleanup SDKMAN script
+
+      when: not sdkman_init.stat.exists
+      become: '{{ sdkman_user != ansible_user_id }}'
+      become_user: '{{ sdkman_user }}'
+
+    - name: Install SDK candidates/versions
+      shell: >-
+        . {{ sdkman_dir }}/bin/sdkman-init.sh &&
+        sdk install {{ item.candidate }} {{ item.version | default('') }} {{ item.localpath | default('') }}
+      args:
+        executable: /bin/bash
+      loop: '{{ sdkman_install_packages }}'
+      register: sdk_install
+      changed_when: >-
+        'is already installed.' not in sdk_install.stdout
+      failed_when: >-
+        sdk_install.rc != 0 and
+        'is already installed.' not in sdk_install.stdout
+      become: '{{ sdkman_user != ansible_user_id }}'
+      become_user: '{{ sdkman_user }}'
+
+    - name: Get SDK defaults
+      shell: . {{ sdkman_dir }}/bin/sdkman-init.sh && sdk current {{ item }}
+      args:
+        executable: /bin/bash
+      register: get_sdk_defaults
+      changed_when: false
+      loop: >-
+        {{ sdkman_install_packages | map(attribute="candidate") | unique | list }}
+      become: '{{ sdkman_user != ansible_user_id }}'
+      become_user: '{{ sdkman_user }}'
+
+    - name: Set SDK defaults
+      shell: >-
+        . {{ sdkman_dir }}/bin/sdkman-init.sh &&
+        sdk default {{ item.key }} {{ item.value }}
+      args:
+        executable: /bin/bash
+      loop: '{{ sdkman_defaults | dict2items }}'
+      become: '{{ sdkman_user != ansible_user_id }}'
+      become_user: '{{ sdkman_user }}'
+
+    - name: Check for Node.js installation
+      stat:
+        path: 'user/bin/node'
+      register: nodejs_init
+
+    - name: Download Node.js
+      get_url:
+        url: https://rpm.nodesource.com/setup_{{ nodejs_ver }}
+        dest: '{{ home }}/nodejs_script'
+        owner: '{{ user }}'
+        group: '{{ group }}'
+        validate_certs: true
+
+    - name: Run Node.js script
+      command: /bin/bash {{ home }}/nodejs_script
+      when: ansible_distribution == 'Amazon' and not nodejs_init.stat.exists
+      notify: Cleanup Node.js script
+
+    - name: install packages
+      yum:
+        name: '{{packages}}'
+        update_cache: yes
+      vars:
+        packages:
+          - nodejs
+
+    - name: Install Yarn
+      shell: npm install -g yarn
+
+    - name: Get Nginx package list from local
+      yum:
+        disablerepo: "*"
+        list: nginx
+      register: installed_pkgs
+
+    - name: Enable amzn2extra-nginx repository if nginx is not installed
+      shell: amazon-linux-extras enable {{ nginx_ver_amazon }}
+      when: ansible_distribution == 'Amazon' and installed_pkgs.results | length == 0
+
+    - name: Install Nginx packages from amazon-linux-extras
+      yum:
+        name: nginx
+        state: present
+
+    # configure
+    - name: create group
+      group: name={{usergroup.group.name}} gid={{usergroup.group.gid}}
+
+    - name: user join to other group
+      user: name={{usergroup.user.name}} append=yes groups={{usergroup.group.name}}
+
+    - name: Change application deploy permission
+      file: dest=/srv owner=root group={{ usergroup.group.name }} mode=0775 recurse=yes
+
+    - name: Create swap file
+      command: dd if=/dev/zero of={{ swap_file_path }} bs=1024 count={{ swap_file_size_mb }}k
+        creates="{{ swap_file_path }}"
+      tags:
+        - swap.file.create
+
+    - name: Change swap file permissions
+      file: path="{{ swap_file_path }}"
+        owner=root
+        group=root
+        mode=0600
+      tags:
+        - swap.file.permissions
+
+    - name: "Check swap file type"
+      command: file {{ swap_file_path }}
+      register: swapfile
+      tags:
+        - swap.file.mkswap
+
+    - name: Make swap file
+      command: "mkswap {{ swap_file_path }}"
+      when: swapfile.stdout.find('swap file') == -1
+      tags:
+        - swap.file.mkswap
+
+    - name: Write swap entry in fstab
+      mount: name=none
+        src={{ swap_file_path }}
+        fstype=swap
+        opts=sw
+        passno=0
+        dump=0
+        state=present
+      tags:
+        - swap.fstab
+
+    - name: Mount swap
+      command: "swapon {{ swap_file_path }}"
+      when: ansible_swaptotal_mb < 1
+      tags:
+        - swap.file.swapon

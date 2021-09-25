@@ -1,0 +1,10 @@
+---
+- hosts: wsl
+  remote_user: "{{ user }}"
+  roles:
+    - setup_ubuntu
+    - setup_java
+    - setup_chrome
+    - setup_awscli
+    - setup_terraform
+    - setup_packer

@@ -1,0 +1,23 @@
+- name: Add yum repository
+  shell: yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
+  when: ansible_distribution == 'Amazon'
+
+- name: Install package.
+  yum:
+    name: terraform
+    state: present
+  when: ansible_distribution == 'Amazon'
+
+- name: Add apt repository
+  shell: curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+  when: ansible_distribution == 'Ubuntu'
+
+- name: Add apt repository
+  shell: apt-add-repository "deb [arch=$(dpkg --print-architecture)] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+  when: ansible_distribution == 'Ubuntu'
+
+- name: Install package.
+  apt:
+    name: terraform
+    state: present
+  when: ansible_distribution == 'Ubuntu'

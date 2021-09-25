@@ -1,0 +1,17 @@
+---
+user: "ubuntu"
+group: "ubuntu"
+home: "/home/{{ user }}"
+sdkman_tmp_dir: "{{ home }}"
+sdkman_user: "{{ user }}"
+sdkman_group: "{{ group }}"
+sdkman_validate_ssl: true
+sdkman_dir: "{{ home }}/.sdkman"
+sdkman_install_packages:
+  - { candidate: java, version: 11.0.11.j9-adpt }
+  - { candidate: gradle, version: 6.8.3 }
+  - { candidate: maven, version: 3.8.1 }
+sdkman_defaults:
+  gradle: '6.8.3'
+  maven: '3.8.1'
+apt_file: /etc/apt/sources.list.d/google-chrome.list

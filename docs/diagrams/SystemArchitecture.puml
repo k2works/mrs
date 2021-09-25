@@ -1,46 +1,34 @@
 @startuml
-HTTP -- port_80
-HTTPS -- port_443
-
-cloud "Azure" {
- folder "AppService" {
-
-
-        package "Development Environment" {
-          [SpringBoot] as app_dev
-          port_80 -- app_dev
-          port_443 -- app_dev
-        }
-
- }
+actor 開発者
+actor 利用者
+cloud "Amazon Web Service" as AWS {
+    package "Production Environment" {
+      [SpringBoot] as app_prd
+    }
+    package "Staging Environment" {
+      [SpringBoot] as app_stg
+    }
 }
 
-cloud "Amazon Web Service" {
- folder "Elastic Load Balancing" {
-  [Application Load Balancer] as elb
- }
-
- folder "Elastic Beanstalk" {
-   port_80 -- elb
-   port_443 -- elb
-
-        package "Production Environment" {
-          [SpringBoot] as app_prod
-          [Nginx] as proxy_prod
-          proxy_prod --> app_prod
-          elb - proxy_prod
-        }
-
- }
+cloud "Azure" as Azure {
+    package "Development Environment" {
+      [SpringBoot] as app_dev
+    }
 }
 
-
-cloud "GitHub"{
+cloud "GitHub" as github {
   [Git] as repository_1
 }
 
-cloud "Azure DevOps"{
+cloud "Azure DevOps" as azuredevops{
   [Git] as repository_2
-  repository_2 --> app_dev
 }
+開発者 --> app_dev
+開発者 --> app_stg
+開発者 --> app_prd
+開発者 --> repository_1
+開発者 --> repository_2
+app_prd <-- 利用者
+github <-- AWS
+azuredevops <-- Azure
 @enduml

@@ -1,0 +1,25 @@
+- name: Update packages
+  apt:
+    name: '*'
+    state: latest
+
+- name: install packages
+  apt:
+    name: '{{packages}}'
+    update_cache: yes
+  vars:
+    packages:
+      - zip
+      - unzip
+      - curl
+      - build-essential
+      - python3-pip
+
+- name: check pip
+  stat:
+    path: /usr/local/bin/pip3
+  register: chk_pip3
+- name: upgrade pip
+  shell: pip3 install --upgrade pip
+  when: chk_pip3.stat.exists == false
+

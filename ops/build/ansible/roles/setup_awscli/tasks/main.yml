@@ -1,0 +1,20 @@
+- name: check awscli
+  stat:
+    path: /usr/local/bin/aws
+  register: chk_awscli
+
+- name: Download awscliv2
+  get_url:
+    url: https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip
+    dest: /tmp/awscliv2.zip
+    mode: '0440'
+  when: chk_awscli.stat.exists == false
+- name: Extract awscliv2 into /tmp/aws
+  unarchive:
+    src: /tmp/awscliv2.zip
+    dest: /tmp
+  when: chk_awscli.stat.exists == false
+- name: Install awscliv2
+  shell: /tmp/aws/install
+  when: chk_awscli.stat.exists == false
+

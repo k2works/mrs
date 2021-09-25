@@ -2,7 +2,29 @@
 
 ## システム構成
 
+### 全体構成
+
 ![](./img/diagrams/SystemArchitecture.png)
+
+### AWS Type1
+
+![](../ops/build/terraform/type01/arctecture.png)
+
+### AWS Type2
+
+![](../ops/build/terraform/type02/arctecture.png)
+
+### AWS Type3
+
+![](../ops/build/terraform/type03/arctecture.png)
+
+### AWS Type4
+
+![](../ops/build/terraform/type04/arctecture.png)
+
+## AWSセットアップ
+
+[インフラ](../ops/README.md)
 
 ## E2Eセットアップ
 

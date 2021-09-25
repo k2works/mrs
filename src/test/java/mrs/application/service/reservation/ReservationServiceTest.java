@@ -9,7 +9,6 @@ import mrs.domain.model.facility.room.MeetingRoom;
 import mrs.domain.model.facility.room.RoomId;
 import mrs.domain.model.facility.room.RoomName;
 import mrs.domain.model.reservation.Reservation;
-import mrs.domain.model.reservation.ReservationId;
 import mrs.domain.model.reservation.datetime.ReservedDate;
 import mrs.domain.model.reservation.datetime.ReservedDateTime;
 import mrs.domain.model.reservation.datetime.ReservedTime;
@@ -59,10 +58,10 @@ public class ReservationServiceTest {
             MeetingRoom room = 会議室を作る(meetingRoomRepository);
             ReservableRoom reservableRoom = 予約が可能な会議室を作る(room);
             予約会議室を登録する(reservableRoom, reservableRoomRepository);
-            Reservation reservation = 予約を作る(new ReservationId(1), reservableRoom, LocalTime.of(9, 0), LocalTime.of(10, 0));
+            Reservation reservation = 予約を作る(reservableRoom, LocalTime.of(9, 0), LocalTime.of(10, 0));
             予約する(reservationService, reservation);
 
-            mrs.domain.model.reservation.Reservation result = 予約を検索する(1, reservationRepository);
+            mrs.domain.model.reservation.Reservation result = 予約を検索する(reservationRepository);
             assertNotNull(result);
         }
 
@@ -84,9 +83,9 @@ public class ReservationServiceTest {
             MeetingRoom room = 会議室を作る(meetingRoomRepository);
             ReservableRoom reservableRoom = 予約が可能な会議室を作る(room);
             予約会議室を登録する(reservableRoom, reservableRoomRepository);
-            Reservation reservation = 予約を作る(new ReservationId(1), reservableRoom, LocalTime.of(9, 0), LocalTime.of(10, 0));
+            Reservation reservation = 予約を作る(reservableRoom, LocalTime.of(9, 0), LocalTime.of(10, 0));
             予約する(reservationService, reservation);
-            Reservation reservation2 = 予約を作る(new ReservationId(2), reservableRoom, LocalTime.of(11, 0), LocalTime.of(12, 0));
+            Reservation reservation2 = 予約を作る(reservableRoom, LocalTime.of(11, 0), LocalTime.of(12, 0));
             予約する(reservationService, reservation2);
 
             List<Reservation> result = 予約を全件検索する(reservationRepository);
@@ -99,9 +98,9 @@ public class ReservationServiceTest {
             MeetingRoom room = 会議室を作る(meetingRoomRepository);
             ReservableRoom reservableRoom = 予約が可能な会議室を作る(room);
             予約会議室を登録する(reservableRoom, reservableRoomRepository);
-            Reservation reservation = 予約を作る(new ReservationId(1), reservableRoom, LocalTime.of(9, 0), LocalTime.of(10, 0));
+            Reservation reservation = 予約を作る(reservableRoom, LocalTime.of(9, 0), LocalTime.of(10, 0));
             予約する(reservationService, reservation);
-            Reservation reservation2 = 予約を作る(new ReservationId(2), reservableRoom, LocalTime.of(9, 30), LocalTime.of(10, 30));
+            Reservation reservation2 = 予約を作る(reservableRoom, LocalTime.of(9, 30), LocalTime.of(10, 30));
 
             Throwable result = assertThrows(AlreadyReservedException.class, () -> {
                 予約する(reservationService, reservation2);
@@ -115,9 +114,9 @@ public class ReservationServiceTest {
             MeetingRoom room = 会議室を作る(meetingRoomRepository);
             ReservableRoom reservableRoom = 予約が可能な会議室を作る(room);
             予約会議室を登録する(reservableRoom, reservableRoomRepository);
-            Reservation reservation = 予約を作る(new ReservationId(1), reservableRoom, LocalTime.of(9, 0), LocalTime.of(12, 0));
+            Reservation reservation = 予約を作る(reservableRoom, LocalTime.of(9, 0), LocalTime.of(12, 0));
             予約する(reservationService, reservation);
-            Reservation reservation2 = 予約を作る(new ReservationId(2), reservableRoom, LocalTime.of(10, 0), LocalTime.of(11, 0));
+            Reservation reservation2 = 予約を作る(reservableRoom, LocalTime.of(10, 0), LocalTime.of(11, 0));
 
             Throwable result = assertThrows(AlreadyReservedException.class, () -> {
                 予約する(reservationService, reservation2);
@@ -126,12 +125,12 @@ public class ReservationServiceTest {
         }
     }
 
-    private Reservation 予約を作る(ReservationId id, ReservableRoom room, LocalTime start, LocalTime end) {
+    private Reservation 予約を作る(ReservableRoom room, LocalTime start, LocalTime end) {
         ReservedTime time = new ReservedTime(start, end);
         User user = ユーザーを作る();
         ReservedDate date = new ReservedDate(room.reservableRoomId().reservedDate().value());
         ReservedDateTime dateTime = new ReservedDateTime(date, time);
-        return new Reservation(id, dateTime, room, user);
+        return new Reservation(dateTime, room, user);
     }
 
     private ReservableRoom 予約が可能な会議室を作る(MeetingRoom room) {
@@ -197,13 +196,14 @@ public class ReservationServiceTest {
             MeetingRoom room = 会議室を作る(meetingRoomRepository);
             ReservableRoom reservableRoom = 予約が可能な会議室を作る(room);
             予約会議室を登録する(reservableRoom, reservableRoomRepository);
-            Reservation reservation = 予約を作る(new ReservationId(1), reservableRoom, LocalTime.of(9, 0), LocalTime.of(10, 0));
+            Reservation reservation = 予約を作る(reservableRoom, LocalTime.of(9, 0), LocalTime.of(10, 0));
             予約する(reservationService, reservation);
 
-            Reservation cancelReservation = reservationRepository.getOne(1);
+            List<Reservation> result = 予約を全件検索する(reservationRepository);
+            Reservation cancelReservation = result.get(0);
             キャンセルする(reservationService, cancelReservation);
 
-            List<Reservation> result = 予約を全件検索する(reservationRepository);
+            result = 予約を全件検索する(reservationRepository);
             assertEquals(0, result.size());
         }
     }
@@ -222,8 +222,8 @@ public class ReservationServiceTest {
         repository.save(ユーザーを作る());
     }
 
-    private Reservation 予約を検索する(Integer id, ReservationRepository repository) {
-        return repository.getOne(id);
+    private Reservation 予約を検索する(ReservationRepository repository) {
+        return repository.findAll().get(0);
     }
 
     private List<Reservation> 予約を全件検索する(ReservationRepository repository) {

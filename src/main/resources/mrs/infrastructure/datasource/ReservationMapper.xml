@@ -39,10 +39,10 @@
       <if test="reservedDateTime.date != null">
         reserved_date,
       </if>
-      <if test="roomId != null">
+      <if test="reservableRoom.reservableRoomId.roomId != null">
         room_id,
       </if>
-      <if test="userId != null">
+      <if test="user.userId != null">
         user_id,
       </if>
     </trim>
@@ -59,10 +59,10 @@
       <if test="reservedDateTime.date != null">
         #{reservedDateTime.date.value,jdbcType=DATE},
       </if>
-      <if test="roomId != null">
-        #{reservableRoom.reservableRoom.reservableRoomId.roomId.value,jdbcType=INTEGER},
+      <if test="reservableRoom.reservableRoomId.roomId != null">
+        #{reservableRoom.reservableRoomId.roomId.value,jdbcType=INTEGER},
       </if>
-      <if test="userId != null">
+      <if test="user.userId != null">
         #{user.userId.value,jdbcType=VARCHAR},
       </if>
     </trim>
@@ -84,7 +84,7 @@
         reserved_date = #{reservedDateTime.date.value,jdbcType=DATE},
       </if>
       <if test="roomId != null">
-        room_id = #{reservableRoom.reservableRoom.reservableRoomId.roomId.value,jdbcType=INTEGER},
+        room_id = #{reservableRoom.reservableRoomId.roomId.value,jdbcType=INTEGER},
       </if>
       <if test="userId != null">
         user_id = #{user.userId.value,jdbcType=VARCHAR},

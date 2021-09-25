@@ -1,0 +1,35 @@
+version: 0.2
+
+env:
+  parameter-store:
+    aws_default_region: "/PRODUCTION/AWS_DEFAULT_REGION"
+    repo_name: "/PRODUCTION/ECR_REPOSITORY_NAME"
+    repo_url: "/PRODUCTION/ECR_REPOSITORY_URL"
+    api_url: "/PRODUCTION/API_URL"
+    dockerhub_pass: "/PRODUCTION/DOCKERHUB_PASS"
+    dockerhub_user: "/PRODUCTION/DOCKERHUB_USER"
+phases:
+  install:
+    runtime-versions:
+      java: corretto11
+      nodejs: 12.x
+  pre_build:
+    commands:
+      - echo Pre Build started on `date`
+      - aws ecr get-login-password --region ${aws_default_region} | docker login --username AWS --password-stdin ${repo_url}
+      - REPO=$(aws ecr describe-repositories --repository-names ${repo_name} --output text --query "repositories[0].repositoryUri")
+      - IMAGE=$REPO:latest
+      - echo Logging in to Docker Hub...
+      - echo ${dockerhub_pass} | docker login -u ${dockerhub_user} --password-stdin
+  build:
+    commands:
+      - echo Build started on `date`
+      - gradle build -Penv=production -Papi=${api_url}
+      - docker build -f ops/build/docker/java/Dockerfile -t $IMAGE .
+      - docker push $IMAGE
+  post_build:
+    commands:
+      - echo Post Build started on `date`
+      - printf '[{"name":"%s","imageUri":"%s"}]' ${repo_name} $IMAGE > imagedefinitions.json
+artifacts:
+  files: imagedefinitions.json

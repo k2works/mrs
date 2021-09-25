@@ -76,10 +76,6 @@ APIドキュメントはログイン後に http://localhost:8080/swagger-ui.html
 
 ### 開発
 
-#### データモデル
-
-![](./docs/img/erd/jig-erd-detail.png)
-
 #### アプリケーションアーキテクチャ
 
 ![](./docs/img/jig/architecture.svg)
@@ -89,6 +85,10 @@ APIドキュメントはログイン後に http://localhost:8080/swagger-ui.html
 ![](./docs/img/jig/package-relation-depth5.svg)
 
 ![](./docs/img/jig/business-rule-relation.svg)
+
+#### データモデル
+
+![](./docs/img/erd/jig-erd-detail.png)
 
 #### 画面とユースケース
 
