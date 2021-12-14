@@ -47,6 +47,7 @@ dependencies {
     runtimeOnly ("io.springfox:springfox-swagger-ui:2.9.2")
     implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.2'
     implementation group: 'jakarta.xml.bind', name: 'jakarta.xml.bind-api', version: '2.3.2'
+    implementation platform('org.apache.logging.log4j:log4j-bom:2.15.0')
 }
 
 group = 'mrs'
