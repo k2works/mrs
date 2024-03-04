@@ -8,8 +8,8 @@
   },
   "config": {
     "development_api_url": "http://127.0.0.1:8080/api",
-    "staging_api_url": "https://app-mrs.azurewebsites.net/api",
-    "production_api_url": "https://app-mrs.azurewebsites.net/api"
+    "staging_api_url": "https://case-study-mrs-legacy-cec6fdc941c8.herokuapp.com/api",
+    "production_api_url": "https://case-study-mrs-legacy-cec6fdc941c8.herokuapp.com/api"
   },
   "scripts": {
     "start": "nf start -j ./src/main/typescript/Procfile",
@@ -93,7 +93,6 @@
     "mochawesome": "^6.2.2",
     "mochawesome-merge": "^4.2.0",
     "mochawesome-report-generator": "^5.2.0",
-    "node-sass": "^5.0.0",
     "pm2": "^5.1.1",
     "process": "^0.11.10",
     "react": "^17.0.1",

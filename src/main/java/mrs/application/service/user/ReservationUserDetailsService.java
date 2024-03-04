@@ -25,10 +25,10 @@ public class ReservationUserDetailsService implements UserDetailsService {
      */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<User> user = Optional.ofNullable(userRepository.findById(username));
-        if (user.isEmpty()) {
+        User user = userRepository.findById(username);
+        if (user != null) {
             throw new UsernameNotFoundException(username + " is not found.");
         }
-        return new ReservationUserDetails(user.get());
+        return new ReservationUserDetails(user);
     }
 }

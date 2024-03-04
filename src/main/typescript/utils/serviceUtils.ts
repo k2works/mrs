@@ -1,19 +1,14 @@
-let BASE_API_URL = process.env.API_URL || "http://localhost:8080/api";
-if (process.env.NODE_ENV === 'production') {
-    BASE_API_URL = process.env.API_URL || BASE_API_URL
-} else if (process.env.NODE_ENV === 'staging') {
-    BASE_API_URL = process.env.API_URL || BASE_API_URL
-}
+let BASE_API_URL =
+  "https://case-study-mrs-legacy-cec6fdc941c8.herokuapp.com/api";
 
 export namespace authConst {
-    export const API_URL = `${BASE_API_URL}/auth`
+  export const API_URL = `${BASE_API_URL}/auth`;
 }
 
 export namespace roomConst {
-    export const API_URL = `${BASE_API_URL}/rooms`
+  export const API_URL = `${BASE_API_URL}/rooms`;
 }
 
 export namespace reservationConst {
-    export const API_URL = `${BASE_API_URL}/reservations`
+  export const API_URL = `${BASE_API_URL}/reservations`;
 }
-
